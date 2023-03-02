@@ -15,11 +15,11 @@ Style/ConditionalAssignment:
 Style/StringLiterals:
   Enabled: false
 Style/RedundantReturn:
-  Enabled: false
+  Enabled: true
 Style/Documentation:
   Enabled: false
 Style/WordArray:
-  Enabled: false
+  Enabled: true
 Metrics/AbcSize:
   Enabled: false
 Style/MutableConstant:
@@ -37,6 +37,8 @@ Style/FrozenStringLiteralComment:
 Layout/LineLength:
   Max: 120
 Style/EmptyMethod:
-  Enabled: false
+  Enabled: true
 Bundler/OrderedGems:
+  Enabled: false
+Style/ClassAndModuleChildren:
   Enabled: false
