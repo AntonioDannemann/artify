@@ -1,4 +1,6 @@
 class Monument < ApplicationRecord
-  validates :name, :description, :completion_date, :lat, :lng, :location, :style, presence: true
+  has_one_attached :photo
+
+  validates :name, :description, :completion_date, :lat, :lng, :location, :style, :photo, presence: true
   validates :lat, :lng, numericality: { only_float: true }
 end
