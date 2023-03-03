@@ -10,18 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_03_094934) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_03_114547) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "architects", force: :cascade do |t|
+  create_table "monuments", force: :cascade do |t|
     t.string "name"
-    t.date "birth_date"
-    t.date "death_date"
-    t.string "nationality"
+    t.float "lat"
+    t.float "lng"
     t.string "description"
+    t.date "completion_date"
+    t.string "location"
+    t.string "style"
+    t.string "website_url"
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 end
