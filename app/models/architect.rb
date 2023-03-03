@@ -6,6 +6,7 @@ class Architect < ApplicationRecord
 
   def death_date_later_than_birth_date?
     return if death_date > birth_date
+
     errors.add(:birth_date, "can't be later than date of death")
   end
 end
