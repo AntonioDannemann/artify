@@ -6,10 +6,10 @@ class User < ApplicationRecord
 
   has_one_attached :photo
 
-  validates :first_name, :last_name, :latitude, :longitude, presence: true
-  validate :full_name
+  validates :first_name, :last_name, :lat, :lng, presence: true
+  validates :lat, :lng, numericality: { only_float: true }
 
   def full_name
-    return "#{first_name} #{last_name}" if first_name.present? && last_name.present?
+    "#{first_name} #{last_name}"
   end
 end
