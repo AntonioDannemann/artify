@@ -42,6 +42,8 @@ gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 # Use Sass to process CSS
 gem "sassc-rails"
 
+gem "devise"
+
 gem "simple_form", github: "heartcombo/simple_form"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
