@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import CameraController from "./camera_controller"
+application.register("camera", CameraController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
