@@ -1,5 +1,6 @@
 class Architect < ApplicationRecord
   has_many :architect_monuments, dependent: :destroy
+  has_many :monuments, through: :architect_monuments
   has_one_attached :photo
 
   validates :name, :birth_date, :death_date, :nationality, :description, :photo, presence: true
