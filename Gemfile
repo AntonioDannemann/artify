@@ -11,6 +11,8 @@ gem "autoprefixer-rails"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem "cloudinary"
+
 gem "font-awesome-sass", "~> 6.1"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
