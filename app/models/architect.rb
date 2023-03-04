@@ -1,4 +1,6 @@
 class Architect < ApplicationRecord
+  has_one_attached :photo
+
   validates :name, :birth_date, :death_date, :nationality, :description, presence: true
   validate :death_date_later_than_birth_date?
 
