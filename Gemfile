@@ -16,7 +16,11 @@ gem "bootsnap", require: false
 
 gem "cloudinary"
 
+gem "devise"
+
 gem "font-awesome-sass", "~> 6.1"
+
+gem "google-cloud-vision-v1"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -44,8 +48,6 @@ gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 
 # Use Sass to process CSS
 gem "sassc-rails"
-
-gem "devise"
 
 gem "simple_form", github: "heartcombo/simple_form"
 

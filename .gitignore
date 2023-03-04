@@ -36,6 +36,9 @@
 /node_modules
 # Ignore .env file containing credentials.
 .env*
+
 # Ignore Mac and Linux file system files
 *.swp
 .DS_Store
+
+/config/artify-379614-afcb2f421249.json
