@@ -5,6 +5,9 @@ ruby "3.1.2"
 
 gem "autoprefixer-rails"
 
+# gems installed by Artify team:
+gem "pundit"
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
@@ -13,7 +16,11 @@ gem "bootsnap", require: false
 
 gem "cloudinary"
 
+gem "devise"
+
 gem "font-awesome-sass", "~> 6.1"
+
+gem "google-cloud-vision-v1"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
