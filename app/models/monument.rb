@@ -8,5 +8,6 @@ class Monument < ApplicationRecord
   after_validation :reverse_geocode
 
   validates :name, :description, :completion_date, :lat, :lng, :style, presence: true
+  # validates :photo, presence: true
   validates :lat, :lng, numericality: { only_float: true }
 end
