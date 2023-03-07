@@ -7,8 +7,8 @@ class User < ApplicationRecord
   has_many :histories, dependent: :destroy
   has_one_attached :photo
 
-  validates :first_name, :last_name, :lat, :lng, presence: true
-  validates :lat, :lng, numericality: { only_float: true }
+  validates :first_name, :last_name, presence: true
+  validates :lat, :lng, numericality: { only_float: true }, allow_nil: true
 
   def full_name
     "#{first_name} #{last_name}"
