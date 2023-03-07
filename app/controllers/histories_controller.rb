@@ -11,7 +11,7 @@ class HistoriesController < ApplicationController
   def create
     @photo = params[:history][:photo]
     @user = current_user || User.find_by(first_name: "guest")
-    @history = find_monument_by_image_url(@photo.path)
+    @history = build_history_from_photo(@photo.path)
 
     authorize @history
     if @history.save
@@ -23,7 +23,7 @@ class HistoriesController < ApplicationController
 
   private
 
-  def find_monument_by_image_url(image_url)
+  def build_history_from_photo(image_url)
     landmark = fetch_landmark_from_google_cloud_vision(image_url)
     return History.new unless landmark
 
@@ -72,7 +72,7 @@ class HistoriesController < ApplicationController
     attach_photo_to_monument(monument, data[:photo_url])
     fetch_geocoder_for_monument_update(monument)
 
-    return monument if monument.sav
+    return monument if monument.save
 
     nil
   end
