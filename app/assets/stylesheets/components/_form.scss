@@ -1,0 +1,23 @@
+.form {
+  background-color: $main-blue;
+  padding: 20px;
+
+  .form-field {
+    background-color: $secondary-blue;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: lightgray;
+    margin: 3px;
+  }
+
+  h2 {
+    color: lightgray;
+  }
+}
+
+input, select, textarea {
+  background-color: $secondary-blue;
+  border: none;
+  color: lightgray;
+}
