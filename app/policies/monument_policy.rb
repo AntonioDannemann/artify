@@ -4,9 +4,9 @@ class MonumentPolicy < ApplicationPolicy
     def resolve
       scope.Monument.near([user.lat, user.lng], 5)
     end
+  end
 
-    def show
-      true
-    end
+  def show?
+    true
   end
 end
