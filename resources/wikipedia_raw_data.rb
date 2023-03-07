@@ -585,8 +585,8 @@
             "*" => "Atomium"
           },
           {
-            "lang" => "lmo"
-              "* "= >"Atomium"
+            "lang" => "lmo",
+            "*" => "Atomium"
           },
           {
             "lang" => "lv",
@@ -665,8 +665,8 @@
             "*" => "Atoniom"
           },
           {
-            "lang" => "war"
-              "* "= >"Atomium"
+            "lang" => "war",
+            "*" => "Atomium"
           },
           {
             "lang" => "zh",

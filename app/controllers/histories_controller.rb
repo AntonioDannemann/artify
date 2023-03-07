@@ -113,10 +113,10 @@ class HistoriesController < ApplicationController
     # Open that file and search (CTRL + F) for "BOOKMARK"
     # This script needs to be refactored !
     content.first["*"].split("\n\n").first.split("}}\n{{").last
-            .split("\n").map(&:strip).select { _1[0] == "|" }
-            .map { _1[1..].split("=").map(&:strip) }
-            .map { _1.length == 1 ? _1.push("") : _1 }
-            .each { hash[_1[0].downcase] = _1[1].gsub(/\[|\]|{|}/, "").split("|").last }
+           .split("\n").map(&:strip).select { _1[0] == "|" }
+           .map { _1[1..].split("=").map(&:strip) }
+           .map { _1.length == 1 ? _1.push("") : _1 }
+           .each { hash[_1[0].downcase] = _1[1].gsub(/\[|\]|{|}/, "").split("|").last }
 
     # Finally most url fetched from Wikipedia don't come with https:// or http:// in front of link
     # Because of that they can't be used as href for <a> tags
