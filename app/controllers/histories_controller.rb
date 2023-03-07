@@ -5,6 +5,7 @@ class HistoriesController < ApplicationController
 
   def show
     @history = History.find(params[:id])
+    authorize @history
   end
 
   def create
@@ -39,6 +40,8 @@ class HistoriesController < ApplicationController
     history = History.new(history_params(landmark))
     history.user = @user
     history.monument = find_monument_by_history(history)
+
+    authorize history
 
     if history.save!
       history
