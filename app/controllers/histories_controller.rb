@@ -4,7 +4,7 @@ class HistoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show create]
 
   def index
-    @histories = Policy_scope(History)
+    @histories = policy_scope(History)
   end
 
   def show
