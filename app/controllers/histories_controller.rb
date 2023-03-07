@@ -104,7 +104,6 @@ class HistoriesController < ApplicationController
     # An example of such Has can be found in root/resources/wikipedia_raw_data.rb
     # We first need to search through our Hash to get a JSON of all the content of the page for our first matching page
     content = page.raw_data["query"]["pages"].first[1]["revisions"]
-    return nil unless content
 
     hash = {}
 
