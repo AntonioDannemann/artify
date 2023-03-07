@@ -3,6 +3,10 @@ require 'open-uri'
 class HistoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show create]
 
+  def index
+    @histories = Policy_scope(History)
+  end
+
   def show
     @history = History.find(params[:id])
     authorize @history
