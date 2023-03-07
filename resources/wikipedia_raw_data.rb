@@ -1,3 +1,4 @@
+# rubocop:disable all
 {
   "continue" => {
     "plcontinue" => "78186|0|Astro_Tower",
@@ -677,3 +678,4 @@
     }
   }
 }
+# rubocop:enable all
