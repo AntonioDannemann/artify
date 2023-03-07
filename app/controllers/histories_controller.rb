@@ -1,4 +1,5 @@
 require 'open-uri'
+require "google/cloud/vision/v1"
 
 class HistoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show create]
@@ -18,6 +19,7 @@ class HistoriesController < ApplicationController
     @history = build_history_from_photo(@photo.path)
 
     authorize @history
+
     if @history.save
       redirect_to history_path(@history)
     else
@@ -29,47 +31,48 @@ class HistoriesController < ApplicationController
 
   def build_history_from_photo(image_url)
     landmark = fetch_landmark_from_google_cloud_vision(image_url)
+
+    # We check whether a @landmark has been found and if not we return a new instance of History
+    # The reason is that back in the #create action we authorize the value of @history
+    # Pundit can't authorize an instance with a value of nil
+    # So we pass an empty History, it passes the authorization but not the validation and the #save fails
     return History.new unless landmark
 
-    new_history(landmark)
+    @landmark_lat = landmark.locations.first.lat_lng.latitude
+    @landmark_lng = landmark.locations.first.lat_lng.longitude
+    @landmark_name = landmark.description
+
+    new_history
   end
 
   def fetch_landmark_from_google_cloud_vision(image_url)
-    require "google/cloud/vision/v1"
-
     client = Google::Cloud::Vision::V1::ImageAnnotator::Client.new
     response = client.landmark_detection(image: image_url)
 
+    # This line digs through a JSON object to return the data from the first landmark found by Google
     response.responses.first.landmark_annotations.first
   end
 
-  def new_history(landmark)
-    history = History.new(history_params(landmark))
+  def new_history
+    history = History.new(photo: @photo)
     history.user = @user
-    history.monument = find_monument_by_history(history)
+    history.monument = find_monument_by_landmark
 
     history
   end
 
-  def history_params(landmark)
-    {
-      description: landmark.description,
-      lat: landmark.locations.first.lat_lng.latitude,
-      lng: landmark.locations.first.lat_lng.longitude,
-      photo: @photo
-    }
-  end
-
-  def find_monument_by_history(history)
-    monuments = Monument.near([history.lat, history.lng], 1)
-    monument = monuments.find_by(name: history.description)
+  def find_monument_by_landmark
+    # We first check in the database if there is a monument that corresponds to our current landmark
+    monuments = Monument.near([@landmark_lat, @landmark_lng], 1)
+    monument = monuments.find_by(name: @landmark_name)
     return monument if monument
 
-    create_monument(history)
+    # If not we create one
+    create_monument
   end
 
-  def create_monument(history)
-    data = fetch_data_from_wikipedia(history)
+  def create_monument
+    data = fetch_data_from_wikipedia
     return nil unless data
 
     monument = Monument.new(data[:params])
@@ -81,14 +84,14 @@ class HistoriesController < ApplicationController
     nil
   end
 
-  def fetch_data_from_wikipedia(history)
-    page = Wikipedia.find(history.description)
+  def fetch_data_from_wikipedia
+    page = Wikipedia.find(@landmark_name)
     return nil unless page.content
 
     { params: {
-        name: history.description,
-        lat: history.lat,
-        lng: history.lng,
+        name: @landmark_name,
+        lat: @landmark_lat,
+        lng: @landmark_lng,
         description: page.summary,
         website_url: search_page_raw_data_for_website_url(page)
       },
@@ -96,18 +99,28 @@ class HistoriesController < ApplicationController
   end
 
   def search_page_raw_data_for_website_url(page)
+    # This is gonna be one of those "Trust me, Bro" moment
+    # This method is basically digging through an enormous Hash of the whole page's data
+    # An example of such Has can be found in root/resources/wikipedia_raw_data.rb
+    # We first need to search through our Hash to get a JSON of all the content of the page for our first matching page
+    content = page.raw_data["query"]["pages"].first[1]["revisions"]
+    return nil unless content
+
     hash = {}
 
-    # This is gonna be one of those "Trust me, Bro" moment
-    revisions = page.raw_data["query"]["pages"].first[1]["revisions"]
-    return nil unless revisions
+    # Then we dig through that JSON object until we find the website_url from the Infobox
+    # You can see where this is exactly located in the root/resources/wikipedia_raw_data.rb file
+    # Open that file and search (CTRL + F) for "BOOKMARK"
+    # This script needs to be refactored !
+    content.first["*"].split("\n\n").first.split("}}\n{{").last
+            .split("\n").map(&:strip).select { _1[0] == "|" }
+            .map { _1[1..].split("=").map(&:strip) }
+            .map { _1.length == 1 ? _1.push("") : _1 }
+            .each { hash[_1[0].downcase] = _1[1].gsub(/\[|\]|{|}/, "").split("|").last }
 
-    revisions.first["*"].split("\n\n").first.split("}}\n{{").last
-             .split("\n").map(&:strip).select { _1[0] == "|" }
-             .map { _1[1..].split("=").map(&:strip) }
-             .map { _1.length == 1 ? _1.push("") : _1 }
-             .each { hash[_1[0].downcase] = _1[1].gsub(/\[|\]|{|}/, "").split("|").last }
-
+    # Finally most url fetched from Wikipedia don't come with https:// or http:// in front of link
+    # Because of that they can't be used as href for <a> tags
+    # So we verify that the url has http or https and if not, we add it
     verify_url(hash["website"])
   end
 
