@@ -6,7 +6,4 @@ class HistoryPolicy < ApplicationPolicy
   def create?
     true
   end
-
-  class Scope < Scope
-  end
 end
