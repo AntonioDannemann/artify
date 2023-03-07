@@ -12,19 +12,22 @@ class HistoriesController < ApplicationController
     @photo = params[:history][:photo]
     @user = current_user || User.find_by(first_name: "guest")
     @history = find_monument_by_image_url(@photo.path)
-    redirect_to history_path(@history)
+
+    authorize @history
+    if @history.save
+      redirect_to history_path(@history)
+    else
+      redirect_to error_path
+    end
   end
 
   private
 
   def find_monument_by_image_url(image_url)
     landmark = fetch_landmark_from_google_cloud_vision(image_url)
+    return History.new unless landmark
 
-    if landmark
-      create_history(landmark)
-    else
-      redirect_to error_path
-    end
+    new_history(landmark)
   end
 
   def fetch_landmark_from_google_cloud_vision(image_url)
@@ -36,18 +39,12 @@ class HistoriesController < ApplicationController
     response.responses.first.landmark_annotations.first
   end
 
-  def create_history(landmark)
+  def new_history(landmark)
     history = History.new(history_params(landmark))
     history.user = @user
     history.monument = find_monument_by_history(history)
 
-    authorize history
-
-    if history.save!
-      history
-    else
-      redirect_to error_path
-    end
+    history
   end
 
   def history_params(landmark)
@@ -75,11 +72,9 @@ class HistoriesController < ApplicationController
     attach_photo_to_monument(monument, data[:photo_url])
     fetch_geocoder_for_monument_update(monument)
 
-    if monument.save!
-      monument
-    else
-      redirect_to error_path
-    end
+    return monument if monument.sav
+
+    nil
   end
 
   def fetch_data_from_wikipedia(history)
