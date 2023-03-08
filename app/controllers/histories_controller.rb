@@ -1,5 +1,6 @@
-require 'open-uri'
 require "google/cloud/vision/v1"
+require "mini_magick"
+require 'open-uri'
 
 class HistoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show create]
@@ -65,7 +66,7 @@ class HistoriesController < ApplicationController
   end
 
   def find_monument_by_landmark
-    monuments.find_by(name: @landmark_name, lat: @landmark_lat, lng: @landmark_lng)
+    Monument.find_by(name: @landmark_name, lat: @landmark_lat, lng: @landmark_lng)
   end
 
   def create_monument
@@ -138,7 +139,15 @@ class HistoriesController < ApplicationController
 
   def attach_photo_to_monument(monument, photo_url)
     photo = URI.parse(photo_url).open
-    monument.photo.attach(io: photo, filename: "#{monument.name}.png", content_type: "image/png")
+    photo = compressed_photo(photo) if photo.size > 10_485_760
+
+    monument.photo.attach(io: photo, filename: "#{monument.name}.jpeg", content_type: "image/jpeg")
+  end
+
+  def compressed_photo(photo)
+    image = MiniMagick::Image.new(photo.path)
+    image.combine_options { |o| o.quality 90 }
+    StringIO.open(image.to_blob)
   end
 
   def fetch_geocoder_for_monument_update(monument)

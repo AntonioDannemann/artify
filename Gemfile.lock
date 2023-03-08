@@ -192,6 +192,7 @@ GEM
     mime-types (3.4.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2023.0218.1)
+    mini_magick (4.12.0)
     mini_mime (1.1.2)
     minitest (5.17.0)
     msgpack (1.6.0)
@@ -365,6 +366,7 @@ DEPENDENCIES
   google-cloud-vision-v1
   jbuilder
   jsbundling-rails
+  mini_magick
   pg (~> 1.1)
   puma (~> 5.0)
   pundit
