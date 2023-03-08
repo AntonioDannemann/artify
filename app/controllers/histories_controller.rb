@@ -56,19 +56,16 @@ class HistoriesController < ApplicationController
   def new_history
     history = History.new(photo: @photo)
     history.user = @user
-    history.monument = find_monument_by_landmark
+
+    # We first check in the database if there is a monument that corresponds to our current landmark
+    # If not we create one
+    history.monument = find_monument_by_landmark || create_monument
 
     history
   end
 
   def find_monument_by_landmark
-    # We first check in the database if there is a monument that corresponds to our current landmark
-    monuments = Monument.near([@landmark_lat, @landmark_lng], 1)
-    monument = monuments.find_by(name: @landmark_name)
-    return monument if monument
-
-    # If not we create one
-    create_monument
+    monuments.find_by(name: @landmark_name, lat: @landmark_lat, lng: @landmark_lng)
   end
 
   def create_monument
@@ -120,7 +117,7 @@ class HistoriesController < ApplicationController
       \b(?:[-a-zA-Z0-9()@:%_+.~#?&\/=]*))
       /x
 
-    website_url = content_json.lines.find { |line| line.match?(website_url_regexp) }&.match(website_url_regexp)&.[](1)
+    website_url = content_json.match(website_url_regexp)&.[](1)
 
     # Finally most url fetched from Wikipedia don't come with https:// or http:// in front of link
     # Because of that they can't be used as href for <a> tags
