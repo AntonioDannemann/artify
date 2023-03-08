@@ -120,7 +120,7 @@ class HistoriesController < ApplicationController
       \b(?:[-a-zA-Z0-9()@:%_+.~#?&\/=]*))
       /x
 
-    website_url = content_json.lines.find { |line| line.match?(website_url_regexp) }.match(website_url_regexp)[1]
+    website_url = content_json.lines.find { |line| line.match?(website_url_regexp) }&.match(website_url_regexp)&.[](1)
 
     # Finally most url fetched from Wikipedia don't come with https:// or http:// in front of link
     # Because of that they can't be used as href for <a> tags
