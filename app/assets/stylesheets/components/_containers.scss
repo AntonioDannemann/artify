@@ -1,0 +1,11 @@
+.monuments-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background-color: $main-green;
+
+  height: 100%;
+  width: 100%;
+}
