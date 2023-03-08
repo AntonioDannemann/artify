@@ -1,2 +1,7 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<%= form_with model: @history do |f| %>
+  <%= f.file_field :photo, accept: "image/*" %>
+  <%= f.submit %>
+<% end %>
