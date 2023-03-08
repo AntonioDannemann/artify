@@ -1,5 +1,5 @@
 class MonumentsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     @monuments = policy_scope(Monument).near([user.lat, user.lng], 5)
