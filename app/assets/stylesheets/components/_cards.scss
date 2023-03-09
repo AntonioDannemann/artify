@@ -2,20 +2,19 @@
   display: flex;
   align-items: center;
 
-  width: 90%;
+  width: 100%;
   height: 200px;
   margin-top: 10px;
 
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 25px;
+  // background-color: rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid $secondary-green;
+  border-top: 1px solid $secondary-green;
 
   .card-img {
     width: 40%;
     height: 100%;
     background-position: center;
     background-size: cover;
-
-    border-radius: 25px 0px 0px 25px;
   }
 
   .card-information {
@@ -29,18 +28,30 @@
     padding: 5px 10px;
 
     color: white;
+
+    h1 {
+      font-size: 24px;
+    }
   }
 
   .card-description {
     display: -webkit-box;
     font-size: 10px;
 
-    height: 100%;
+    margin-bottom: 0;
+    padding-bottom: 5px;
+    height: 95%;
     max-width: 100%;
+
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: pre-wrap;
-    -webkit-line-clamp: 6;
+    -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
+  }
+
+  .city-distance {
+    display: flex;
+    justify-content: space-between;
   }
 }
