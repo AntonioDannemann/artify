@@ -1,12 +1,13 @@
-body{
-  background-image: url(background_image.jpeg);
-  background-size: cover;
-  background-position: center;
-
-}
-
 .logo{
-  margin: 0 0 20px 20px;
+  overflow-x: hidden;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5),
+                                    rgba(0, 0, 0, 0.2) 50%,
+                                    rgba(0, 0, 0, 0.2) 85%,
+                                    rgb(38, 73, 81) 100%),
+                    url(background_image.jpeg);
+  background-size: cover;
+  height: 100vh;
+  margin-top: 30px;
 
   h1{
     font-size: 70px;
@@ -15,18 +16,88 @@ body{
   }
 }
 
-.camera-button{
+.fa-camera{
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #071C20;
+  background-color: rgb(38, 73, 81);
   font-size: 40px;
   color: white;
   height: 50px;
   width: 50px;
   border-radius: 50%;
   margin: 0 auto;
-  margin-top: 650px;
+  margin-top: 690px;
   padding: 35px;
 }
+ /*map-container*/
+
+.around-you-map-container{
+  background-color: rgb(38, 73, 81);
+  width: 100%;
+  margin: 0 auto;
+
+  h2{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  p{
+    color: white;
+    text-align: center;
+  }
+
+  .map-container{
+    background-image: url(placeholder_image_map.png);
+    background-size: 300px;
+    margin: 0 auto;
+    height: 300px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0px 28px 66px 0px rgba(0,0,0,0.6), 0px 45px 26px 0px rgba(0,0,0,0.14);
+  }
+}
+
+/*drag-card-container*/
+
+// .drag_card-container{
+//   background-color: #80a6a6bb;
+//   border-radius: 25px;
+//   width: 95%;
+//   margin: 0 auto;
+//   padding-bottom: 15px;
+
+//   h2{
+//     color: white;
+//     padding-top: 30px;
+//     font-size: 20px;
+//     text-align: center;
+//   }
+
+//   p{
+//     color: white;
+//     text-align: center;
+//   }
+
+//   .map-container{
+//     background-image: url(placeholder_image_map.png);
+//     background-size: 300px;
+//     margin: 0 auto;
+//     height: 300px;
+//     width: 100%;
+//     border-radius: 20px;
+//     box-shadow: 0px 28px 66px 0px rgba(0,0,0,0.6), 0px 45px 26px 0px rgba(0,0,0,0.14);
+//   }
+
+//   .card-container{
+//     background-image: url(drag_card_placeholder.png);
+//     background-size: 500px;
+//     margin: 0 auto;
+//     height: 300px;
+//     width: 70%;
+//     border-radius: 20px;
+//     box-shadow: 0px 28px 66px 0px rgba(0,0,0,0.6), 0px 45px 26px 0px rgba(0,0,0,0.14);
+//   }
+// }
