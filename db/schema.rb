@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_04_141223) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_07_182519) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,31 +42,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_141223) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "architect_monuments", force: :cascade do |t|
-    t.bigint "architect_id", null: false
-    t.bigint "monument_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["architect_id"], name: "index_architect_monuments_on_architect_id"
-    t.index ["monument_id"], name: "index_architect_monuments_on_monument_id"
-  end
-
-  create_table "architects", force: :cascade do |t|
-    t.string "name"
-    t.date "birth_date"
-    t.date "death_date"
-    t.string "nationality"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "histories", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "monument_id", null: false
-    t.string "description"
-    t.float "lat"
-    t.float "lng"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["monument_id"], name: "index_histories_on_monument_id"
@@ -78,12 +56,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_141223) do
     t.float "lat"
     t.float "lng"
     t.string "description"
-    t.date "completion_date"
     t.string "location"
-    t.string "style"
     t.string "website_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "city"
+    t.string "country"
+    t.string "country_code"
   end
 
   create_table "users", force: :cascade do |t|
@@ -104,8 +83,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_141223) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "architect_monuments", "architects"
-  add_foreign_key "architect_monuments", "monuments"
   add_foreign_key "histories", "monuments"
   add_foreign_key "histories", "users"
 end

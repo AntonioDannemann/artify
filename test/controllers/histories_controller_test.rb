@@ -1,6 +1,6 @@
 require "test_helper"
 
-class ArchitectMonumentTest < ActiveSupport::TestCase
+class HistoriesControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
