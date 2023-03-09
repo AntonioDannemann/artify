@@ -1,4 +1,9 @@
 <div class="standard-container">
+  <div class="monuments-map"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
   <% @monuments.each do |m| %>
     <div class="monument-card">
       <div class="card-img" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<%= cl_image_path m.photo.key %>')"></div>
