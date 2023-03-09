@@ -168,5 +168,6 @@ monument_images.each do |image_url|
   puts "#{history.monument.name} created in #{Time.current - monument_start}s" if history
 end
 
-puts "Done creating monuments and histories"
+puts "Done creating monuments and histories\n\n"
+
 puts "Seed completed in #{Time.current - start}s"
