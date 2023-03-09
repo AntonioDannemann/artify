@@ -139,14 +139,18 @@ class HistoriesController < ApplicationController
 
   def attach_photo_to_monument(monument, photo_url)
     photo = URI.parse(photo_url).open
-    photo = compressed_photo(photo) if photo.size > 10_485_760
+    if photo.size > 52_428_800
+      photo = compressed_photo(photo, 40)
+    elsif photo.size > 10_485_760
+      photo = compressed_photo(photo, 80)
+    end
 
     monument.photo.attach(io: photo, filename: "#{monument.name}.jpeg", content_type: "image/jpeg")
   end
 
-  def compressed_photo(photo)
+  def compressed_photo(photo, quality)
     image = MiniMagick::Image.new(photo.path)
-    image.combine_options { |o| o.quality 90 }
+    image.combine_options { |o| o.quality quality }
     StringIO.open(image.to_blob)
   end
 
