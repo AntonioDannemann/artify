@@ -17,35 +17,43 @@ AllCops:
     - 'test/**/*'
     - 'vendor/**/*'
 
+Bundler/OrderedGems:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 120
+
+Lint/MissingSuper:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+Metrics/ClassLength:
+  CountAsOne: ["array, "hash]
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/MethodLength:
+  CountAsOne: ["array, "hash]
+
+Style/ClassAndModuleChildren:
+  Enabled: false
 Style/ConditionalAssignment:
   Enabled: false
-Style/StringLiterals:
-  Enabled: false
-Style/RedundantReturn:
+Style/EmptyMethod:
   Enabled: true
 Style/Documentation:
   Enabled: false
-Style/WordArray:
-  Enabled: true
-Metrics/AbcSize:
-  Enabled: false
-Style/MutableConstant:
-  Enabled: false
-Style/SignalException:
-  Enabled: false
-Metrics/CyclomaticComplexity:
+Style/FrozenStringLiteralComment:
   Enabled: false
 Style/MissingRespondToMissing:
   Enabled: false
-Lint/MissingSuper:
+Style/MutableConstant:
   Enabled: false
-Style/FrozenStringLiteralComment:
-  Enabled: false
-Layout/LineLength:
-  Max: 120
-Style/EmptyMethod:
+Style/RedundantReturn:
   Enabled: true
-Bundler/OrderedGems:
+Style/SignalException:
   Enabled: false
-Style/ClassAndModuleChildren:
+Style/StringLiterals:
   Enabled: false
+Style/WordArray:
+  Enabled: true
