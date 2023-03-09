@@ -70,23 +70,34 @@ def build_history_from_photo(image_url)
 end
 
 def fetch_landmark_from_google_cloud_vision(image_url)
+  method_start = Time.current
   client = Google::Cloud::Vision::V1::ImageAnnotator::Client.new
   response = client.landmark_detection(image: image_url)
 
-  response.responses.first.landmark_annotations.first
+  landmark = response.responses.first.landmark_annotations.first
+  puts "#{Time.current - method_start}s to complete fetch_landmark_from_google_cloud_vision"
+
+  landmark
 end
 
 def new_history(image_url)
   history = History.new
   history.user = @user
   history.monument = find_monument_by_landmark || create_monument
+
+  method_start = Time.current
   attach_photo_to_model(history, image_url, history.monument.name)
+  puts "#{Time.current - method_start}s to complete attach_photo_to_model(history)"
 
   history
 end
 
 def find_monument_by_landmark
-  Monument.find_by(name: @landmark_name, lat: @landmark_lat, lng: @landmark_lng)
+  method_start = Time.current
+  monument = Monument.find_by(name: @landmark_name, lat: @landmark_lat, lng: @landmark_lng)
+  puts "#{Time.current - method_start}s to complete find_monument_by_landmark"
+
+  monument
 end
 
 def create_monument
@@ -94,29 +105,43 @@ def create_monument
   return nil unless data
 
   monument = Monument.new(data[:params])
+  method_start = Time.current
   attach_photo_to_model(monument, data[:photo_url], monument.name)
-  fetch_geocoder_for_monument_update(monument)
+  puts "#{Time.current - method_start}s to complete attach_photo_to_model(monument)"
 
-  return monument if monument.save
+  method_start = Time.current
+  fetch_geocoder_for_monument_update(monument)
+  puts "#{Time.current - method_start}s to complete fetch_geocoder_for_monument_update"
+
+  method_start = Time.current
+  if monument.save
+    puts "#{Time.current - method_start}s to save monument"
+    return monument
+  end
 
   nil
 end
 
 def fetch_data_from_wikipedia
+  method_start = Time.current
   page = Wikipedia.find(@landmark_name)
   return nil unless page.coordinates
 
-  { params: {
-      name: @landmark_name,
-      lat: @landmark_lat,
-      lng: @landmark_lng,
-      description: page.summary,
-      website_url: search_page_raw_data_for_website_url(page)
-    },
-    photo_url: page.main_image_url }
+  params = { params: {
+               name: @landmark_name,
+               lat: @landmark_lat,
+               lng: @landmark_lng,
+               description: page.summary,
+               website_url: search_page_raw_data_for_website_url(page)
+             },
+             photo_url: page.main_image_url }
+  puts "#{Time.current - method_start}s to complete fetch_data_from_wikipedia"
+
+  params
 end
 
 def search_page_raw_data_for_website_url(page)
+  method_start = Time.current
   content_json = page.raw_data.dig("query", "pages").values.first["revisions"].first["*"]
 
   website_url_regexp =
@@ -128,7 +153,13 @@ def search_page_raw_data_for_website_url(page)
     /x
 
   website_url = content_json.match(website_url_regexp)&.[](1)
-  verify_url(website_url)
+  puts "#{Time.current - method_start}s to complete search_page_raw_data_for_website_url"
+
+  method_start = Time.current
+  url = verify_url(website_url)
+  puts "#{Time.current - method_start}s to complete verify_url"
+
+  url
 end
 
 def verify_url(url)
@@ -165,7 +196,12 @@ puts "Creating monuments and histories"
 monument_images.each do |image_url|
   monument_start = Time.current
   history = build_history_from_photo(image_url)
-  puts "#{history.monument.name} created in #{Time.current - monument_start}s" if history
+
+  method_start = Time.current
+  history.save!
+  puts "#{Time.current - method_start}s to save history"
+
+  puts "#{history.monument.name} created in #{Time.current - monument_start}s\n\n" if history
 end
 
 puts "Done creating monuments and histories\n\n"
