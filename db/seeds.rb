@@ -27,8 +27,6 @@ User.create!(
   last_name: "Schoone",
   email: "rcschoone@gmail.com",
   password: "password",
-  lat: 48.858093,
-  lng: 2.294694
 )
 
 puts "Done creating users\n\n"

@@ -5,7 +5,7 @@
 
     <div class="form-field">
       <%= f.label :photo %>
-      <%= f.file_field :photo, onchange: "form.submit()" %>
+      <%= f.file_field :photo %>
     </div>
 
     <div class="form-field">
@@ -31,13 +31,13 @@
         Password <%= "(#{@minimum_password_length} characters minimum)" if @minimum_password_length %>
       <% end %>
       <%= f.password_field :password %>
-      <span class="text-red text-smaller"><%= resource.errors.full_messages.find { |m| m.match?("Password") && !m.match?("confirmation")} %></span>
+      <span><%= resource.errors.full_messages.find { |m| m.match?("Password")} %></span>
     </div>
 
     <div class="form-field">
       <%= f.label :password_confirmation, "Confirm password" %>
       <%= f.password_field :password_confirmation %>
-      <span class="text-red text-smaller"><%= resource.errors.full_messages.find { |m| m.match?("Password confirmation") } %></span>
+      <span><%= resource.errors.full_messages.find { |m| m.match?("Password confirmation") } %></span>
     </div>
 
     <%= f.submit "Confirm" %>
