@@ -1,14 +1,13 @@
-<div class="monuments-container">
+<div class="standard-container">
   <% @monuments.each do |m| %>
     <div class="monument-card">
       <div class="card-img" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<%= cl_image_path m.photo.key %>')"></div>
       <div class="card-information">
         <div class="card-name">
           <h1><%= m.name %></h1>
-        </div>
-        <div class="card-extra">
           <p><%= m.city %></p>
         </div>
+        <p class="card-description"><%= m.description %></p>
       </div>
     </div>
   <% end %>
