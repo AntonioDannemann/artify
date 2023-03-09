@@ -174,13 +174,23 @@ end
 
 def attach_photo_to_model(model, photo_url, filename)
   photo = URI.parse(photo_url).open
-  if photo.size > 52_428_800
-    photo = compressed_photo(photo, 40)
-  elsif photo.size > 10_485_760
-    photo = compressed_photo(photo, 80)
+  if photo.size > 26_214_400
+    photo = compress_photo(photo, 40)
+  elsif photo.size > 5_242_880
+    photo = compress_photo(photo, 80)
   end
 
   model.photo.attach(io: photo, filename:, content_type: "image/png")
+end
+
+def compress_photo(photo, quality)
+  method_start = Time.current
+  image = MiniMagick::Image.new(photo.path)
+  image.combine_options { |o| o.quality quality }
+  photo = StringIO.open(image.to_blob)
+  puts "#{Time.current - method_start}s to complete compress_photo"
+
+  photo
 end
 
 def fetch_geocoder_for_monument_update(monument)
