@@ -11,7 +11,7 @@ export default class extends Controller {
   #hideLogo() {
     this.element.style.opacity = "0"
     setTimeout(() => {
-      this.element.style.display = "none"
+      this.element.remove()
     }, 1000);
   }
 }

@@ -18,5 +18,15 @@
     <%= render "shared/navbar" %>
 
     <%= yield %>
+
+    <script>
+      if (history.scrollRestoration) {
+          history.scrollRestoration = 'manual';
+      } else {
+          window.onbeforeunload = () => {
+              window.scrollTo(0, 0);
+          }
+      }
+    </script>
   </body>
 </html>
