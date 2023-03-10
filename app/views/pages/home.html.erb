@@ -1,29 +1,45 @@
-<div class="logo">
-  <h1>Artify</h1>
-  <i><i class="fa-solid fa-camera"></i></i>
-</div>
+<div id="pages-home">
+  <section id="logo" data-controller="home-logo">
+      <%= image_tag "logo3white.png", data: { aos: "zoom-out-up", aos_delay: "300", aos_duration: "1000" } %>
+  </section>
 
-<div class="drag_card-container">
-  <h2>Drag your way to the next Destination</h2>
-  <p>
-    Are you looking for a top-notch experience?
-    simple swipe left or right to discover and
-    save your preferred landmarks.Trust in our platform to guide you
-    towards your desired destinations. Join us now to
-    start exploring and saving your most beloved landmarks
-  </p>
-  <div class="card-container">
-    <div class="card"></div>
-  </div>
+  <% unless current_user || @ht %>
+    <%= render "shared/tutorial" %>
+  <% end %>
 
-<div class="around-you-map-container">
-  <h2>Scope out your surroundings</h2>
-  <p>
-    Ready to discover the hottest landmarks near
-    your location? Browse away, just swipe and search,
-    when you findsomething that catches your eye,
-    favorite it and happy exploring!
-  </p>
-  <div class="map-container"></div>
-</div>
+  <%= render "shared/banner" %>
+
+  <section id="featured">
+    <div class="container">
+      <h2>Featured Landmark</h2>
+
+      <%= link_to monument_path(@monument), class: "card-monument", data: { aos: "fade-up", aos_duration: "1000" } do %>
+        <div class="card-monument_image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(<%= cl_image_path @monument.photo.key %>);"></div>
+
+        <div class="card-monument_content" data-aos="fade-up" data-aos-duration="1000">
+          <h3><%= @monument.name %></h3>
+          <span><%= "#{@monument.city}, #{@monument.country_code}" %></span>
+          <p><%= @monument.description.split(". ").first(2).join('. ') %>.</p>
+        </div>
+
+        <div class="card-monument_more" data-aos="fade-up" data-aos-duration="1000">
+          <span>Learn more</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <section data-aos="fade-up" data-aos-duration="1000">
+    <h2>Scope out your surroundings</h2>
+
+    <div class="map-container"></div>
+  </section>
+
+  <section id="register">
+    <div class="container">
+      <h2>Like the app ?</h2>
+      <p>Consider <%= link_to "registering", new_user_registration_path %> and get access to more features</p>
+    </div>
+  </section>
 </div>

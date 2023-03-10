@@ -24,6 +24,8 @@ a {
 }
 
 body {
+  background-color: $background;
+  color: lightgray;
   display: flex;
   flex-direction: column;
   font-family: $body-font;
@@ -58,6 +60,10 @@ ul {
 ::-webkit-scrollbar-thumb {
   background: rgb(70, 70, 70);
   border-radius: 3px;
+}
+
+.container {
+  padding: 0 20px;
 }
 
 .max-content {

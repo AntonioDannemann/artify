@@ -1,0 +1,31 @@
+.navbar {
+  background-color: #21252e;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  position: fixed;
+  width: 100%;
+  z-index: 30;
+
+  a, div {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    width: 40px;
+
+    span {
+      font-size: 0.6rem;
+    }
+  }
+
+  form {
+    transform: scale(3);
+
+    i {
+      color: $rose;
+    }
+  }
+}
