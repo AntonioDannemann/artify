@@ -205,8 +205,10 @@ monument_images.each do |image_url|
   monument_start = Time.current
   history = build_history_from_photo(image_url)
 
+  next if history.nil?
+
   method_start = Time.current
-  history.save!
+  history.save
   puts "#{Time.current - method_start}s to save history"
 
   puts "#{history.monument.name} created in #{Time.current - monument_start}s\n\n" if history
