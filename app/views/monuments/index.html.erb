@@ -16,7 +16,7 @@
               <p><%= Geocoder::Calculations.distance_between([@user.lat,@user.lng], [m.lat, m.lng]).round %> km</p>
             </div>
           </div>
-          <p class="card-description"><%= m.description %></p>
+          <p class="card-description"><%= m.description.split(". ")[1] %></p>
         </div>
       </div>
     <% end %>
