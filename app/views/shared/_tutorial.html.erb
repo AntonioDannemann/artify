@@ -4,13 +4,13 @@
 
     <div class="content">
       <%= image_tag "learn.svg"%>
-      <h3>And you're done</h3>
+      <h3>And there's your landmark</h3>
       <h1>Welcome to Artify</h1>
     </div>
 
     <div class="links">
       <span></span>
-      <span data-action="click->tutorial#hideStep">close</span>
+      <span class="next" data-action="click->tutorial#hideStep">close</span>
     </div>
   </div>
 
@@ -23,8 +23,8 @@
     </div>
 
     <div class="links">
-      <span data-action="click->tutorial#skipTutorial">skip</span>
-      <span data-action="click->tutorial#hideStep">next</span>
+      <span class="skip" data-action="click->tutorial#skipTutorial">skip</span>
+      <span class="next" data-action="click->tutorial#hideStep">next</span>
     </div>
   </div>
 
@@ -37,8 +37,8 @@
     </div>
 
     <div class="links">
-      <span data-action="click->tutorial#skipTutorial">skip</span>
-      <span data-action="click->tutorial#hideStep">next</span>
+      <span class="skip" data-action="click->tutorial#skipTutorial">skip</span>
+      <span class="next" data-action="click->tutorial#hideStep">next</span>
     </div>
   </div>
 </section>

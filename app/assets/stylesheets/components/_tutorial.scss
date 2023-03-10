@@ -36,9 +36,19 @@
     }
 
     .links {
+      align-items: baseline;
       display: flex;
       justify-content: space-between;
       width: 100%;
+
+      .next {
+        color: $rose;
+        font-size: 1.5rem;
+      }
+
+      .skip {
+        color: rgba(211, 211, 211, 0.5);
+      }
     }
   }
 }
