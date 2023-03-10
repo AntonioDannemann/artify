@@ -4,8 +4,20 @@
 
 import { application } from "./application"
 
+import AosController from "./aos_controller"
+application.register("aos", AosController)
+
+import BannerScrollerController from "./banner_scroller_controller"
+application.register("banner-scroller", BannerScrollerController)
+
 import GeolocationController from "./geolocation_controller"
 application.register("geolocation", GeolocationController)
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import HomeLogoController from "./home_logo_controller"
+application.register("home-logo", HomeLogoController)
+
+import ScrollToFeaturedController from "./scroll_to_featured_controller"
+application.register("scroll-to-featured", ScrollToFeaturedController)
+
+import TutorialController from "./tutorial_controller"
+application.register("tutorial", TutorialController)

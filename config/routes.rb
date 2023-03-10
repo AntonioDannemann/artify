@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get "error", to: "pages#error", as: :error
 
   resources :histories, only: %i[index show create]
+  resources :monuments, only: %i[index show]
 end
