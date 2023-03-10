@@ -9,7 +9,7 @@
   margin-bottom: 20px;
   border-radius: 20px;
 
-  background-color: $navy;
+  background-color: $background;
 
   box-shadow: 5px 5px 17px 5px rgba(0,0,0,0.25);
 
@@ -29,7 +29,7 @@
     justify-content: flex-start;
     flex-direction: column;
 
-    padding: 5px 10px;
+    padding: 10px 10px;
 
     color: white;
 
@@ -61,7 +61,6 @@
 .monuments-map {
   height: 500px;
   width: 100%;
-  // border: 3px solid $optional-yellow;
 }
 
 path {
