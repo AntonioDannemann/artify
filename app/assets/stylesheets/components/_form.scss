@@ -59,6 +59,28 @@
       border-bottom: 2px solid $rose;
       outline: none;
     }
+
+    i {
+      color: $rose;
+    }
+  }
+}
+
+.photo-field {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: $rose;
+  color: $background;
+  padding: 4px 64px;
+  text-transform: uppercase;
+
+  .photo-upload {
+    display: none;
+  }
+
+  i {
+    color: $background;
   }
 }
 
