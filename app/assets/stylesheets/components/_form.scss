@@ -1,0 +1,80 @@
+.devise-top-menu {
+  display: flex;
+  justify-content: space-around;
+  padding: 32px 64px 0px 64px;
+
+  h3 {
+    border-bottom: 2px solid $rose;
+    font-size: 16px;
+  }
+
+  a {
+    color: rgba(211, 211, 211, 0.5);
+    font-size: 16px;
+  }
+}
+
+.form-title {
+  padding: 32px 0px;
+
+  h2 {
+    padding: 0px;
+    font-size: 48px;
+    text-transform: uppercase;
+    margin: 0px;
+  }
+
+  h3 {
+    padding: 0px 0px;
+    font-size: 16px;
+  }
+
+}
+
+.form-field {
+  background-color: #21252e;
+  display: flex;
+  flex-direction: column;
+  margin: 6px 0px;
+  padding: 6px;
+
+  p {
+    font-size: 12px;
+    text-transform: uppercase;
+    margin: 0px;
+    color: rgba(211, 211, 211, 0.5);
+  }
+
+  input, select, textarea {
+    background-color: transparent;
+    border: none;
+    color: $light-gray;
+    font: inherit;
+    padding: 4px 0px;
+    width: 100%;
+    margin: none;
+    transition: border-bottom 0.3s ease;
+
+    &:focus {
+      border-bottom: 2px solid $rose;
+      outline: none;
+    }
+  }
+}
+
+.back {
+  padding: 16px 0px;
+  i {
+    color: $rose;
+  }
+}
+
+.shared-links {
+  padding: 48px 0px 100px 0px;
+
+  p {
+    a {
+      color: $rose;
+    }
+  }
+}

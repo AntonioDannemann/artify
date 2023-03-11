@@ -1,46 +1,59 @@
-<div id="registrations-new">
-  <h2>Sign up</h2>
+<div class="container">
+  <div class="devise-top-menu">
+    <%= link_to "Log in", new_user_session_path %>
+    <h3>Sign up</h3>
+  </div>
+
+  <div class="form-title">
+    <h2>SIGN UP!</h2>
+    <h3>and get access to exclusive features</h3>
+  </div>
 
   <%= form_with model: resource, scope: resource_name, url: registration_path(resource_name), data: { turbo: false } do |f|  %>
     <div class="form-field">
-      <%= f.label :photo %>
+      <p><%= f.label :photo %></p>
       <%= f.file_field :photo %>
     </div>
 
     <div class="form-field">
-      <%= f.label :first_name %>
+      <p><%= f.label :first_name %></p>
       <%= f.text_field :first_name %>
       <span><%= resource.errors.full_messages.find { |m| m.match?("First") } %></span>
     </div>
 
     <div class="form-field">
-      <%= f.label :last_name %>
+      <p><%= f.label :last_name %></p>
       <%= f.text_field :last_name %>
       <span><%= resource.errors.full_messages.find { |m| m.match?("Last") } %></span>
     </div>
 
     <div class="form-field">
-      <%= f.label :email %>
+      <p><%= f.label :email %></p>
       <%= f.email_field :email, autocomplete: "email" %>
       <span><%= resource.errors.full_messages.find { |m| m.match?("Email") } %></span>
     </div>
 
     <div class="form-field">
-      <%= f.label :password do %>
+      <p><%= f.label :password do %>
         Password <%= "(#{@minimum_password_length} characters minimum)" if @minimum_password_length %>
-      <% end %>
+      <% end %></p>
       <%= f.password_field :password %>
       <span><%= resource.errors.full_messages.find { |m| m.match?("Password") && !m.match?("confirmation") } %></span>
     </div>
 
     <div class="form-field">
-      <%= f.label :password_confirmation, "Confirm password" %>
+      <p><%= f.label :password_confirmation, "Confirm password" %></p>
       <%= f.password_field :password_confirmation %>
       <span><%= resource.errors.full_messages.find { |m| m.match?("Password confirmation") } %></span>
     </div>
 
-    <%= f.submit "Confirm" %>
+    <%= f.submit "Confirm", class: "btn-pink" %>
   <% end %>
 
   <%= render "devise/shared/links" %>
+
+  <div class="back">
+    <i class="fa-solid fa-arrow-left"></i>
+    <%= link_to "Back", root_path %>
+  </div>
 </div>
