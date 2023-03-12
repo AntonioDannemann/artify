@@ -18,10 +18,10 @@
 
       <div class="form-field" data-controller="toggle">
         <div class="login__labels">
-          <p><%= f.label :password, t("registration_pages.login.password_label"), class: "form__label form__label--login_color form__label--position" %></p>
+          <p><%= f.label :password %></p>
         </div>
         <div class="password-input">
-          <%= f.password_field :password, placeholder: "•••••••••••••", class: "form__element unhide", "data-toggle-target": "unhide" %>
+          <%= f.password_field :password, placeholder: "•••••••••••••", "data-toggle-target": "unhide" %>
           <div class="toggle__password">
               <p><a class="show" data-toggle-target="show" data-action="click->toggle#password">show</a></p>
           </div>
