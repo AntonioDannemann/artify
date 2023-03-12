@@ -1,3 +1,17 @@
+@keyframes press-button {
+  0% {
+    transform: skew(-20deg);
+  }
+
+  50% {
+    transform: skew(-20deg) scale(0.9);
+  }
+
+  100% {
+    transform: skew(-20deg);
+  }
+}
+
 .monument-card {
   display: flex;
   align-items: center;
@@ -94,14 +108,14 @@ path {
       color: $rose;
       letter-spacing: 2px;
       margin: 0;
-      text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      text-shadow: 0 0 10px rgb(0, 0, 0);
     }
 
     span {
       display: inline-block;
       font-size: 0.8rem;
       margin-bottom: 10px;
-      text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      text-shadow: 0 0 10px rgb(0, 0, 0);
 
       i {
         color: $rose;
@@ -141,12 +155,15 @@ path {
       padding: 10px;
       transform: skew(-20deg);
 
+      &:hover {
+        animation: press-button 0.15s linear;
+      }
+
       * {
+        color: $secondary;
         display: inline-block;
-        text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
         transform: skew(20deg);
       }
     }
-
   }
 }
