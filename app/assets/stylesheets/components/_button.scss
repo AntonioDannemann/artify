@@ -1,8 +1,13 @@
 .btn-pink {
   background-color: $rose;
   border: none;
-  padding: 5px 25px;
+  padding: 10px 25px;
   color: $background;
   font-weight: bold;
   margin: 16px 0px;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(0.9);
+  }
 }

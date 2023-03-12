@@ -9,9 +9,17 @@
     <h3>Time to make some changes</h3>
   </div>
 
+  <div class="picture">
+    <% if current_user.photo.attached? %>
+      <%= cl_image_tag current_user.photo.key, class: "avatar" %>
+    <% else %>
+      <%= image_tag "pink_avatar.svg", class: "user-icon" %>
+    <% end %>
+  </div>
 
   <%= form_with model: resource, scope: resource_name, url: registration_path(resource_name), data: { turbo: false } do |f| %>
     <div class="photo-field">
+      <i class="fa-solid fa-pencil"></i>
       <%= f.label :photo %>
       <div class="photo-upload">
         <%= f.file_field :photo %>
@@ -38,7 +46,7 @@
 
     <div class="form-field">
       <p><%= f.label :password, "Password (#{@minimum_password_length} characters minimum)" if @minimum_password_length %></p>
-      <%= f.password_field :password, autocomplete: "new-password", placeholder: "Leave blank if you don't want to change it" %>
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: "Leave blank if you don't want to change it", style: "font-style:italic" %>
       <span><%= resource.errors.full_messages.find { |m| m.match?("Password") && !m.match?("confirmation") } %></span>
     </div>
 
@@ -54,7 +62,7 @@
       <span><%= resource.errors.full_messages.find { |m| m.match?("Current") } %></span>
     </div>
 
-    <%= f.submit "Update", class: "btn-pink" %>
+    <%= f.submit "UPDATE", class: "btn-pink" %>
   <% end %>
 
   <div class="shared-links">
