@@ -1,59 +1,43 @@
-#banner {
-  position: relative;
-
-  .banner {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    justify-content: space-between;
-    margin-top: -50px;
-    padding: 50px;
-    position: relative;
-
-    &::after {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.6));
-      content: "";
-      height: 100%;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width: 100%;
-    }
+@keyframes banner-slide {
+  0% {
+    background-position: 0%;
   }
 
-  .banner-scroll {
-    background-color: #90a7dd;
-    display: flex;
-    height: 100%;
-    overflow: hidden;
-    overflow-x: scroll;
-    position: absolute;
-    top: 0;
-    width: 100%;
+  50% {
+    background-position: 100%;
+  }
 
-    &::-webkit-scrollbar {
-      height: 0;
-    }
+  100% {
+    background-position: 0%;
+  }
+}
 
-    img {
-      filter: sepia(100%) brightness(90%) hue-rotate(170deg);
-      height: 100%;
-      margin-left: -100px;
-      mask: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-      width: 280vh;
-    }
+#banner {
+  position: relative;
+  width: 100%;
+
+  .banner {
+    animation: banner-slide 120s linear infinite;
+    background-image: asset-url("background_image.jpg");
+    background-size: cover;
+    filter: sepia(100%) brightness(90%) hue-rotate(170deg);
+    height: 100vh;
+    margin-top: -50px;
   }
 
   .featured {
-    bottom: 20px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.6));
     display: flex;
     flex-direction: column;
+    height: 100%;
+    justify-content: end;
     gap: 10px;
-    max-width: 70%;
-    padding: 20px;
+    left: 0;
+    padding: 45px 20px;
     position: absolute;
     text-shadow: 0 0 10px black;
+    top: 0;
+    width: 100%;
     z-index: 10;
 
     a {
@@ -64,6 +48,7 @@
 
     h2 {
       font-size: 35px;
+      max-width: 70%;
     }
   }
 }
