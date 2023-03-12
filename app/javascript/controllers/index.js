@@ -13,6 +13,9 @@ application.register("banner-scroller", BannerScrollerController)
 import GeolocationController from "./geolocation_controller"
 application.register("geolocation", GeolocationController)
 
+import MapController from "./map_controller"
+application.register("map", MapController)
+
 import HomeLogoController from "./home_logo_controller"
 application.register("home-logo", HomeLogoController)
 
