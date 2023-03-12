@@ -7,9 +7,6 @@ import { application } from "./application"
 import AosController from "./aos_controller"
 application.register("aos", AosController)
 
-import BannerScrollerController from "./banner_scroller_controller"
-application.register("banner-scroller", BannerScrollerController)
-
 import GeolocationController from "./geolocation_controller"
 application.register("geolocation", GeolocationController)
 

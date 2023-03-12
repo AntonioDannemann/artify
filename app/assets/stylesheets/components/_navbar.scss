@@ -2,6 +2,7 @@
   background-color: #21252e;
   bottom: 0;
   display: flex;
+  height: 55px;
   justify-content: space-between;
   max-height: 55px;
   overflow: hidden;
@@ -29,12 +30,6 @@
     align-items: center;
     display: flex;
     height: 35px;
-
-    // label {
-    //   align-items: center;
-    //   display: flex;
-    //   height: 100%;
-    // }
 
     i {
       color: $rose;
