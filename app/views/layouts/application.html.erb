@@ -12,10 +12,23 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body data-controller="aos">
+    <!--
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    -->
+    <%= render "shared/navbar" %>
 
     <%= yield %>
+
+    <script>
+      if (history.scrollRestoration) {
+          history.scrollRestoration = 'manual';
+      } else {
+          window.onbeforeunload = () => {
+              window.scrollTo(0, 0);
+          }
+      }
+    </script>
   </body>
 </html>

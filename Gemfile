@@ -36,6 +36,8 @@ gem "jsbundling-rails"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
+gem "mini_magick"
+
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
