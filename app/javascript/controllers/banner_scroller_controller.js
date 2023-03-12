@@ -10,7 +10,7 @@ export default class extends Controller {
   static targets = ["image"]
 
   #pageScroll = () => {
-    this.element.scrollBy({left: 10, behavior: "smooth"})
+    this.element.scrollBy({left: 5, behavior: "smooth"})
 
     if (this.element.scrollLeft > this.vh * 0.7 && this.imageTargets.length < 2) {
       this.element.append(this.imageTarget.cloneNode())
@@ -21,6 +21,6 @@ export default class extends Controller {
       this.element.scrollLeft = this.vh * 0.1 + 105
     }
 
-    setTimeout(this.#pageScroll, 100)
+    setTimeout(this.#pageScroll, 50)
   }
 }
