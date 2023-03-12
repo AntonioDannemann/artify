@@ -7,20 +7,20 @@ import { application } from "./application"
 import AosController from "./aos_controller"
 application.register("aos", AosController)
 
-import BannerScrollerController from "./banner_scroller_controller"
-application.register("banner-scroller", BannerScrollerController)
-
 import GeolocationController from "./geolocation_controller"
 application.register("geolocation", GeolocationController)
 
-import MapController from "./map_controller"
-application.register("map", MapController)
-
 import HomeLogoController from "./home_logo_controller"
 application.register("home-logo", HomeLogoController)
+
+import MapController from "./map_controller"
+application.register("map", MapController)
 
 import ScrollToFeaturedController from "./scroll_to_featured_controller"
 application.register("scroll-to-featured", ScrollToFeaturedController)
 
 import TutorialController from "./tutorial_controller"
 application.register("tutorial", TutorialController)
+
+import WindowEventsController from "./window_events_controller"
+application.register("window-events", WindowEventsController)
