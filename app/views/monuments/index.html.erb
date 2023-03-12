@@ -13,7 +13,7 @@
             <h1><%= m.name %></h1>
             <div class="city-distance">
               <p><i class="fa-solid fa-mountain-city"></i>  <%= m.city %></p>
-              <p><%= Geocoder::Calculations.distance_between([@user.lat,@user.lng], [m.lat, m.lng]).round %> km</p>
+              <p><%= Geocoder::Calculations.distance_between([48.858461, 2.294351], [m.lat, m.lng]).round %> km</p>
             </div>
           </div>
           <p class="card-description"><%= m.description.split(". ")[1] %></p>

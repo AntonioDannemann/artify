@@ -2,15 +2,10 @@ class MonumentsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @user = User.find(144)
+    @user = current_user
     @monuments = policy_scope(Monument)
 
-    @markers = @monuments.geocoded.map do |monument|
-      {
-        lat: monument.lat,
-        lng: monument.lng
-      }
-    end
+    @markers = @monuments.map { |monument| { lat: monument.lat, lng: monument.lng } }
   end
 
   def show
