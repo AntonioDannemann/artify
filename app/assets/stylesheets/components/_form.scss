@@ -107,10 +107,6 @@
     color: $background;
     padding: 8px;
   }
-
-  &:hover {
-
-  }
 }
 
 .password-input {
@@ -119,6 +115,7 @@
 
 .back {
   padding: 16px 0px;
+
   i {
     color: $rose;
   }
@@ -127,9 +124,7 @@
 .shared-links {
   padding: 48px 0px;
 
-  p {
-    a {
-      color: $rose;
-    }
+  p a {
+    color: $rose;
   }
 }

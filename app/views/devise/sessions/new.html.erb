@@ -16,14 +16,14 @@
         <%= f.email_field :email, autofocus: true %>
       </div>
 
-      <div class="form-field" data-controller="toggle">
+      <div class="form-field" data-controller="toggle-hidden-password">
         <div class="login__labels">
-          <p><%= f.label :password, t("registration_pages.login.password_label"), class: "form__label form__label--login_color form__label--position" %></p>
+          <p><%= f.label :password %></p>
         </div>
         <div class="password-input">
-          <%= f.password_field :password, placeholder: "•••••••••••••", class: "form__element unhide", "data-toggle-target": "unhide" %>
-          <div class="toggle__password">
-              <p><a class="show" data-toggle-target="show" data-action="click->toggle#password">show</a></p>
+          <%= f.password_field :password, placeholder: "•••••••••••••", "data-toggle-hidden-password-target": "input" %>
+          <div class="toggle-hidden-password__password">
+            <p class="show" data-toggle-hidden-password-target="button" data-action="click->toggle-hidden-password#password"><i class="fa-regular fa-eye"></i></i></p>
           </div>
         </div>
       </div>

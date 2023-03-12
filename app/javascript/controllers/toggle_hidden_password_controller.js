@@ -1,27 +1,26 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["show", "unhide"];
+  static targets = ["button", "input"];
 
   password() {
     // console.log(`${this.value.textContent}`);
    //  console.log(`${this.input.type}`);
+    console.log("hello from toggle")
 
-   console.log("hello")
-
-    if (this.value.textContent === "show") {
+    if (this.value.textContent === "button") {
       this.value.textContent = "hide";
       this.input.type = "text";
     } else {
-      this.value.textContent = "show";
+      this.value.textContent = "button";
       this.input.type = "password";
     }
   }
 
   get value() {
-    return this.showTarget;
+    return this.buttonTarget;
   }
   get input() {
-    return this.unhideTarget;
+    return this.inputTarget;
   }
 }

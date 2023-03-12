@@ -19,8 +19,8 @@ application.register("home-logo", HomeLogoController)
 import ScrollToFeaturedController from "./scroll_to_featured_controller"
 application.register("scroll-to-featured", ScrollToFeaturedController)
 
-import ToggleController from "./toggle_controller"
-application.register("toggle", ToggleController)
+import ToggleHiddenPasswordController from "./toggle_hidden_password_controller"
+application.register("toggle-hidden-password", ToggleHiddenPasswordController)
 
 import TutorialController from "./tutorial_controller"
 application.register("tutorial", TutorialController)
