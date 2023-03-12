@@ -22,8 +22,6 @@ export default class extends Controller {
   #toggleNavbar() {
     let lastScrollTop = 0
 
-    console.log(lastScrollTop)
-
     window.addEventListener("scroll", () => {
       const scrollTop = window.pageYOffset
       if (scrollTop > lastScrollTop) {
