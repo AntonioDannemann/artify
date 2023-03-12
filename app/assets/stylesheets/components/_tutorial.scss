@@ -1,0 +1,54 @@
+.tutorial {
+  left: 0;
+  position: fixed;
+  top: 0;
+  transition: opacity 0.5s ease;
+  z-index: 40;
+
+  .card-tutorial {
+    align-items: center;
+    background-color: $background;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    height: 100vh;
+    justify-content: space-between;
+    left: 0;
+    padding: 50px;
+    position: fixed;
+    top: 0;
+    transition: opacity 0.5s ease;
+
+    h3 {
+      text-align: center;
+    }
+
+    img {
+      max-height: 200px;
+      max-width: 100%;
+    }
+
+    .content {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .links {
+      align-items: baseline;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .next {
+        color: $rose;
+        font-size: 1.5rem;
+      }
+
+      .skip {
+        color: rgba(211, 211, 211, 0.5);
+      }
+    }
+  }
+}

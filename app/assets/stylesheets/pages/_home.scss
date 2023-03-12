@@ -1,1 +1,76 @@
-// Specific CSS for your home-page
+#pages-home {
+  .map-container{
+    background-image: url(placeholder_image_map.png);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    width: 100%;
+  }
+
+  #featured {
+    padding: 50px 0 100px;
+
+    .card-monument {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      .card-monument_content {
+        padding: 25px 0;
+
+        h3 {
+          letter-spacing: 2px;
+          margin: 0;
+        }
+
+        span {
+          color: rgba(211, 211, 211, 0.5);
+          display: inline-block;
+          font-size: 0.8rem;
+          margin-bottom: 10px;
+        }
+      }
+
+      .card-monument_image {
+        background-position: center 20%;
+        background-size: cover;
+        border-radius: 10px;
+        height: 400px;
+        width: 100%;
+      }
+
+      .card-monument_more {
+        align-items: center;
+        align-self: flex-end;
+        display: flex;
+        gap: 10px;
+      }
+    }
+  }
+
+  #logo {
+    align-items: center;
+    background-color: $background;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    transition: opacity 1s ease;
+    width: 100%;
+    z-index: 50;
+
+    img {
+      width: 250px;
+    }
+  }
+
+  #register {
+    margin: 100px 0;
+    a {
+      color: $rose;
+    }
+  }
+}
