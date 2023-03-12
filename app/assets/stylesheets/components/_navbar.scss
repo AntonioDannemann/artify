@@ -1,9 +1,9 @@
 .navbar {
-  background-color: #21252e;
+  background-color: $secondary;
   bottom: 0;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 10px 20px;
   position: fixed;
   width: 100%;
   z-index: 30;
@@ -22,7 +22,7 @@
   }
 
   form {
-    transform: scale(3);
+    transform: scale(2.5);
 
     i {
       color: $rose;
