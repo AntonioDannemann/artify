@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="800px"
+   height="800px"
+   viewBox="0 0 1024 1024"
+   id="svg4136"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="pink_avatar.svg">
+  <metadata
+     id="metadata4144">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs4142" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     id="namedview4140"
+     showgrid="false"
+     inkscape:zoom="0.6625"
+     inkscape:cx="400"
+     inkscape:cy="460.37736"
+     inkscape:window-x="1912"
+     inkscape:window-y="225"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4136" />
+  <path
+     fill="#000000"
+     d="M628.736 528.896A416 416 0 0 1 928 928H96a415.872 415.872 0 0 1 299.264-399.104L512 704l116.736-175.104zM720 304a208 208 0 1 1-416 0 208 208 0 0 1 416 0z"
+     id="path4138"
+     style="stroke:none;fill:#e7b5aa;fill-opacity:1" />
+  <path
+     style="opacity:1;fill:#e7b5aa;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.89599997;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     id="path4696"
+     sodipodi:type="arc"
+     sodipodi:cx="518.76227"
+     sodipodi:cy="322.65662"
+     sodipodi:rx="190.30943"
+     sodipodi:ry="189.3434"
+     sodipodi:start="0"
+     sodipodi:end="6.2485754"
+     sodipodi:open="true"
+     d="M 709.0717,322.65662 A 190.30943,189.3434 0 0 1 520.4089,511.99293 190.30943,189.3434 0 0 1 328.48133,325.93303 190.30943,189.3434 0 0 1 513.82288,133.377 190.30943,189.3434 0 0 1 708.95773,316.10477" />
+</svg>
