@@ -1,134 +1,125 @@
-.devise-top-menu {
-  display: flex;
-  justify-content: space-around;
-  padding: 32px 64px 0px 64px;
-
-  h3 {
-    border-bottom: 2px solid $rose;
-    font-size: 16px;
-  }
-
-  a {
-    color: rgba(211, 211, 211, 0.5);
-    font-size: 16px;
-  }
-}
-
-.form-title {
-  padding: 32px 0px;
-
-  h2 {
-    padding: 0px;
-    font-size: 48px;
-    text-transform: uppercase;
-    margin: 0px;
-  }
-
-  h3 {
-    padding: 0px 0px;
-    font-size: 16px;
-  }
-
-}
-
-.picture {
-  display: flex;
-  justify-content: center;
-  padding: 0px 0px 16px 0px;
-
-  .avatar {
-    border-radius: 50%;
-    height: 160px;
-    object-fit: cover;
-    object-position: center;
-    overflow: hidden;
-    width: 160px;
-  }
-
-  .user-icon {
-    height: 64px;
-    object-fit: cover;
-    object-position: center;
-    overflow: hidden;
-    width: 64px;
-  }
-}
-
-.form-field {
-  background-color: #21252e;
+.devise {
   display: flex;
   flex-direction: column;
-  margin: 6px 0px;
-  padding: 6px;
+  justify-content: space-between;
+  min-height: calc(100vh - 55px);
+  padding: 20px;
 
-  p {
-    font-size: 12px;
-    text-transform: uppercase;
-    margin: 0px;
-    color: rgba(211, 211, 211, 0.5);
+  .devise-back i {
+    color: $rose;
   }
 
-  input, select {
-    background-color: transparent;
-    border: none;
-    color: $light-gray;
-    font: inherit;
-    padding: 4px 0px;
-    width: 100%;
-    margin: none;
-    transition: border-bottom 0.3s ease;
+  .devise-cancel-account {
+    padding: 48px 0px;
 
-    &:focus {
-      border-bottom: 2px solid $rose;
-      outline: none;
-    }
-
-    i {
+    a {
       color: $rose;
+      display: block;
     }
   }
-}
 
-.photo-field {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $rose;
-  color: $background;
-  padding: 4px 64px;
-  text-transform: uppercase;
-  font-weight: bold;
+  .devise-top-navbar {
+    display: flex;
+    gap: 40px;
+    justify-content: space-around;
+    margin: 10px auto 0;
 
-  .photo-upload {
-    display: none;
-  }
+    h3 {
+      border-bottom: 2px solid $rose;
+      font-size: 16px;
+    }
 
-  i {
-    color: $background;
-    padding: 8px;
-  }
-}
-
-.password-input {
-  display: flex;
-}
-
-.back {
-  padding: 16px 0px;
-
-  i {
-    color: $rose;
-  }
-}
-
-.shared-links {
-  padding: 48px 0px;
-
-  p a {
-    color: $rose;
+    a {
+      color: rgba(211, 211, 211, 0.5);
+      font-size: 16px;
+    }
   }
 }
 
 .devise-form {
-  padding: 0 20px 80px;
+  .checkbox {
+    margin-top: 16px;
+  }
+
+  .form-field {
+    background-color: $secondary;
+    display: flex;
+    flex-direction: column;
+    margin: 6px 0px;
+    padding: $text-padding;
+
+    div {
+      align-items: center;
+      display: flex;
+      gap: 10px;
+    }
+
+    input {
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: lightgray;
+      font: inherit;
+      transition: border-bottom 0.3s ease;
+      width: 100%;
+
+      &:focus {
+        border-bottom: 2px solid $rose;
+        outline: none;
+      }
+    }
+
+    label {
+      color: rgba(211, 211, 211, 0.5);
+      font-size: 0.8rem;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    span {
+      color: $red;
+      font-size: 0.6rem;
+      margin-bottom: 5px;
+    }
+  }
+
+  .photo-field {
+    input {
+      display: none;
+    }
+
+    label {
+      align-items: center;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin: 0;
+      padding: 0.25rem 1rem;
+      width: 100%;
+    }
+  }
+
+  .title {
+    margin-bottom: 40px;
+
+    h1 {
+      font-size: 48px;
+      margin: 0px;
+    }
+
+    h3 {
+      font-size: 16px;
+    }
+  }
+}
+
+.avatar {
+  border-radius: 50%;
+  display: block;
+  height: 64px;
+  margin: 0 auto 16px;
+  object-fit: cover;
+  object-position: center;
+  overflow: hidden;
+  width: 64px;
 }

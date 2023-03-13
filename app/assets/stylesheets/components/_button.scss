@@ -15,9 +15,9 @@
 .btn-pink {
   background-color: $rose;
   border: none;
-  color: $background;
-  font-weight: bold;
-  padding: 10px 25px;
+  color: $secondary;
+  font-weight: 500;
+  padding: $text-padding;
   margin: 16px 0px;
 
   &:hover {
