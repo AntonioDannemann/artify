@@ -1,10 +1,14 @@
-.navbar {
-  background-color: #21252e;
+#navbar {
+  background-color: $secondary;
   bottom: 0;
   display: flex;
+  height: 55px;
   justify-content: space-between;
-  padding: 20px;
+  max-height: 55px;
+  overflow: hidden;
+  padding: 10px 20px;
   position: fixed;
+  transition: all 0.5s ease;
   width: 100%;
   z-index: 30;
 
@@ -14,6 +18,7 @@
     flex-direction: column;
     gap: 5px;
     justify-content: center;
+    transform: scale(0.8);
     width: 40px;
 
     span {
@@ -22,10 +27,13 @@
   }
 
   form {
-    transform: scale(3);
+    align-items: center;
+    display: flex;
+    height: 35px;
 
     i {
       color: $rose;
+      transform: scale(2.5);
     }
   }
 }

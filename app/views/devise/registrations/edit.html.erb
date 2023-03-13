@@ -1,72 +1,64 @@
-<div class="container">
-  <div class="back">
-    <i class="fa-solid fa-arrow-left"></i>
-    <%= link_to "Back", root_path %>
-  </div>
+<div class="container devise">
+  <div class="devise-form">
+    <div class="title">
+      <h1>EDIT PROFILE</h1>
+      <h3>Time to make some changes</h3>
+    </div>
 
-  <div class="form-title">
-    <h2>EDIT PROFILE</h2>
-    <h3>Time to make some changes</h3>
-  </div>
-
-  <div class="picture">
     <% if current_user.photo.attached? %>
-      <%= cl_image_tag current_user.photo.key, class: "avatar" %>
+      <%= cl_image_tag current_user.photo.key, class: "avatar", style: "height: 160px; width: 160px;" %>
     <% else %>
-      <%= image_tag "pink_avatar.svg", class: "user-icon" %>
+      <%= image_tag "pink_avatar.svg", class: "avatar" %>
     <% end %>
-  </div>
 
   <%= form_with model: resource, scope: resource_name, url: registration_path(resource_name), data: { turbo: false } do |f| %>
-    <div class="photo-field">
-      <i class="fa-solid fa-pencil"></i>
+    <div class="form-field">
       <%= f.label :photo %>
-      <div class="photo-upload">
-        <%= f.file_field :photo %>
-      </div>
+      <%= f.file_field :photo %>
     </div>
 
     <div class="form-field">
-      <p><%= f.label :first_name %></p>
+      <%= f.label :first_name %>
       <%= f.text_field :first_name %>
       <span><%= resource.errors.full_messages.find { |m| m.match?("First") } %></span>
     </div>
 
     <div class="form-field">
-      <p><%= f.label :last_name %></p>
+      <%= f.label :last_name %>
       <%= f.text_field :last_name %>
       <span><%= resource.errors.full_messages.find { |m| m.match?("Last") } %></span>
     </div>
 
     <div class="form-field">
-      <p><%= f.label :email %></p>
+      <%= f.label :email %>
       <%= f.email_field :email, autocomplete: "email" %>
       <span><%= resource.errors.full_messages.find { |m| m.match?("Email") } %></span>
     </div>
 
     <div class="form-field">
-      <p><%= f.label :password, "Password (#{@minimum_password_length} characters minimum)" if @minimum_password_length %></p>
-      <%= f.password_field :password, autocomplete: "new-password", placeholder: "Leave blank if you don't want to change it", style: "font-style:italic" %>
+      <%= f.label :password, "Password (#{@minimum_password_length} characters minimum)" if @minimum_password_length %>
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: "Leave blank if you don't want to change it" %>
       <span><%= resource.errors.full_messages.find { |m| m.match?("Password") && !m.match?("confirmation") } %></span>
     </div>
 
-    <div class="form-field">
-      <p><%= f.label :password_confirmation %></p>
+    <div class="field">
+      <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       <span><%= resource.errors.full_messages.find { |m| m.match?("Password confirmation") } %></span>
     </div>
 
-    <div class="form-field">
-      <p><%= f.label :current_password, "Current password (we need your current password to confirm your changes)" %></p>
+    <div class="field">
+      <%= f.label :current_password, "Current password (we need your current password to confirm your changes)" %>
       <%= f.password_field :current_password, autocomplete: "current-password" %>
       <span><%= resource.errors.full_messages.find { |m| m.match?("Current") } %></span>
     </div>
 
-    <%= f.submit "UPDATE", class: "btn-pink" %>
+    <%= f.submit "Update" %>
   <% end %>
 
-  <div class="shared-links">
-    NOT HAPPY?
-    <p><%= link_to "Cancel my account", registration_path(resource_name), data: { turbo_confirm: "Are you sure?", turbo_method: :delete } %></p>
-  </div>
+  <h3>Cancel my account</h3>
+
+  <div>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { turbo_confirm: "Are you sure?", turbo_method: :delete } %></div>
+
+  <%= link_to "Back", :back %>
 </div>
