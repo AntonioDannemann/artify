@@ -1,13 +1,26 @@
+@keyframes press-button {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 .btn-pink {
   background-color: $rose;
   border: none;
-  padding: 10px 25px;
   color: $background;
   font-weight: bold;
+  padding: 10px 25px;
   margin: 16px 0px;
-  transition: transform 0.2s ease;
 
   &:hover {
-    transform: scale(0.9);
+    animation: press-button 0.15s linear;
   }
 }
