@@ -1,26 +1,52 @@
-<div id="sessions-new">
-  <h2>Log in</h2>
+<div class="container devise-form">
+  <div class="devise-top-menu">
+    <h3>Log in</h3>
+    <%= link_to "Sign up", new_user_registration_path %>
+  </div>
 
-  <%= form_with model: resource, scope: resource_name, url: session_path(resource_name), data: { turbo: false } do |f|  %>
-    <div class="form-field">
-      <%= f.label :email %>
-      <%= f.email_field :email, autofocus: true %>
+  <div style="padding:48px 0px" >
+    <div class="form-title">
+      <h2>Log in</h2>
+      <h3>Good to see you again!</h3>
     </div>
 
-    <div class="form-field">
-      <%= f.label :password %>
-      <%= f.password_field :password, autocomplete: "password" %>
-    </div>
-
-    <% if devise_mapping.rememberable? %>
-      <div>
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+    <%= form_with model: resource, scope: resource_name, url: session_path(resource_name), data: { turbo: false } do |f|  %>
+      <div class="form-field">
+        <p><%= f.label :email %></p>
+        <%= f.email_field :email, autofocus: true %>
       </div>
+
+      <div class="form-field" data-controller="toggle-hidden-password">
+        <div class="login__labels">
+          <p><%= f.label :password %></p>
+        </div>
+        <div class="password-input">
+          <%= f.password_field :password, placeholder: "•••••••••••••", "data-toggle-hidden-password-target": "input" %>
+          <div class="toggle-hidden-password__password">
+            <i class="fa-regular fa-eye" data-toggle-hidden-password-target="button" data-action="click->toggle-hidden-password#toggleHiddenPassword"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkbox">
+        <% if devise_mapping.rememberable? %>
+          <div>
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+      </div>
+
+      <%= f.submit "Confirm", class: "btn-pink" %>
     <% end %>
 
-    <%= f.submit "Confirm" %>
-  <% end %>
+    <div class="shared-links">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
 
-  <%= render "devise/shared/links" %>
+  <div class="back">
+    <i class="fa-solid fa-arrow-left"></i>
+    <%= link_to "Back", root_path %>
+  </div>
 </div>
