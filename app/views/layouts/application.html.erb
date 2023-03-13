@@ -6,11 +6,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet' />
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body data-controller="aos">
+  <body data-controller="aos window-events">
     <!--
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
@@ -18,15 +20,5 @@
     <%= render "shared/navbar" %>
 
     <%= yield %>
-
-    <script>
-      if (history.scrollRestoration) {
-          history.scrollRestoration = 'manual';
-      } else {
-          window.onbeforeunload = () => {
-              window.scrollTo(0, 0);
-          }
-      }
-    </script>
   </body>
 </html>
