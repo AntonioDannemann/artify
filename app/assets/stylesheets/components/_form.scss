@@ -1,0 +1,125 @@
+.devise {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: calc(100vh - 55px);
+  padding: 20px;
+
+  .devise-back i {
+    color: $rose;
+  }
+
+  .devise-cancel-account {
+    padding: 48px 0px;
+
+    a {
+      color: $rose;
+      display: block;
+    }
+  }
+
+  .devise-top-navbar {
+    display: flex;
+    gap: 40px;
+    justify-content: space-around;
+    margin: 10px auto 0;
+
+    h3 {
+      border-bottom: 2px solid $rose;
+      font-size: 16px;
+    }
+
+    a {
+      color: rgba(211, 211, 211, 0.5);
+      font-size: 16px;
+    }
+  }
+}
+
+.devise-form {
+  .checkbox {
+    margin-top: 16px;
+  }
+
+  .form-field {
+    background-color: $secondary;
+    display: flex;
+    flex-direction: column;
+    margin: 6px 0px;
+    padding: $text-padding;
+
+    div {
+      align-items: center;
+      display: flex;
+      gap: 10px;
+    }
+
+    input {
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: lightgray;
+      font: inherit;
+      transition: border-bottom 0.3s ease;
+      width: 100%;
+
+      &:focus {
+        border-bottom: 2px solid $rose;
+        outline: none;
+      }
+    }
+
+    label {
+      color: rgba(211, 211, 211, 0.5);
+      font-size: 0.8rem;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    span {
+      color: $red;
+      font-size: 0.6rem;
+      margin-bottom: 5px;
+    }
+  }
+
+  .photo-field {
+    input {
+      display: none;
+    }
+
+    label {
+      align-items: center;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin: 0;
+      padding: 0.25rem 1rem;
+      width: 100%;
+    }
+  }
+
+  .title {
+    margin-bottom: 40px;
+
+    h1 {
+      font-size: 48px;
+      margin: 0px;
+    }
+
+    h3 {
+      font-size: 16px;
+    }
+  }
+}
+
+.avatar {
+  border-radius: 50%;
+  display: block;
+  height: 64px;
+  margin: 0 auto 16px;
+  object-fit: cover;
+  object-position: center;
+  overflow: hidden;
+  width: 64px;
+}
