@@ -22,6 +22,34 @@
     }
   }
 
+  .form {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+
+    .filter {
+      background-color: $secondary;
+      border-radius: 10px;
+      display: flex;
+      flex-shrink: 0;
+      margin: 0;
+      overflow: hidden;
+
+      li {
+        font-size: 0.8rem;
+        padding: 0.5rem 5px;
+        text-align: center;
+        width: 45px;
+      }
+
+      .active {
+        background-color: $rose;
+        color: $secondary;
+        font-weight: 500;
+      }
+    }
+  }
+
   .monuments {
     margin-top: 10px;
 

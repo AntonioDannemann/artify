@@ -1,8 +1,15 @@
 <section id="search-form">
-  <form>
-    <label for="search"><i class="fa-solid fa-magnifying-glass"></i></label>
-    <input type="text" name="search">
-  </form>
+  <div class="form">
+    <form>
+      <label for="search"><i class="fa-solid fa-magnifying-glass"></i></label>
+      <input type="text" name="search">
+    </form>
+
+    <ul class="filter">
+      <li>Name</li>
+      <li class="active">City</li>
+    </ul>
+  </div>
 
   <div class="monuments">
     <% monuments = Monument.where(city: "Paris") %>
