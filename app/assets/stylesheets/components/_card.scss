@@ -1,4 +1,4 @@
-@keyframes press-button {
+@keyframes press-button-skew {
   0% {
     transform: skew(-20deg);
   }
@@ -156,7 +156,7 @@ path {
       transform: skew(-20deg);
 
       &:hover {
-        animation: press-button 0.15s linear;
+        animation: press-button-skew 0.15s linear;
       }
 
       * {
