@@ -19,6 +19,9 @@ application.register("map", MapController)
 import ScrollToFeaturedController from "./scroll_to_featured_controller"
 application.register("scroll-to-featured", ScrollToFeaturedController)
 
+import SwitchAccountFormController from "./switch_account_form_controller"
+application.register("switch-account-form", SwitchAccountFormController)
+
 import ToggleHiddenPasswordController from "./toggle_hidden_password_controller"
 application.register("toggle-hidden-password", ToggleHiddenPasswordController)
 
