@@ -8,10 +8,6 @@ export default class extends Controller {
     registrationForm: String
   }
 
-  connect() {
-    console.log("a");
-  }
-
   switchForm(event) {
     if (!event.target.classList.contains("active")) {
       this.buttonTargets.forEach(e => e.classList.toggle("active"))
