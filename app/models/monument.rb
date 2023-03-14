@@ -8,7 +8,7 @@ class Monument < ApplicationRecord
   validates :name, :description, :lat, :lng, :city, :country, :country_code, presence: true
   validates :lat, :lng, numericality: { only_float: true }
 
-  def self.with_missing_photo
+  def self.without_photo
     Monument.all.reject { |monument| monument.photo.attached? }
   end
 
