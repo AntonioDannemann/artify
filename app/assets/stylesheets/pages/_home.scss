@@ -1,4 +1,23 @@
 #pages-home {
+  .devise {
+    min-height: 100vh;
+
+    h3 {
+      border-bottom: 2px solid transparent;
+      color: rgba(211, 211, 211, 0.5);
+      font-size: 16px;
+
+      &.active {
+        border-bottom: 2px solid $rose;
+        color: lightgray;
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+  }
+
   .map-container{
     background-image: url(placeholder_image_map.png);
     background-size: cover;

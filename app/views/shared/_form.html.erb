@@ -1,0 +1,16 @@
+<div class="container devise">
+  <div class="devise-top-navbar" data-aos="fade-up" data-aos-duration="1000">
+    <h3 class="active">Log in</h3>
+    <h3>Sign up</h3>
+  </div>
+
+  <div data-aos="fade-up" data-aos-duration="1000">
+    <%= render "devise/sessions/form", resource: User.new, resource_name: :user %>
+  </div>
+
+  <div data-aos="fade-up" data-aos-duration="1000" class="hidden">
+    <%= render "devise/registrations/form", resource: User.new, resource_name: :user %>
+  </div>
+
+  <div></div>
+</div>

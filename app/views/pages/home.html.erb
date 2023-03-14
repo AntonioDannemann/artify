@@ -38,10 +38,7 @@
     <div class="map-container"></div>
   </section>
 
-  <section id="register">
-    <div class="container">
-      <h2>Like the app ?</h2>
-      <p>Consider <%= link_to "registering", new_user_registration_path %> and get access to more features</p>
-    </div>
-  </section>
+  <% unless current_user %>
+    <%= render "shared/form" %>
+  <% end %>
 </div>
