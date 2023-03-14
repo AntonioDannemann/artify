@@ -9,27 +9,29 @@
 
   <%= render "shared/banner" %>
 
+  <%= render "shared/search_form" %>
+
   <section id="featured">
-    <div class="container">
-      <div class="card-featured" data-aos="fade-up" data-aos_duration="1000">
-        <div class="card-featured_image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.6)), url(<%= cl_image_path @monument.photo.key %>);">
-          <i class="fa-regular fa-heart"></i>
-        </div>
+    <div class="card-featured" data-aos="fade-up" data-aos_duration="1000">
+      <div class="card-featured_image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.6)), url(<%= cl_image_path @monument.photo.key %>);">
+        <i class="fa-regular fa-heart"></i>
+      </div>
 
-        <div class="card-featured_content" data-aos="fade-up" data-aos-duration="1000">
-          <h3><%= @monument.name %></h3>
-          <span><i class="fa-solid fa-location-dot"></i> <%= "#{@monument.city}, #{@monument.country_code}" %></span>
-          <p><%= @monument.description.split(". ")[1] %>.</p>
-        </div>
+      <div class="card-featured_content" data-aos="fade-up" data-aos-duration="1000">
+        <h3><%= @monument.name %></h3>
+        <span><i class="fa-solid fa-location-dot"></i> <%= "#{@monument.city}, #{@monument.country_code}" %></span>
+        <p><%= @monument.description.split(". ")[1] %>.</p>
+      </div>
 
-        <div class="card-featured_more" data-aos="fade-up" data-aos-duration="1000">
-          <%= link_to monument_path(@monument) do %>
-            <span>Learn more</span>
-            <i class="fa-solid fa-chevron-right"></i>
-          <% end %>
-        </div>
+      <div class="card-featured_more" data-aos="fade-up" data-aos-duration="1000">
+        <%= link_to monument_path(@monument) do %>
+          <span>Learn more</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        <% end %>
       </div>
     </div>
+
+    <div class="border" data-aos="fade-up" data-aos-duration="1000"></div>
   </section>
 
   <section data-aos="fade-up" data-aos-duration="1000">
