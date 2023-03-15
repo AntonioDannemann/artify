@@ -16,7 +16,7 @@ export default class extends Controller {
 
     setTimeout(() => {
       this.elementTarget.classList.add("hidden");
-    }, 5000);
+    }, 3500);
 
 
   }
