@@ -4,12 +4,12 @@
   </section>
 
   <% unless current_user || @ht %>
-    <%= render "shared/tutorial" %>
+    <%= render "tutorial" %>
   <% end %>
 
-  <%= render "shared/banner" %>
+  <%= render "banner" %>
 
-  <%= render "shared/search_form" %>
+  <%= render "search_form" %>
 
   <section id="featured">
     <div class="card-featured" data-aos="fade-up" data-aos_duration="1000">
