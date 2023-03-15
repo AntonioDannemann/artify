@@ -7,7 +7,7 @@ class PagesController < ApplicationController
     @monuments = Monument.all
     @monument = @monuments.sample
 
-    @ht = true if params
+    @ht = true if params[:ht]
 
     search_monuments
   end
