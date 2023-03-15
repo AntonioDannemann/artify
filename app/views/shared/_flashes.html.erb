@@ -1,0 +1,14 @@
+<% if notice %>
+  <div data-controller="flashes" data-flashes-target="element" class="transition hidden">
+    <div role="alert">
+      <%= notice %>
+    </div>
+  </div>
+<% end %>
+<% if alert %>
+  <div data-flashes-target="element" data-controller="flashes" class="transition hidden">
+    <div role="alert">
+      <%= alert %>
+    </div>
+  </div>
+<% end %>
