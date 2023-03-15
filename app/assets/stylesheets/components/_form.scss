@@ -19,6 +19,7 @@
   }
 
   .devise-top-navbar {
+    align-items: center;
     display: flex;
     gap: 40px;
     justify-content: space-around;
@@ -27,11 +28,18 @@
     h3 {
       border-bottom: 2px solid $rose;
       font-size: 16px;
+      margin: 0;
+      padding-bottom: 2px;
     }
 
     a {
+      border-bottom: 2px solid transparent;
       color: rgba(211, 211, 211, 0.5);
-      font-size: 16px;
+      display: block;
+      font-family: $headers-font;
+      font-weight: 500;
+      margin: 0;
+      padding-bottom: 2px;
     }
   }
 }
