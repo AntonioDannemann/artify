@@ -42,8 +42,14 @@ class HistoriesController < ApplicationController
     @landmark_lat = landmark.locations.first.lat_lng.latitude
     @landmark_lng = landmark.locations.first.lat_lng.longitude
     @landmark_name = landmark.description
+    @history_lat = params[:history][:lat].to_f
+    @history_lng = params[:history][:lng].to_f
 
-    new_history
+    if Geocoder::Calculations.distance_between([@history_lat, @history_lng], [@landmark_lat, @landmark_lng]) < 5
+      new_history
+    else
+      redirect_to error_path
+    end
   end
 
   def fetch_landmark_from_google_cloud_vision(image_url)
@@ -57,7 +63,8 @@ class HistoriesController < ApplicationController
   def new_history
     history = History.new(photo: @photo)
     history.user = @user
-
+    history.lat = @history_lat
+    history.lng = @history_lng
     # We first check in the database if there is a monument that corresponds to our current landmark
     # If not we create one
     history.monument = find_monument_by_landmark || create_monument

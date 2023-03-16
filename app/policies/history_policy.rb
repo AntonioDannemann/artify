@@ -12,4 +12,8 @@ class HistoryPolicy < ApplicationPolicy
       scope.where(user:)
     end
   end
+
+  def permitted_attributes
+    [:lat, :lng]
+  end
 end
