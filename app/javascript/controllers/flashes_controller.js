@@ -1,22 +1,20 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="flahes"
+// Connects to data-controller="flashes"
 export default class extends Controller {
-  static targets = [ "element" ];
-
   connect() {
-    this.slideAlert();
+    this.slideAlert()
   }
 
   slideAlert() {
-    if (this.elementTarget.classList.contains("hidden")) {
-      this.elementTarget.classList.remove("hidden");
-    }
+    this.element.classList.remove("hidden")
 
     setTimeout(() => {
-      this.elementTarget.classList.add("hidden");
-    }, 3500);
+      this.element.classList.add("hidden")
+    }, 3500)
 
-
+    setTimeout(() => {
+      this.element.remove()
+    }, 7000)
   }
 }
