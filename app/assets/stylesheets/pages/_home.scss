@@ -11,12 +11,12 @@
 
     h3 {
       border-bottom: 2px solid transparent;
-      color: rgba(0, 0, 0, 0.5);
+      color: rgba(211, 211, 211, 0.5);
       font-size: 16px;
 
       &.active {
-        border-bottom: 2px solid $rose;
-        color: black;
+        border-bottom: 2px solid $secondary;
+        color: #d3d3d3;
       }
     }
 
@@ -41,7 +41,8 @@
 
   #logo {
     align-items: center;
-    background-color: rgb(81, 119, 223);
+    background-color: $background;
+    background-image: asset-url("black_lozenge.webp");
     display: flex;
     height: 100vh;
     justify-content: center;

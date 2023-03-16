@@ -1,30 +1,34 @@
 #search-form {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(211, 211, 211, 0.5);
   padding: 20px 0;
 
   form {
     align-items: center;
-    background-color: snow;
+    background-color: #222425;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
     gap: 10px;
     padding: $text-padding;
+    transition: box-shadow 0.3s ease;
+
+    &:has(input:focus) {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.3);
+    }
 
     i {
-      color: rgba(0, 0, 0, 0.5);
+      // color: rgba(0, 0, 0, 0.5);
     }
 
     input {
       background-color: transparent;
       border: none;
       border-bottom: 2px solid transparent;
-      color: black;
+      // color: black;
       flex-grow: 1;
       transition: border-bottom 0.3s ease;
 
       &:focus {
-        border-bottom: 2px solid $rose;
         outline: none;
       }
     }
@@ -41,6 +45,7 @@
       height: 250px;
       justify-content: flex-end;
       padding: 10px;
+      text-shadow: 0 0 5px black;
       width: 100%;
 
       &:hover {
@@ -48,19 +53,18 @@
       }
 
       h3 {
-        color: $rose;
+        color: $secondary;
         font-size: 1.5rem;
         margin: 0;
       }
 
       i {
-        color: $rose;
+        color: $secondary;
       }
 
       span {
-        color: $background;
+        color: lightgrey;
         font-size: 0.8rem;
-        text-shadow: 0 0 10px rgb(0, 0, 0);
       }
     }
 

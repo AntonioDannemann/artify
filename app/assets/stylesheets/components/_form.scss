@@ -6,14 +6,14 @@
   padding: 20px 0;
 
   .devise-back i {
-    color: $rose;
+    color: $secondary;
   }
 
   .devise-cancel-account {
     padding: 48px 0px;
 
     a {
-      color: $rose;
+      color: $secondary;
       display: block;
     }
   }
@@ -26,7 +26,7 @@
     margin: 10px auto 0;
 
     h3 {
-      border-bottom: 2px solid $rose;
+      border-bottom: 2px solid $secondary;
       font-size: 16px;
       margin: 0;
       padding-bottom: 2px;
@@ -34,7 +34,7 @@
 
     a {
       border-bottom: 2px solid transparent;
-      color: rgba(0, 0, 0, 0.5);
+      color: rgba(211, 211, 211, 0.5);
       display: block;
       font-family: $headers-font;
       font-weight: 500;
@@ -50,9 +50,9 @@
   }
 
   .form-field {
-    background-color: snow;
+    background-color: #222425;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
     margin: 6px 0px;
@@ -68,19 +68,19 @@
       background-color: transparent;
       border: none;
       border-bottom: 2px solid transparent;
-      color: black;
+      // color: black;
       font: inherit;
       transition: border-bottom 0.3s ease;
       width: 100%;
 
       &:focus {
-        border-bottom: 2px solid $rose;
+        border-bottom: 2px solid $secondary;
         outline: none;
       }
     }
 
     label {
-      color: rgba(0, 0, 0, 0.5);
+      color: rgba(211, 211, 211, 0.5);
       font-size: 0.8rem;
       margin-bottom: 0;
       // text-transform: uppercase;
@@ -118,7 +118,7 @@
     }
 
     h3 {
-      color: rgba(0, 0, 0, 0.5);
+      color: rgba(211, 211, 211, 0.5);
       font-size: 16px;
     }
   }

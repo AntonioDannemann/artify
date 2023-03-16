@@ -11,7 +11,7 @@
 
   .banner-overlay {
     backdrop-filter: blur(3px);
-    color: $background;
+    color: $lightgrey;
     display: flex;
     flex-direction: column;
     font-size: 12px;
@@ -36,7 +36,7 @@
       }
 
       .inner-circle {
-        background-color: $rose;
+        background-color: $secondary;
         border: 2px solid rgba(0, 0, 0, 0.5);
         border-radius: 50%;
         height: 40px;
@@ -44,7 +44,8 @@
       }
 
       .outer-circle {
-        background-color: $background;
+        animation: pulse 3s linear infinite;
+        background-color: $lightgrey;
         border-radius: 50%;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         padding: 5px;
@@ -68,29 +69,30 @@
       }
 
       #tl {
-        border-left: 1px solid $background;
-        border-top: 1px solid $background;
+        border-left: 1px solid $lightgrey;
+        border-top: 1px solid $lightgrey;
       }
 
       #tr {
-        border-right: 1px solid $background;
-        border-top: 1px solid $background;
+        border-right: 1px solid $lightgrey;
+        border-top: 1px solid $lightgrey;
       }
 
       #bl {
-        border-bottom: 1px solid $background;
-        border-left: 1px solid $background;
+        border-bottom: 1px solid $lightgrey;
+        border-left: 1px solid $lightgrey;
       }
 
       #br {
-        border-bottom: 1px solid $background;
-        border-right: 1px solid $background;
+        border-bottom: 1px solid $lightgrey;
+        border-right: 1px solid $lightgrey;
       }
     }
 
     .featured {
       align-self: flex-end;
       text-align: right;
+      width: 100%;
 
       a {
         align-items: center;
@@ -100,8 +102,9 @@
       }
 
       h2 {
-        color: $rose;
+        color: $secondary;
         font-size: 30px;
+        margin: 0;
       }
     }
   }

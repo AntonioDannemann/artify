@@ -44,7 +44,7 @@ nav {
   gap: 20px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-left: -20px;
-  padding: 5px 20px;
+  padding: 10px 20px;
   position: sticky;
   top: 0;
   width: calc(100% + 40px);
@@ -57,10 +57,10 @@ nav {
   // }
 
   i {
-    background-color: rgb(81, 119, 223);
+    background-color: $secondary;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    color: $background;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #222425;
     font-size: 25px;
     height: 50px;
     padding: 10px;
