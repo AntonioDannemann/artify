@@ -7,6 +7,7 @@ export default class extends Controller {
   connect() {
     const children = [...this.fileTarget.children]
     this.first = children.find(e => e.classList.contains("selected-file"))
+    this.picture()
   }
 
   addFile(event) {
