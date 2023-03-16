@@ -31,8 +31,6 @@
   }
 
   .monuments {
-    margin-top: 10px;
-
     .monument {
       background-position: center 20%;
       background-size: cover;
@@ -91,5 +89,14 @@
         }
       }
     }
+  }
+
+  .monuments-wrapper {
+    height: max-content;
+    margin-top: 10px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 1s ease;
   }
 }
