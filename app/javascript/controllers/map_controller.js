@@ -10,22 +10,24 @@ export default class extends Controller {
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
-    navigator.geolocation.watchPosition(this.#success.bind(this))
+    navigator.geolocation.watchPosition(this.#success)
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/navigation-night-v1",
-      zoom: -50
+      zoom: -100
     })
+    this.#success()
     }
 
-  #success(location) {
-    const coords = [location.coords.longitude, location.coords.latitude]
+  #success = (location) => {
+    const latlng = [location.coords.longitude, location.coords.latitude]
+    console.log(latlng);
     this.map.flyTo({
-      center: coords,
+      center: latlng,
       essential: true,
       zoom: 13
     })
-    new mapboxgl.Marker().setLngLat(coords).addTo(this.map)
+    new mapboxgl.Marker().setLngLat(latlng).addTo(this.map)
     this.markersValue.forEach((marker) => {
       new mapboxgl.Marker().setLngLat([marker.lng, marker.lat]).addTo(this.map)
     })
