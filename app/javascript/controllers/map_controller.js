@@ -21,7 +21,6 @@ export default class extends Controller {
 
   #success = (location) => {
     const latlng = [location.coords.longitude, location.coords.latitude]
-    console.log(latlng);
     this.map.flyTo({
       center: latlng,
       essential: true,
