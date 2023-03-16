@@ -1,9 +1,29 @@
 <section id="banner">
-  <div class="featured">
-    <span>Featured Landmark</span>
-    <h2><%= @monument.name %></h2>
-    <a data-controller="scroll-to-featured" data-action="click->scroll-to-featured#scrollToFeatured">Learn more   <i class="fa-solid fa-chevron-down"></i></a>
-  </div>
+  <div class="banner-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.2)), url(<%= cl_image_path @monument.photo.key %>);"></div>
 
-  <div class="banner"></div>
+  <div class="banner-overlay">
+    <div class="featured">
+      <span>Featured Landmark</span>
+      <h2><%= @monument.name %></h2>
+      <%= link_to monument_path(@monument) do %>
+        Learn more <i class="fa-solid fa-chevron-right"></i>
+      <% end %>
+    </div>
+
+    <div class="banner-frame" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.2)), url(<%= cl_image_path @monument.photo.key %>);">
+      <div id="tl"></div>
+      <div></div>
+      <div id="tr"></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div id="bl"></div>
+      <div>
+        <div class="outer-circle">
+          <div class="inner-circle"></div>
+        </div>
+      </div>
+      <div id="br"></div>
+    </div>
+  </div>
 </section>
