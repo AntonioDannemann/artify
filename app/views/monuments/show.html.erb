@@ -1,0 +1,16 @@
+<div class= "background-img">
+
+  <div class= "content-container">
+    <hr>
+
+    <div class= "child-container">
+      <h4><%= @monument.name %></h4>
+      <span><i class="fa-solid fa-location-dot"></i> <%= "#{@monument.city}, #{@monument.country_code}" %></span>
+    </div>
+
+    <div class= "photo-thumbnail">
+      <%= cl_image_tag @monument.photo.key%>
+    </div>
+  </div>
+
+</div>
