@@ -28,7 +28,7 @@
           <div class="inner-circle"></div>
         </div>
       <% end %>
-      <%= f.file_field :photo, style: "display: none;", accept: "image/*", oninput: "form.submit();" %>
+      <%= f.file_field :photo, style: "display: none;", accept: "image/*", oninput: "form.submit();", id: "banner_history_photo" %>
     <% end %>
   </div>
 </section>
