@@ -1,6 +1,7 @@
 #search-form {
+  border-bottom: 1px solid $secondary;
   margin: 0 20px;
-  padding-top: 20px;
+  padding: 20px 0;
 
   form {
     align-items: center;
@@ -50,8 +51,6 @@
   }
 
   .monuments {
-    margin-top: 10px;
-
     .monument {
       background-position: center 20%;
       background-size: cover;
@@ -105,5 +104,14 @@
         }
       }
     }
+  }
+
+  .monuments-wrapper {
+    height: max-content;
+    margin-top: 10px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 1s ease;
   }
 }

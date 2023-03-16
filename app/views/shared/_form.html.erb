@@ -1,0 +1,21 @@
+<div class="container devise" data-controller="switch-account-form">
+  <div class="devise-top-navbar">
+    <h3 class="active"
+        data-action="click->switch-account-form#switchForm"
+        data-switch-account-form-target="button">Log in</h3>
+    <h3 data-action="click->switch-account-form#switchForm"
+        data-switch-account-form-target="button">Sign up</h3>
+  </div>
+
+  <div>
+    <div data-switch-account-form-target="form" class="hidden">
+      <%= render "devise/registrations/form", resource: User.new, resource_name: :user %>
+    </div>
+
+    <div data-switch-account-form-target="form">
+      <%= render "devise/sessions/form", resource: User.new, resource_name: :user %>
+    </div>
+  </div>
+
+  <div></div>
+</div>
