@@ -1,13 +1,15 @@
-<div class="container devise">
-  <div class="devise-top-navbar">
-    <h3>Log in</h3>
-    <%= link_to "Sign up", new_user_registration_path %>
-  </div>
+<div class="container">
+  <div class="devise">
+    <div class="devise-top-navbar">
+      <h3>Log in</h3>
+      <%= link_to "Sign up", new_user_registration_path %>
+    </div>
 
-  <%= render "form" %>
+    <%= render "form" %>
 
-  <div class="devise-back">
-    <i class="fa-solid fa-arrow-left"></i>
-    <%= link_to "Back", root_path %>
+    <div class="devise-back">
+      <i class="fa-solid fa-arrow-left"></i>
+      <%= link_to "Back", root_path %>
+    </div>
   </div>
 </div>
