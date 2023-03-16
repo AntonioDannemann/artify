@@ -22,11 +22,17 @@ application.register("scroll-to-featured", ScrollToFeaturedController)
 import SwitchAccountFormController from "./switch_account_form_controller"
 application.register("switch-account-form", SwitchAccountFormController)
 
+import ToggleController from "./toggle_controller"
+application.register("toggle", ToggleController)
+
 import ToggleHiddenPasswordController from "./toggle_hidden_password_controller"
 application.register("toggle-hidden-password", ToggleHiddenPasswordController)
 
 import TutorialController from "./tutorial_controller"
 application.register("tutorial", TutorialController)
+
+import UploadPhotoController from "./upload_photo_controller"
+application.register("upload-photo", UploadPhotoController)
 
 import WindowEventsController from "./window_events_controller"
 application.register("window-events", WindowEventsController)
