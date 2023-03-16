@@ -12,13 +12,17 @@
   <div class="container">
     <h1>Discover<br>amazing landmarks</h1>
 
+    <nav>
+      <%= link_to monuments_path do %>
+        <i class="fa-solid fa-map-location-dot"></i>
+      <% end %>
+
+      <%= link_to "/" do %>
+        <i class="fa-solid fa-user"></i>
+      <% end %>
+    </nav>
+
     <%= render "shared/search_form" %>
-
-    <section>
-      <h2>Scope out your surroundings</h2>
-
-      <div class="map-container"></div>
-    </section>
 
     <% unless current_user %>
       <%= render "shared/form" %>

@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: calc(100vh - 55px);
+  height: 100vh;
   padding: 20px 0;
 
   .devise-back i {
@@ -34,7 +34,7 @@
 
     a {
       border-bottom: 2px solid transparent;
-      color: rgba(211, 211, 211, 0.5);
+      color: rgba(0, 0, 0, 0.5);
       display: block;
       font-family: $headers-font;
       font-weight: 500;
@@ -50,7 +50,9 @@
   }
 
   .form-field {
-    background-color: $secondary;
+    background-color: snow;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     margin: 6px 0px;
@@ -66,7 +68,7 @@
       background-color: transparent;
       border: none;
       border-bottom: 2px solid transparent;
-      color: lightgray;
+      color: black;
       font: inherit;
       transition: border-bottom 0.3s ease;
       width: 100%;
@@ -78,10 +80,10 @@
     }
 
     label {
-      color: rgba(211, 211, 211, 0.5);
+      color: rgba(0, 0, 0, 0.5);
       font-size: 0.8rem;
-      margin-bottom: 5px;
-      text-transform: uppercase;
+      margin-bottom: 0;
+      // text-transform: uppercase;
     }
 
     span {
@@ -110,12 +112,13 @@
   .title {
     margin-bottom: 40px;
 
-    h1 {
+    h2 {
       font-size: 48px;
       margin: 0px;
     }
 
     h3 {
+      color: rgba(0, 0, 0, 0.5);
       font-size: 16px;
     }
   }

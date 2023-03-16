@@ -1,50 +1,31 @@
 #search-form {
-  border-bottom: 1px solid snow;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   padding: 20px 0;
 
   form {
     align-items: center;
     background-color: snow;
     border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     display: flex;
     gap: 10px;
     padding: $text-padding;
 
+    i {
+      color: rgba(0, 0, 0, 0.5);
+    }
+
     input {
       background-color: transparent;
       border: none;
-      color: $background;
+      border-bottom: 2px solid transparent;
+      color: black;
+      flex-grow: 1;
+      transition: border-bottom 0.3s ease;
 
       &:focus {
+        border-bottom: 2px solid $rose;
         outline: none;
-      }
-    }
-  }
-
-  .form {
-    align-items: center;
-    display: flex;
-    gap: 10px;
-
-    .filter {
-      background-color: snow;
-      border-radius: 10px;
-      display: flex;
-      flex-shrink: 0;
-      margin: 0;
-      overflow: hidden;
-
-      li {
-        font-size: 0.8rem;
-        padding: 0.5rem 5px;
-        text-align: center;
-        width: 45px;
-      }
-
-      .active {
-        background-color: $rose;
-        color: snow;
-        font-weight: 500;
       }
     }
   }
@@ -59,10 +40,14 @@
       display: flex;
       flex-direction: column;
       gap: 5px;
-      height: 200px;
+      height: 250px;
       justify-content: flex-end;
       padding: 10px;
       width: 100%;
+
+      &:hover {
+        animation: press-button 0.15s linear;
+      }
 
       h3 {
         color: $rose;
@@ -94,7 +79,7 @@
 
       .monument {
         flex-shrink: 0;
-        height: 150px;
+        height: 250px;
         width: 60%;
 
         h3 {
