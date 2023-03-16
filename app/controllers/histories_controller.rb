@@ -81,8 +81,8 @@ class HistoriesController < ApplicationController
     return nil unless data
 
     monument = Monument.new(data[:params])
-    attach_photo_to_monument(monument, data[:photo_url])
-    fetch_geocoder_for_monument_update(monument)
+    monument.attach_photo(data[:photo_url]) if data[:photo_url]
+    monument.fetch_geocoder
 
     return monument if monument.save
 
@@ -142,29 +142,5 @@ class HistoriesController < ApplicationController
     return nil unless uri.is_a?(URI::HTTP) && !uri.host.nil?
 
     url
-  end
-
-  def attach_photo_to_monument(monument, photo_url)
-    photo = URI.parse(photo_url).open
-    if photo.size > 26_214_400
-      photo = compress_photo(photo, 40)
-    elsif photo.size > 5_242_880
-      photo = compress_photo(photo, 80)
-    end
-
-    monument.photo.attach(io: photo, filename: "#{monument.name}.jpeg", content_type: "image/jpeg")
-  end
-
-  def compress_photo(photo, quality)
-    image = MiniMagick::Image.new(photo.path)
-    image.combine_options { |o| o.quality quality }
-    StringIO.open(image.to_blob)
-  end
-
-  def fetch_geocoder_for_monument_update(monument)
-    geocoder = Geocoder.search("#{monument.lat},#{monument.lng}").first
-    monument.city = geocoder.city
-    monument.country = geocoder.country
-    monument.country_code = geocoder.country_code.upcase
   end
 end
