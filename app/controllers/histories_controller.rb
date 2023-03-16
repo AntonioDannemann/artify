@@ -43,7 +43,11 @@ class HistoriesController < ApplicationController
     @landmark_lng = landmark.locations.first.lat_lng.longitude
     @landmark_name = landmark.description
 
-    new_history
+    if Geocoder::Calculations.distance_between(@user.location, [@landmark_lat, @landmark_lng]) < 10
+      new_history
+    else
+      redirect_to error_path
+    end
   end
 
   def fetch_landmark_from_google_cloud_vision(image_url)

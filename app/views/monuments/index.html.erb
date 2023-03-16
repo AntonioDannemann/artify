@@ -22,3 +22,8 @@
     <% end %>
   </div>
 </div>
+<div data-controller="geolocation">
+<%= form_with model: @user do |f| %>
+  <%= f.hidden_field :location, id:"userlocation", onchange: "form.submit();", :data => {:action => "connect->geolocation#getLatLng"} %>
+<% end %>
+</div>
