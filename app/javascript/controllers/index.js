@@ -22,6 +22,9 @@ application.register("scroll-to-featured", ScrollToFeaturedController)
 import SearchFormController from "./search_form_controller"
 application.register("search-form", SearchFormController)
 
+import SwitchAccountFormController from "./switch_account_form_controller"
+application.register("switch-account-form", SwitchAccountFormController)
+
 import ToggleHiddenPasswordController from "./toggle_hidden_password_controller"
 application.register("toggle-hidden-password", ToggleHiddenPasswordController)
 

@@ -108,7 +108,7 @@ def create_monument
   puts "#{Time.current - method_start}s to complete attach_photo_to_model(monument)"
 
   method_start = Time.current
-  fetch_geocoder_for_monument_update(monument)
+  monument.fetch_geocoder
   puts "#{Time.current - method_start}s to complete fetch_geocoder_for_monument_update"
 
   method_start = Time.current
@@ -189,13 +189,6 @@ def compress_photo(photo, quality)
   puts "#{Time.current - method_start}s to complete compress_photo"
 
   photo
-end
-
-def fetch_geocoder_for_monument_update(monument)
-  geocoder = Geocoder.search("#{monument.lat},#{monument.lng}").first
-  monument.city = geocoder.city
-  monument.country = geocoder.country
-  monument.country_code = geocoder.country_code.upcase
 end
 
 start = Time.current
