@@ -1,10 +1,10 @@
 #search-form {
-  border-bottom: 1px solid $secondary;
+  border-bottom: 1px solid snow;
   padding: 20px 0;
 
   form {
     align-items: center;
-    background-color: $secondary;
+    background-color: snow;
     border-radius: 10px;
     display: flex;
     gap: 10px;
@@ -13,7 +13,7 @@
     input {
       background-color: transparent;
       border: none;
-      color: lightgrey;
+      color: $background;
 
       &:focus {
         outline: none;
@@ -27,7 +27,7 @@
     gap: 10px;
 
     .filter {
-      background-color: $secondary;
+      background-color: snow;
       border-radius: 10px;
       display: flex;
       flex-shrink: 0;
@@ -43,7 +43,7 @@
 
       .active {
         background-color: $rose;
-        color: $secondary;
+        color: snow;
         font-weight: 500;
       }
     }
@@ -75,6 +75,7 @@
       }
 
       span {
+        color: $background;
         font-size: 0.8rem;
         text-shadow: 0 0 10px rgb(0, 0, 0);
       }
