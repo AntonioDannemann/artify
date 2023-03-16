@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = [ "element" ];
 
   connect() {
-    this.elementTarget.classList.add("hidden");
     this.slideAlert();
   }
 

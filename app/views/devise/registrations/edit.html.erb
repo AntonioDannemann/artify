@@ -70,8 +70,6 @@
     <% end %>
   </div>
 
-  <%= link_to "Log out", destroy_user_session_path, class: "option", data: { "turbo-method": :delete } %>
-
   <div class="devise-cancel-account">
     NOT HAPPY ?
     <%= link_to "Cancel my account", registration_path(resource_name), data: { turbo_confirm: "Are you sure?", turbo_method: :delete } %>
