@@ -1,69 +1,10 @@
 <div class="container devise">
   <div class="devise-top-navbar">
     <%= link_to "Log in", new_user_session_path %>
-    <h3>SIGN UP</h3>
+    <h3>Sign up</h3>
   </div>
 
-  <div class="devise-form">
-    <div class="title">
-      <h1>SIGN UP!</h1>
-      <h3>and get access to exclusive features</h3>
-    </div>
-
-    <%= form_with model: resource, scope: resource_name, url: registration_path(resource_name), data: { turbo: false } do |f|  %>
-      <div class="photo-field">
-        <%= f.label :photo, class: "btn-pink" %>
-        <%= f.file_field :photo %>
-      </div>
-
-      <div class="form-field">
-        <div>
-          <%= f.label :first_name %>
-          <span><%= resource.errors.full_messages.find { |m| m.match?("First") } %></span>
-        </div>
-
-        <%= f.text_field :first_name %>
-      </div>
-
-      <div class="form-field">
-        <div>
-          <%= f.label :last_name %>
-          <span><%= resource.errors.full_messages.find { |m| m.match?("Last") } %></span>
-        </div>
-
-        <%= f.text_field :last_name %>
-      </div>
-
-      <div class="form-field">
-        <div>
-          <%= f.label :email %>
-          <span><%= resource.errors.full_messages.find { |m| m.match?("Email") } %></span>
-        </div>
-
-        <%= f.email_field :email, autocomplete: "email" %>
-      </div>
-
-      <div class="form-field">
-        <div>
-          <%= f.label :password %>
-          <span><%= resource.errors.full_messages.find { |m| m.match?("Password") && !m.match?("confirmation") } %></span>
-        </div>
-
-        <%= f.password_field :password %>
-      </div>
-
-      <div class="form-field">
-        <div>
-          <%= f.label :password_confirmation, "Confirm password" %>
-          <span><%= resource.errors.full_messages.find { |m| m.match?("Password confirmation") } %></span>
-        </div>
-
-        <%= f.password_field :password_confirmation %>
-      </div>
-
-      <%= f.submit "Confirm", class: "btn-pink" %>
-    <% end %>
-  </div>
+  <%= render "form" %>
 
   <div class="devise-back">
     <i class="fa-solid fa-arrow-left"></i>

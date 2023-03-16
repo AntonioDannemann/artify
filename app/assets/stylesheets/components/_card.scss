@@ -1,4 +1,4 @@
-@keyframes press-button {
+@keyframes press-button-skew {
   0% {
     transform: skew(-20deg);
   }
@@ -99,10 +99,10 @@ path {
 .card-featured {
   display: flex;
   flex-direction: column;
-  width: 100%;
 
   .card-featured_content {
     margin-top: -75px;
+    z-index: 10;
 
     h3 {
       color: $rose;
@@ -156,7 +156,7 @@ path {
       transform: skew(-20deg);
 
       &:hover {
-        animation: press-button 0.15s linear;
+        animation: press-button-skew 0.15s linear;
       }
 
       * {
