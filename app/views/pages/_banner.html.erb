@@ -22,8 +22,13 @@
       <div id="br"></div>
     </div>
 
-    <div class="outer-circle">
-      <div class="inner-circle"></div>
-    </div>
+    <%= form_with model: @history do |f| %>
+      <%= f.label :photo do %>
+        <div class="outer-circle">
+          <div class="inner-circle"></div>
+        </div>
+      <% end %>
+      <%= f.file_field :photo, style: "display: none;", accept: "image/*", oninput: "form.submit();" %>
+    <% end %>
   </div>
 </section>

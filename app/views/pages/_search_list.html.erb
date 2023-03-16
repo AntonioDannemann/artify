@@ -6,7 +6,7 @@
     <% end %>
 
     <div class="monuments-scroller">
-      <% monuments.all.drop(1).each do |mon| %>
+      <% monuments.drop(1).each do |mon| %>
         <%= link_to monument_path(mon), class: "monument", style: "background-image: linear-gradient(rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.6)), url(#{ cl_image_path mon.photo.key })" do %>
           <h3><%= mon.name %></h3>
           <span><i class="fa-solid fa-location-dot"></i> <%= "#{mon.city}, #{mon.country_code}" %></span>
