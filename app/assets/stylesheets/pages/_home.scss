@@ -30,7 +30,7 @@
     }
   }
 
-  #logo {
+  #loading, #logo {
     align-items: center;
     background-color: $background;
     background-image: asset-url("bg_pattern.webp");
@@ -44,6 +44,19 @@
     transition: opacity 1s ease;
     width: 100%;
     z-index: 50;
+
+    &.hidden {
+      display: none;
+      opacity: 0;
+    }
+
+    > div {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: 10;
+      justify-content: center;
+    }
 
     img {
       width: 250px;

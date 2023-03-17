@@ -7,6 +7,9 @@ import { application } from "./application"
 import AosController from "./aos_controller"
 application.register("aos", AosController)
 
+import CameraFormController from "./camera_form_controller"
+application.register("camera-form", CameraFormController)
+
 import FlashesController from "./flashes_controller"
 application.register("flashes", FlashesController)
 
