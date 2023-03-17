@@ -1,0 +1,18 @@
+<nav>
+  <%= link_to monuments_path do %>
+    <i class="fa-solid fa-map-location-dot"></i>
+  <% end %>
+
+  <%= link_to edit_user_registration_path do %>
+    <i class="fa-solid fa-user"></i>
+  <% end %>
+
+  <div></div>
+
+  <%= form_with model: @history do |f| %>
+    <%= f.label :photo do %>
+      <i class="fa-solid fa-camera"></i>
+    <% end %>
+    <%= f.file_field :photo, style: "display: none;", accept: "image/*", oninput: "form.submit();" %>
+  <% end %>
+</nav>

@@ -13,20 +13,11 @@ application.register("flashes", FlashesController)
 import GeolocationController from "./geolocation_controller"
 application.register("geolocation", GeolocationController)
 
-// import HelloController from "./hello_controller"
-// application.register("hello", HelloController)
-
-import MapController from "./map_controller"
-application.register("map", MapController)
-
 import HomeLogoController from "./home_logo_controller"
 application.register("home-logo", HomeLogoController)
 
-// import MapController from "./map_controller"
-// application.register("map", MapController)
-
-import ScrollToFeaturedController from "./scroll_to_featured_controller"
-application.register("scroll-to-featured", ScrollToFeaturedController)
+import MapController from "./map_controller"
+application.register("map", MapController)
 
 import SearchFormController from "./search_form_controller"
 application.register("search-form", SearchFormController)

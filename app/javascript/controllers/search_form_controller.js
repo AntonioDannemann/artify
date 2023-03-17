@@ -13,7 +13,7 @@ export default class extends Controller {
         this.listTarget.outerHTML = html
 
         if (this.listTarget.childNodes.length > 1) {
-          this.wrapperTarget.style.maxHeight = "370px"
+          this.wrapperTarget.style.maxHeight = "550px"
           this.wrapperTarget.style.opacity = "1"
         } else {
           this.wrapperTarget.style.maxHeight = "0"

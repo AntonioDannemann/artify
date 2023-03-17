@@ -4,16 +4,9 @@
       <label for="search"><i class="fa-solid fa-magnifying-glass"></i></label>
       <input type="text" name="search" data-search-form-target="input" data-action="keyup->search-form#update">
     </form>
-
-    <ul class="filter">
-      <li>Name</li>
-      <li class="active">City</li>
-    </ul>
   </div>
 
   <div class="monuments-wrapper" data-search-form-target="wrapper">
-    <%= render "search_list", monuments: @searched_monuments %>
+    <%= render "pages/components/search_list", monuments: @searched_monuments %>
   </div>
-
-  <div class="border"></div>
 </section>

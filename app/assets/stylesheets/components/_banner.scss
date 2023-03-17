@@ -1,54 +1,107 @@
-@keyframes banner-slide {
-  0% {
-    background-position: 0%;
-  }
-
-  50% {
-    background-position: 100%;
-  }
-
-  100% {
-    background-position: 0%;
-  }
-}
-
 #banner {
   position: relative;
   width: 100%;
 
-  .banner {
-    animation: banner-slide 120s linear infinite;
-    background-image: asset-url("background_image.jpg");
-    background-size: cover;
-    filter: sepia(100%) brightness(90%) hue-rotate(170deg);
+  .banner-image {
+    background-position: center;
+    background-size: auto 100vh;
+    filter:  brightness(105%) contrast(104%) grayscale(10%) saturate(100%) sepia(50%);
     height: 100vh;
-    margin-top: -50px;
   }
 
-  .featured {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.6));
+  .banner-overlay {
+    backdrop-filter: blur(3px);
     display: flex;
     flex-direction: column;
     height: 100%;
-    justify-content: end;
     gap: 10px;
     left: 0;
-    padding: 25px 20px;
+    padding: 20px 20px 30px;
     position: absolute;
-    text-shadow: 0 0 10px black;
     top: 0;
     width: 100%;
     z-index: 10;
 
-    a {
-      align-items: center;
-      display: flex;
-      gap: 10px;
+    form {
+      animation: pulse 3s linear infinite;
+      margin: -77px auto 0;
+      transition: transform 0.3s ease;
+      width: max-content;
+      z-index: 10;
+
+      &:hover {
+        animation: press-button 0.15s linear;
+      }
+
+      .inner-circle {
+        background-color: $green;
+        border: 2px solid rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+      }
+
+      .outer-circle {
+        background-color: $lightgrey;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        padding: 5px;
+      }
     }
 
-    h2 {
-      font-size: 35px;
-      max-width: 70%;
+    .banner-frame {
+      background-position: center bottom -18px;
+      background-size: auto 100vh;
+      display: grid;
+      filter:  brightness(105%) contrast(104%) grayscale(10%) saturate(100%) sepia(50%);
+      flex-grow: 1;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+
+      #tl {
+        border-left: 1px solid $lightgrey;
+        border-top: 1px solid $lightgrey;
+      }
+
+      #tr {
+        border-right: 1px solid $lightgrey;
+        border-top: 1px solid $lightgrey;
+      }
+
+      #bl {
+        border-bottom: 1px solid $lightgrey;
+        border-left: 1px solid $lightgrey;
+      }
+
+      #br {
+        border-bottom: 1px solid $lightgrey;
+        border-right: 1px solid $lightgrey;
+      }
+    }
+
+    .featured {
+      align-self: flex-end;
+      font-size: 12px;
+      text-align: right;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      width: 100%;
+
+      a {
+        align-items: center;
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+      }
+
+      h2 {
+        color: $green;
+        font-size: 30px;
+        margin: 0;
+      }
+
+      i {
+        color: $green;
+      }
     }
   }
 }
