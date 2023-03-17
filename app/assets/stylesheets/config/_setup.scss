@@ -25,7 +25,7 @@ a {
 
 body {
   background-color: $background;
-  color: lightgray;
+  color: $lightgrey;
   display: flex;
   flex-direction: column;
   font-family: $body-font;
@@ -54,7 +54,7 @@ ul {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-thumb {

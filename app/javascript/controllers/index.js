@@ -7,8 +7,8 @@ import { application } from "./application"
 import AosController from "./aos_controller"
 application.register("aos", AosController)
 
-import GeolocationController from "./geolocation_controller"
-application.register("geolocation", GeolocationController)
+import FlashesController from "./flashes_controller"
+application.register("flashes", FlashesController)
 
 import HomeLogoController from "./home_logo_controller"
 application.register("home-logo", HomeLogoController)
@@ -16,8 +16,8 @@ application.register("home-logo", HomeLogoController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
-import ScrollToFeaturedController from "./scroll_to_featured_controller"
-application.register("scroll-to-featured", ScrollToFeaturedController)
+import SearchFormController from "./search_form_controller"
+application.register("search-form", SearchFormController)
 
 import SwitchAccountFormController from "./switch_account_form_controller"
 application.register("switch-account-form", SwitchAccountFormController)
