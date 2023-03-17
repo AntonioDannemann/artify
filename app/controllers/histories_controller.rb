@@ -32,20 +32,16 @@ class HistoriesController < ApplicationController
 
   def build_history_from_photo(image_url)
     landmark = fetch_landmark_from_google_cloud_vision(image_url)
-
     # We check whether a @landmark has been found and if not we return a new instance of History
     # The reason is that back in the #create action we authorize the value of @history
     # Pundit can't authorize an instance with a value of nil
     # So we pass an empty History, it passes the authorization but not the validation and the #save fails
     return History.new unless landmark
 
-    @landmark_lat = landmark.locations.first.lat_lng.latitude
-    @landmark_lng = landmark.locations.first.lat_lng.longitude
+    @landmark_coords = [landmark.locations.first.lat_lng.latitude, landmark.locations.first.lat_lng.longitude]
     @landmark_name = landmark.description
-    @history_lat = params[:history][:lat].to_f
-    @history_lng = params[:history][:lng].to_f
-
-    if Geocoder::Calculations.distance_between([@history_lat, @history_lng], [@landmark_lat, @landmark_lng]) < 5
+    @history_coords = [params[:history][:lat].to_f, params[:history][:lng].to_f]
+    if Geocoder::Calculations.distance_between(@history_coords, [@landmark_lat, @landmark_lng]) < 5
       new_history
     else
       redirect_to error_path
@@ -63,8 +59,6 @@ class HistoriesController < ApplicationController
   def new_history
     history = History.new(photo: @photo)
     history.user = @user
-    history.lat = @history_lat
-    history.lng = @history_lng
     # We first check in the database if there is a monument that corresponds to our current landmark
     # If not we create one
     history.monument = find_monument_by_landmark || create_monument
@@ -73,7 +67,7 @@ class HistoriesController < ApplicationController
   end
 
   def find_monument_by_landmark
-    Monument.find_by(name: @landmark_name, lat: @landmark_lat, lng: @landmark_lng)
+    Monument.find_by(name: @landmark_name, lat: @landmark_coords[0], lng: @landmark_coords[1])
   end
 
   def create_monument
@@ -95,8 +89,8 @@ class HistoriesController < ApplicationController
 
     { params: {
         name: @landmark_name,
-        lat: @landmark_lat,
-        lng: @landmark_lng,
+        lat: @landmark_coords[0],
+        lng: @landmark_coords[1],
         description: page.summary,
         website_url: search_page_raw_data_for_website_url(page)
       },
