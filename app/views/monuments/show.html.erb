@@ -1,16 +1,12 @@
-<div class= "background-img">
-
-  <div class= "content-container">
-    <hr>
-
-    <div class= "child-container">
+<div class="background-image" style="background-image: url('<%= cl_image_path @monument.photo.key %>');">
+  <div class= "glass-container">
+      <hr>
+    <div class= "text-container">
       <h4><%= @monument.name %></h4>
       <span><i class="fa-solid fa-location-dot"></i> <%= "#{@monument.city}, #{@monument.country_code}" %></span>
     </div>
-
-    <div class= "photo-thumbnail">
-      <%= cl_image_tag @monument.photo.key%>
+    <div>
+      <%= cl_image_tag @monument.photo.key, width: 140, height: 120, class:"photo-thumbnail" %>
     </div>
   </div>
-
 </div>
