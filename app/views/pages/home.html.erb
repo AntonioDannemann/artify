@@ -1,40 +1,23 @@
 <div id="pages-home">
   <section id="logo" data-controller="home-logo">
-      <%= image_tag "logo3white.png", data: { aos: "zoom-out-up", aos_delay: "300", aos_duration: "1000" } %>
+      <%= image_tag "logo.png", data: { aos: "zoom-out-up", aos_delay: "300", aos_duration: "1000" } %>
   </section>
 
   <% unless current_user || @ht %>
-    <%= render "tutorial" %>
+    <%= render "pages/components/tutorial" %>
   <% end %>
 
-  <%= render "banner" %>
+  <%= render "pages/components/banner" %>
 
   <div class="container">
     <h1>Discover<br>amazing landmarks</h1>
 
-    <nav>
-      <%= link_to monuments_path do %>
-        <i class="fa-solid fa-map-location-dot"></i>
-      <% end %>
+    <%= render "pages/components/navbar" %>
 
-      <%= link_to "/" do %>
-        <i class="fa-solid fa-user"></i>
-      <% end %>
-
-      <div></div>
-
-      <%= form_with model: @history do |f| %>
-        <%= f.label :photo do %>
-          <i class="fa-solid fa-camera"></i>
-        <% end %>
-        <%= f.file_field :photo, style: "display: none;", accept: "image/*", oninput: "form.submit();" %>
-      <% end %>
-    </nav>
-
-    <%= render "search_form" %>
+    <%= render "pages/components/search_form" %>
 
     <% unless current_user %>
-      <%= render "shared/form" %>
+      <%= render "pages/components/form" %>
     <% end %>
   </div>
 </div>

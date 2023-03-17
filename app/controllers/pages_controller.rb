@@ -24,7 +24,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.text { render partial: "search_list", locals: { monuments: @searched_monuments }, formats: [:html] }
+      format.text { render partial: "pages/components/search_list", locals: { monuments: @searched_monuments }, formats: [:html] }
     end
   end
 end

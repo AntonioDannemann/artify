@@ -1,44 +1,5 @@
-#navbar {
-  background-color: $secondary;
-  bottom: 0;
-  display: flex;
-  height: 55px;
-  justify-content: space-between;
-  max-height: 55px;
-  overflow: hidden;
-  padding: 10px 20px;
-  position: fixed;
-  transition: all 0.5s ease;
-  width: 100%;
-  z-index: 30;
-
-  a, div {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    justify-content: center;
-    transform: scale(0.8);
-    width: 40px;
-
-    span {
-      font-size: 0.6rem;
-    }
-  }
-
-  // form {
-  //   align-items: center;
-  //   display: flex;
-  //   height: 35px;
-
-  //   i {
-  //     color: $rose;
-  //     transform: scale(2.5);
-  //   }
-  // }
-}
-
 nav {
+  align-items: center;
   background-color: $background;
   display: grid;
   gap: 20px;
@@ -49,31 +10,14 @@ nav {
   top: 0;
   width: calc(100% + 40px);
 
-  // a {
-  //   align-items: center;
-  //   display: flex;
-  //   flex-direction: column;
-  //   gap: 2px;
-  // }
-
   i {
-    background-color: $secondary;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    color: #222425;
+    color: $green;
     font-size: 25px;
-    height: 50px;
     padding: 10px;
-    text-align: center;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    width: 50px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 
     &:hover {
       animation: press-button 0.15s linear;
     }
   }
-
-  // span {
-  //   font-size: 0.7rem;
-  // }
 }

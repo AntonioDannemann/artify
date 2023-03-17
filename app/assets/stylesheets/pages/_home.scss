@@ -1,4 +1,9 @@
 #pages-home {
+  body:has(.tutorial), &:has(#logo) {
+    height: 100vh;
+    overflow: hidden;
+  }
+
   h1 {
     font-size: 25px;
     font-weight: 600;
@@ -15,7 +20,7 @@
       font-size: 16px;
 
       &.active {
-        border-bottom: 2px solid $secondary;
+        border-bottom: 2px solid $green;
         color: #d3d3d3;
       }
     }
@@ -25,24 +30,10 @@
     }
   }
 
-  .map-container{
-    background-image: url(placeholder_image_map.png);
-    background-size: cover;
-    background-position: center;
-    height: 500px;
-    width: 100%;
-  }
-
-  #featured {
-    border-bottom: 1px solid $secondary;
-    margin: 0 20px;
-    padding: 20px 0;
-  }
-
   #logo {
     align-items: center;
     background-color: $background;
-    background-image: asset-url("black_lozenge.webp");
+    background-image: asset-url("bg_pattern.webp");
     display: flex;
     height: 100vh;
     justify-content: center;
@@ -56,13 +47,6 @@
 
     img {
       width: 250px;
-    }
-  }
-
-  #register {
-    margin: 100px 0;
-    a {
-      color: $rose;
     }
   }
 }

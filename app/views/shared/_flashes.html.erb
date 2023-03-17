@@ -1,14 +1,17 @@
-<% if notice %>
-  <div data-controller="flashes" class="transition hidden">
-    <div role="alert">
-      <%= notice %>
+<section id="flashes">
+  <% if notice %>
+    <div data-controller="flashes" class="transition hidden">
+      <div role="alert">
+        <%= notice %>
+      </div>
     </div>
-  </div>
-<% end %>
-<% if alert %>
-  <div data-controller="flashes" class="transition hidden">
-    <div role="alert">
-      <%= alert %>
+  <% end %>
+
+  <% if alert %>
+    <div data-controller="flashes" class="transition hidden">
+      <div role="alert">
+        <%= alert %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</section>

@@ -5,34 +5,6 @@ $small: 576px;
 // Text format
 $text-padding: 0.5rem 1rem;
 
-@keyframes press-button {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(0.95);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.1);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -58,11 +30,6 @@ body {
   flex-direction: column;
   font-family: $body-font;
   min-height: 100vh;
-
-  &:has(.tutorial), &:has(#logo) {
-    height: 100vh;
-    overflow: hidden;
-  }
 }
 
 button, input, select, textarea {
@@ -87,7 +54,7 @@ ul {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
