@@ -22,6 +22,12 @@ export default class extends Controller {
     navigator.geolocation.watchPosition(this.#flyMapToUser)
   }
 
+  #addMarkersToMap() {
+    this.markersValue.forEach(marker => {
+      new mapboxgl.Marker().setLngLat([marker.lng, marker.lat]).addTo(this.map)
+    })
+  }
+
   #flyMapToUser = location => {
     const latlng = [location.coords.longitude, location.coords.latitude]
 
@@ -32,12 +38,6 @@ export default class extends Controller {
       center: latlng,
       essential: true,
       zoom: 13
-    })
-  }
-
-  #addMarkersToMap() {
-    this.markersValue.forEach(marker => {
-      new mapboxgl.Marker().setLngLat([marker.lng, marker.lat]).addTo(this.map)
     })
   }
 }
