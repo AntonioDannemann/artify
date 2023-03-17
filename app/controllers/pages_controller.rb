@@ -7,21 +7,7 @@ class PagesController < ApplicationController
     @monuments = Monument.all
     @monument = @monuments.sample
 
-    @ht = true if params[:ht]
-
     search_monuments
-  end
-
-  def error() end
-
-  private
-
-  def search_monuments
-    @searched_monuments = []
-    if params[:search] && params[:search] != ""
-      @searched_monuments = @monuments.where("name ILIKE ?", "%#{params[:search]}%")
-    end
-
     respond_to do |format|
       format.html
       format.text do
@@ -32,5 +18,17 @@ class PagesController < ApplicationController
                })
       end
     end
+  end
+
+  def error() end
+
+  private
+
+  def search_monuments
+    @searched_monuments = []
+    return unless params[:search] && params[:search] != ""
+
+    sql_query = "name ILIKE :query OR city ILIKE :query OR country ILIKE :query"
+    @searched_monuments = @monuments.where(sql_query, query: "%#{params[:search]}%")
   end
 end
