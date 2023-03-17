@@ -1,20 +1,13 @@
 <div class="devise-form">
   <div class="title">
-    <h1>SIGN UP!</h1>
+    <h2>SIGN UP!</h2>
     <h3>and get access to exclusive features</h3>
   </div>
 
   <%= form_with model: resource, scope: resource_name, url: registration_path(resource_name), data: { turbo: false } do |f|  %>
-    <div class="photo-container" data-controller="upload-photo">
-      <%= image_tag "pink_avatar.svg", class: "avatar hidden" %>
-      <div class="photo-container" data-upload-photo-target="files show" >
-      </div>
-      <div class="photo-field">
-        <%= f.label :photo, class: "btn-camera" do %>
-        <i class="fa-solid fa-camera-retro"></i>
-        <% end %>
-        <%= f.file_field :photo, accept: "image/*", data: { action: "change->upload-photo#addFile" } %>
-      </div>
+    <div class="photo-field">
+      <%= f.label :photo, class: "btn-main" %>
+      <%= f.file_field :photo %>
     </div>
 
     <div class="form-field">
@@ -62,6 +55,6 @@
       <%= f.password_field :password_confirmation %>
     </div>
 
-    <%= f.submit "Confirm", class: "btn-pink" %>
+    <%= f.submit "Confirm", class: "btn-main" %>
   <% end %>
 </div>

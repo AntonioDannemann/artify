@@ -1,0 +1,17 @@
+#flashes {
+  .hidden {
+    transform: translateY(-100%);
+  }
+
+  .transition {
+    background-color: $green;
+    color: $background;
+    margin: 0px;
+    padding: 24px;
+    transition: transform 1s;
+    z-index: 30;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+}

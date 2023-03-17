@@ -12,23 +12,32 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/navigation-night-v1"
+      style: "mapbox://styles/mapbox/navigation-night-v1",
+      zoom: -20
     })
+
+    this.userMarker = new mapboxgl.Marker()
+
     this.#addMarkersToMap()
-    this.#fitMapToMarkers()
+    navigator.geolocation.watchPosition(this.#flyMapToUser)
   }
 
   #addMarkersToMap() {
     this.markersValue.forEach(marker => {
-      new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
-        .addTo(this.map)
+      new mapboxgl.Marker().setLngLat([marker.lng, marker.lat]).addTo(this.map)
     })
   }
 
-  #fitMapToMarkers() {
-    const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0, color: "#e7b5aa" })
+  #flyMapToUser = location => {
+    const latlng = [location.coords.longitude, location.coords.latitude]
+
+    this.userMarker.remove()
+    this.userMarker.setLngLat(latlng).addTo(this.map)
+
+    this.map.flyTo({
+      center: latlng,
+      essential: true,
+      zoom: 13
+    })
   }
 }
