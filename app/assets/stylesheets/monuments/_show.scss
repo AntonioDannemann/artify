@@ -8,37 +8,50 @@
 
 
 .glass-container{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 90%;
-  height: 200px;
-  margin: 0px auto;
-  background-color: rgba(0,0,0,0.5);
-  backdrop-filter: blur(2px);
-  border-radius: 15px;
-  position: fixed;
-  bottom: 80px;
-  right: 0;
-  left: 0;
+  hr {
+    width: 80px;
+    height: 5px;
+    border: none;
+    background-color: $green;
+    border-radius: 2px;
+    position: absolute;
+    bottom: 155px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    }
 
-  hr{
-  width: 80px;
-  border: 1px solid white;
-}
+  .card-info{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 15px;
+    width: 90%;
+    height: 180px;
+    margin: 0px auto;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(2px);
+    border-radius: 15px;
+    position: fixed;
+    bottom: 10px;
+    right: 0;
+    left: 0;
 
   .text-container{
-    padding-left: 15px;
+
     h4{
       font-size: 16px;
+      color: $green;
     }
 
     span{
       font-size: 14px;
+      color: $green;
     }
   }
 
   .photo-thumbnail{
     border-radius: 10px
+    }
   }
 }
