@@ -10,9 +10,6 @@ application.register("aos", AosController)
 import FlashesController from "./flashes_controller"
 application.register("flashes", FlashesController)
 
-import GeolocationController from "./geolocation_controller"
-application.register("geolocation", GeolocationController)
-
 import HomeLogoController from "./home_logo_controller"
 application.register("home-logo", HomeLogoController)
 
