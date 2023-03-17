@@ -8,6 +8,7 @@ class PagesController < ApplicationController
     @monument = @monuments.sample
 
     @ht = true if params[:ht]
+    @show_footer = true
 
     search_monuments
   end
