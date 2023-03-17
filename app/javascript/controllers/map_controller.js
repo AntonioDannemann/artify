@@ -18,7 +18,7 @@ export default class extends Controller {
 
     this.userMarker = new mapboxgl.Marker()
 
-    this.#addMarkersToMap
+    this.#addMarkersToMap()
     navigator.geolocation.watchPosition(this.#flyMapToUser)
   }
 
