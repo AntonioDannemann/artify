@@ -1,16 +1,16 @@
 <section id="banner">
-  <div class="banner-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.2)), url(<%= cl_image_path @monument.photo.key %>);"></div>
+  <div class="banner-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.2)), url(<%= cl_image_path @featured_monument.photo.key %>);"></div>
 
   <div class="banner-overlay">
     <div class="featured">
       <span>Landmark of the day</span>
-      <h2><%= @monument.name %></h2>
-      <%= link_to monument_path(@monument) do %>
+      <h2><%= @featured_monument.name %></h2>
+      <%= link_to monument_path(@featured_monument) do %>
         Learn more <i class="fa-solid  fa-arrow-right"></i>
       <% end %>
     </div>
 
-    <div class="banner-frame" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.2)), url(<%= cl_image_path @monument.photo.key %>);">
+    <div class="banner-frame" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.2)), url(<%= cl_image_path @featured_monument.photo.key %>);">
       <div id="tl"></div>
       <div></div>
       <div id="tr"></div>
