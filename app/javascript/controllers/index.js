@@ -7,6 +7,9 @@ import { application } from "./application"
 import AosController from "./aos_controller"
 application.register("aos", AosController)
 
+import FlashesController from "./flashes_controller"
+application.register("flashes", FlashesController)
+
 import GeolocationController from "./geolocation_controller"
 application.register("geolocation", GeolocationController)
 
