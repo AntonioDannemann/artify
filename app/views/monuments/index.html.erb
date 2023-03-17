@@ -7,17 +7,15 @@
   <div class="monument-cards">
     <% @monuments.each do |m| %>
       <div class="monument-card">
-        <div class="card-img" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<%= cl_image_path m.photo.key %>')"></div>
-        <div class="card-information">
-          <div>
+        <div class="card-img" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<%= cl_image_path m.photo.key %>')">
+        </div>
+          <div class="monument-index-overlay">
             <h1><%= m.name %></h1>
-            <div class="city-distance">
-              <p><i class="fa-solid fa-mountain-city"></i>  <%= m.city %></p>
-              <p><%= Geocoder::Calculations.distance_between([48.858461, 2.294351], [m.lat, m.lng]).round %> km</p>
+            <div style="display: flex;">
+            <i class="fa-solid fa-location-dot pin-icon"></i>
+            <p class="city-distance"><%= Geocoder::Calculations.distance_between([48.858461, 2.294351], [m.lat, m.lng]).round %> km</p>
             </div>
           </div>
-          <p class="card-description"><%= m.description.split(". ")[1] %></p>
-        </div>
       </div>
     <% end %>
   </div>
