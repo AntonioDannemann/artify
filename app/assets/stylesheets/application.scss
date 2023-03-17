@@ -1,6 +1,7 @@
 // Graphical variables
-@import "config/fonts";
+@import "config/animations.scss";
 @import "config/colors";
+@import "config/fonts";
 @import "config/bootstrap_variables";
 
 // External libraries
@@ -10,5 +11,7 @@
 @import "font-awesome";
 
 // Your CSS partials
+@import "monuments/index";
+@import "monuments/show";
 @import "pages/index";
 @import "components/index";
