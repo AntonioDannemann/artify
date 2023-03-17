@@ -8,6 +8,7 @@
   .card-tutorial {
     align-items: center;
     background-color: $background;
+    background-image: asset-url("bg_pattern.webp");
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -42,12 +43,12 @@
       width: 100%;
 
       .next {
-        color: $rose;
+        color: $green;
         font-size: 1.5rem;
       }
 
       .skip {
-        color: rgba(211, 211, 211, 0.5);
+        color: $lightgrey50;
       }
     }
   }

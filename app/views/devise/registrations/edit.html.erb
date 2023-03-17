@@ -1,82 +1,85 @@
-<div class="container devise">
-  <div class="devise-form">
-    <div class="title">
-      <h1>EDIT PROFILE</h1>
-      <h3>Time to make some changes</h3>
+<div class="container">
+  <div class="devise">
+    <div class="devise-form">
+      <div class="title">
+        <h2>EDIT PROFILE</h2>
+        <h3>Time to make some changes</h3>
+      </div>
+
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, class: "avatar", style: "height: 160px; width: 160px;" %>
+      <% else %>
+        <%= image_tag "avatar.svg", class: "avatar" %>
+      <% end %>
+
+      <%= form_with model: resource, scope: resource_name, url: registration_path(resource_name), data: { turbo: false } do |f| %>
+        <div class="photo-field">
+          <%= f.label :photo, class: "btn-main" do %>
+            <i class="fa-solid fa-pencil"></i> Photo
+          <% end %>
+          <%= f.file_field :photo %>
+        </div>
+
+        <div class="form-field">
+          <div>
+            <%= f.label :first_name %>
+            <span><%= resource.errors.full_messages.find { |m| m.match?("First") } %></span>
+          </div>
+          <%= f.text_field :first_name %>
+        </div>
+
+        <div class="form-field">
+          <div>
+            <%= f.label :last_name %>
+            <span><%= resource.errors.full_messages.find { |m| m.match?("Last") } %></span>
+          </div>
+          <%= f.text_field :last_name %>
+        </div>
+
+        <div class="form-field">
+          <div>
+            <%= f.label :email %>
+            <span><%= resource.errors.full_messages.find { |m| m.match?("Email") } %></span>
+          </div>
+          <%= f.email_field :email, autocomplete: "email" %>
+        </div>
+
+        <div class="form-field">
+          <div>
+            <%= f.label :password, "NEW PASSWORD" %>
+            <span><%= resource.errors.full_messages.find { |m| m.match?("Password") && !m.match?("confirmation") } %></span>
+          </div>
+          <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+
+        <div class="form-field">
+          <div>
+            <%= f.label :password_confirmation %>
+            <span><%= resource.errors.full_messages.find { |m| m.match?("Password confirmation") } %></span>
+          </div>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+
+        <div class="form-field">
+          <div>
+            <%= f.label :current_password %>
+            <span><%= resource.errors.full_messages.find { |m| m.match?("Current") } %></span>
+          </div>
+          <%= f.password_field :current_password, autocomplete: "current-password" %>
+        </div>
+
+        <%= f.submit "UPDATE", class: "btn-main" %>
+      <% end %>
     </div>
 
-    <% if current_user.photo.attached? %>
-      <%= cl_image_tag current_user.photo.key, class: "avatar", style: "height: 160px; width: 160px;" %>
-    <% else %>
-      <%= image_tag "pink_avatar.svg", class: "avatar" %>
-    <% end %>
-    <%= form_with model: resource, scope: resource_name, url: registration_path(resource_name), data: { turbo: false } do |f| %>
-      <div class="photo-field">
-        <%= f.label :photo, class: "btn-pink" do %>
-          <i class="fa-solid fa-pencil"></i> Photo
-        <% end %>
-        <%= f.file_field :photo %>
-      </div>
+    <div class="devise-cancel-account">
+      NOT HAPPY ?
+      <%= link_to "Cancel my account", registration_path(resource_name), data: { turbo_confirm: "Are you sure?", turbo_method: :delete } %>
+    </div>
 
-      <div class="form-field">
-        <div>
-          <%= f.label :first_name %>
-          <span><%= resource.errors.full_messages.find { |m| m.match?("First") } %></span>
-        </div>
-        <%= f.text_field :first_name %>
-      </div>
-
-      <div class="form-field">
-        <div>
-          <%= f.label :last_name %>
-          <span><%= resource.errors.full_messages.find { |m| m.match?("Last") } %></span>
-        </div>
-        <%= f.text_field :last_name %>
-      </div>
-
-      <div class="form-field">
-        <div>
-          <%= f.label :email %>
-          <span><%= resource.errors.full_messages.find { |m| m.match?("Email") } %></span>
-        </div>
-        <%= f.email_field :email, autocomplete: "email" %>
-      </div>
-
-      <div class="form-field">
-        <div>
-          <%= f.label :password, "NEW PASSWORD" %>
-          <span><%= resource.errors.full_messages.find { |m| m.match?("Password") && !m.match?("confirmation") } %></span>
-        </div>
-        <%= f.password_field :password, autocomplete: "new-password" %>
-      </div>
-
-      <div class="form-field">
-        <div>
-          <%= f.label :password_confirmation %>
-          <span><%= resource.errors.full_messages.find { |m| m.match?("Password confirmation") } %></span>
-        </div>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-      </div>
-
-      <div class="form-field">
-        <div>
-          <%= f.label :current_password %>
-          <span><%= resource.errors.full_messages.find { |m| m.match?("Current") } %></span>
-        </div>
-        <%= f.password_field :current_password, autocomplete: "current-password" %>
-      </div>
-
-      <%= f.submit "UPDATE", class: "btn-pink" %>
-    <% end %>
-  </div>
-
-  <div class="devise-cancel-account">
-    NOT HAPPY ?
-    <%= link_to "Cancel my account", registration_path(resource_name), data: { turbo_confirm: "Are you sure?", turbo_method: :delete } %>
-  </div>
-
-  <div class="devise-back">
-    <i class="fa-solid fa-arrow-left"></i>
-    <%= link_to "Back", root_path %>
+    <div class="devise-back">
+      <i class="fa-solid fa-arrow-left"></i>
+      <%= link_to "Back", root_path %>
+    </div>
   </div>
 </div>

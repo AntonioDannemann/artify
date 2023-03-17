@@ -1,39 +1,23 @@
-#navbar {
-  background-color: $secondary;
-  bottom: 0;
-  display: flex;
-  height: 55px;
-  justify-content: space-between;
-  max-height: 55px;
-  overflow: hidden;
+nav {
+  align-items: center;
+  background-color: $background;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-left: -20px;
   padding: 10px 20px;
-  position: fixed;
-  transition: all 0.5s ease;
-  width: 100%;
-  z-index: 30;
+  position: sticky;
+  top: 0;
+  width: calc(100% + 40px);
 
-  a, div {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    justify-content: center;
-    transform: scale(0.8);
-    width: 40px;
+  i {
+    color: $green;
+    font-size: 25px;
+    padding: 10px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 
-    span {
-      font-size: 0.6rem;
-    }
-  }
-
-  form {
-    align-items: center;
-    display: flex;
-    height: 35px;
-
-    i {
-      color: $rose;
-      transform: scale(2.5);
+    &:hover {
+      animation: press-button 0.15s linear;
     }
   }
 }

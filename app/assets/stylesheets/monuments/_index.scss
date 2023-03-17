@@ -1,0 +1,36 @@
+.monuments-map {
+  height: 400px;
+  width: 100%;
+}
+
+path {
+  fill: $green;
+}
+
+.monument-cards {
+  height: 40%;
+  border-radius: 20px;
+  display: flex;
+  flex-grow: 1;
+  gap: 10px;
+  padding: 0 10px;
+  overflow: hidden;
+  overflow-x: scroll;
+  width: 100%;
+
+  &::-webkit-scrollbar {
+    height: 0px;
+  }
+}
+
+.index-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $background;
+
+  height: 100%;
+  width: 100%;
+}
