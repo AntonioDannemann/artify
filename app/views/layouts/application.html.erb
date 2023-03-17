@@ -13,8 +13,10 @@
   </head>
 
   <body data-controller="aos window-events">
-    <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
-    <%= yield %>
+
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
