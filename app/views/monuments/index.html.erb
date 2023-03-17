@@ -3,6 +3,9 @@
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          <%= link_to root_path, class: "home-btn" do %>
+          <i class="fa-solid fa-arrow-left"></i>
+        <% end %>
   </div>
   <div class="monument-cards">
     <% @monuments.each do |m| %>
