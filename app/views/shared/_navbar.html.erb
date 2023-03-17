@@ -1,32 +1,21 @@
-<div id="navbar" data-window-events-target="navbar">
-  <%= link_to root_path(ht: "true") do %>
-    <i class="fa-solid fa-house"></i>
-    <span>Home</span>
+<nav>
+  <%= link_to monuments_path do %>
+    <i class="fa-solid fa-map-location-dot"></i>
+  <% end %>
+  <%= link_to edit_user_registration_path do %>
+    <i class="fa-solid fa-user"></i>
   <% end %>
 
-  <div>
-    <i class="fa-solid fa-map-location-dot"></i>
-    <span>Map</span>
-  </div>
+  <div></div>
 
   <%= form_with model: @history do |f| %>
     <%= f.label :photo do %>
       <i class="fa-solid fa-camera"></i>
     <% end %>
-    <%= f.file_field :photo, style: "display: none;", accept: "image/*", onchange: "form.submit();" %>
-    <div data-controller="geolocation" style="display: none;">
+    <%= f.file_field :photo, style: "display: none;", accept: "image/*", oninput: "form.submit();" %>
+        <div data-controller="geolocation" style="display: none;">
       <%= f.number_field :lat, step: :any, id: "latitude"%>
       <%= f.number_field :lng, step: :any, id: "longitude"%>
     </div>
   <% end %>
-
-  <div>
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span>Search</span>
-  </div>
-
-  <div>
-    <i class="fa-solid fa-user"></i>
-    <span>Account</span>
-  </div>
-</div>
+</nav>
