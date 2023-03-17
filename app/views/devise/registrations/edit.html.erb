@@ -10,7 +10,6 @@
     <% else %>
       <%= image_tag "pink_avatar.svg", class: "avatar" %>
     <% end %>
-
     <%= form_with model: resource, scope: resource_name, url: registration_path(resource_name), data: { turbo: false } do |f| %>
       <div class="photo-field">
         <%= f.label :photo, class: "btn-pink" do %>
