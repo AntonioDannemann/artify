@@ -6,7 +6,7 @@
 .monument-cards {
   height: 248px;
   width: 100%;
-  margin-left: 20px;
+  padding-left: 10px;
   border-radius: 20px;
   display: flex;
   flex-grow: 1;
@@ -14,7 +14,7 @@
   overflow: hidden;
   overflow-x: scroll;
   position: sticky;
-  bottom: 25px;
+  bottom: 10px;
 
   &::-webkit-scrollbar {
     height: 0px;
@@ -35,13 +35,4 @@
 
 .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
   display: none !important;
-}
-
-.marker {
-  color: red;
-  background-size: cover;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
 }

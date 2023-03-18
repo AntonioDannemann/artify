@@ -15,7 +15,11 @@
           <h1><%= m.name %></h1>
           <div style="display: flex;">
           <i class="fa-solid fa-location-dot pin-icon"></i>
-          <p class="city-distance"><%= Geocoder::Calculations.distance_between([48.858461, 2.294351], [m.lat, m.lng]).round %> km</p>
+          <% if Geocoder::Calculations.distance_between([48.858461, 2.294351], [m.lat, m.lng]).round(1).modulo(1).zero? %>
+            <p class="city-distance"><%= Geocoder::Calculations.distance_between([48.858461, 2.294351], [m.lat, m.lng]).round %> km</p>
+          <% else %>
+            <p class="city-distance"><%= Geocoder::Calculations.distance_between([48.858461, 2.294351], [m.lat, m.lng]).round(1) %> km</p>
+          <% end %>
           </div>
         </div>
       </div>
