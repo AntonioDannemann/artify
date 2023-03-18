@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     @history = History.new
     @monuments = Monument.all
     @featured_monument = featured_monument
-    @nearby_monuments = @monuments.select { |mon| mon.distance_between < 5 }.sort_by(&distance_between)
+    @nearby_monuments = @monuments.select { |mon| mon.distance_between < 5 }.sort_by(&:distance_between)
 
     @ht = true if params[:ht]
     @show_footer = true
