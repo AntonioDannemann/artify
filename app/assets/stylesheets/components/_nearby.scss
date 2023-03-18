@@ -1,0 +1,26 @@
+#nearby {
+  border-bottom: 1px solid $lightgrey50;
+  padding: 20px 0;
+
+  .subheader {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    a {
+      align-items: center;
+      display: flex;
+      font-size: 0.7rem;
+      gap: 10px;
+    }
+
+    h2 {
+      margin: 0;
+    }
+
+    i {
+      color: $green;
+    }
+  }
+}
