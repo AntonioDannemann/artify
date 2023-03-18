@@ -23,19 +23,16 @@ class PagesController < ApplicationController
 
   def search_form_results
     @searched_monuments = []
-    if params[:search] && params[:search] != ""
-      @searched_monuments = @monuments.where("name ILIKE ?", "%#{params[:search]}%")
-    end
+    return unless params[:search] && params[:search] != ""
+
+    sql_query = "name ILIKE :query OR city ILIKE :query OR country ILIKE :query"
+    @searched_monuments = @monuments.where(sql_query, query: "%#{params[:search]}%")
 
     respond_to do |format|
       format.html
-      format.text do
-        render({
-                 partial: "pages/components/search_list",
-                 locals: { monuments: @searched_monuments },
-                 formats: [:html]
-               })
-      end
+
+      partial = "pages/components/search_list"
+      format.text { render partial:, locals: { monuments: @searched_monuments }, formats: [:html] }
     end
   end
 end

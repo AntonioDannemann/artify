@@ -79,6 +79,14 @@
       }
     }
 
+    .down {
+      align-self: center;
+      color: $lightgrey50;
+      margin-bottom: -30px;
+      width: max-content;
+      transform: scaleX(1.2);
+    }
+
     .featured {
       align-self: flex-end;
       font-size: 12px;
