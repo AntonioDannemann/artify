@@ -8,6 +8,13 @@ class Monument < ApplicationRecord
   validates :name, :description, :lat, :lng, :city, :country, :country_code, presence: true
   validates :lat, :lng, numericality: { only_float: true }
 
+  def distance_between
+    distance = Geocoder::Calculations.distance_between([48.858461, 2.294351], [lat, lng])
+    distance = distance > 5 ? distance.round : distance.round(1)
+
+    distance == distance.to_i ? distance.to_i : distance
+  end
+
   def self.without_photo
     Monument.all.reject { |monument| monument.photo.attached? }
   end

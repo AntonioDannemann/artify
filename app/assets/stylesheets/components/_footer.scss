@@ -1,0 +1,50 @@
+footer {
+  align-items: center;
+  background-image: linear-gradient($background, transparent 10%), asset-url("bg_pattern.webp");
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100svh;
+  justify-content: space-around;
+  padding: 150px 40px;
+  width: 100%;
+
+  form {
+    transform: scale(1.1);
+  }
+
+  h4 {
+    text-align: center;
+  }
+
+  p {
+    color: $lightgrey50;
+    text-align: center;
+  }
+
+  .icons {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+
+    img.icon {
+      border-radius: 3px;
+      width: 25px;
+    }
+  }
+
+  .logo {
+    width: 250px;
+  }
+
+  .navigation {
+    align-items: center;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
