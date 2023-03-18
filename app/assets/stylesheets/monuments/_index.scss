@@ -3,10 +3,6 @@
   width: 100%;
 }
 
-path {
-  color: $green;
-}
-
 .monument-cards {
   height: 248px;
   width: 100%;
@@ -39,4 +35,13 @@ path {
 
 .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
   display: none !important;
+}
+
+.marker {
+  color: red;
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
 }

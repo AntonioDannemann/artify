@@ -3,22 +3,21 @@
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-          <%= link_to root_path, class: "home-btn" do %>
-          <i class="fa-solid fa-arrow-left"></i>
-        <% end %>
+  <%= link_to root_path, class: "home-btn" do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
   </div>
   <div class="monument-cards">
     <% @monuments.each do |m| %>
       <div class="monument-card">
-        <div class="card-img" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<%= cl_image_path m.photo.key %>')">
-        </div>
-          <div class="monument-index-overlay">
-            <h1><%= m.name %></h1>
-            <div style="display: flex;">
-            <i class="fa-solid fa-location-dot pin-icon"></i>
-            <p class="city-distance"><%= Geocoder::Calculations.distance_between([48.858461, 2.294351], [m.lat, m.lng]).round %> km</p>
-            </div>
+        <div class="card-img" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<%= cl_image_path m.photo.key %>')"></div>
+        <div class="monument-index-overlay">
+          <h1><%= m.name %></h1>
+          <div style="display: flex;">
+          <i class="fa-solid fa-location-dot pin-icon"></i>
+          <p class="city-distance"><%= Geocoder::Calculations.distance_between([48.858461, 2.294351], [m.lat, m.lng]).round %> km</p>
           </div>
+        </div>
       </div>
     <% end %>
   </div>
