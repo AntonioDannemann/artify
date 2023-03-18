@@ -8,51 +8,70 @@
 
 
 .glass-container{
+  padding-top: 15px;
+  width: 90%;
+  height: 280px;
+  margin: 0px auto;
+  background-color: rgba(20, 20, 20, 0.039);
+  box-shadow: 0 0 10px 1px rgba(48, 44, 44, 0.83);
+  backdrop-filter: blur(5px);
+  border-radius: 25px;
+  position: fixed;
+  bottom: 10px;
+  right: 0;
+  left: 0;
+
   hr {
     width: 80px;
     height: 5px;
+    margin: 10px auto 0;
     border: none;
     background-color: $green;
     opacity: 1;
     border-radius: 2px;
-    position: absolute;
-    bottom: 155px;
-    left: 50%;
-    transform: translateX(-50%);
+    // position: fixed;
+    // bottom: 220px;
+    // left: 50%;
+    // transform: translateX(-50%);
     z-index: 10;
     }
 
-  .card-info{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding-top: 15px;
-    width: 90%;
-    height: 180px;
-    margin: 0px auto;
-    background-color: rgba(0,0,0,0.5);
-    backdrop-filter: blur(2px);
-    border-radius: 15px;
-    position: fixed;
-    bottom: 10px;
-    right: 0;
-    left: 0;
 
   .text-container{
 
     h4{
-      font-size: 16px;
+      margin-top: 30px;
+      text-align: center;
+      font-size: 38px;
+      font-weight: bolder;
       color: $green;
     }
 
     span{
+      margin-left: 30px;
       font-size: 14px;
       color: $green;
     }
   }
 
-  .photo-thumbnail{
-    border-radius: 10px
+  .description{
+    height: 85px;
+    overflow: hidden;
+
+    p{
+      padding: 18px;
+      text-align: left;
     }
   }
+
+  .see-more-button {
+    width: 120px;
+    height: 40px;
+    border-radius: 15px;
+    margin: 10px auto 0;
+    padding: 3px;
+    text-align: center;
+    border: 3px solid $green;
+  }
+
 }
