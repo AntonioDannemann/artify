@@ -16,16 +16,11 @@ export default class extends Controller {
       zoom: 3,
     })
 
-    this.map.flyTo({
-      center: [2.294351, 48.858461],
-      essential: true,
-      zoom: 12
-    })
-
     this.userMarker = new mapboxgl.Marker({ "color" : "#aa3232" })
 
     this.#addMarkersToMap()
-    // navigator.geolocation.watchPosition(this.#flyMapToUser)
+    this.#flyMapToUser()
+    navigator.geolocation.watchPosition(this.#updateUserPosition)
   }
 
   #addMarkersToMap() {
@@ -34,17 +29,18 @@ export default class extends Controller {
     })
   }
 
-//   #flyMapToUser = location => {
-//     const latlng = [location.coords.longitude, location.coords.latitude]
+  #flyMapToUser() {
+    this.map.flyTo({
+      center: [2.294351, 48.858461],
+      essential: true,
+      zoom: 12
+    })
+  }
 
-//     this.userMarker.remove()
-//     this.userMarker.setLngLat(latlng).addTo(this.map)
+  #updateUserPosition = location => {
+    const latlng = [location.coords.longitude, location.coords.latitude]
 
-//     this.map.flyTo({
-//       center: [2.294351, 48.858461],
-//       essential: true,
-//       zoom: 12
-//     })
-//   }
-
+    this.userMarker.remove()
+    this.userMarker.setLngLat(latlng).addTo(this.map)
+  }
 }
