@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @history = History.new
+    @monuments = Monument.all
     @featured_monument = featured_monument
 
     @ht = true if params[:ht]
@@ -16,10 +17,9 @@ class PagesController < ApplicationController
   private
 
   def featured_monument
-    monuments = Monument.all
     current_unix_day = Time.current.to_time.to_i.fdiv(86_400).floor
 
-    monuments[current_unix_day % monuments.length]
+    @monuments[current_unix_day % @monuments.length]
   end
 
   def search_form_results

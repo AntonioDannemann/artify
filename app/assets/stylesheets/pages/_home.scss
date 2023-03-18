@@ -1,9 +1,9 @@
-#pages-home {
-  body:has(.tutorial), &:has(#logo) {
-    height: 100vh;
-    overflow: hidden;
-  }
+body:has(.tutorial, #logo, #loading:not(.hidden)) {
+  height: 100vh;
+  overflow: hidden;
+}
 
+#pages-home {
   h1 {
     font-size: 25px;
     font-weight: 600;
