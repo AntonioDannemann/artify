@@ -1,0 +1,29 @@
+<footer>
+  <div>
+    <%= image_tag "logo.png", class: "logo" %>
+    <p>AI powered app<br/>for landmark's recognition</p>
+  </div>
+
+  <nav class="icons">
+    <i class="fa-brands fa-github icon"></i>
+    <i class="fa-brands fa-linkedin icon"></i>
+    <i class="fa-brands fa-twitter icon"></i>
+    <%= image_tag "le_wagon_logo.png", class: "icon" %>
+  </nav>
+
+  <div>
+    <h4>Navigation</h4>
+
+    <nav class="navigation">
+      <%= link_to "Homepage", root_path %>
+      <%= link_to "Map", monuments_path %>
+      <%= link_to "Account", edit_user_registration_path %>
+      <div></div>
+      <div></div>
+      <%= form_with model: @history do |f| %>
+        <%= f.label :photo, "Open camera" %>
+        <%= f.file_field :photo, style: "display: none;", accept: "image/*", oninput: "form.submit();", id: "banner_history_photo" %>
+      <% end %>
+    </nav>
+  </div>
+</footer>

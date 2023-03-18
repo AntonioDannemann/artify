@@ -7,17 +7,10 @@ class PagesController < ApplicationController
     @monuments = Monument.all
     @monument = @monuments.sample
 
+    @ht = true if params[:ht]
+    @show_footer = true
+
     search_monuments
-    respond_to do |format|
-      format.html
-      format.text do
-        render({
-                 partial: "pages/components/search_list",
-                 locals: { monuments: @searched_monuments },
-                 formats: [:html]
-               })
-      end
-    end
   end
 
   def error() end
@@ -30,5 +23,12 @@ class PagesController < ApplicationController
 
     sql_query = "name ILIKE :query OR city ILIKE :query OR country ILIKE :query"
     @searched_monuments = @monuments.where(sql_query, query: "%#{params[:search]}%")
+
+    respond_to do |format|
+      format.html
+
+      partial = "pages/components/search_list"
+      format.text { render partial:, locals: { monuments: @searched_monuments }, formats: [:html] }
+    end
   end
 end
