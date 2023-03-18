@@ -6,6 +6,7 @@ class PagesController < ApplicationController
     @featured_monument = featured_monument
 
     @ht = true if params[:ht]
+    @show_footer = true
 
     search_form_results
   end
