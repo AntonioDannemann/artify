@@ -4,8 +4,10 @@
 
   .banner-image {
     background-position: center;
+    background-size: auto 100vh;
     background-size: auto 100svh;
     filter:  brightness(105%) contrast(104%) grayscale(10%) saturate(100%) sepia(50%);
+    height: 100vh;
     height: 100svh;
   }
 
@@ -51,6 +53,7 @@
 
     .banner-frame {
       background-position: center bottom -18px;
+      background-size: auto 100vh;
       background-size: auto 100svh;
       display: grid;
       filter:  brightness(105%) contrast(104%) grayscale(10%) saturate(100%) sepia(50%);
