@@ -5,9 +5,9 @@
   </div>
 
   <%= form_with model: resource, scope: resource_name, url: registration_path(resource_name), data: { turbo: false } do |f|  %>
-    <div class="photo-field">
-      <%= f.label :photo, class: "btn-main" %>
-      <%= f.file_field :photo %>
+    <div class="photo-field" data-controller="upload-photo">
+      <%= f.label :photo, data: { upload_photo_target: "label" } %>
+      <%= f.file_field :photo, accept: "image/*", data: { action: "change->upload-photo#showPicture" } %>
     </div>
 
     <div class="form-field">

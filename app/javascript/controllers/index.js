@@ -31,5 +31,8 @@ application.register("toggle-hidden-password", ToggleHiddenPasswordController)
 import TutorialController from "./tutorial_controller"
 application.register("tutorial", TutorialController)
 
+import UploadPhotoController from "./upload_photo_controller"
+application.register("upload-photo", UploadPhotoController)
+
 import WindowEventsController from "./window_events_controller"
 application.register("window-events", WindowEventsController)
