@@ -22,7 +22,7 @@
       <div></div>
       <%= form_with model: @history do |f| %>
         <%= f.label :photo, "Open camera" %>
-        <%= f.file_field :photo, style: "display: none;", accept: "image/*", oninput: "form.submit();", id: "banner_history_photo" %>
+        <%= f.file_field :photo, style: "display: none;", accept: "image/*", oninput: "form.submit();", id: "footer_history_photo" %>
       <% end %>
     </nav>
   </div>
