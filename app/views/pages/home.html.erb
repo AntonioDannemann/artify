@@ -1,6 +1,13 @@
 <div id="pages-home">
   <section id="logo" data-controller="home-logo">
-      <%= image_tag "logo.png", data: { aos: "zoom-out-up", aos_delay: "300", aos_duration: "1000" } %>
+    <%= image_tag "logo.png", data: { aos: "zoom-out-up", aos_delay: "300", aos_duration: "1000" } %>
+  </section>
+
+  <section id="loading" class="hidden">
+    <div>
+      <%= image_tag "logo.png" %>
+      <div class="lds-ring" ><div></div><div></div><div></div><div></div></div>
+    </div>
   </section>
 
   <% unless current_user || @ht %>

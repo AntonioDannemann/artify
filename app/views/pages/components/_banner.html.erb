@@ -22,13 +22,13 @@
       <div id="br"></div>
     </div>
 
-    <%= form_with model: @history do |f| %>
+    <%= form_with model: @history, data: { controller: "camera-form" } do |f| %>
       <%= f.label :photo do %>
         <div class="outer-circle">
           <div class="inner-circle"></div>
         </div>
       <% end %>
-      <%= f.file_field :photo, style: "display: none;", accept: "image/*", oninput: "form.submit();", id: "banner_history_photo" %>
+      <%= f.file_field :photo, style: "display: none;", accept: "image/*", data: { action: "input->camera-form#submit" }, id: "banner_history_photo" %>
     <% end %>
 
     <div class="down">
