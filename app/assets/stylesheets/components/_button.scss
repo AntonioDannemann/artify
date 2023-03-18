@@ -13,3 +13,19 @@
     animation: press-button 0.15s linear;
   }
 }
+
+.home-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $green;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  position: fixed;
+  color: $lightgrey;
+  z-index: 10;
+  top: 10px;
+  left: 10px;
+  font-size: 25px;
+}

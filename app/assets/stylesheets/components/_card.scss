@@ -3,57 +3,46 @@
   align-items: center;
   flex-direction: column;
   flex-shrink: 0;
+  position: relative;
 
   max-width: 350px;
-  height: 350px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  height: 248px;
 
-  background-color: $background;
+  color: $green;
 
-  box-shadow: 5px 5px 17px 5px rgba(0,0,0,0.25);
+  text-shadow: 1px 1px 2px $background;
 
   .card-img {
-    width: 350px;
-    height: 300px;
+    width: 187px;
+    height: 250px;
     background-position: center;
     background-size: cover;
+    border-radius: 20px;
+    filter: brightness(105%) contrast(104%) grayscale(10%) saturate(100%) sepia(50%);
   }
 
-  .card-information {
-    width: 350px;
-    height: 175px;
-
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-
-    padding: 10px 10px;
-    color: rgb(162, 174, 197);
+  .monument-index-overlay {
+    width: 170px;
+    position: absolute;
+    bottom: -6px;
+    left: 8px;
 
     h1 {
-      font-size: 24px;
-      color: white;
+      font-size: 20px;
+      margin-bottom: 2px;
     }
 
     .city-distance {
       display: flex;
       justify-content: space-between;
+      max-height: 30px;
     }
-  }
 
-  .card-description {
-    display: -webkit-box;
-    font-size: 10px;
-
-    margin-bottom: 0;
-    padding-bottom: 5px;
-    height: 150px;
-    max-width: 100%;
-
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: pre-wrap;
+    .pin-icon {
+      margin-right: 3px;
+      padding-top: 1px;
+      font-size: 17px;
+    }
   }
 }
 
