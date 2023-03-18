@@ -13,3 +13,20 @@
     animation: press-button 0.15s linear;
   }
 }
+
+.btn-back {
+  align-items: center;
+  background-color: $green;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  position: fixed;
+  color: $lightgrey;
+  z-index: 10;
+  top: 10px;
+  left: 10px;
+  font-size: 25px;
+}

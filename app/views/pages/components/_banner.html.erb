@@ -1,16 +1,16 @@
 <section id="banner">
-  <div class="banner-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.2)), url(<%= cl_image_path @monument.photo.key %>);"></div>
+  <div class="banner-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.2)), url(<%= cl_image_path @featured_monument.photo.key %>);"></div>
 
   <div class="banner-overlay">
     <div class="featured">
       <span>Landmark of the day</span>
-      <h2><%= @monument.name %></h2>
-      <%= link_to monument_path(@monument) do %>
+      <h2><%= @featured_monument.name %></h2>
+      <%= link_to monument_path(@featured_monument) do %>
         Learn more <i class="fa-solid  fa-arrow-right"></i>
       <% end %>
     </div>
 
-    <div class="banner-frame" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.2)), url(<%= cl_image_path @monument.photo.key %>);">
+    <div class="banner-frame" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.2)), url(<%= cl_image_path @featured_monument.photo.key %>);">
       <div id="tl"></div>
       <div></div>
       <div id="tr"></div>
@@ -22,13 +22,17 @@
       <div id="br"></div>
     </div>
 
-    <%= form_with model: @history do |f| %>
+    <%= form_with model: @history, data: { controller: "camera-form" } do |f| %>
       <%= f.label :photo do %>
         <div class="outer-circle">
           <div class="inner-circle"></div>
         </div>
       <% end %>
-      <%= f.file_field :photo, style: "display: none;", accept: "image/*", oninput: "form.submit();", id: "banner_history_photo" %>
+      <%= f.file_field :photo, style: "display: none;", accept: "image/*", data: { action: "input->camera-form#submit" }, id: "banner_history_photo" %>
     <% end %>
+
+    <div class="down">
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
   </div>
 </section>

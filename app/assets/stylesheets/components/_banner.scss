@@ -5,8 +5,10 @@
   .banner-image {
     background-position: center;
     background-size: auto 100vh;
+    background-size: auto 100svh;
     filter:  brightness(105%) contrast(104%) grayscale(10%) saturate(100%) sepia(50%);
     height: 100vh;
+    height: 100svh;
   }
 
   .banner-overlay {
@@ -50,8 +52,9 @@
     }
 
     .banner-frame {
-      background-position: center bottom -18px;
+      background-position: center bottom -23px;
       background-size: auto 100vh;
+      background-size: auto 100svh;
       display: grid;
       filter:  brightness(105%) contrast(104%) grayscale(10%) saturate(100%) sepia(50%);
       flex-grow: 1;
@@ -77,6 +80,14 @@
         border-bottom: 1px solid $lightgrey;
         border-right: 1px solid $lightgrey;
       }
+    }
+
+    .down {
+      align-self: center;
+      color: $lightgrey50;
+      margin-bottom: -30px;
+      width: max-content;
+      transform: scaleX(1.2);
     }
 
     .featured {
