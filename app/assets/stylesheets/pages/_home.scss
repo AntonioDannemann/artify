@@ -13,7 +13,7 @@ body:has(.tutorial, #logo, #loading:not(.hidden)) {
 
   .devise {
     border-bottom: 1px solid $lightgrey50;
-    height: calc(100vh - 55px);
+    height: calc(100svh - 55px);
 
     h3 {
       border-bottom: 2px solid transparent;
@@ -36,7 +36,7 @@ body:has(.tutorial, #logo, #loading:not(.hidden)) {
     background-color: $background;
     background-image: asset-url("bg_pattern.webp");
     display: flex;
-    height: 100vh;
+    height: 100svh;
     justify-content: center;
     left: 0;
     overflow: hidden;
