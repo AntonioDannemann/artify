@@ -16,17 +16,21 @@
 
 .btn-back {
   align-items: center;
-  background-color: $green;
+  background-color: $darkgrey;
+  border-radius: 50%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   display: flex;
+  font-size: 17px;
+  height: 35px;
   justify-content: center;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
+  left: 15px;
   position: fixed;
-  color: $lightgrey;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  top: 15px;
+  width: 35px;
   z-index: 10;
-  top: 10px;
-  left: 10px;
-  font-size: 25px;
+
+  &:hover {
+    animation: press-button 0.15s linear;
+  }
 }

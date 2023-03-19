@@ -21,11 +21,10 @@ class HistoriesController < ApplicationController
 
     authorize @history
 
-    if @history.save
-      redirect_to history_path(@history)
-    else
-      redirect_to error_path
-    end
+    return redirect_to history_path(@history) if @history.save
+
+    @history = History.new
+    render "pages/error"
   end
 
   private
@@ -37,7 +36,10 @@ class HistoriesController < ApplicationController
     # The reason is that back in the #create action we authorize the value of @history
     # Pundit can't authorize an instance with a value of nil
     # So we pass an empty History, it passes the authorization but not the validation and the #save fails
-    return History.new unless landmark
+    unless landmark
+      @error = "fetch_landmark_from_google_cloud_vision"
+      return History.new
+    end
 
     @landmark_lat = landmark.locations.first.lat_lng.latitude
     @landmark_lng = landmark.locations.first.lat_lng.longitude
@@ -71,15 +73,16 @@ class HistoriesController < ApplicationController
 
   def create_monument
     data = fetch_data_from_wikipedia
-    return nil unless data
+    unless data
+      @error = "fetch_data_from_wikipedia"
+      return nil
+    end
 
     monument = Monument.new(data[:params])
     monument.attach_photo(data[:photo_url]) if data[:photo_url]
     monument.fetch_geocoder
 
     return monument if monument.save
-
-    nil
   end
 
   def fetch_data_from_wikipedia
