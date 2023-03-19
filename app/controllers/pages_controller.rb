@@ -18,9 +18,13 @@ class PagesController < ApplicationController
   private
 
   def featured_monument
-    current_unix_day = Time.current.to_time.to_i.fdiv(86_400).floor
+    id = Rails.cache.fetch("featured_monument", expires_in: 1.day) do
+      current_unix_day = Time.current.to_time.to_i.fdiv(86_400).floor
+      monument = @monuments.select { |mon| mon.photo.attached? }[current_unix_day % @monuments.length]
+      monument.id
+    end
 
-    @monuments[current_unix_day % @monuments.length]
+    Monument.find(id)
   end
 
   def search_form_results
