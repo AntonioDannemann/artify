@@ -20,7 +20,18 @@ class ApplicationController < ActionController::Base
   #   redirect_to(root_path)
   # end
 
+  def guest_user
+    User.find(session[:guest_user_id].nil? ? session[:guest_user_id] = create_guest_user.id : session[:guest_user_id])
+  end
+
   private
+
+  def create_guest_user
+    user = User.new(first_name: "guest", email: "#{Time.current.to_i}#{rand(999)}@guest.artify")
+    user.save(validate: false)
+
+    user
+  end
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
