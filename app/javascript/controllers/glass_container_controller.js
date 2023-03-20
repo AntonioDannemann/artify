@@ -16,7 +16,7 @@ export default class extends Controller {
       this.descriptionTarget.style.height = '480px';
       this.seeMoreButtonTarget.querySelector('p').textContent = 'See Less';
     } else {
-      this.glassContainerTarget.style.height = '280px';
+      this.glassContainerTarget.style.height = '350px';
       this.descriptionTarget.style.overflow = 'hidden';
       this.descriptionTarget.style.height = '86px';
       this.seeMoreButtonTarget.querySelector('p').textContent = 'See More';

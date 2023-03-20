@@ -1,6 +1,6 @@
 <div class="background-image" style="background-image: url('<%= cl_image_path @monument.photo.key %>');" data-controller="glass-container">
   <div class= "back-arrow">
-    <%= link_to monuments_path do %>
+    <%= link_to root_path do %>
       <i class="fa-solid fa-arrow-left"></i>
     <% end %>
   </div>
@@ -9,6 +9,7 @@
     <div class= "text-container">
       <h4><%= @monument.name %></h4>
       <span><i class="fa-solid fa-location-dot"></i> <%= "#{@monument.city}, #{@monument.country_code}" %></span>
+      <span><i class="fa-solid fa-landmark"></i>Landmark</span>
     </div>
     <p class="description" data-target="glass-container.description"><%= @monument.description%></p>
     <div class="see-more-button" data-target="glass-container.seeMoreButton">
