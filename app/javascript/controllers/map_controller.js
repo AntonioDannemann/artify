@@ -8,6 +8,7 @@ export default class extends Controller {
   }
 
   connect() {
+    console.log("connected");
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
@@ -24,8 +25,19 @@ export default class extends Controller {
   }
 
   #addMarkersToMap() {
+
+
     this.markersValue.forEach(marker => {
-      new mapboxgl.Marker({ "color": "#9ab495" }).setLngLat([marker.lng, marker.lat]).addTo(this.map)
+      var el = document.createElement('div');
+      el.className = 'marker';
+      el.style.backgroundImage = `url('${marker.photo}')`;
+      console.log(`"url('${marker.photo}')"`);
+      new mapboxgl.Marker(
+        el
+        )
+      .setLngLat([marker.lng, marker.lat])
+      .setPopup(new mapboxgl.Popup().setHTML("<h1>Hello World!</h1>"))
+      .addTo(this.map);
     })
   }
 

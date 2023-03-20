@@ -44,3 +44,12 @@
 .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
   display: none !important;
 }
+
+.marker {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  border: 2px solid $green;
+}

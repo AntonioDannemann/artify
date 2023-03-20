@@ -6,7 +6,7 @@ class MonumentsController < ApplicationController
     @monuments = policy_scope(Monument)
     @nearby_monuments = @monuments.select { |mon| mon.distance_between < 5 }.sort_by(&:distance_between)
 
-    @markers = @monuments.map { |monument| { lat: monument.lat, lng: monument.lng } }
+    @markers = @monuments.map { |monument| { lat: monument.lat, lng: monument.lng, photo: monument.photo.url } }
   end
 
   def show
