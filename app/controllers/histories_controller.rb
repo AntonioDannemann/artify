@@ -44,6 +44,7 @@ class HistoriesController < ApplicationController
     @landmark_lat = landmark.locations.first.lat_lng.latitude
     @landmark_lng = landmark.locations.first.lat_lng.longitude
     @landmark_name = landmark.description
+    @landmark_names = [@landmark_name, @landmark_name.downcase, @landmark_name.split.map(&:capitalize).join(" ")]
 
     new_history
   end
@@ -68,11 +69,13 @@ class HistoriesController < ApplicationController
   end
 
   def find_monument_by_landmark
-    Monument.find_by(name: @landmark_name, lat: @landmark_lat, lng: @landmark_lng)
+    Monument.find_by(name: @landmark_name.split.map(&:capitalize).join(" "))
   end
 
   def create_monument
-    data = fetch_data_from_wikipedia
+    data = nil
+    @landmark_names.each { |name| break if (data = fetch_data_from_wikipedia(name)) }
+
     unless data
       @error = "fetch_data_from_wikipedia"
       return nil
@@ -85,12 +88,12 @@ class HistoriesController < ApplicationController
     return monument if monument.save
   end
 
-  def fetch_data_from_wikipedia
-    page = Wikipedia.find(@landmark_name)
-    return nil unless page.coordinates
+  def fetch_data_from_wikipedia(name)
+    page = Wikipedia.find(name)
+    return nil unless page.extlinks
 
     { params: {
-        name: @landmark_name,
+        name: name.split.map(&:capitalize).join(" "),
         lat: @landmark_lat,
         lng: @landmark_lng,
         description: page.summary,
