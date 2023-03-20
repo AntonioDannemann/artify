@@ -2,31 +2,13 @@ require "google/cloud/vision/v1"
 require "mini_magick"
 require "open-uri"
 
-puts "Destroying all monuments"
-Monument.destroy_all
-
-puts "Destroying all users"
-User.destroy_all
-
-puts "Destroying all histories"
-History.destroy_all
-
-puts "Done destroying\n\n"
-
 puts "Creating users"
-
-User.create!(
-  first_name: "guest",
-  last_name: "Ramos",
-  email: "louisramosdev@gmail.com",
-  password: "password"
-)
 
 @user = User.create!(
   first_name: "Rutger",
   last_name: "Schoone",
   email: "rcschoone@gmail.com",
-  password: "password",
+  password: "password"
 )
 
 puts "Done creating users\n\n"

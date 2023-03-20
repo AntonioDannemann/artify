@@ -16,7 +16,7 @@ class HistoriesController < ApplicationController
 
   def create
     @photo = params[:history][:photo]
-    @user = current_user || User.find_by(first_name: "guest")
+    @user = current_user || guest_user
     @history = build_history_from_photo(@photo.path)
 
     authorize @history
