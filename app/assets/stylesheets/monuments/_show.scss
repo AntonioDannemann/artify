@@ -20,7 +20,7 @@
 .glass-container{
   padding-top: 15px;
   width: 90%;
-  height: 350px;
+  height: 40%;
   margin: 0px auto;
   background-color: rgba(20, 20, 20, 0.5);
   box-shadow: 0 0 10px 1px rgba(48, 44, 44, 0.83);
@@ -44,31 +44,33 @@
 
 
   .text-container{
+    color: $lightgrey50;
 
     h4{
       margin: 20px 15px 20px 15px;
       text-align: left;
       font-size: 38px;
       font-weight: bolder;
-      color: $lightgrey50;
     }
 
-    span{
+    .location{
       position: relative;
       bottom: 17px;
       margin-left: 15px;
-      font-size: 14px;
-      color: $lightgrey50;
+      font-size: 19px;
     }
 
-    .fa-landmark{
-      padding-right: 5px;
+    .categorie{
+      position: relative;
+      bottom: 26px;
+      left: 14px;
+      font-size: 19px;
     }
   }
 
     .description{
       position: relative;
-      bottom: 24px;
+      bottom: 40px;
       height: 86px;
       overflow: hidden;
       padding: 18px;
