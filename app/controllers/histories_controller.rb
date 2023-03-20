@@ -68,7 +68,7 @@ class HistoriesController < ApplicationController
   end
 
   def find_monument_by_landmark
-    Monument.find_by(name: @landmark_name, lat: @landmark_lat, lng: @landmark_lng)
+    Monument.find_by(name: @landmark_name)
   end
 
   def create_monument
