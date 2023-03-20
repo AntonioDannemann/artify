@@ -1,2 +1,19 @@
-<h1>Pages#error</h1>
-<p>Find me in app/views/pages/error.html.erb</p>
+<div id="pages-error">
+  <%= link_to root_path(ht: "y"), class: "btn-home" do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
+
+  <div class="error">
+    <h3>Oops<br/>That's unexpected</h3>
+    <%= image_tag "not_found.png" %>
+    <h1>No result was found</h1>
+    <% case @error %>
+    <% when "fetch_landmark_from_google_cloud_vision" %>
+      <p>The content of your photo was not recognised<br/>You could try again with another picture</p>
+    <% when "fetch_data_from_wikipedia" %>
+      <p>The landkark probably is the <%= @landmark_name %><br/>But we can't find more information about it</p>
+    <% else %>
+      <p>An error ocurred during the process<br/>But the landkark probably is the <%= @landmark_name %></p>
+    <% end %>
+  </div>
+</div>
