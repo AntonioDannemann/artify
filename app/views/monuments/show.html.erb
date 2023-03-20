@@ -10,6 +10,7 @@
       <h4><%= @monument.name %></h4>
       <p class="location"><i class="fa-solid fa-location-dot"></i> <%= "#{@monument.city}, #{@monument.country}" %></p>
       <p class="categorie"><i class="fa-solid fa-landmark"></i>  Landmark</p>
+      <p class="url"><i class="fa-solid fa-globe"></i><%= link_to @monument.website_url, @monument.website_url, target: "_blank" %></p>
     </div>
     <p class="description" data-target="glass-container.description"><%= @monument.description%></p>
     <div class="see-more-button" data-target="glass-container.seeMoreButton">

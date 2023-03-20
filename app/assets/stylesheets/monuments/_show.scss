@@ -20,7 +20,7 @@
 .glass-container{
   padding-top: 15px;
   width: 90%;
-  height: 40%;
+  height: 47%;
   margin: 0px auto;
   background-color: rgba(20, 20, 20, 0.5);
   box-shadow: 0 0 10px 1px rgba(48, 44, 44, 0.83);
@@ -30,6 +30,7 @@
   bottom: 10px;
   right: 0;
   left: 0;
+  transition: height 1s ease;
 
   hr {
     width: 80px;
@@ -45,6 +46,7 @@
 
   .text-container{
     color: $lightgrey50;
+    font-size: 16px;
 
     h4{
       margin: 20px 15px 20px 15px;
@@ -55,25 +57,31 @@
 
     .location{
       position: relative;
+      padding: 10px 0px 0px 15px;
       bottom: 17px;
-      margin-left: 15px;
-      font-size: 19px;
+
     }
 
     .categorie{
       position: relative;
+      padding: 0px 0px 0px 15px;
       bottom: 26px;
-      left: 14px;
-      font-size: 19px;
+    }
+
+    .url{
+      position: relative;
+      padding: 0px 0px 0px 15px;
+      bottom: 34px;
     }
   }
 
     .description{
       position: relative;
       bottom: 40px;
-      height: 86px;
+      height: 30%;
       overflow: hidden;
       padding: 18px;
+      transition: height 0.9s ease;
     }
 
     .description::-webkit-scrollbar {
@@ -82,7 +90,7 @@
 
   .see-more-button {
     position: relative;
-    bottom: 20px;
+    bottom: 10%;
     width: 100px;
     height: 40px;
     border-radius: 15px;
