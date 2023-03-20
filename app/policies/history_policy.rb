@@ -9,7 +9,7 @@ class HistoryPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.where(user:)
+      scope.where(user: user.current)
     end
   end
 end
