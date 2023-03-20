@@ -14,12 +14,12 @@ body:has(.tutorial, #logo, #loading:not(.hidden)) {
 
   .devise {
     border-bottom: 1px solid $lightgrey50;
-    height: calc(100vh - 55px);
-    height: calc(100svh - 55px);
+    min-height: 100vh;
+    min-height: 100svh ;
 
     h3 {
       border-bottom: 2px solid transparent;
-      color: rgba(211, 211, 211, 0.5);
+      color: $lightgrey50;
       font-size: 16px;
 
       &.active {
