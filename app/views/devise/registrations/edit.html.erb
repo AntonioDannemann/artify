@@ -6,18 +6,10 @@
         <h3>Time to make some changes</h3>
       </div>
 
-      <% if current_user.photo.attached? %>
-        <%= cl_image_tag current_user.photo.key, class: "avatar", style: "height: 160px; width: 160px;" %>
-      <% else %>
-        <%= image_tag "avatar.svg", class: "avatar" %>
-      <% end %>
-
       <%= form_with model: resource, scope: resource_name, url: registration_path(resource_name), data: { turbo: false } do |f| %>
-        <div class="photo-field">
-          <%= f.label :photo, class: "btn-main" do %>
-            <i class="fa-solid fa-pencil"></i> Photo
-          <% end %>
-          <%= f.file_field :photo %>
+        <div class="photo-field" data-controller="upload-photo">
+          <%= f.label :photo, data: { upload_photo_target: "label" }, style: (current_user.photo.attached? ? "background-image: url(#{ cl_image_path current_user.photo.key });" : "") %>
+          <%= f.file_field :photo, accept: "image/*", data: { action: "change->upload-photo#showPicture" } %>
         </div>
 
         <div class="form-field">
@@ -79,7 +71,7 @@
 
     <div class="devise-back">
       <i class="fa-solid fa-arrow-left"></i>
-      <%= link_to "Back", root_path %>
+      <%= link_to "Back", root_path(ht: "y") %>
     </div>
   </div>
 </div>

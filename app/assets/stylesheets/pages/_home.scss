@@ -1,9 +1,10 @@
-#pages-home {
-  body:has(.tutorial), &:has(#logo) {
-    height: 100vh;
-    overflow: hidden;
-  }
+body:has(.tutorial, #logo, #loading:not(.hidden)) {
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
 
+#pages-home {
   h1 {
     font-size: 25px;
     font-weight: 600;
@@ -12,11 +13,13 @@
   }
 
   .devise {
-    height: calc(100vh - 55px);
+    border-bottom: 1px solid $lightgrey50;
+    min-height: 100vh;
+    min-height: 100svh ;
 
     h3 {
       border-bottom: 2px solid transparent;
-      color: rgba(211, 211, 211, 0.5);
+      color: $lightgrey50;
       font-size: 16px;
 
       &.active {
@@ -30,12 +33,13 @@
     }
   }
 
-  #logo {
+  #loading, #logo {
     align-items: center;
     background-color: $background;
     background-image: asset-url("bg_pattern.webp");
     display: flex;
     height: 100vh;
+    height: 100svh;
     justify-content: center;
     left: 0;
     overflow: hidden;
@@ -44,6 +48,19 @@
     transition: opacity 1s ease;
     width: 100%;
     z-index: 50;
+
+    &.hidden {
+      z-index: -10;
+      opacity: 0;
+    }
+
+    > div {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: 10;
+      justify-content: center;
+    }
 
     img {
       width: 250px;

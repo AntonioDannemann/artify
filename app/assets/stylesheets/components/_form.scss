@@ -12,7 +12,9 @@
 .devise {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100svh;
+  gap: 30px;
   justify-content: space-between;
   padding: 20px 0;
 
@@ -85,6 +87,7 @@
       background-color: transparent;
       border: none;
       border-bottom: 2px solid transparent;
+      color: $lightgrey !important;
       font: inherit;
       transition: border-bottom 0.3s ease;
       width: 100%;
@@ -109,17 +112,28 @@
   }
 
   .photo-field {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+
     input {
       display: none;
     }
 
     label {
-      align-items: center;
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin: 0;
+      margin: 0 auto;
       width: 100%;
+      background-image: asset-url("avatar.svg");
+      border-radius: 50%;
+      height: 100px;
+      width: 100px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: transparent;
+      background-color: $darkgrey;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      border: 5px solid $green;
     }
   }
 

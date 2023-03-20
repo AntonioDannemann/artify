@@ -1,6 +1,6 @@
 class HistoryPolicy < ApplicationPolicy
   def show?
-    true
+    record.user == (user.current || user.guest)
   end
 
   def create?
@@ -9,7 +9,7 @@ class HistoryPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.where(user:)
+      scope.where(user: user.current)
     end
   end
 end

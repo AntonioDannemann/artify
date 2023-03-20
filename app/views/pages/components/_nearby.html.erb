@@ -1,10 +1,8 @@
-<div class="index-container">
-  <div class="monuments-map"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-    <%= link_to root_path(ht: "y"), class: "btn-home" do %>
-      <i class="fa-solid fa-arrow-left"></i>
+<section id="nearby">
+  <div class="subheader">
+    <h2>Nearby</h2>
+    <%= link_to monuments_path do %>
+      see more <i class="fa-solid  fa-arrow-right"></i>
     <% end %>
   </div>
 
@@ -15,8 +13,8 @@
         style: (mon.photo.attached? ? "background-image: linear-gradient(rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.7)), url(#{ cl_image_path mon.photo.key })" : "") do %>
 
         <h3><%= mon.name %></h3>
-        <span><i class="fa-solid fa-location-dot"></i> <%= mon.distance_between %>km</span>
+        <span><i class="fa-solid fa-location-dot"></i> <%= mon.distance_between %>km away</span>
       <% end %>
     <% end %>
   </div>
-</div>
+</section>

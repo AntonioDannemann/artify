@@ -1,58 +1,57 @@
-.monument-card {
+.card-monument {
+  background-position: center 20%;
+  background-size: cover;
+  border-radius: 10px;
   display: flex;
-  align-items: center;
   flex-direction: column;
-  flex-shrink: 0;
+  gap: 5px;
+  height: 250px;
+  justify-content: flex-end;
+  padding: 10px;
+  text-shadow: 0 0 5px black;
+  width: 100%;
 
-  max-width: 350px;
-  height: 350px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-
-  background-color: $background;
-
-  box-shadow: 5px 5px 17px 5px rgba(0,0,0,0.25);
-
-  .card-img {
-    width: 350px;
-    height: 300px;
-    background-position: center;
-    background-size: cover;
+  &:hover {
+    animation: press-button 0.15s linear;
   }
 
-  .card-information {
-    width: 350px;
-    height: 175px;
-
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-
-    padding: 10px 10px;
-    color: rgb(162, 174, 197);
-
-    h1 {
-      font-size: 24px;
-      color: white;
-    }
-
-    .city-distance {
-      display: flex;
-      justify-content: space-between;
-    }
+  h3 {
+    color: $green;
+    font-size: 1.5rem;
+    margin: 0;
   }
 
-  .card-description {
-    display: -webkit-box;
-    font-size: 10px;
+  i {
+    color: $green;
+  }
 
-    margin-bottom: 0;
-    padding-bottom: 5px;
-    height: 150px;
-    max-width: 100%;
+  span {
+    color: $lightgrey;
+    font-size: 0.8rem;
+  }
+}
 
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: pre-wrap;
+.monuments-scroller {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  overflow: hidden;
+  overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    height: 0;
+  }
+
+  .card-monument {
+    flex-shrink: 0;
+    width: 187px;
+
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    span {
+      font-size: 0.7rem;
+    }
   }
 }
