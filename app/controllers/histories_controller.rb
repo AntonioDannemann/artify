@@ -43,7 +43,7 @@ class HistoriesController < ApplicationController
 
     @landmark_lat = landmark.locations.first.lat_lng.latitude
     @landmark_lng = landmark.locations.first.lat_lng.longitude
-    @landmark_name = landmark.description
+    @landmark_name = landmark.description.split.map(&:capitalize).join(" ")
 
     new_history
   end
@@ -68,7 +68,7 @@ class HistoriesController < ApplicationController
   end
 
   def find_monument_by_landmark
-    Monument.find_by(name: @landmark_name, lat: @landmark_lat, lng: @landmark_lng)
+    Monument.find_by(name: @landmark_name)
   end
 
   def create_monument
