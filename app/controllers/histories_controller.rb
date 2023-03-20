@@ -87,7 +87,7 @@ class HistoriesController < ApplicationController
 
   def fetch_data_from_wikipedia
     page = Wikipedia.find(@landmark_name)
-    return nil unless page.coordinates
+    return nil unless page.extlinks
 
     { params: {
         name: @landmark_name,
