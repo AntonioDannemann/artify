@@ -6,31 +6,22 @@
   height: 100vh;
 }
 
-.fa-arrow-left{
-  background-color: $background;
-  position: relative;
-  left: 20px;
-  top: 50px;
-  border-radius: 50%;
-  padding: 11px;
-  font-size: 20px;
-  color: $green;
-}
-
 .glass-container{
   padding-top: 15px;
   width: 90%;
-  height: 47%;
+  height: 38%;
   margin: 0px auto;
   background-color: rgba(20, 20, 20, 0.5);
   box-shadow: 0 0 10px 1px rgba(48, 44, 44, 0.83);
   backdrop-filter: blur(15px);
   border-radius: 25px;
   position: fixed;
-  bottom: 10px;
+  bottom: 0%;
   right: 0;
   left: 0;
-  transition: height 1s ease;
+  transition: height 0.5s cubic-bezier(0.42, 0, 0.58, 1), width 0.5s cubic-bezier(0.42, 0, 0.58, 1);
+  transform: translateZ(0);
+
 
   hr {
     width: 80px;
@@ -57,14 +48,14 @@
 
     .location{
       position: relative;
-      padding: 10px 0px 0px 15px;
+      padding: 5px 0px 0px 15px;
       bottom: 17px;
 
     }
 
     .categorie{
       position: relative;
-      padding: 0px 0px 0px 15px;
+      padding: 5px 0px 0px 15px;
       bottom: 26px;
     }
 
@@ -75,22 +66,25 @@
     }
   }
 
-    .description{
-      position: relative;
-      bottom: 40px;
-      height: 30%;
-      overflow: hidden;
-      padding: 18px;
-      transition: height 0.9s ease;
-    }
+  .description{
+    position: relative;
+    padding: 0pc 0px 0px 20px;
+    bottom: 15%;
+    height: 30%;
+    overflow: hidden;
+    padding: 18px;
+    transition: height 0.5s cubic-bezier(0.42, 0, 0.58, 1), width 0.5s cubic-bezier(0.42, 0, 0.58, 1);
+    transform: translateZ(0);
 
-    .description::-webkit-scrollbar {
-      display: none;
-    }
+  }
+
+  .description::-webkit-scrollbar {
+    display: none;
+  }
 
   .see-more-button {
     position: relative;
-    bottom: 10%;
+    bottom: 15%;
     width: 100px;
     height: 40px;
     border-radius: 15px;
