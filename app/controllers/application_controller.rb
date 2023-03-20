@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
     User.find(session[:guest_user_id].nil? ? session[:guest_user_id] = create_guest_user.id : session[:guest_user_id])
   end
 
+  def pundit_user
+    UserContext.new(current_user, guest_user)
+  end
+
   private
 
   def create_guest_user

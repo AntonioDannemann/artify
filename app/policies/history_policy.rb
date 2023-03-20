@@ -1,6 +1,6 @@
 class HistoryPolicy < ApplicationPolicy
   def show?
-    true
+    record.user == (user.current || user.guest)
   end
 
   def create?
