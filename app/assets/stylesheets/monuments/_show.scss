@@ -62,26 +62,17 @@
     }
   }
 
-  .description{
-    position: relative;
-    bottom: 24px;
-    height: 70px;
-    overflow: hidden;
-
-    p{
-      padding: 18px;
-      text-align: left;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
+    .description{
+      position: relative;
+      bottom: 24px;
+      height: 86px;
       overflow: hidden;
-      text-overflow: ellipsis;
-      -webkit-line-clamp: 2;
+      padding: 18px;
     }
-  }
 
   .see-more-button {
     position: relative;
-    bottom: 13px;
+    bottom: 20px;
     width: 100px;
     height: 40px;
     border-radius: 15px;

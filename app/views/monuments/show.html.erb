@@ -1,19 +1,17 @@
-<div class="background-image" style="background-image: url('<%= cl_image_path @monument.photo.key %>');">
+<div class="background-image" style="background-image: url('<%= cl_image_path @monument.photo.key %>');" data-controller="glass-container">
   <div class= "back-arrow">
     <%= link_to monuments_path do %>
       <i class="fa-solid fa-arrow-left"></i>
     <% end %>
   </div>
-  <div class= "glass-container">
+  <div class= "glass-container" data-target="glass-container.glassContainer">
     <hr>
     <div class= "text-container">
       <h4><%= @monument.name %></h4>
       <span><i class="fa-solid fa-location-dot"></i> <%= "#{@monument.city}, #{@monument.country_code}" %></span>
     </div>
-    <div class="description">
-      <p><%= @monument.description%></p>
-    </div>
-    <div class="see-more-button">
+    <p class="description" data-target="glass-container.description"><%= @monument.description%></p>
+    <div class="see-more-button" data-target="glass-container.seeMoreButton">
       <p>See More</p>
     </div>
   </div>
