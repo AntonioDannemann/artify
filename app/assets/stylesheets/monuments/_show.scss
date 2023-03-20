@@ -6,15 +6,25 @@
   height: 100vh;
 }
 
+.fa-arrow-left{
+  background-color: white;
+  position: relative;
+  left: 20px;
+  top: 50px;
+  border-radius: 50%;
+  padding: 11px;
+  font-size: 20px;
+  color: black;
+}
 
 .glass-container{
   padding-top: 15px;
   width: 90%;
   height: 280px;
   margin: 0px auto;
-  background-color: rgba(20, 20, 20, 0.039);
+  background-color: rgba(20, 20, 20, 0.5);
   box-shadow: 0 0 10px 1px rgba(48, 44, 44, 0.83);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(15px);
   border-radius: 25px;
   position: fixed;
   bottom: 10px;
@@ -29,10 +39,6 @@
     background-color: $green;
     opacity: 1;
     border-radius: 2px;
-    // position: fixed;
-    // bottom: 220px;
-    // left: 50%;
-    // transform: translateX(-50%);
     z-index: 10;
     }
 
@@ -40,32 +46,43 @@
   .text-container{
 
     h4{
-      margin-top: 30px;
-      text-align: center;
+      margin: 20px 15px 20px 15px;
+      text-align: left;
       font-size: 38px;
       font-weight: bolder;
-      color: $green;
+      color: $lightgrey50;
     }
 
     span{
-      margin-left: 30px;
+      position: relative;
+      bottom: 17px;
+      margin-left: 15px;
       font-size: 14px;
-      color: $green;
+      color: $lightgrey50;
     }
   }
 
   .description{
-    height: 85px;
+    position: relative;
+    bottom: 24px;
+    height: 70px;
     overflow: hidden;
 
     p{
       padding: 18px;
       text-align: left;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 2;
     }
   }
 
   .see-more-button {
-    width: 120px;
+    position: relative;
+    bottom: 13px;
+    width: 100px;
     height: 40px;
     border-radius: 15px;
     margin: 10px auto 0;
