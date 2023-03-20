@@ -10,6 +10,9 @@ application.register("aos", AosController)
 import FlashesController from "./flashes_controller"
 application.register("flashes", FlashesController)
 
+import GlasscontainerController from "./glasscontainer_controller"
+application.register("glasscontainer", GlasscontainerController)
+
 import HomeLogoController from "./home_logo_controller"
 application.register("home-logo", HomeLogoController)
 
