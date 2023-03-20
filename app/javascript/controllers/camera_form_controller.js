@@ -2,13 +2,17 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="camera-form"
 export default class extends Controller {
+  initialize() {
+    window.onpageshow = () => {
+      document.getElementById("loading").classList.add("hidden")
+    }
+  }
+
   submit() {
-    document.getElementById("loading").style.display = "flex"
+    document.getElementById("loading").classList.remove("hidden")
 
     setTimeout(() => {
-      document.getElementById("loading").classList.remove("hidden")
-    }, 100)
-
-    this.element.submit()
+      this.element.submit()
+    }, 10)
   }
 }
