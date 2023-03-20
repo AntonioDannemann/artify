@@ -43,7 +43,7 @@ class HistoriesController < ApplicationController
 
     @landmark_lat = landmark.locations.first.lat_lng.latitude
     @landmark_lng = landmark.locations.first.lat_lng.longitude
-    @landmark_name = landmark.description
+    @landmark_name = landmark.description.split.map(&:capitalize).join(" ")
 
     new_history
   end
