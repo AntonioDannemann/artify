@@ -20,6 +20,8 @@ export default class extends Controller {
       zoom: -5,
     })
 
+    navigator.geolocation.getCurrentPosition(this.#flyMapToUser);
+
     this.map.on('load', () => {
       this.map.addSource("monuments", {
         type: "geojson",
@@ -73,7 +75,6 @@ export default class extends Controller {
       showUserHeading: true
       })
       );
-      navigator.geolocation.getCurrentPosition(this.#flyMapToUser);
   }
 
   #flyMapToUser = position =>  {
