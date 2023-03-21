@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @history = History.new
-    @monuments = Monument.all
+    @monuments = Monument.order(:name)
     @featured_monument = featured_monument
     @nearby_monuments = @monuments.select { |mon| mon.distance_between < 5 }.sort_by(&:distance_between)
 
