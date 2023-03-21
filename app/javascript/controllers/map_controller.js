@@ -35,7 +35,7 @@ export default class extends Controller {
         },
       });
     });
-    this.userMarker = new mapboxgl.Marker({ "color" : "#aa3232" })
+
 
     for (const feature of features) {
 
@@ -52,17 +52,40 @@ export default class extends Controller {
       .addTo(this.map);
     }
 
-
-
-    this.#flyMapToUser()
     this.map.on('moveend', () => {
       const visible = this.map.queryRenderedFeatures({ layers: ['monument'] });
       if (visible.length) {
         this.#renderListings(visible)
       }
     });
-    // this.#renderListings(this.map.queryRenderedFeatures)
-    navigator.geolocation.watchPosition(this.#updateUserPosition)
+
+    this.map.addControl(
+      new mapboxgl.GeolocateControl({
+      positionOptions: {
+      enableHighAccuracy: true
+      },
+      // When active the map will receive updates to the device's location as it changes.
+      trackUserLocation: true,
+      // Draw an arrow next to the location dot to indicate which direction the device is heading.
+      showUserHeading: true
+      })
+      );
+
+    this.#flyMapToUser()
+  }
+
+  #home = location => {
+    const latlng = [location.coords.longitude, location.coords.latitude]
+
+    this.map.flyTo({
+      center: latlng,
+      essential: true,
+      zoom: 12
+    })
+  }
+
+  flyHome() {
+    navigator.geolocation.watchPosition(this.#home);
   }
 
   #flyMapToUser() {
@@ -90,12 +113,5 @@ export default class extends Controller {
     else {
       listingEl.innerHTML = 'No results';
     }
-  }
-
-  #updateUserPosition = location => {
-    const latlng = [location.coords.longitude, location.coords.latitude]
-
-    this.userMarker.remove()
-    this.userMarker.setLngLat(latlng).addTo(this.map)
   }
 }

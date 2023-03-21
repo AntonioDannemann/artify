@@ -35,3 +35,20 @@
     animation: press-button 0.15s linear;
   }
 }
+
+.mapboxgl-ctrl button.mapboxgl-ctrl-geolocate {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  height: 35px;
+  width: 35px;
+  background-color: $darkgrey !important;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+  .mapboxgl-ctrl-icon{
+    background-image: url('user-arrow') !important;
+    background-size: 17px;
+    background-position: center;
+  }
+}
