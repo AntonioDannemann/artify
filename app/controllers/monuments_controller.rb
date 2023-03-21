@@ -21,7 +21,8 @@ class MonumentsController < ApplicationController
           },
           "properties": {
             "name": m.name,
-            "photo": m.photo.url
+            "photo": m.photo.url,
+            "id": m.id
           }
         }
         )

@@ -64,28 +64,14 @@ export default class extends Controller {
       positionOptions: {
       enableHighAccuracy: true
       },
-      // When active the map will receive updates to the device's location as it changes.
+
       trackUserLocation: true,
-      // Draw an arrow next to the location dot to indicate which direction the device is heading.
+
       showUserHeading: true
       })
       );
 
     this.#flyMapToUser()
-  }
-
-  #home = location => {
-    const latlng = [location.coords.longitude, location.coords.latitude]
-
-    this.map.flyTo({
-      center: latlng,
-      essential: true,
-      zoom: 12
-    })
-  }
-
-  flyHome() {
-    navigator.geolocation.watchPosition(this.#home);
   }
 
   #flyMapToUser() {
@@ -103,8 +89,7 @@ export default class extends Controller {
       for (const monument of monuments) {
         const itemLink = document.createElement('a');
         itemLink.className = 'card-monument shadow-monument';
-        itemLink.href = "www.google.com";
-        itemLink.target = '_blank';
+        itemLink.href = `monuments/${monument.properties.id}`;
         itemLink.textContent = monument.properties.name;
         itemLink.style.backgroundImage = `url('${monument.properties.photo}')`
         listingEl.appendChild(itemLink);
