@@ -21,7 +21,9 @@ class Monument < ApplicationRecord
 
   def attach_photo(photo_url)
     photo = URI.parse(photo_url).open
-    if photo.size > 26_214_400
+    if photo.size > 50_000_000
+      photo = compress_photo(photo, 20)
+    elsif photo.size > 26_214_400
       photo = compress_photo(photo, 40)
     elsif photo.size > 5_242_880
       photo = compress_photo(photo, 80)
@@ -32,7 +34,7 @@ class Monument < ApplicationRecord
 
   def fetch_geocoder
     geocoder = Geocoder.search("#{lat},#{lng}").first
-    self.city = geocoder.city || geocoder.suburb
+    self.city = geocoder.city || geocoder.suburb || geocoder.county
     self.country = geocoder.country
     self.country_code = geocoder.country_code.upcase
   end
