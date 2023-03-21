@@ -32,7 +32,7 @@ class Monument < ApplicationRecord
 
   def fetch_geocoder
     geocoder = Geocoder.search("#{lat},#{lng}").first
-    self.city = geocoder.city
+    self.city = geocoder.city || geocoder.suburb
     self.country = geocoder.country
     self.country_code = geocoder.country_code.upcase
   end
