@@ -12,16 +12,19 @@ export default class extends Controller {
   toggle() {
     if (!this.expanded) {
       // Glass container
+      this.glassContainerTarget.style.position = 'fixed';
+      this.glassContainerTarget.style.bottom = '0%';
       this.glassContainerTarget.style.height = '90%';
       this.glassContainerTarget.style.width = '100%';
+      this.glassContainerTarget.style.overflow = 'hidden';
       // Description container
       this.descriptionTarget.style.position = 'relative';
-      this.descriptionTarget.style.bottom = '-6%';
+      this.descriptionTarget.style.bottom = '30%';
       this.descriptionTarget.style.overflow = 'scroll';
-      this.descriptionTarget.style.height = '66%';
+      this.descriptionTarget.style.height = '43%';
       // Button container
       this.seeMoreButtonTarget.style.position = 'relative';
-      this.seeMoreButtonTarget.style.bottom = '-5%';
+      this.seeMoreButtonTarget.style.bottom = '0%';
       this.seeMoreButtonTarget.querySelector('p').textContent = 'See Less';
       // Show the image
       this.imageTarget.style.display = 'block';
@@ -31,9 +34,9 @@ export default class extends Controller {
       this.glassContainerTarget.style.width = '90%';
       // Description container
       this.descriptionTarget.style.position = 'relative';
-      this.descriptionTarget.style.bottom = '13%';
+      this.descriptionTarget.style.bottom = '11%';
       this.descriptionTarget.style.overflow = 'hidden';
-      this.descriptionTarget.style.height = '30%';
+      this.descriptionTarget.style.height = '34%';
       // Button container
       this.seeMoreButtonTarget.style.position = 'relative';
       this.seeMoreButtonTarget.style.bottom = '11%';

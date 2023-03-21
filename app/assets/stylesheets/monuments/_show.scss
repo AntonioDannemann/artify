@@ -16,12 +16,11 @@
   backdrop-filter: blur(15px);
   border-radius: 25px;
   position: fixed;
-  bottom: 0%;
+  bottom: 2%;
   right: 0;
   left: 0;
   transition: height 0.5s cubic-bezier(0.42, 0, 0.58, 1), width 0.5s cubic-bezier(0.42, 0, 0.58, 1);
   transform: translateZ(0);
-
 
   hr {
     width: 80px;
@@ -68,23 +67,22 @@
   }
   .hidden-thumbnail{
     display: none;
-    position: absolute;
-    left: 69%;
-    bottom: 74%;
-    width: 100px;
-    height: 100px;
+    position: relative;
+    left: 7.2%;
+    bottom: -42%;
+    width: 334px;
+    height: 200px;
     border-radius: 17px;
   }
 
   .description{
     position: relative;
     padding: 5px 15px 5px 15px;
-    bottom: 13%;
-    height: 30%;
+    bottom: 11%;
+    height: 34%;
     overflow: hidden;
     transition: height 0.5s cubic-bezier(0.42, 0, 0.58, 1), width 0.5s cubic-bezier(0.42, 0, 0.58, 1);
     transform: translateZ(0);
-
   }
 
   .description::-webkit-scrollbar {
