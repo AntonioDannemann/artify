@@ -22,7 +22,7 @@ class Monument < ApplicationRecord
   def attach_photo(photo_url)
     photo = URI.parse(photo_url).open
     if photo.size > 50_000_000
-      photo = compress_photo(photo, 20)
+      photo = compress_photo(photo, 10)
     elsif photo.size > 26_214_400
       photo = compress_photo(photo, 40)
     elsif photo.size > 5_242_880
