@@ -102,7 +102,7 @@ export default class extends Controller {
     if (monuments.length) {
       for (const monument of monuments) {
         const itemLink = document.createElement('a');
-        itemLink.className = 'card-monument';
+        itemLink.className = 'card-monument shadow-monument';
         itemLink.href = "www.google.com";
         itemLink.target = '_blank';
         itemLink.textContent = monument.properties.name;

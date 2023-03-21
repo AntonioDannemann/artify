@@ -3,22 +3,8 @@
   width: 100%;
 }
 
-.monument-cards {
-  height: 248px;
-  width: 100%;
-  padding-left: 10px;
-  border-radius: 20px;
-  display: flex;
-  flex-grow: 1;
-  gap: 10px;
-  overflow: hidden;
-  overflow-x: scroll;
-  position: sticky;
-  bottom: 10px;
-
-  &::-webkit-scrollbar {
-    height: 0px;
-  }
+.shadow-monument {
+  box-shadow: 10px 10px 15px -6px rgba(0,0,0,0.75);
 }
 
 .index-container {
@@ -41,7 +27,7 @@
   }
 }
 
-// map features!
+// map features
 
 .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
   display: none !important;
