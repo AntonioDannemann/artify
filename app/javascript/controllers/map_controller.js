@@ -56,6 +56,9 @@ export default class extends Controller {
       const visible = this.map.queryRenderedFeatures({ layers: ['monument'] });
       if (visible.length) {
         this.#renderListings(visible)
+      } else {
+        const listingEl = document.getElementById('feature-listing');
+        listingEl.innerHTML = '';
       }
     });
 
@@ -70,13 +73,13 @@ export default class extends Controller {
       showUserHeading: true
       })
       );
-
-    this.#flyMapToUser()
+      navigator.geolocation.getCurrentPosition(this.#flyMapToUser);
   }
 
-  #flyMapToUser() {
+  #flyMapToUser = position =>  {
+    console.log(position.coords);
     this.map.flyTo({
-      center: [2.294351, 48.858461],
+      center: [position.coords.longitude, position.coords.latitude, ],
       essential: true,
       zoom: 12
     })
