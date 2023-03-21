@@ -9,7 +9,7 @@
 .glass-container{
   padding-top: 15px;
   width: 90%;
-  height: 38%;
+  height: 35%;
   margin: 0px auto;
   background-color: rgba(20, 20, 20, 0.5);
   box-shadow: 0 0 10px 1px rgba(48, 44, 44, 0.83);
@@ -64,15 +64,24 @@
       padding: 0px 0px 0px 15px;
       bottom: 34px;
     }
+
+  }
+  .hidden-thumbnail{
+    display: none;
+    position: absolute;
+    left: 69%;
+    bottom: 74%;
+    width: 100px;
+    height: 100px;
+    border-radius: 17px;
   }
 
   .description{
     position: relative;
-    padding: 0pc 0px 0px 20px;
-    bottom: 15%;
+    padding: 5px 15px 5px 15px;
+    bottom: 13%;
     height: 30%;
     overflow: hidden;
-    padding: 18px;
     transition: height 0.5s cubic-bezier(0.42, 0, 0.58, 1), width 0.5s cubic-bezier(0.42, 0, 0.58, 1);
     transform: translateZ(0);
 
@@ -84,7 +93,7 @@
 
   .see-more-button {
     position: relative;
-    bottom: 15%;
+    bottom: 11%;
     width: 100px;
     height: 40px;
     border-radius: 15px;
