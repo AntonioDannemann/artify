@@ -11,34 +11,58 @@ export default class extends Controller {
     console.log("connected");
     mapboxgl.accessToken = this.apiKeyValue
 
+    const geojson = JSON.stringify(this.markersValue[0]);
+    const features = this.markersValue[0].features
+
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/navigation-night-v1",
-      zoom: 3,
+      zoom: -5,
     })
 
+    this.map.on('load', () => {
+      this.map.addSource("monuments", {
+        type: "geojson",
+        data: JSON.parse(geojson)
+      });
+      this.map.addLayer({
+        'id': 'monument',
+        'source': 'monuments',
+        'type': 'circle',
+        'paint': {
+        'circle-color': '#4264fb',
+        'circle-radius': 4,
+        },
+      });
+    });
     this.userMarker = new mapboxgl.Marker({ "color" : "#aa3232" })
 
-    this.#addMarkersToMap()
-    this.#flyMapToUser()
-    navigator.geolocation.watchPosition(this.#updateUserPosition)
-  }
+    for (const feature of features) {
 
-  #addMarkersToMap() {
-
-
-    this.markersValue.forEach(marker => {
-      var el = document.createElement('div');
+      const el = document.createElement('div');
       el.className = 'marker';
-      el.style.backgroundImage = `url('${marker.photo}')`;
-      console.log(`"url('${marker.photo}')"`);
-      new mapboxgl.Marker(
-        el
-        )
-      .setLngLat([marker.lng, marker.lat])
-      .setPopup(new mapboxgl.Popup().setHTML("<h1>Hello World!</h1>"))
+      el.style.backgroundImage = `url('${feature.properties.photo}')`;
+
+      const popup = new mapboxgl.Popup({ offset: 30, closeButton: false })
+      .setText( feature.properties.name);
+
+      new mapboxgl.Marker(el)
+      .setLngLat(feature.geometry.coordinates)
+      .setPopup(popup)
       .addTo(this.map);
-    })
+    }
+
+
+
+    this.#flyMapToUser()
+    this.map.on('moveend', () => {
+      const visible = this.map.queryRenderedFeatures({ layers: ['monument'] });
+      if (visible.length) {
+        this.#renderListings(visible)
+      }
+    });
+    // this.#renderListings(this.map.queryRenderedFeatures)
+    navigator.geolocation.watchPosition(this.#updateUserPosition)
   }
 
   #flyMapToUser() {
@@ -47,6 +71,25 @@ export default class extends Controller {
       essential: true,
       zoom: 12
     })
+  }
+
+  #renderListings(monuments) {
+    const listingEl = document.getElementById('feature-listing');
+    listingEl.innerHTML = '';
+    if (monuments.length) {
+      for (const monument of monuments) {
+        const itemLink = document.createElement('a');
+        itemLink.className = 'card-monument';
+        itemLink.href = "www.google.com";
+        itemLink.target = '_blank';
+        itemLink.textContent = monument.properties.name;
+        itemLink.style.backgroundImage = `url('${monument.properties.photo}')`
+        listingEl.appendChild(itemLink);
+      }
+    }
+    else {
+      listingEl.innerHTML = 'No results';
+    }
   }
 
   #updateUserPosition = location => {

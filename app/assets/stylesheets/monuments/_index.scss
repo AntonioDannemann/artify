@@ -41,6 +41,8 @@
   }
 }
 
+// map features!
+
 .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
   display: none !important;
 }
@@ -52,4 +54,61 @@
   background-position: center;
   background-size: cover;
   border: 2px solid $green;
+}
+
+.mapboxgl-popup-content {
+  background: rgba(24, 26, 27, 0.5);
+  backdrop-filter: blur(3px);
+  color: $lightgrey;
+  font-family: $body-font;
+  font-size: 12px;
+}
+
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+  border-top-color: rgba(24, 26, 27, 0);
+}
+
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+  border-right-color: rgba(24, 26, 27, 0);
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+  border-bottom-color: rgba(24, 26, 27, 0);
+}
+
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+  border-left-color: rgba(24, 26, 27, 0);
+}
+
+.listing {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(34, 36, 37, 0.2);
+  backdrop-filter: blur(3px);
+  height: 275px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 10px;
+  overflow: hidden;
+  overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    height: 0;
+  }
+
+  .card-monument {
+    flex-shrink: 0;
+    width: 187px;
+
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    span {
+      font-size: 0.7rem;
+    }
+  }
 }
