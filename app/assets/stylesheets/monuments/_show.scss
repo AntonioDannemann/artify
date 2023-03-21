@@ -11,7 +11,7 @@
   width: 90%;
   height: 35%;
   margin: 0px auto;
-  background-color: rgba(20, 20, 20, 0.5);
+  background-color: rgba(64, 64, 64, 0.5);
   box-shadow: 0 0 10px 1px rgba(48, 44, 44, 0.83);
   backdrop-filter: blur(15px);
   border-radius: 25px;
@@ -19,8 +19,7 @@
   bottom: 2%;
   right: 0;
   left: 0;
-  transition: height 0.5s cubic-bezier(0.42, 0, 0.58, 1), width 0.5s cubic-bezier(0.42, 0, 0.58, 1);
-  transform: translateZ(0);
+  transition: height 0.5s ease-in-out, width 0.5s ease-in-out;
 
   hr {
     width: 80px;
@@ -35,7 +34,8 @@
 
 
   .text-container{
-    color: $lightgrey50;
+    overflow: hidden;
+    color: $lightgrey;
     font-size: 16px;
 
     h4{
@@ -73,6 +73,8 @@
     width: 334px;
     height: 200px;
     border-radius: 17px;
+    transition: none;
+    animation: none;
   }
 
   .description{
@@ -81,8 +83,6 @@
     bottom: 11%;
     height: 34%;
     overflow: hidden;
-    transition: height 0.5s cubic-bezier(0.42, 0, 0.58, 1), width 0.5s cubic-bezier(0.42, 0, 0.58, 1);
-    transform: translateZ(0);
   }
 
   .description::-webkit-scrollbar {
