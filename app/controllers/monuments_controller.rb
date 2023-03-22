@@ -21,7 +21,7 @@ class MonumentsController < ApplicationController
           },
           properties: {
             name: m.name,
-            photo: m.photo.url,
+            photo: "http://res.cloudinary.com/dr1wktgbk/image/upload/q_10/development/#{m.photo.key}",
             id: m.id
           }
         }
