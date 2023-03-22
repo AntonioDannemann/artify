@@ -18,7 +18,7 @@ export default class extends Controller {
       this.indexTarget.style.height = '32%';
 
       this.blinderTarget.style.position = 'fixed';
-      this.blinderTarget.style.bottom = '29%';
+      this.blinderTarget.style.bottom = '28.5%';
 
     } else {
 
@@ -28,7 +28,7 @@ export default class extends Controller {
       this.indexTarget.style.height = '0%';
 
       this.blinderTarget.style.position = 'fixed';
-      this.blinderTarget.style.bottom = '0%';
+      this.blinderTarget.style.bottom = '-.5%';
     }
     this.expanded = !this.expanded;
   }

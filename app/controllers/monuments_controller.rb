@@ -7,22 +7,22 @@ class MonumentsController < ApplicationController
     @nearby_monuments = @monuments.select { |mon| mon.distance_between < 5 }.sort_by(&:distance_between)
 
     @markers = [{
-      "type": "FeatureCollection",
-      "features": []
+      type: "FeatureCollection",
+      features: []
     }]
 
     @monuments.each do |m|
       @markers.first[:features].push(
         {
-          "type": "Feature",
-          "geometry": {
-              "type": "Point",
-              "coordinates": [m.lng, m.lat]
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [m.lng, m.lat]
           },
-          "properties": {
-            "name": m.name,
-            "photo": m.photo.url,
-            "id": m.id
+          properties: {
+            name: m.name,
+            photo: m.photo.url,
+            id: m.id
           }
         }
         )

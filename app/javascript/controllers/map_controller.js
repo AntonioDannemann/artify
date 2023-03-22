@@ -39,21 +39,13 @@ export default class extends Controller {
 
     for (const feature of features) {
 
-      const el = document.createElement('div');
+      const el = document.createElement('a');
+      el.href = `monuments/${feature.properties.id}`
       el.className = 'marker';
       el.style.backgroundImage = `url('${feature.properties.photo}')`;
 
-      const popup = new mapboxgl.Popup({ offset: -50, closeOnMove: true, closeButton: false })
-      popup.setHTML(`<a
-      class="marker-popup"
-      "href="http://www.artify.click/monuments/${feature.properties.id}"
-      style="background-image: url('${feature.properties.photo}');">
-      ${feature.properties.name}
-      </a>`)
-
       new mapboxgl.Marker(el)
       .setLngLat(feature.geometry.coordinates)
-      .setPopup(popup)
       .addTo(this.map);
     }
 
@@ -61,6 +53,14 @@ export default class extends Controller {
       const visible = this.map.queryRenderedFeatures({ layers: ['monument'] });
       if (visible.length) {
         this.#renderListings(visible)
+      }else {
+         const listingEl = document.getElementById('feature-listing')
+         listingEl.innerHTML = ""
+         const emptyItem = document.createElement('div')
+         emptyItem.className = 'card-monument shadow-monument';
+         emptyItem.textContent = 'scroll to find monuments';
+         emptyItem.style.backgroundImage = `url('https://newfoundtrees.org/static/media/doge.3636fa73.jpg')`
+         listingEl.appendChild(emptyItem);
       }
     });
 
