@@ -8,7 +8,6 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("connected");
     mapboxgl.accessToken = this.apiKeyValue
 
     const geojson = JSON.stringify(this.markersValue[0]);
@@ -45,12 +44,8 @@ export default class extends Controller {
       el.className = 'marker';
       el.style.backgroundImage = `url('${feature.properties.photo}')`;
 
-      const popup = new mapboxgl.Popup({ offset: 30, closeButton: false })
-      .setText( feature.properties.name);
-
       new mapboxgl.Marker(el)
       .setLngLat(feature.geometry.coordinates)
-      .setPopup(popup)
       .addTo(this.map);
     }
 
@@ -58,9 +53,6 @@ export default class extends Controller {
       const visible = this.map.queryRenderedFeatures({ layers: ['monument'] });
       if (visible.length) {
         this.#renderListings(visible)
-      } else {
-        const listingEl = document.getElementById('feature-listing');
-        listingEl.innerHTML = '';
       }
     });
 
@@ -89,6 +81,7 @@ export default class extends Controller {
   #renderListings(monuments) {
     const listingEl = document.getElementById('feature-listing');
     listingEl.innerHTML = '';
+
     if (monuments.length) {
       for (const monument of monuments) {
         const itemLink = document.createElement('a');
@@ -98,9 +91,6 @@ export default class extends Controller {
         itemLink.style.backgroundImage = `url('${monument.properties.photo}')`
         listingEl.appendChild(itemLink);
       }
-    }
-    else {
-      listingEl.innerHTML = 'No results';
     }
   }
 }

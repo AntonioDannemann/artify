@@ -16,6 +16,9 @@ application.register("flashes", FlashesController)
 import HomeLogoController from "./home_logo_controller"
 application.register("home-logo", HomeLogoController)
 
+import IndexController from "./index_controller"
+application.register("index", IndexController)
+
 import MapController from "./map_controller"
 application.register("map", MapController)
 
