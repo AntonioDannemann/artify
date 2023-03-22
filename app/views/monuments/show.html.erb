@@ -7,14 +7,30 @@
   <div class="glass-container" data-glass-container-target="glass">
     <div class="line"></div>
     <div class="content" data-glass-container-target="content">
-      <h4><%= @monument.name %></h4>
+
+      <div class="title-with-url">
+        <h4><%= @monument.name %></h4>
+        <%= link_to  @monument.website_url, target: "_blank" do %>
+          <i class="fa-solid fa-globe"></i>
+        <% end %>
+      </div>
+
       <p class="location"><i class="fa-solid fa-location-dot"></i> <%= "#{@monument.city}, #{@monument.country_code}" %></p>
-      <%= link_to  @monument.website_url, target: "_blank" do %>
-        <span><i class="fa-solid fa-globe"></i> Official Website</span>
-      <% end %>
       <p><%= @monument.description.split(". ").first(2).join(". ") %></p>
       <%= cl_image_tag @monument.photo.key, class: "hidden-thumbnail" %>
       <p><%= @monument.description.split(". ")[2..].join(". ")%></p>
+
+      <div class="monuments-scroller">
+        <% @monuments.each do |mon| %>
+          <%= link_to monument_path(mon),
+            class: "card-monument",
+            style: (mon.photo.attached? ? "background-image: linear-gradient(rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.7)), url(#{ cl_image_path mon.photo.key })" : "") do %>
+            <h3><%= mon.name %></h3>
+            <span><i class="fa-solid fa-location-dot"></i> <%= mon.distance_between %>km away</span>
+          <% end %>
+        <% end %>
+      </div>
+
     </div>
     <button data-action="click->glass-container#expand">Show More</button>
   </div>

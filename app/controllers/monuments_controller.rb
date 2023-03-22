@@ -11,6 +11,7 @@ class MonumentsController < ApplicationController
 
   def show
     @monument = Monument.find(params[:id])
+    @monuments = Monument.where(city: @monument.city)
     authorize @monument
   end
 end

@@ -55,14 +55,20 @@
     .content{
       overflow: hidden;
 
-      h4{
-        color: $lightgrey;
-        font-size: 38px;
-        font-weight: bolder;
-      }
+      .title-with-url{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-      .url{
+        h4{
+          color: $lightgrey;
+          font-size: 35px;
+          font-weight: bolder;
+        }
 
+        .fa-globe{
+          font-size:25px
+        }
       }
 
       .location{
@@ -77,7 +83,7 @@
 
       .hidden-thumbnail{
         width: 100%;
-        height: auto;
+        height: 50%;
         object-fit: cover;
         border-radius: 15px;
 
