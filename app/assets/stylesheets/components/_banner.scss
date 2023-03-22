@@ -118,46 +118,77 @@
 }
 
 #user-banner {
-  padding: 20px 20px 8px;
+  padding: 32px 20px 8px;
   background-color: $green;
   background-size: cover;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 16px;
 
-  .welcome-message {
-    flex: 1 0 auto;
+  .top-bar {
+    display: flex;
+    justify-content: right;
+    margin-bottom: 32px;
 
-    h3 {
+    i {
       color: $darkgrey;
-      margin: 0px;
-    }
-
-    h2 {
-      color: $darkgrey;
-      font-size: 2.5rem;
-      margin: 0px;
+      font-size: 24px;
     }
   }
 
   .user-info {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    margin: 16px 0;
 
+    .welcome-message {
+      flex: 1 0 auto;
 
-    p {
-      text-align: right;
-      color: $darkgrey;
-      margin: 0 auto;
+      h3 {
+        color: $darkgrey;
+        margin: 0px;
+      }
+
+      h2 {
+        color: $darkgrey;
+        font-size: 2.2rem;
+        margin: 0px;
+      }
+
+      p {
+        color: $darkgrey;
+        margin: 0;
+      }
     }
 
     .dashboard-avatar {
       border-radius: 50%;
       display: block;
-      height: 128px;
+      height: 96px;
+      width: 96px;
       margin: 0 auto;
       object-fit: cover;
       overflow: hidden;
-      width: 128px;
       border: 1px solid $lightgrey;
+    }
+  }
+
+  .profile-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .badges-collection {
+      width: 80px;
+      margin: 0 auto;
+      object-fit: cover;
+      margin: 8px;
+    }
+  }
+
+  .btn-home {
+    i {
+      color: $green;
     }
   }
 }

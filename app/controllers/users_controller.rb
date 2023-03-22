@@ -5,7 +5,5 @@ class UsersController < ApplicationController
     @user = current_user
     @history = History.new
     @monuments = Monument.all
-
-    @show_footer = true
   end
 end
