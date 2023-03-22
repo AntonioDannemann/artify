@@ -8,15 +8,27 @@ class Monument < ApplicationRecord
   validates :name, :description, :lat, :lng, :city, :country, :country_code, presence: true
   validates :lat, :lng, numericality: { only_float: true }
 
+  def self.featured
+    monument = Monument.find_by(featured_date: Date.current)
+    return monument if monument
+
+    current_unix_day = Time.current.to_time.to_i.fdiv(86_400).floor
+    monuments = Monument.all
+    monument = monuments.select { |mon| mon.photo.attached? }[current_unix_day % monuments.length]
+    monument.featured_date = Date.current
+
+    monument
+  end
+
+  def self.without_photo
+    Monument.all.reject { |monument| monument.photo.attached? }
+  end
+
   def distance_between
     distance = Geocoder::Calculations.distance_between([48.858461, 2.294351], [lat, lng])
     distance = distance > 5 ? distance.round : distance.round(1)
 
     distance == distance.to_i ? distance.to_i : distance
-  end
-
-  def self.without_photo
-    Monument.all.reject { |monument| monument.photo.attached? }
   end
 
   def attach_photo(photo_url)
