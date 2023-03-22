@@ -64,14 +64,38 @@
   background-position: center;
   background-size: cover;
   border: 2px solid $green;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.marker-popup {
+  background-position: center 20%;
+  background-size: cover;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 140px;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+  text-shadow: 0 0 5px black;
+  border: 2px solid $green;
+  width: 140px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .mapboxgl-popup-content {
-  background: rgba(24, 26, 27, 0.5);
-  backdrop-filter: blur(3px);
-  color: $lightgrey;
+  background: rgba(24, 26, 27, 0.0);
   font-family: $body-font;
   font-size: 12px;
+  height: 140px;
+  width: 140px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.0) !important;
+  padding: 0 !important;
+
+  a {
+    color: $green;
+  }
 }
 
 .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {

@@ -37,15 +37,23 @@ export default class extends Controller {
       });
     });
 
-
     for (const feature of features) {
 
       const el = document.createElement('div');
       el.className = 'marker';
       el.style.backgroundImage = `url('${feature.properties.photo}')`;
 
+      const popup = new mapboxgl.Popup({ offset: -50, closeOnMove: true, closeButton: false })
+      popup.setHTML(`<a
+      class="marker-popup"
+      "href="http://www.artify.click/monuments/${feature.properties.id}"
+      style="background-image: url('${feature.properties.photo}');">
+      ${feature.properties.name}
+      </a>`)
+
       new mapboxgl.Marker(el)
       .setLngLat(feature.geometry.coordinates)
+      .setPopup(popup)
       .addTo(this.map);
     }
 
