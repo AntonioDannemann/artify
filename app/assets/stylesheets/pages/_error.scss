@@ -1,0 +1,25 @@
+#pages-error {
+  background-image: asset-url("bg_pattern");
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100svh;
+  justify-content: center;
+
+  .error {
+    text-align: center;
+
+    h1 {
+      font-weight: bold;
+    }
+
+    img {
+      margin: 0 auto;
+      width: 300px;
+    }
+
+    p {
+      color: $lightgrey50;
+    }
+  }
+}

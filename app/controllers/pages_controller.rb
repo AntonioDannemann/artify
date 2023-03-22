@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @history = History.new
-    @monuments = Monument.all
+    @monuments = Monument.order(:name)
     @featured_monument = featured_monument
     @nearby_monuments = @monuments.select { |mon| mon.distance_between < 5 }.sort_by(&:distance_between)
 
@@ -18,9 +18,13 @@ class PagesController < ApplicationController
   private
 
   def featured_monument
-    current_unix_day = Time.current.to_time.to_i.fdiv(86_400).floor
+    id = Rails.cache.fetch("featured_monument", expires_in: 1.day) do
+      current_unix_day = Time.current.to_time.to_i.fdiv(86_400).floor
+      monument = @monuments.select { |mon| mon.photo.attached? }[current_unix_day % @monuments.length]
+      monument.id
+    end
 
-    @monuments[current_unix_day % @monuments.length]
+    Monument.find(id)
   end
 
   def search_form_results

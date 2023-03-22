@@ -12,8 +12,9 @@
 .devise {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  height: 100svh;
+  min-height: 100vh;
+  min-height: 100svh;
+  gap: 30px;
   justify-content: space-between;
   padding: 20px 0;
 
@@ -86,7 +87,7 @@
       background-color: transparent;
       border: none;
       border-bottom: 2px solid transparent;
-      color: $lightgrey;
+      color: $lightgrey !important;
       font: inherit;
       transition: border-bottom 0.3s ease;
       width: 100%;
