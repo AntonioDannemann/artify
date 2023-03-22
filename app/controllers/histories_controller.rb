@@ -16,16 +16,15 @@ class HistoriesController < ApplicationController
 
   def create
     @photo = params[:history][:photo]
-    @user = current_user || User.find_by(first_name: "guest")
+    @user = current_user || guest_user
     @history = build_history_from_photo(@photo.path)
 
     authorize @history
 
-    if @history.save
-      redirect_to history_path(@history)
-    else
-      redirect_to error_path
-    end
+    return redirect_to history_path(@history) if @history.save
+
+    @history = History.new
+    render "pages/error"
   end
 
   private
@@ -37,11 +36,15 @@ class HistoriesController < ApplicationController
     # The reason is that back in the #create action we authorize the value of @history
     # Pundit can't authorize an instance with a value of nil
     # So we pass an empty History, it passes the authorization but not the validation and the #save fails
-    return History.new unless landmark
+    unless landmark
+      @error = "fetch_landmark_from_google_cloud_vision"
+      return History.new
+    end
 
     @landmark_lat = landmark.locations.first.lat_lng.latitude
     @landmark_lng = landmark.locations.first.lat_lng.longitude
     @landmark_name = landmark.description
+    @landmark_names = [@landmark_name, @landmark_name.downcase, @landmark_name.split.map(&:capitalize).join(" ")]
 
     new_history
   end
@@ -66,28 +69,31 @@ class HistoriesController < ApplicationController
   end
 
   def find_monument_by_landmark
-    Monument.find_by(name: @landmark_name, lat: @landmark_lat, lng: @landmark_lng)
+    Monument.find_by(name: @landmark_name.split.map(&:capitalize).join(" "))
   end
 
   def create_monument
-    data = fetch_data_from_wikipedia
-    return nil unless data
+    data = nil
+    @landmark_names.each { |name| break if (data = fetch_data_from_wikipedia(name)) }
+
+    unless data
+      @error = "fetch_data_from_wikipedia"
+      return nil
+    end
 
     monument = Monument.new(data[:params])
     monument.attach_photo(data[:photo_url]) if data[:photo_url]
     monument.fetch_geocoder
 
     return monument if monument.save
-
-    nil
   end
 
-  def fetch_data_from_wikipedia
-    page = Wikipedia.find(@landmark_name)
-    return nil unless page.coordinates
+  def fetch_data_from_wikipedia(name)
+    page = Wikipedia.find(name)
+    return nil unless page.extlinks
 
     { params: {
-        name: @landmark_name,
+        name: name.split.map(&:capitalize).join(" "),
         lat: @landmark_lat,
         lng: @landmark_lng,
         description: page.summary,

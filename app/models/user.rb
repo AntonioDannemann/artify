@@ -9,6 +9,10 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, presence: true
 
+  def self.destroy_guests
+    User.destroy_by(first_name: "guest", last_name: nil)
+  end
+
   def full_name
     "#{first_name.capitalize} #{last_name.capitalize}"
   end
