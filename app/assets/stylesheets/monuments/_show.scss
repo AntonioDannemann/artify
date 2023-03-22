@@ -1,104 +1,97 @@
 .background-image {
-  display: flex;
-  background-size: cover;
-  background-position: center center;
   width: 100%;
   height: 100vh;
-}
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-size: cover;
+  background-position: center;
 
-.glass-container{
-  padding-top: 15px;
-  width: 90%;
-  height: 35%;
-  margin: 0px auto;
-  background-color: rgba(64, 64, 64, 0.5);
-  box-shadow: 0 0 10px 1px rgba(48, 44, 44, 0.83);
-  backdrop-filter: blur(15px);
-  border-radius: 25px;
-  position: fixed;
-  bottom: 2%;
-  right: 0;
-  left: 0;
-  transition: height 0.5s ease-in-out, width 0.5s ease-in-out;
+  .glass-container{
+    height: 295px;
+    margin: 20px;
+    background-color: rgba(64, 64, 64, 0.5);
+    box-shadow: 0 0 10px 1px rgba(48, 44, 44, 0.83);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
+    align-items: center;
+    transition: all 0.5s ease;
 
-  hr {
-    width: 80px;
-    height: 5px;
-    margin: 10px auto 0;
-    border: none;
-    background-color: $green;
-    opacity: 1;
-    border-radius: 2px;
-    z-index: 10;
+    button::before{
+      content: "Show More";
+    }
+
+    &.expanded{
+      margin: 0;
+      padding: 40px;
+      height: 80%;
+
+    button{
+      &::before{
+        content: "";
+      }
+
+      &::after{
+        content: "Show less";
+      }
     }
 
 
-  .text-container{
-    overflow: hidden;
-    color: $lightgrey;
-    font-size: 16px;
+    .content{
+      overflow-y: scroll;
 
-    h4{
-      margin: 20px 15px 20px 15px;
-      text-align: left;
-      font-size: 38px;
-      font-weight: bolder;
+      &::-webkit-scrollbar{
+        width: 0;
+      }
     }
 
-    .location{
-      position: relative;
-      padding: 5px 0px 0px 15px;
-      bottom: 17px;
 
     }
 
-    .categorie{
-      position: relative;
-      padding: 5px 0px 0px 15px;
-      bottom: 26px;
+    .line{
+      width: 80px;
+      border: 2px solid $green;
+      opacity: 1;
+      border-radius: 2px;
     }
 
-    .url{
-      position: relative;
-      padding: 0px 0px 0px 15px;
-      bottom: 34px;
+    button{
+      width: max-content;
+      border-radius: 15px;
+      padding: $text-padding;
+      border: 3px solid $green;
+      background-color: inherit;
+      color: $lightgrey;
     }
 
-  }
-  .hidden-thumbnail{
-    display: none;
-    position: relative;
-    left: 7.2%;
-    bottom: -42%;
-    width: 334px;
-    height: 200px;
-    border-radius: 17px;
-    transition: none;
-    animation: none;
-  }
+    .content{
+      overflow: hidden;
 
-  .description{
-    position: relative;
-    padding: 5px 15px 5px 15px;
-    bottom: 11%;
-    height: 34%;
-    overflow: hidden;
-  }
+      h4{
+        color: $lightgrey;
+        font-size: 38px;
+        font-weight: bolder;
+      }
 
-  .description::-webkit-scrollbar {
-    display: none;
-  }
+      .location{
+        font-size: 19px;
+      }
 
-  .see-more-button {
-    position: relative;
-    bottom: 11%;
-    width: 100px;
-    height: 40px;
-    border-radius: 15px;
-    margin: 10px auto 0;
-    padding: 5px;
-    text-align: center;
-    border: 3px solid $green;
-  }
+      p{
+        font-size: 16px;
+      }
 
+      .hidden-thumbnail{
+        height: 200px;
+        width: 307px;
+        border-radius: 15px;
+        margin-bottom: 14px;
+      }
+    }
+  }
 }

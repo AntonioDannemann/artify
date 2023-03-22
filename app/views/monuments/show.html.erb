@@ -1,20 +1,18 @@
-<div class="background-image" style="background-image: url('<%= cl_image_path @monument.photo.key %>');" data-controller="glass-container">
+<div class="background-image" style="background-image: url('<%= cl_image_path @monument.photo.key %>');" data-controller="glass-container" data-action="click->glass-container#hide">
   <div class= "btn-home">
     <%= link_to root_path do %>
       <i class="fa-solid fa-arrow-left"></i>
     <% end %>
   </div>
-  <div class= "glass-container" data-target="glass-container.glassContainer">
-    <hr>
-    <div class= "text-container">
+  <div class="glass-container" data-glass-container-target="glass">
+    <div class="line"></div>
+    <div class="content" data-glass-container-target="content">
       <h4><%= @monument.name %></h4>
       <p class="location"><i class="fa-solid fa-location-dot"></i> <%= "#{@monument.city}, #{@monument.country_code}" %></p>
-      <%# <p class="url"><i class="fa-solid fa-globe"></i><%= link_to @monument.website_url, @monument.website_url, target: "_blank" %></p>
+      <p><%= @monument.description.split(". ").first(2).join(". ") %></p>
+      <%= cl_image_tag @monument.photo.key, class: "hidden-thumbnail" %>
+      <p><%= @monument.description.split(". ")[2..].join(". ")%></p>
     </div>
-      <%= cl_image_tag @monument.photo.key, data: { target: 'glass-container.image' }, class: "hidden-thumbnail" %>
-    <p class="description" data-target="glass-container.description"><%= @monument.description%></p>
-    <div class="see-more-button" data-target="glass-container.seeMoreButton">
-      <p>See More</p>
-    </div>
+    <button data-action="click->glass-container#expand"></button>
   </div>
 </div>
