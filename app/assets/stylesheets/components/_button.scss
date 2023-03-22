@@ -14,19 +14,54 @@
   }
 }
 
-.btn-back {
-  align-items: center;
-  background-color: $green;
+.btn-main-contrast {
+  background-color: $darkgrey;
+  border: none;
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  height: 40px;
-  width: 40px;
+  font-weight: 500;
+  margin: 16px 0px;
+  padding: $text-padding;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    animation: press-button 0.15s linear;
+  }
+}
+
+.btn-home {
+  align-items: center;
+  background-color: $darkgrey;
   border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: $green;
+  display: flex;
+  font-size: 17px;
+  height: 35px;
+  justify-content: center;
+  left: 15px;
   position: fixed;
-  color: $lightgrey;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  top: 15px;
+  width: 35px;
   z-index: 10;
-  top: 10px;
-  left: 10px;
-  font-size: 25px;
+
+  &:hover {
+    animation: press-button 0.15s linear;
+  }
+}
+
+.btn-new-history {
+  background-color: $darkgrey;
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+
+  p {
+    text-align: center;
+    color: $green;
+    margin: 0px;
+  }
 }

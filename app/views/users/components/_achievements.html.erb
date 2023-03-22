@@ -1,0 +1,46 @@
+<section id="nearby">
+  <div class="subheader">
+    <h2><i class="far fa-star"></i>  Achievements</h2>
+  </div>
+
+  <div class="achievements-gradient">
+    <div class="badges">
+      <div class="badge">
+        <p>King of country</p>
+        <%= image_tag "badges/achievement.svg", class: "badge-image" %>
+      </div>
+
+      <div class="badge">
+        <p>Landmarks pro</p>
+        <%= image_tag "badges/award.svg", class: "badge-image" %>
+      </div>
+
+      <div class="badge">
+        <p>Best time</p>
+        <%= image_tag "badges/smartwatch.svg", class: "badge-image" %>
+      </div>
+
+      <div class="badge">
+        <p>Winner</p>
+        <%= image_tag "badges/cup.svg", class: "badge-image" %>
+      </div>
+
+      <div class="badge">
+        <p>Mr. Worldwide</p>
+        <%= image_tag "badges/badge.svg", class: "badge-image" %>
+      </div>
+
+      <div class="badge">
+        <p>Master of city</p>
+        <%= image_tag "badges/mountain.svg", class: "badge-image" %>
+      </div>
+    </div>
+  </div>
+
+  <%= link_to monuments_path do %>
+    <div class="see-more-achievements">
+      <p>See more</p>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+    <% end %>
+</section>

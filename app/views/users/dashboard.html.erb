@@ -1,0 +1,71 @@
+<div id="user-banner">
+  <div class="top-bar">
+    <div class="welcome-message">
+      <h3>Hello</h3>
+      <h2><%= @user.first_name.upcase %>!</h2>
+    </div>
+
+    <%= link_to edit_user_registration_path do %>
+      <i class="fa-sharp fa-solid fa-gear"></i>
+    <% end %>
+  </div>
+
+  <div class="user-info">
+    <div class="info">
+      <p><%= @user.full_name %>  <i class="fa-solid fa-user"></i></p>
+      <p style="margin-bottom: 24px;">Paris  <i class="fa-solid fa-location-dot"></i></p>
+      <%= link_to "EDIT PROFILE", edit_user_registration_path, class: "btn-main-contrast"%>
+    </div>
+
+    <div class="picture">
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, class: "dashboard-avatar" %>
+      <% else %>
+        <%= image_tag "avatar.svg", class: "dashboard-avatar" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div id="my-monuments">
+  <div class="container">
+    <div class="title-container">
+      <div class="dashboard-title">
+        <h1>MY MONUMENTS</h1>
+      </div>
+
+      <%= form_with model: @history, data: { controller: "camera-form" } do |f| %>
+        <%= f.label :photo do %>
+          <div class="btn-new-history">
+            <p>+ <i class="fa-solid fa-camera"></i></p>
+          </div>
+        <% end %>
+
+        <%= f.file_field :photo, style: "display: none;", accept: "image/*", data: { action: "input->camera-form#submit" }, id: "banner_history_photo" %>
+      <% end %>
+    </div>
+
+    <div class="next-achievement">
+      <div class="next-achievement-info">
+        <div class="next-achievement-name">
+          <h3>Explorer</h3>
+          <p>38 (of 50) landmarks visited</p>
+        </div>
+        <div class="progress-bar">
+          <div class="percentage"></div>
+        </div>
+      </div>
+
+      <div class="next-badge">
+        <%= image_tag "badges/activity.svg"%>
+      </div>
+
+    </div>
+
+    <%= render "users/components/histories" %>
+
+    <%= render "users/components/favourites" %>
+
+    <%= render "users/components/achievements" %>
+  </div>
+</div>

@@ -1,0 +1,124 @@
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+
+  i {
+    color: $darkgrey;
+    font-size: 24px;
+  }
+}
+
+#my-monuments {
+
+  .title-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+
+    .dashboard-title {
+      background-color: $darkgrey;
+      border-radius: 10px;
+      padding: 8px;
+      margin-top: 24px;
+      flex: 1 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      h1 {
+        color: $green;
+        margin: 0px;
+      }
+    }
+  }
+}
+
+.next-achievement {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 24px 0 16px;
+  gap: 8px;
+  padding: 8px;
+
+  .next-achievement-info {
+    flex: 1 0 auto;
+
+    h3 {
+      margin: 0 auto;
+    }
+
+    .progress-bar {
+      background-color: $darkgrey;
+      height: 16px;
+      border-radius: 8px;
+
+      .percentage {
+        background-color: $green;
+        height: 16px;
+        border-radius: 8px;
+        width: 76%;
+      }
+    }
+  }
+
+  .next-badge {
+    height: 96px;
+    width: 96px;
+    padding: 8px;
+  }
+}
+
+.achievements-badge {
+  position: fixed;
+  background-image: linear-gradient(transparent 10%, $background);
+  z-index: 100;
+}
+
+.badges {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  .badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 96px;
+    height: 96px;
+    background-color: $darkgrey;
+    border-radius: 10px;
+    margin: 8px;
+
+    p {
+      margin: 0 auto;
+      font-weight: lighter;
+    }
+
+    .badge-image {
+      height: 64px;
+      width: 64px;
+      padding: 8px;
+    }
+  }
+}
+
+.see-more-achievements {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 16px;
+
+  p {
+    margin: 0;
+  }
+
+  i {
+    background-color: $darkgrey;
+    color: $green;
+    border-radius: 50%;
+    padding: 8px;
+  }
+}
