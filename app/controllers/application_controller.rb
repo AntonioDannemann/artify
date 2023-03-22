@@ -21,7 +21,12 @@ class ApplicationController < ActionController::Base
   # end
 
   def guest_user
-    User.find(session[:guest_user_id].nil? ? session[:guest_user_id] = create_guest_user.id : session[:guest_user_id])
+    id = session[:guest_user_id] || session[:guest_user_id] = create_guest_user.id
+    user = User.find_by(id:)
+    return user if user
+
+    session.delete(:guest_user_id)
+    guest_user
   end
 
   def pundit_user
