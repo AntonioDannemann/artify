@@ -15,9 +15,10 @@ class HistoriesController < ApplicationController
   end
 
   def create
-    @photo = params[:history][:photo]
+    @photo = compressed_photo(params[:history][:photo])
+
     @user = current_user || guest_user
-    @history = build_history_from_photo(@photo.path)
+    @history = build_history_from_photo(@photo)
 
     authorize @history
 
@@ -28,6 +29,25 @@ class HistoriesController < ApplicationController
   end
 
   private
+
+  def compressed_photo(photo)
+    if photo.size > 50_000_000
+      photo = compress_photo(photo, 10)
+    elsif photo.size > 26_214_400
+      photo = compress_photo(photo, 40)
+    elsif photo.size > 5_242_880
+      photo = compress_photo(photo, 80)
+    end
+
+    photo
+  end
+
+  def compress_photo(photo, quality)
+    image = MiniMagick::Image.new(photo.path)
+    image.combine_options { |option| option.quality quality }
+
+    StringIO.open(image.to_blob)
+  end
 
   def build_history_from_photo(image_url)
     landmark = fetch_landmark_from_google_cloud_vision(image_url)
@@ -58,7 +78,8 @@ class HistoriesController < ApplicationController
   end
 
   def new_history
-    history = History.new(photo: @photo)
+    history = History.new
+    history.photo.attach(io: @photo, filename: "#{@landmark_names[2]}.jpeg", content_type: "image/jpeg")
     history.user = @user
 
     # We first check in the database if there is a monument that corresponds to our current landmark
