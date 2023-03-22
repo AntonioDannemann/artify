@@ -32,11 +32,11 @@ class HistoriesController < ApplicationController
 
   def compressed_photo(photo)
     if photo.size > 50_000_000
-      photo = compress_photo(photo, 10)
+      return compress_photo(photo, 10)
     elsif photo.size > 26_214_400
-      photo = compress_photo(photo, 40)
+      return compress_photo(photo, 40)
     elsif photo.size > 5_242_880
-      photo = compress_photo(photo, 80)
+      return compress_photo(photo, 80)
     end
 
     photo
