@@ -9,10 +9,13 @@
     <div class="content" data-glass-container-target="content">
       <h4><%= @monument.name %></h4>
       <p class="location"><i class="fa-solid fa-location-dot"></i> <%= "#{@monument.city}, #{@monument.country_code}" %></p>
+      <%= link_to  @monument.website_url, target: "_blank" do %>
+        <span><i class="fa-solid fa-globe"></i> Official Website</span>
+      <% end %>
       <p><%= @monument.description.split(". ").first(2).join(". ") %></p>
       <%= cl_image_tag @monument.photo.key, class: "hidden-thumbnail" %>
       <p><%= @monument.description.split(". ")[2..].join(". ")%></p>
     </div>
-    <button data-action="click->glass-container#expand"></button>
+    <button data-action="click->glass-container#expand">Show More</button>
   </div>
 </div>
