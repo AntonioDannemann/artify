@@ -2,13 +2,11 @@
   <div class="banner-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.2)), url(<%= cl_image_path @featured_monument.photo.key %>);"></div>
 
   <div class="banner-overlay">
-    <div class="featured">
+    <%= link_to monument_path(@featured_monument), class: "featured" do %>
       <span>Landmark of the day</span>
       <h2><%= @featured_monument.name %></h2>
-      <%= link_to monument_path(@featured_monument) do %>
-        Learn more <i class="fa-solid  fa-arrow-right"></i>
-      <% end %>
-    </div>
+      <span>Learn more <i class="fa-solid  fa-arrow-right"></i></span>
+    <% end %>
 
     <div class="banner-frame" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.2)), url(<%= cl_image_path @featured_monument.photo.key %>);">
       <div id="tl"></div>
