@@ -78,7 +78,6 @@ export default class extends Controller {
   }
 
   #flyMapToUser = position =>  {
-    console.log(position.coords);
     this.map.flyTo({
       center: [position.coords.longitude, position.coords.latitude, ],
       essential: true,

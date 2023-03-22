@@ -25,7 +25,7 @@ class MonumentsController < ApplicationController
             id: m.id
           }
         }
-        )
+      )
     end
   end
 
