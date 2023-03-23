@@ -24,8 +24,8 @@ class Monument < ApplicationRecord
     Monument.all.reject { |monument| monument.photo.attached? }
   end
 
-  def distance_between
-    distance = Geocoder::Calculations.distance_between([48.858461, 2.294351], [lat, lng])
+  def distance_between(user_lat, user_lng)
+    distance = Geocoder::Calculations.distance_between([user_lat, user_lng], [lat, lng])
     distance = distance > 5 ? distance.round : distance.round(1)
 
     distance == distance.to_i ? distance.to_i : distance
