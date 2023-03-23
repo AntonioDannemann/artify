@@ -1,18 +1,27 @@
 <div class="monuments-scroller">
-  <% monuments.each do |mon| %>
-    <%= link_to monument_path(mon),
-      class: "card-monument",
-      style: (mon.photo.attached? ? "background-image: linear-gradient(rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.7)), url(#{ cl_image_path mon.photo.key, height: 250, quality: 30 })" : "") do %>
+  <% if monuments.any? %>
+    <% monuments.each do |mon| %>
+      <%= link_to monument_path(mon),
+        class: "card-monument",
+        style: (mon.photo.attached? ? "background-image: linear-gradient(rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.7)), url(#{ cl_image_path mon.photo.key, height: 250, quality: 30 })" : "") do %>
 
-      <h3><%= mon.name %></h3>
-      <span>
-        <i class="fa-solid fa-location-dot"></i>
-        <% if lat && lng %>
-          <%= "#{mon.distance_between(lat, lng)}km away" %>
-        <% else %>
-          <%= "#{mon.city}, #{mon.country_code}" %>
-        <% end %>
-      </span>
+        <h3><%= mon.name %></h3>
+        <span>
+          <i class="fa-solid fa-location-dot"></i>
+          <% if lat && lng %>
+            <%= "#{mon.distance_between(lat, lng)}km away" %>
+          <% else %>
+            <%= "#{mon.city}, #{mon.country_code}" %>
+          <% end %>
+        </span>
+      <% end %>
     <% end %>
+  <% else %>
+    <div class="no-monuments">
+      <%= image_tag "no_results.svg" %>
+      <div>
+        <h3>No results found</h3>
+      </div>
+    </div>
   <% end %>
 </div>
