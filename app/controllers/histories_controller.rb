@@ -29,20 +29,20 @@ class HistoriesController < ApplicationController
   private
 
   def build_history_from_photo(image_url)
-    landmark = GoogleLandmark.new(image_url)
+    google_landmark = GoogleLandmark.new(image_url)
 
     # We check whether a @landmark has been found and if not we return a new instance of History
     # The reason is that back in the #create action we authorize the value of @history
     # Pundit can't authorize an instance with a value of nil
     # So we pass an empty History, it passes the authorization but not the validation and the #save fails
-    unless landmark.landmark
+    unless google_landmark.landmark
       @error = "no landmark found on google"
       return History.new
     end
 
-    @landmark_lat = landmark.lat
-    @landmark_lng = landmark.lng
-    @landmark_name = landmark.name
+    @landmark_lat = google_landmark.lat
+    @landmark_lng = google_landmark.lng
+    @landmark_name = google_landmark.name
     @landmark_names = [@landmark_name, @landmark_name.downcase, @landmark_name.split.map(&:capitalize).join(" ")]
 
     new_history
