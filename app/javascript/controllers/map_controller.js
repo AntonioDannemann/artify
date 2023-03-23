@@ -8,6 +8,7 @@ export default class extends Controller {
   }
 
   connect() {
+    console.log("hello");
     mapboxgl.accessToken = this.apiKeyValue
     const blinder = document.getElementById('blinder')
     const featureListing = document.getElementById('feature-listing')
@@ -22,16 +23,15 @@ export default class extends Controller {
       zoom: -5,
     })
 
-
-
     this.map.on('load', () => {
       this.map.loadImage(
-        'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png',
+        'https://cdn-icons-png.flaticon.com/512/264/264242.png',
+        // 'http://localhost:3000/assets/pin.png',
         (error, image) => {
         if (error) throw error;
 
         // Add the image to the map style.
-        this.map.addImage('cat', image);
+        this.map.addImage('pin', image);
 
         this.map.addSource("monuments", {
           type: "geojson",
@@ -42,19 +42,25 @@ export default class extends Controller {
           'source': 'monuments',
           'type': 'symbol',
           'layout': {
-            'icon-image': 'cat',
-            'icon-size': 0.25
+            'icon-image': 'pin',
+            "icon-size": ['interpolate', ['linear', 2], ['zoom'], 2, 0.02, 10, 0.025, 12, 0.040]
             }
         });
       });
-    })
+    });
 
     this.map.on('click', 'monument', (e) => {
-      blinder.style.bottom = '30.2%';
+      e.preventDefault()
+      blinder.style.bottom = '270px';
       blinder.style.backgroundColor =   'rgba(154, 180, 149, 1)';
-      featureListing.style.height = '32%';
+
+      featureListing.style.height = '285px';
       featureListing.style.bottom = '0%';
+
       const mon = e.features[0].properties;
+
+
+
       featureListing.innerHTML = ""
          const indexCard = document.createElement('a')
          indexCard.href = `monuments/${mon.id}`
