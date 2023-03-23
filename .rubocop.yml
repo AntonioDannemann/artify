@@ -29,11 +29,11 @@ Lint/MissingSuper:
 Metrics/AbcSize:
   Enabled: false
 Metrics/ClassLength:
-  CountAsOne: ["array", "hash", "regex"]
+  CountAsOne: ["array", "hash", "heredoc"]
 Metrics/CyclomaticComplexity:
   Enabled: false
 Metrics/MethodLength:
-  CountAsOne: ["array", "hash", "regex"]
+  CountAsOne: ["array", "hash", "heredoc"]
 
 Style/ClassAndModuleChildren:
   Enabled: false

@@ -6,12 +6,11 @@ class GoogleLandmark
   def initialize(image_url)
     @image_url = image_url
     @landmark = fetch_landmark_from_google_cloud_vision
+    return unless @landmark
 
-    if @landmark
-      @lat = @landmark.locations.first.lat_lng.latitude
-      @lng = @landmark.locations.first.lat_lng.longitude
-      @name = @landmark.description
-    end
+    @lat = @landmark.locations.first.lat_lng.latitude
+    @lng = @landmark.locations.first.lat_lng.longitude
+    @name = @landmark.description
   end
 
   private

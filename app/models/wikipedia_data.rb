@@ -39,8 +39,7 @@ class WikipediaData
     # Then we dig through that JSON object until we find the website_url from the Infobox
     # You can see where this is exactly located in the root/resources/wikipedia_raw_data.rb file
     # Open that file and search (CTRL + F) for "BOOKMARK"
-    website_url_regexp =
-      %r/
+    website_url_regexp = %r/
       # This checks for a line that starts with website
       [ ]*\|[ ]*website[ ]*=[^|]*\|
       # This starts a matching group for the website URL and checks for the presence of https-https and www
