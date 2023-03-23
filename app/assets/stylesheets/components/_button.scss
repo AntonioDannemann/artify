@@ -10,23 +10,29 @@
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    animation: press-button 0.15s linear;
+    animation: press-button 0.3s linear;
   }
 }
 
-.btn-back {
+.btn-home {
   align-items: center;
-  background-color: $green;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  height: 40px;
-  width: 40px;
+  background-color: $darkgrey;
   border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: $green;
+  display: flex;
+  font-size: 20px;
+  height: 40px;
+  justify-content: center;
+  left: 15px;
   position: fixed;
-  color: $lightgrey;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  top: 15px;
+  width: 40px;
   z-index: 10;
-  top: 10px;
-  left: 10px;
-  font-size: 25px;
+
+  &:hover {
+    animation: press-button 0.3s linear;
+    color: $green;
+  }
 }

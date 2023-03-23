@@ -26,21 +26,17 @@
 
     form {
       animation: pulse 3s linear infinite;
-      margin: -77px auto 0;
+      margin: -82px auto 0;
       transition: transform 0.3s ease;
       width: max-content;
       z-index: 10;
-
-      &:hover {
-        animation: press-button 0.15s linear;
-      }
 
       .inner-circle {
         background-color: $green;
         border: 2px solid rgba(0, 0, 0, 0.5);
         border-radius: 50%;
-        height: 40px;
-        width: 40px;
+        height: 45px;
+        width: 45px;
       }
 
       .outer-circle {
@@ -97,7 +93,7 @@
       text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       width: 100%;
 
-      a {
+      span {
         align-items: center;
         display: flex;
         gap: 10px;

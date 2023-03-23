@@ -36,10 +36,6 @@ button, input, select, textarea {
   font: inherit;
 }
 
-html {
-  color-scheme: dark light;
-}
-
 h1, h2, h3 {
   font-family: $headers-font;
 }
@@ -68,6 +64,13 @@ ul {
 
 .max-content {
   width: max-content !important;
+}
+
+.noscroll {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .text-red {

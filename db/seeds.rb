@@ -2,55 +2,37 @@ require "google/cloud/vision/v1"
 require "mini_magick"
 require "open-uri"
 
-puts "Destroying all monuments"
-Monument.destroy_all
+puts "Creating user"
 
-puts "Destroying all users"
-User.destroy_all
-
-puts "Destroying all histories"
-History.destroy_all
-
-puts "Done destroying\n\n"
-
-puts "Creating users"
-
-User.create!(
-  first_name: "guest",
-  last_name: "Ramos",
-  email: "louisramosdev@gmail.com",
-  password: "password"
-)
-
-@user = User.create!(
-  first_name: "Rutger",
-  last_name: "Schoone",
-  email: "rcschoone@gmail.com",
-  password: "password",
-)
+@user = User.new(first_name: "guest", email: "#{Time.current.to_i}#{rand(999)}@guest.artify")
+@user.save(validate: false)
 
 puts "Done creating users\n\n"
 
 arc_de_triomphe = "https://cdn.britannica.com/66/80466-050-2E125F5C/Arc-de-Triomphe-Paris-France.jpg"
-big_ben = "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/63/f8/bb/big-ben.jpg?w=1200&h=1200&s=1&pcx=1033&pcy=310&pchk=v1_bf93e1170e1f1f8d4cea"
-dam_square = "https://www.patrimonia.nl/wp-content/uploads/2018/04/PM_FINALPICS_001-9-lr.jpg"
-duomo = "https://www.yesmilano.it/sites/default/files/styles/testata_full/public/luogo/copertina/62/511/Duomo_PIX_1280x560.jpg?itok=gsd4zBxj"
-eiffel_tower = "https://cdn.britannica.com/54/75854-050-E27E66C0/Eiffel-Tower-Paris.jpg"
+atomium = "https://upload.wikimedia.org/wikipedia/commons/c/cf/Brussels_-_Atomium_2022.jpg"
+big_ben = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Clock_Tower_-_Palace_of_Westminster%2C_London_-_May_2007.jpg/640px-Clock_Tower_-_Palace_of_Westminster%2C_London_-_May_2007.jpg"
+colosseum = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/1200px-Colosseo_2020.jpg"
+eiffel_tower = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg/640px-Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg"
 invalides = "https://cdn.britannica.com/37/155337-050-E035C14E/Dome-des-Invalides-Paris-Jules-Hardouin-Mansart-1706.jpg"
-pantheon = "https://cdn.britannica.com/13/123413-050-6572DF6D/Pantheon-Paris.jpg"
-sagrada_familia = "https://cdn.britannica.com/15/194815-050-08B5E7D1/Nativity-facade-Sagrada-Familia-cathedral-Barcelona-Spain.jpg"
+manneken_pis = "https://upload.wikimedia.org/wikipedia/commons/c/c4/Bruxelles_Manneken_Pis_cropped.jpg"
+mount_rushmore = "https://www.history.com/.image/ar_4:3%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTU3ODc5MDg2NDMyNjU5MTY3/morning-light-on-4.jpg"
+pantheon = "https://lp-cms-production.imgix.net/2019-06/88ea89abfafda42bb41ea785744af5af-pantheon.jpg"
+pena_palace = "https://tourscanner.com/blog/wp-content/uploads/2019/05/Pena-Palace-tickets-1.png"
 statue_of_liberty = "https://www.history.com/.image/ar_4:3%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTY1MTc1MTk3ODI0MDAxNjA5/topic-statue-of-liberty-gettyimages-960610006-promo.jpg"
 
 monument_images = [
   arc_de_triomphe,
+  atomium,
   big_ben,
-  dam_square,
-  duomo,
+  colosseum,
   eiffel_tower,
   invalides,
+  manneken_pis,
   pantheon,
-  sagrada_familia,
-  statue_of_liberty
+  pena_palace,
+  statue_of_liberty,
+  mount_rushmore
 ]
 
 def build_history_from_photo(image_url)
@@ -63,6 +45,7 @@ def build_history_from_photo(image_url)
   @landmark_lat = landmark.locations.first.lat_lng.latitude
   @landmark_lng = landmark.locations.first.lat_lng.longitude
   @landmark_name = landmark.description
+  @landmark_names = [@landmark_name, @landmark_name.downcase, @landmark_name.split.map(&:capitalize).join(" ")]
 
   new_history(image_url)
 end
@@ -83,24 +66,31 @@ def new_history(image_url)
   history.user = @user
   history.monument = find_monument_by_landmark || create_monument
 
-  method_start = Time.current
-  attach_photo_to_model(history, image_url, history.monument.name)
-  puts "#{Time.current - method_start}s to complete attach_photo_to_model(history)"
+  if history.monument
+    method_start = Time.current
+    attach_photo_to_model(history, image_url, history.monument.name)
+    puts "#{Time.current - method_start}s to complete attach_photo_to_model(history)"
+  end
 
   history
 end
 
 def find_monument_by_landmark
   method_start = Time.current
-  monument = Monument.find_by(name: @landmark_name, lat: @landmark_lat, lng: @landmark_lng)
+  monument = Monument.find_by(name: @landmark_name.split.map(&:capitalize).join(" "))
   puts "#{Time.current - method_start}s to complete find_monument_by_landmark"
 
   monument
 end
 
 def create_monument
-  data = fetch_data_from_wikipedia
-  return nil unless data
+  data = nil
+  @landmark_names.each { |name| break if (data = fetch_data_from_wikipedia(name)) }
+
+  unless data
+    puts "No wikipedia page found for https://en.wikipedia.org/wiki/#{@landmark_name.tr(' ', '_')}"
+    return nil
+  end
 
   monument = Monument.new(data[:params])
   method_start = Time.current
@@ -120,13 +110,13 @@ def create_monument
   nil
 end
 
-def fetch_data_from_wikipedia
+def fetch_data_from_wikipedia(name)
   method_start = Time.current
-  page = Wikipedia.find(@landmark_name)
-  return nil unless page.coordinates
+  page = Wikipedia.find(name)
+  return nil unless page.extlinks
 
   params = { params: {
-               name: @landmark_name,
+               name: name.split.map(&:capitalize).join(" "),
                lat: @landmark_lat,
                lng: @landmark_lng,
                description: page.summary,
@@ -172,7 +162,9 @@ end
 
 def attach_photo_to_model(model, photo_url, filename)
   photo = URI.parse(photo_url).open
-  if photo.size > 26_214_400
+  if photo.size > 50_000_000
+    photo = compress_photo(photo, 10)
+  elsif photo.size > 26_214_400
     photo = compress_photo(photo, 40)
   elsif photo.size > 5_242_880
     photo = compress_photo(photo, 80)
@@ -198,13 +190,16 @@ monument_images.each do |image_url|
   monument_start = Time.current
   history = build_history_from_photo(image_url)
 
-  next if history.nil?
+  next puts "Process failed after #{Time.current - monument_start}s\n\n" if history.nil?
 
   method_start = Time.current
-  history.save
-  puts "#{Time.current - method_start}s to save history"
+  if history.save
+    puts "#{Time.current - method_start}s to save history"
 
-  puts "#{history.monument.name} created in #{Time.current - monument_start}s\n\n" if history
+    puts "#{history.monument.name} created in #{Time.current - monument_start}s\n\n" if history
+  else
+    puts "Process failed after #{Time.current - monument_start}s\n\n"
+  end
 end
 
 puts "Done creating monuments and histories\n\n"

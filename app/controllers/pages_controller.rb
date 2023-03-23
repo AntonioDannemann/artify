@@ -3,8 +3,8 @@ class PagesController < ApplicationController
 
   def home
     @history = History.new
-    @monuments = Monument.all
-    @featured_monument = featured_monument
+    @monuments = Monument.order(:name)
+    @featured_monument = Monument.featured
     @nearby_monuments = @monuments.select { |mon| mon.distance_between < 5 }.sort_by(&:distance_between)
 
     @ht = true if params[:ht]
@@ -16,12 +16,6 @@ class PagesController < ApplicationController
   def error() end
 
   private
-
-  def featured_monument
-    current_unix_day = Time.current.to_time.to_i.fdiv(86_400).floor
-
-    @monuments[current_unix_day % @monuments.length]
-  end
 
   def search_form_results
     @searched_monuments = []
