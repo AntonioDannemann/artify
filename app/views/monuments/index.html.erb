@@ -1,4 +1,4 @@
-<div class="index-container" data-controller="index">
+<div class="index-container">
   <div class="monuments-map"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
@@ -7,9 +7,8 @@
       <i class="fa-solid fa-arrow-left"></i>
     <% end %>
   </div>
-  <div id="feature-listing" class="listing" data-index-target="index">
+  <div id="feature-listing" class="listing">
   </div>
-  <div class="blinder" data-index-target="blinder">
-    <hr>
+  <div id="blinder">
   </div>
 </div>
