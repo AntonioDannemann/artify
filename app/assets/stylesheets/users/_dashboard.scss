@@ -2,7 +2,7 @@
   padding: 48px 20px 8px;
   background-color: $green;
   background-size: cover;
-  border-bottom-left-radius: 10px;
+  border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
 
   .user-info {
@@ -12,21 +12,19 @@
     margin: 16px 0;
 
     .welcome-message {
-      flex: 1 0 auto;
+      flex-grow: 1;
+      color: $darkgrey;
 
       h3 {
-        color: $darkgrey;
         margin: 0px;
       }
 
       h2 {
-        color: $darkgrey;
         font-size: 2.2rem;
         margin: 0px;
       }
 
       p {
-        color: $darkgrey;
         margin: 0;
       }
     }
@@ -36,9 +34,7 @@
       display: block;
       height: 96px;
       width: 96px;
-      margin: 0 auto;
       object-fit: cover;
-      overflow: hidden;
       border: 1px solid $lightgrey;
     }
   }
@@ -60,14 +56,4 @@
       margin: 8px;
     }
   }
-
-  .btn-home {
-    i {
-      color: $green;
-    }
-  }
-}
-
-.dashboard-container {
-
 }
