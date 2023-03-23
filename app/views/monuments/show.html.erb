@@ -5,20 +5,25 @@
     <% end %>
   </div>
   <div class="glass-container" data-glass-container-target="glass">
-    <div class="line"></div>
+    <div class="line" data-action="click->glass-container#expand" ></div>
     <div class="content" data-glass-container-target="content">
 
-      <div class="title-with-url">
-        <h4><%= @monument.name %></h4>
-        <%= link_to  @monument.website_url, target: "_blank" do %>
-          <i class="fa-solid fa-globe"></i>
+      <h4><%= @monument.name %></h4>
+
+      <div class="location-with-url">
+        <p class="location"><i class="fa-solid fa-location-dot"></i> <%= "#{@monument.city}, #{@monument.country_code}" %></p>
+        <% if @monument.website_url.present? %>
+          <%= link_to @monument.website_url, target: "_blank" do %>
+            <i class="fa-solid fa-globe"></i>
+          <% end %>
         <% end %>
       </div>
 
-      <p class="location"><i class="fa-solid fa-location-dot"></i> <%= "#{@monument.city}, #{@monument.country_code}" %></p>
       <p><%= @monument.description.split(". ").first(2).join(". ") %></p>
       <%= cl_image_tag @monument.photo.key, class: "hidden-thumbnail" %>
-      <p><%= @monument.description.split(". ")[2..].join(". ")%></p>
+      <% @monument.description.split(". ")[2..].each_slice(3).map do |subarray| %>
+        <p><%= subarray.join(". ") %></p>
+      <% end %>
 
       <div class="monuments-scroller">
         <% @monuments.each do |mon| %>
