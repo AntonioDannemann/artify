@@ -19,7 +19,7 @@
         <% end %>
       </div>
 
-      <p><%= @monument.description.split(". ").first(2).join(". ") %></p>
+      <p class="truncate" data-glass-container-target="truncate"><%= @monument.description.split(". ").first(2).join(". ") %></p>
       <%= cl_image_tag @monument.photo.key, class: "hidden-thumbnail" %>
       <% @monument.description.split(". ")[2..].each_slice(3).map do |subarray| %>
         <p><%= subarray.join(". ") %></p>
