@@ -67,9 +67,10 @@ ul {
 }
 
 .noscroll {
-  height: 100vh;
-  height: 100svh;
   overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .text-red {

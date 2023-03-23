@@ -3,7 +3,11 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="home-logo"
 export default class extends Controller {
   connect() {
-    document.querySelector("body").classList.add("noscroll")
+    this.html = document.querySelector("html")
+    this.body = document.querySelector("body")
+
+    this.html.classList.add("noscroll")
+    this.body.classList.add("noscroll")
 
     setTimeout(() => {
       this.#hideLogo()
@@ -11,7 +15,10 @@ export default class extends Controller {
   }
 
   disconnect() {
-    document.querySelector("body").classList.remove("noscroll")
+    if (!document.querySelector(".tutorial")) {
+      this.html.classList.remove("noscroll")
+      this.body.classList.remove("noscroll")
+    }
   }
 
   #hideLogo() {
