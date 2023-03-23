@@ -25,7 +25,7 @@ export default class extends Controller {
 
     this.map.on('load', () => {
       this.map.loadImage(
-        'https://cdn-icons-png.flaticon.com/512/264/264242.png',
+        'https://png.pngtree.com/element_our/sm/20180526/sm_5b09436fd0515.png',
         // 'http://localhost:3000/assets/pin.png',
         (error, image) => {
         if (error) throw error;
@@ -43,7 +43,7 @@ export default class extends Controller {
           'type': 'symbol',
           'layout': {
             'icon-image': 'pin',
-            "icon-size": ['interpolate', ['linear', 2], ['zoom'], 2, 0.02, 10, 0.025, 12, 0.040]
+            "icon-size": ['interpolate', ['linear', 2], ['zoom'], 2, 0.02, 10, 0.025, 12, 1]
             }
         });
       });
