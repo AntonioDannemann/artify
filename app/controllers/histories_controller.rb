@@ -102,11 +102,7 @@ class HistoriesController < ApplicationController
       return nil
     end
 
-    monument = Monument.new(data[:params])
-    monument.attach_photo(data[:photo_url]) if data[:photo_url]
-    monument.fetch_geocoder
-
-    return monument if monument.save
+    Monument.find_by(description: data[:params][:description]) || new_monument
   end
 
   def fetch_data_from_wikipedia(name)
@@ -162,5 +158,14 @@ class HistoriesController < ApplicationController
     return nil unless uri.is_a?(URI::HTTP) && !uri.host.nil?
 
     url
+  end
+
+  def new_monument
+    monument = Monument.new(data[:params])
+    monument.attach_photo(data[:photo_url]) if data[:photo_url]
+    monument.fetch_geocoder
+    return monument if monument.save
+
+    nil
   end
 end
