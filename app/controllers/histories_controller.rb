@@ -1,4 +1,3 @@
-require "google/cloud/vision/v1"
 require "mini_magick"
 require 'open-uri'
 
@@ -16,7 +15,6 @@ class HistoriesController < ApplicationController
 
   def create
     @photo = compressed_photo(params[:history][:photo])
-
     @user = current_user || guest_user
     @history = build_history_from_photo(@photo)
 
@@ -30,57 +28,30 @@ class HistoriesController < ApplicationController
 
   private
 
-  def compressed_photo(photo)
-    if photo.size > 50_000_000
-      return compress_photo(photo, 10)
-    elsif photo.size > 26_214_400
-      return compress_photo(photo, 40)
-    elsif photo.size > 5_242_880
-      return compress_photo(photo, 80)
-    end
-
-    photo
-  end
-
-  def compress_photo(photo, quality)
-    image = MiniMagick::Image.new(photo.path)
-    image.combine_options { |option| option.quality quality }
-
-    StringIO.open(image.to_blob)
-  end
-
   def build_history_from_photo(image_url)
-    landmark = fetch_landmark_from_google_cloud_vision(image_url)
+    google_landmark = GoogleLandmark.new(image_url)
 
     # We check whether a @landmark has been found and if not we return a new instance of History
     # The reason is that back in the #create action we authorize the value of @history
     # Pundit can't authorize an instance with a value of nil
     # So we pass an empty History, it passes the authorization but not the validation and the #save fails
-    unless landmark
-      @error = "fetch_landmark_from_google_cloud_vision"
+    unless google_landmark.landmark
+      @error = "no landmark found on google"
       return History.new
     end
 
-    @landmark_lat = landmark.locations.first.lat_lng.latitude
-    @landmark_lng = landmark.locations.first.lat_lng.longitude
-    @landmark_name = landmark.description
+    @landmark_lat = google_landmark.lat
+    @landmark_lng = google_landmark.lng
+    @landmark_name = google_landmark.name
     @landmark_names = [@landmark_name, @landmark_name.downcase, @landmark_name.split.map(&:capitalize).join(" ")]
 
     new_history
   end
 
-  def fetch_landmark_from_google_cloud_vision(image_url)
-    client = Google::Cloud::Vision::V1::ImageAnnotator::Client.new
-    response = client.landmark_detection(image: image_url)
-
-    # This line digs through a JSON object to return the data from the first landmark found by Google
-    response.responses.first.landmark_annotations.first
-  end
-
   def new_history
     history = History.new
-    history.photo.attach(io: @photo, filename: "#{@landmark_names[2]}.jpeg", content_type: "image/jpeg")
     history.user = @user
+    history.photo.attach(io: @photo, filename: "#{@landmark_names[2]}#{@user.id}.jpeg", content_type: "image/jpeg")
 
     # We first check in the database if there is a monument that corresponds to our current landmark
     # If not we create one
@@ -94,78 +65,54 @@ class HistoriesController < ApplicationController
   end
 
   def create_monument
-    data = nil
-    @landmark_names.each { |name| break if (data = fetch_data_from_wikipedia(name)) }
+    data = @landmark_names.find do |name|
+      data = WikipediaData.new(name, @landmark_lat, @landmark_lng)
+      break data if data.params
+    end
 
     unless data
-      @error = "fetch_data_from_wikipedia"
+      @error = "no data found on wikipedia"
       return nil
     end
 
-    Monument.find_by(description: data[:params][:description]) || new_monument
+    Monument.find_by(description: data.params[:description]) || new_monument(data)
   end
 
-  def fetch_data_from_wikipedia(name)
-    page = Wikipedia.find(name)
-    return nil unless page.extlinks
-
-    { params: {
-        name: name.split.map(&:capitalize).join(" "),
-        lat: @landmark_lat,
-        lng: @landmark_lng,
-        description: page.summary,
-        website_url: search_page_raw_data_for_website_url(page)
-      },
-      photo_url: page.main_image_url }
-  end
-
-  def search_page_raw_data_for_website_url(page)
-    # This is gonna be one of those "Trust me, Bro" moment
-    # This method is basically digging through an enormous Hash of the whole page's data
-    # An example of such Has can be found in root/resources/wikipedia_raw_data.rb
-    # We first need to search through our Hash for a JSON of the page's whole content
-    content_json = page.raw_data.dig("query", "pages").values.first["revisions"].first["*"]
-
-    # Then we dig through that JSON object until we find the website_url from the Infobox
-    # You can see where this is exactly located in the root/resources/wikipedia_raw_data.rb file
-    # Open that file and search (CTRL + F) for "BOOKMARK"
-    website_url_regexp =
-      %r/
-      # This checks for a line that starts with website
-      [ ]*\|[ ]*website[ ]*=[^|]*\|
-      # This starts a matching group for the website URL and checks for the presence of https-https and www
-      ((?:https?:\/\/)?(?:www\.)?
-      # This is the website name and domain. Ex - Artify.click
-      [-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}
-      # This checks for any params And we close the matching group
-      \b(?:[-a-zA-Z0-9()@:%_+.~#?&\/=]*))
-      /x
-
-    website_url = content_json.match(website_url_regexp)&.[](1)
-
-    # Finally most url fetched from Wikipedia don't come with https:// or http:// in front of link
-    # Because of that they can't be used as href for <a> tags
-    # So we verify that the url has http or https and if not, we add it
-    # We also verify that the link is working
-    verify_url(website_url)
-  end
-
-  def verify_url(url)
-    return nil unless url
-
-    url = url.match?(/https|http/) ? url : "https://#{url}"
-    uri = URI.parse(url)
-    return nil unless uri.is_a?(URI::HTTP) && !uri.host.nil?
-
-    url
-  end
-
-  def new_monument
-    monument = Monument.new(data[:params])
-    monument.attach_photo(data[:photo_url]) if data[:photo_url]
+  def new_monument(data)
+    monument = Monument.new(data.params)
     monument.fetch_geocoder
-    return monument if monument.save
+    if data.photo_url
+      monument.photo.attach(
+        io: compressed_photo(URI.parse(data.photo_url).open),
+        filename: "#{monument.name}.jpeg",
+        content_type: "image/jpeg"
+      )
+    end
 
-    nil
+    return monument if monument.save
+  end
+
+  # Image Editing
+  def compressed_photo(photo)
+    image = resized_photo(photo)
+
+    if image.size > 5_242_880
+      image = compress_image(image, 30)
+    elsif image.size > 2_621_440
+      image = compress_image(image, 50)
+    elsif image.size > 1_048_576
+      image = compress_image(image, 80)
+    end
+
+    StringIO.open(image.to_blob)
+  end
+
+  def resized_photo(photo)
+    image = MiniMagick::Image.new(photo.path)
+    image.resize "1920x1920"
+  end
+
+  def compress_image(image, quality)
+    image.quality quality
   end
 end
