@@ -33,6 +33,26 @@ body:has(.tutorial, #logo, #loading:not(.hidden)) {
     }
   }
 
+  .enable-geolocation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+
+    div {
+      text-align: center;
+    }
+
+    img {
+      width: 170px;
+    }
+
+    p {
+      color: $lightgrey50;
+    }
+  }
+
   #loading, #logo {
     align-items: center;
     background-color: $background;
