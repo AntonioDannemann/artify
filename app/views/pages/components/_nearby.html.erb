@@ -10,7 +10,7 @@
     <% @nearby_monuments.each do |mon| %>
       <%= link_to monument_path(mon),
         class: "card-monument",
-        style: (mon.photo.attached? ? "background-image: linear-gradient(rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.7)), url(#{ cl_image_path mon.photo.key })" : "") do %>
+        style: (mon.photo.attached? ? "background-image: linear-gradient(rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.7)), url(#{ cl_image_path mon.photo.key, height: 250, quality: 30 })" : "") do %>
 
         <h3><%= mon.name %></h3>
         <span><i class="fa-solid fa-location-dot"></i> <%= mon.distance_between %>km away</span>

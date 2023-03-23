@@ -16,6 +16,7 @@ colosseum = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_
 eiffel_tower = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg/640px-Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg"
 invalides = "https://cdn.britannica.com/37/155337-050-E035C14E/Dome-des-Invalides-Paris-Jules-Hardouin-Mansart-1706.jpg"
 manneken_pis = "https://upload.wikimedia.org/wikipedia/commons/c/c4/Bruxelles_Manneken_Pis_cropped.jpg"
+mount_rushmore = "https://www.history.com/.image/ar_4:3%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTU3ODc5MDg2NDMyNjU5MTY3/morning-light-on-4.jpg"
 pantheon = "https://lp-cms-production.imgix.net/2019-06/88ea89abfafda42bb41ea785744af5af-pantheon.jpg"
 pena_palace = "https://tourscanner.com/blog/wp-content/uploads/2019/05/Pena-Palace-tickets-1.png"
 statue_of_liberty = "https://www.history.com/.image/ar_4:3%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTY1MTc1MTk3ODI0MDAxNjA5/topic-statue-of-liberty-gettyimages-960610006-promo.jpg"
@@ -30,7 +31,8 @@ monument_images = [
   manneken_pis,
   pantheon,
   pena_palace,
-  statue_of_liberty
+  statue_of_liberty,
+  mount_rushmore
 ]
 
 def build_history_from_photo(image_url)
@@ -160,7 +162,9 @@ end
 
 def attach_photo_to_model(model, photo_url, filename)
   photo = URI.parse(photo_url).open
-  if photo.size > 26_214_400
+  if photo.size > 50_000_000
+    photo = compress_photo(photo, 10)
+  elsif photo.size > 26_214_400
     photo = compress_photo(photo, 40)
   elsif photo.size > 5_242_880
     photo = compress_photo(photo, 80)
