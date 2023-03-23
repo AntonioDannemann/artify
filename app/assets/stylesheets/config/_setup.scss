@@ -66,6 +66,12 @@ ul {
   width: max-content !important;
 }
 
+.noscroll {
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
 .text-red {
   color: $red;
 }

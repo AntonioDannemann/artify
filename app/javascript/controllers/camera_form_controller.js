@@ -9,6 +9,7 @@ export default class extends Controller {
   }
 
   submit() {
+    document.querySelector("body").classList.add("noscroll")
     document.getElementById("loading").classList.remove("hidden")
 
     setTimeout(() => {
