@@ -14,21 +14,6 @@
   }
 }
 
-.btn-main-contrast {
-  background-color: $darkgrey;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  font-weight: 500;
-  margin: 16px 0px;
-  padding: $text-padding;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-
-  &:hover {
-    animation: press-button 0.15s linear;
-  }
-}
-
 .btn-home {
   align-items: center;
   background-color: $darkgrey;
@@ -48,22 +33,5 @@
 
   &:hover {
     animation: press-button 0.15s linear;
-  }
-}
-
-.btn-new-history {
-  background-color: $darkgrey;
-  border-radius: 50%;
-  margin-top: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  height: 48px;
-  width: 48px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
-  p {
-    color: $green;
-    margin: 0px;
   }
 }

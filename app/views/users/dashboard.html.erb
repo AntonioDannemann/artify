@@ -1,9 +1,7 @@
 <div id="user-banner">
-  <div class="top-bar">
-    <%= link_to root_path(ht: "y"), class: "btn-home" do %>
-      <i class="fa-solid fa-arrow-left"></i>
-    <% end %>
-  </div>
+  <%= link_to root_path(ht: "y"), class: "btn-home" do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
 
   <div class="user-info">
     <div class="welcome-message">
@@ -22,18 +20,12 @@
   </div>
 
   <div class="profile-bottom">
-    <div class="btn-edit-profile">
-      <%= link_to "EDIT PROFILE", edit_user_registration_path, class: "btn-main-contrast"%>
-    </div>
+    <%= link_to "EDIT PROFILE", edit_user_registration_path, class: "btn-main" %>
 
-    <div class="badges-collection-position">
-      <%= image_tag "badges/badges_collection.png", class: "badges-collection"%>
-    </div>
+    <%= image_tag "badges_collection.png", class: "badges-collection" %>
   </div>
 </div>
 
-<div id="my-monuments">
-  <div class="container">
-    <%= render "users/components/histories" %>
-  </div>
+<div class="container">
+  <%= render "users/components/histories" %>
 </div>

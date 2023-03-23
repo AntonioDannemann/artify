@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
-    @history = History.new
-    @monuments = Monument.all
+    @histories = History.all
   end
 end
