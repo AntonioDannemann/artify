@@ -3,6 +3,6 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
-    @histories = policy_scope(History)
+    @histories = History.where(user: current_user)
   end
 end
