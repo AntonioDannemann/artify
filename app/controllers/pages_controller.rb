@@ -3,9 +3,11 @@ class PagesController < ApplicationController
 
   def home
     @history = History.new
-    @monuments = Monument.all
-    @featured_monument = featured_monument
-    @nearby_monuments = @monuments.select { |mon| mon.distance_between < 5 }.sort_by(&:distance_between)
+    @monuments = Monument.order(:name)
+    @featured_monument = Monument.featured
+    @user_lat = params[:lat]
+    @user_lng = params[:lng]
+    nearby_results
 
     @ht = true if params[:ht]
     @show_footer = true
@@ -17,14 +19,20 @@ class PagesController < ApplicationController
 
   private
 
-  def featured_monument
-    id = Rails.cache.fetch("featured_monument", expires_in: 1.day) do
-      current_unix_day = Time.current.to_time.to_i.fdiv(86_400).floor
-      monument = @monuments.select { |mon| mon.photo.attached? }[current_unix_day % @monuments.length]
-      monument.id
-    end
+  def nearby_results
+    @nearby_monuments = []
+    return unless @user_lat && @user_lng
 
-    Monument.find(id)
+    @nearby_monuments = @monuments.select { |mon| mon.distance_between(@user_lat, @user_lng) < 5 }
+                                  .sort_by { |mon| mon.distance_between(@user_lat, @user_lng) }
+
+    respond_to do |format|
+      format.html
+
+      partial = "shared/monuments_scroller"
+      locals = { monuments: @nearby_monuments, lat: @user_lat, lng: @user_lng }
+      format.text { render partial:, locals:, formats: [:html] }
+    end
   end
 
   def search_form_results

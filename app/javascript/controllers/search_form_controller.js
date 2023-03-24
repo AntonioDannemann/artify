@@ -7,9 +7,8 @@ export default class extends Controller {
   update() {
     if (this.inputTarget.value != "") {
       const url = `${this.formTarget.action}?search=${this.inputTarget.value}`
-      fetch(url, {
-        headers: { "Accept": "text/plain" }
-      }).then(res => res.text())
+      fetch(url, { headers: { "Accept": "text/plain" } })
+        .then(res => res.text())
         .then(html => {
           this.listTarget.outerHTML = html
 

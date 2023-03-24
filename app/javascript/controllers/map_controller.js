@@ -59,22 +59,23 @@ export default class extends Controller {
       featureListing.innerHTML = ""
 
       const mon = e.features[0].properties;
-      const indexCard = document.createElement('div')
-      indexCard.innerHTML =`
-      <div class="card-index">
-        <div class="image-index" style="background-image: linear-gradient(rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.7)), url('${mon.photo}')">
-        </div>
-        <div class="description-index">
-          <div>
-            <h3>${mon.name}</h3>
-            <p><i class="fa-solid fa-location-dot"></i>  ${mon.city} </p>
-          </div>
-          <p class="desc-short">${mon.desc}...</p>
-          <a href="/monuments/${mon.id}"> Learn more <i class="fa-solid  fa-arrow-right"></i></a>
-        </div>
-      </div>
-      `;
-      featureListing.appendChild(indexCard);
+
+      // const indexCard = document.createElement('div')
+      // indexCard.innerHTML =`
+      // <div class="card-index">
+      //   <div class="image-index" style="background-image: linear-gradient(rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.7)), url('${mon.photo}')">
+      //   </div>
+      //   <div class="description-index">
+      //     <div>
+      //       <h3>${mon.name}</h3>
+      //       <p><i class="fa-solid fa-location-dot"></i>  ${mon.city} </p>
+      //     </div>
+      //     <p class="desc-short">${mon.desc}...</p>
+      //     <a href="/monuments/${mon.id}"> Learn more <i class="fa-solid  fa-arrow-right"></i></a>
+      //   </div>
+      // </div>
+      // `;
+      // featureListing.appendChild(indexCard);
     });
 
     blinder.addEventListener('click', (e) => {

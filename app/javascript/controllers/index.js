@@ -22,6 +22,9 @@ application.register("index", IndexController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
+import NearbyController from "./nearby_controller"
+application.register("nearby", NearbyController)
+
 import SearchFormController from "./search_form_controller"
 application.register("search-form", SearchFormController)
 
