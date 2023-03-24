@@ -3,8 +3,6 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
-    @histories = History.where(user: current_user)
-
-    @histories = @histories.reverse
+    @histories = History.where(user: @user).order(created_at: :desc)
   end
 end
