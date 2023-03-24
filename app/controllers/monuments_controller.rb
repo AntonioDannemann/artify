@@ -4,7 +4,10 @@ class MonumentsController < ApplicationController
   def index
     @user = current_user
     @monuments = policy_scope(Monument)
-    @nearby_monuments = @monuments.select { |mon| mon.distance_between < 5 }.sort_by(&:distance_between)
+    @lat = 48.858461
+    @lng = 2.294351
+    @nearby_monuments = @monuments.select { |mon| mon.distance_between(@lat, @lng) < 5 }
+                                  .sort_by { |mon| mon.distance_between(@lat, @lng) }
 
     @markers = @monuments.map { |monument| { lat: monument.lat, lng: monument.lng } }
   end
