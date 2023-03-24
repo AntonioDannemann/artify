@@ -55,3 +55,46 @@
     }
   }
 }
+
+.card-index {
+  display: flex;
+  gap: 10px;
+  height: 252px;
+  justify-content: flex-end;
+  text-shadow: 0 0 5px black;
+  width: 370px;
+
+  .image-index {
+    background-position: center 20%;
+    background-size: cover;
+    border-radius: 10px;
+    height: 100%;
+    width: 187px;
+  }
+
+  .description-index {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 173px;
+    height: 100%;
+    color: $lightgrey;
+    font-size: 0.8rem;
+    margin: 0;
+    padding: 5px 0;
+
+
+    h3 {
+      color: $green;
+      font-size: 1.5rem;
+    }
+
+    .desc-short {
+      width: 100%;
+    }
+
+    i {
+      color: $green;
+    }
+  }
+}
