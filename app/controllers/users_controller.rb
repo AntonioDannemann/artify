@@ -3,6 +3,6 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
-    @histories = History.all
+    @histories = policy_scope(History)
   end
 end

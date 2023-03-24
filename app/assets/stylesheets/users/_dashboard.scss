@@ -2,8 +2,7 @@
   padding: 48px 20px 8px;
   background-color: $green;
   background-size: cover;
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
+  border-radius: 0 0 16px 16px;
 
   .user-info {
     display: flex;
@@ -15,17 +14,12 @@
       flex-grow: 1;
       color: $darkgrey;
 
-      h3 {
+      * {
         margin: 0px;
       }
 
       h2 {
         font-size: 2.2rem;
-        margin: 0px;
-      }
-
-      p {
-        margin: 0;
       }
     }
 
