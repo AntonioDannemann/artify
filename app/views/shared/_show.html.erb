@@ -19,9 +19,11 @@
       </div>
 
       <p class="truncate" data-glass-container-target="truncate">
-      <%= @first_paragraph %>.</p>
+      <%= @first_para %>.</p>
       <%= cl_image_tag @monument.photo.key, class: "hidden-thumbnail" %>
-      <p><%= @second_paragraph %>.</p>
+      <% @second_para.each do |par| %>
+        <p><%= par %>.</p>
+      <% end %>
 
       <section id="nearby">
         <div class="subheader">
