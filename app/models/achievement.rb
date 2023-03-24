@@ -1,5 +1,6 @@
 class Achievement < ApplicationRecord
   has_many :monument_achievements, dependent: :destroy
+  has_many :user_achievements, dependent: :destroy
   has_one_attached :locked
   has_one_attached :unlocked
 
