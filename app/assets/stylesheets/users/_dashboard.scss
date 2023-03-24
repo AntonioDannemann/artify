@@ -1,0 +1,53 @@
+#user-banner {
+  padding: 48px 20px 8px;
+  background-color: $green;
+  background-size: cover;
+  border-radius: 0 0 16px 16px;
+
+  .user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px 0;
+
+    .welcome-message {
+      flex-grow: 1;
+      color: $darkgrey;
+
+      * {
+        margin: 0px;
+      }
+
+      h2 {
+        font-size: 2.2rem;
+      }
+    }
+
+    .dashboard-avatar {
+      border-radius: 50%;
+      display: block;
+      height: 96px;
+      width: 96px;
+      object-fit: cover;
+      border: 1px solid $lightgrey;
+    }
+  }
+
+  .profile-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .btn-main {
+      background-color: $darkgrey;
+      color: $lightgrey;
+    }
+
+    .badges-collection {
+      width: 80px;
+      margin: 0 auto;
+      object-fit: cover;
+      margin: 8px;
+    }
+  }
+}
