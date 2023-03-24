@@ -1,29 +1,27 @@
-<div class="background-image" style="background-image: url('<%= cl_image_path @history.photo.key %>');" data-controller="glass-container" data-action="click->glass-container#hide">
-  <div class= "btn-home">
-    <%= link_to root_path do %>
-      <i class="fa-solid fa-arrow-left"></i>
-    <% end %>
-  </div>
+<div class="background-image" style="background-image: url('<%= cl_image_path @history.photo.key %>');" data-controller="glass-container" data-action="click->glass-container#shrinkGlass">
+  <%= link_to root_path(ht: "y"), class: "btn-home" do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
   <div class="glass-container" data-glass-container-target="glass">
-    <div class="line" data-action="click->glass-container#expand" ></div>
+    <div class="line" data-action="click->glass-container#toggleGlass" ></div>
     <div class="content" data-glass-container-target="content">
 
-      <h4><%= @monument.name %></h4>
+      <h1><%= @monument.name %></h1>
 
       <div class="location-with-url">
         <p class="location"><i class="fa-solid fa-location-dot"></i> <%= "#{@monument.city}, #{@monument.country_code}" %></p>
+
         <% if @monument.website_url.present? %>
           <%= link_to @monument.website_url, target: "_blank" do %>
-            <i class="fa-solid fa-globe"></i>
+            <i class="fa-solid fa-globe globe-official-link"></i>
           <% end %>
         <% end %>
       </div>
 
-      <p class="truncate" data-glass-container-target="truncate"><%= @monument.description.split(". ").first(2).join(". ") %></p>
+      <p class="truncate" data-glass-container-target="truncate">
+      <%= @first_paragraph %>.</p>
       <%= cl_image_tag @monument.photo.key, class: "hidden-thumbnail" %>
-      <% @monument.description.split(". ")[2..].each_slice(3).map do |subarray| %>
-        <p><%= subarray.join(". ") %></p>
-      <% end %>
+      <p><%= @second_paragraph %>.</p>
 
       <section id="nearby">
         <div class="subheader">
@@ -45,6 +43,6 @@
       </section>
 
     </div>
-    <button data-action="click->glass-container#expand">Show More</button>
+    <button data-action="click->glass-container#toggleGlass">Show More</button>
   </div>
 </div>

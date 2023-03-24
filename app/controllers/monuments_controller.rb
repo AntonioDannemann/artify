@@ -12,6 +12,11 @@ class MonumentsController < ApplicationController
   def show
     @monument = Monument.find(params[:id])
     @monuments = Monument.where(city: @monument.city)
+    paragraphs = @monument.description.split(". ")
+    @first_paragraph = paragraphs.shift(2).join(". ")
+    @second_paragraph = @monument.description.split(". ")[2..].each_slice(3).map do |subarray|
+      "<p>" + subarray.join(". ") + ".</p>"
+    end.join("\n").html_safe
     authorize @monument
   end
 end
