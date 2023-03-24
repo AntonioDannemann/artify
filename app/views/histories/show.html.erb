@@ -1,4 +1,50 @@
-<h1>Histories#show</h1>
-<p>Find me in app/views/histories/show.html.erb</p>
+<div class="background-image" style="background-image: url('<%= cl_image_path @history.photo.key %>');" data-controller="glass-container" data-action="click->glass-container#hide">
+  <div class= "btn-home">
+    <%= link_to root_path do %>
+      <i class="fa-solid fa-arrow-left"></i>
+    <% end %>
+  </div>
+  <div class="glass-container" data-glass-container-target="glass">
+    <div class="line" data-action="click->glass-container#expand" ></div>
+    <div class="content" data-glass-container-target="content">
 
-<h2><%= @history.monument.name %></h2>
+      <h4><%= @monument.name %></h4>
+
+      <div class="location-with-url">
+        <p class="location"><i class="fa-solid fa-location-dot"></i> <%= "#{@monument.city}, #{@monument.country_code}" %></p>
+        <% if @monument.website_url.present? %>
+          <%= link_to @monument.website_url, target: "_blank" do %>
+            <i class="fa-solid fa-globe"></i>
+          <% end %>
+        <% end %>
+      </div>
+
+      <p class="truncate" data-glass-container-target="truncate"><%= @monument.description.split(". ").first(2).join(". ") %></p>
+      <%= cl_image_tag @monument.photo.key, class: "hidden-thumbnail" %>
+      <% @monument.description.split(". ")[2..].each_slice(3).map do |subarray| %>
+        <p><%= subarray.join(". ") %></p>
+      <% end %>
+
+      <section id="nearby">
+        <div class="subheader">
+          <h2>More in <%= @monument.city %></h2>
+        </div>
+
+        <div class="monuments-scroller">
+          <% @monuments.each do |mon| %>
+            <% next if mon == @monument %>
+            <%= link_to monument_path(mon),
+              class: "card-monument",
+              style: (mon.photo.attached? ? "background-image: linear-gradient(rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.7)), url(#{ cl_image_path mon.photo.key, height: 250, quality: 30 })" : "") do %>
+
+              <h3><%= mon.name %></h3>
+              <span><i class="fa-solid fa-location-dot"></i> <%= mon.distance_between %>km away</span>
+            <% end %>
+          <% end %>
+        </div>
+      </section>
+
+    </div>
+    <button data-action="click->glass-container#expand">Show More</button>
+  </div>
+</div>

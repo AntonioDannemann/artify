@@ -10,6 +10,8 @@ class HistoriesController < ApplicationController
 
   def show
     @history = History.find(params[:id])
+    @monument = @history.monument
+    @monuments = Monument.where(city: @history.monument.city).where.not(id: @history.monument.id)
     authorize @history
   end
 
