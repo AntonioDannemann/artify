@@ -25,7 +25,7 @@ export default class extends Controller {
 
     this.map.on('load', () => {
       this.map.loadImage(
-        'https://png.pngtree.com/element_our/sm/20180526/sm_5b09436fd0515.png',
+        'https://cdn.pixabay.com/photo/2013/07/13/11/54/location-158934_1280.png',
         // 'http://localhost:3000/assets/pin.png',
         (error, image) => {
         if (error) throw error;
@@ -42,8 +42,9 @@ export default class extends Controller {
           'source': 'monuments',
           'type': 'symbol',
           'layout': {
+            "icon-allow-overlap" : true,
             'icon-image': 'pin',
-            "icon-size": ['interpolate', ['linear', 2], ['zoom'], 2, 0.02, 10, 0.025, 12, 1]
+            "icon-size": ['interpolate', ['linear', 2], ['zoom'], 2, 0.04, 10, 0.025, 12, 0.04]
             }
         });
       });
@@ -62,17 +63,42 @@ export default class extends Controller {
 
 
       featureListing.innerHTML = ""
-         const indexCard = document.createElement('a')
-         indexCard.href = `monuments/${mon.id}`
-         indexCard.className = 'card-monument shadow-monument';
-         indexCard.textContent = `${mon.name}`;
-         indexCard.style.backgroundImage = `url('${mon.photo}')`
-         featureListing.appendChild(indexCard);
+        // const indexImg = document.createElement('a')
+        // indexImg.href = `monuments/${mon.id}`
+        // indexImg.className = 'card-index';
+        // indexImg.style.backgroundImage = `url('${mon.photo}')`
+        // featureListing.appendChild(indexImg);
+
+        // const indexCard = document.createElement('a')
+        // indexCard.href = `monuments/${mon.id}`
+        // indexCard.className = 'card-index';
+        // indexCard.style.backgroundImage = `url('${mon.photo}')`
+        // featureListing.appendChild(indexCard);
+
+        const indexCard = document.createElement('div')
+        indexCard.innerHTML =`
+        <div class="card-index">
+          <div class="image-index" style="background-image: linear-gradient(rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.7)), url('${mon.photo}')">
+          </div>
+          <div class="description-index">
+            <div>
+              <h3>${mon.name}</h3>
+              <p><i class="fa-solid fa-location-dot"></i>  ${mon.city} </p>
+            </div>
+            <p class="desc-short">${mon.desc}...</p>
+            <a href="/monuments/1"> Learn more <i class="fa-solid  fa-arrow-right"></i></a>
+          </div>
+        </div>
+        `;
+        featureListing.appendChild(indexCard);
+
     });
 
     blinder.addEventListener('click', (e) => {
       blinder.style.bottom = '-.5%';
       blinder.style.backgroundColor =   'rgba(154, 180, 149, 0)';
+
+      featureListing.style.position = 'fixed';
       featureListing.style.height = '0%';
       featureListing.style.bottom = '-5%'
     })

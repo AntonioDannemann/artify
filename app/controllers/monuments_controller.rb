@@ -23,7 +23,9 @@ class MonumentsController < ApplicationController
             name: m.name,
             photo: "https://res.cloudinary.com/dr1wktgbk/image/upload/q_10/development/#{m.photo.key}",
             key: m.photo.key,
-            id: m.id
+            id: m.id,
+            city: m.city,
+            desc: m.description.split.first(20).join(" ")
           }
         }
       )
