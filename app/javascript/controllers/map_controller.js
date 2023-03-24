@@ -25,8 +25,8 @@ export default class extends Controller {
 
     this.map.on('load', () => {
       this.map.loadImage(
-        'https://cdn.pixabay.com/photo/2013/07/13/11/54/location-158934_1280.png',
-        // 'http://localhost:3000/assets/pin.png',
+        'http://localhost:3000/assets/location-pin-e73d7712a5f10bd28cc1d9f7034dcf844a38218c8f4ccb773be7a47e4886facb.png',
+        // <%# <%= image_path "location-pin.png" %>
         (error, image) => {
         if (error) throw error;
 
@@ -50,7 +50,7 @@ export default class extends Controller {
     });
 
     this.map.on('click', 'monument', (e) => {
-      e.preventDefault()
+      // e.preventDefault()
       blinder.style.bottom = '270px';
       blinder.style.backgroundColor =   'rgba(154, 180, 149, 1)';
 
@@ -70,7 +70,7 @@ export default class extends Controller {
             <p><i class="fa-solid fa-location-dot"></i>  ${mon.city} </p>
           </div>
           <p class="desc-short">${mon.desc}...</p>
-          <a href="/monuments/1"> Learn more <i class="fa-solid  fa-arrow-right"></i></a>
+          <a href="/monuments/${mon.id}"> Learn more <i class="fa-solid  fa-arrow-right"></i></a>
         </div>
       </div>
       `;
