@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_24_125105) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_24_153108) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +60,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_125105) do
     t.index ["user_id"], name: "index_histories_on_user_id"
   end
 
+  create_table "monument_achievements", force: :cascade do |t|
+    t.bigint "achievement_id", null: false
+    t.bigint "monument_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["achievement_id"], name: "index_monument_achievements_on_achievement_id"
+    t.index ["monument_id"], name: "index_monument_achievements_on_monument_id"
+  end
+
   create_table "monuments", force: :cascade do |t|
     t.string "name"
     t.float "lat"
@@ -104,6 +114,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_125105) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "histories", "monuments"
   add_foreign_key "histories", "users"
+  add_foreign_key "monument_achievements", "achievements"
+  add_foreign_key "monument_achievements", "monuments"
   add_foreign_key "user_achievements", "achievements"
   add_foreign_key "user_achievements", "users"
 end
