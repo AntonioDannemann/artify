@@ -4,5 +4,7 @@ class UsersController < ApplicationController
   def dashboard
     @user = current_user
     @histories = History.where(user: current_user)
+
+    @histories = @histories.reverse
   end
 end
