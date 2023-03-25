@@ -2,25 +2,13 @@
   margin: 20px;
 
   .histories-title {
-    display: flex;
     padding: 0 0 24px;
-    justify-content: center;
     border-bottom: 1px solid $lightgrey50;
-
-    h2 {
-      margin: 0 auto;
-    }
+    text-align: center;
   }
 
   #search-form {
     padding: 16px 0;
     border: none;
-  }
-
-  .monument-photo {
-    width: 40%;
-    object-fit: cover;
-    object-position: center;
-    flex-shrink: 0;
   }
 }

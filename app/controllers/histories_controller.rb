@@ -7,7 +7,7 @@ class HistoriesController < ApplicationController
   def index
     @histories = policy_scope(History)
     @user = current_user
-    @histories = History.where(user: @user).order(created_at: :desc)
+    @histories = @histories.where(user: @user).order(created_at: :desc)
 
     if params[:query].present?
       sql_subquery = "monuments.name ILIKE :query OR monuments.location ILIKE :query"

@@ -8,13 +8,11 @@
 
         <span><i class="fa-solid fa-location-dot"></i> <%= "#{history.monument.city}, #{history.monument.country_code}" %></span>
 
-        <div class="history-date">
-          <p><%= history.created_at.strftime('%e %b, %Y') %></p>
+        <p><%= history.created_at.strftime('%e %b, %Y') %></p>
 
-          <%= link_to history_path(history), class: "btn-right" do %>
-            <i class="fa-solid fa-arrow-right"></i>
-          <% end %>
-        </div>
+        <%= link_to history_path(history), class: "btn-right" do %>
+          <i class="fa-solid fa-arrow-right"></i>
+        <% end %>
       </div>
     </div>
   <% end %>

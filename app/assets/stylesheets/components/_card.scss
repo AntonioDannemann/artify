@@ -67,6 +67,13 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   position: relative;
 
+  .monument-photo {
+    width: 40%;
+    object-fit: cover;
+    object-position: center;
+    flex-shrink: 0;
+  }
+
   .history-info {
     margin: 16px;
     display: flex;
@@ -74,7 +81,7 @@
 
 
     h3 {
-      font-size: calc(1rem + 0.6vw);
+      font-size: 1.3rem;
     }
 
     i {
@@ -83,20 +90,14 @@
 
     p {
       color: $lightgrey50;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0;
     }
 
     span {
       flex-grow: 1;
-    }
-
-    .history-date {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      * {
-        margin: 0;
-      }
     }
   }
 }
