@@ -43,7 +43,7 @@ export default class extends Controller {
 
     this.map.on('load', () => {
       this.map.loadImage(
-        "/assets/location_pin_2-42c6339c66a7f47c8fea8af6d8d2c620ef88adb9e82eece12c4c6dcc563907c5.png",
+        "/assets/location_pin-426cf5b931d1f7c30012d7662bfd0ad73b4b72e1667f9846706332a375a04000.png",
         // <%# <%= image_path "location-pin.png" %>
         (error, image) => {
         if (error) throw error;
