@@ -1,0 +1,27 @@
+<div id="histories-container">
+  <%= link_to root_path(ht: "y"), class: "btn-home" do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
+
+  <div class="histories-title">
+    <h2>MY HISTORIES</h2>
+  </div>
+
+  <div class="search-histories" data-controller="search-histories">
+    <div id="search-form">
+      <%= form_with url: histories_path, method: :get, html: { class: "form", data: { search_histories_target: "form" }} do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "input",
+            data: {
+              search_histories_target: "input",
+              action: "keyup->search-histories#update"
+            }
+        %>
+      <% end %>
+    </div>
+
+    <%= render "histories/components/list" %>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="histories-list" data-search-histories-target="list">
+  <% @histories.each do |history| %>
+    <div class="card-history">
+      <%= cl_image_tag history.photo.key, class: "monument-photo" %>
+
+      <div class="history-info">
+        <h3><%= history.monument.name %></h3>
+
+        <span><i class="fa-solid fa-location-dot"></i> <%= "#{history.monument.city}, #{history.monument.country_code}" %></span>
+
+        <div class="history-date">
+          <p><%= history.created_at.strftime('%e %b, %Y') %></p>
+
+          <%= link_to history_path(history), class: "btn-right" do %>
+            <i class="fa-solid fa-arrow-right"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
