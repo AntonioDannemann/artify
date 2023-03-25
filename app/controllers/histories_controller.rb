@@ -10,11 +10,13 @@ class HistoriesController < ApplicationController
 
   def show
     @history = History.find(params[:id])
+
+    authorize @history
+
     @monument = @history.monument
     @monuments = Monument.where(city: @monument.city).where.not(id: @monument.id)
     @first_para = @monument.description.split(". ").first(2).join(". ")
     @second_para = @monument.description.split(". ")[2..].each_slice(3).map { |subarr| subarr.join(". ") }
-    authorize @history
   end
 
   def create

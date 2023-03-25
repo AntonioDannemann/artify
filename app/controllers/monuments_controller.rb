@@ -14,9 +14,11 @@ class MonumentsController < ApplicationController
 
   def show
     @monument = Monument.find(params[:id])
+
+    authorize @monument
+
     @monuments = Monument.where(city: @monument.city).where.not(id: @monument.id)
     @first_para = @monument.description.split(". ").first(2).join(". ")
     @second_para = @monument.description.split(". ")[2..].each_slice(3).map { |subarr| subarr.join(". ") }
-    authorize @monument
   end
 end
