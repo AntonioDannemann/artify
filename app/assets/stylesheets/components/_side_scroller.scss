@@ -1,4 +1,4 @@
-#nearby {
+.side-scroller {
   border-bottom: 1px solid $lightgrey50;
   padding: 20px 0;
 
@@ -9,14 +9,21 @@
     margin-bottom: 10px;
 
     a {
-      align-items: center;
+      align-items: baseline;
       display: flex;
       font-size: 0.8rem;
       gap: 10px;
     }
 
     h2 {
+      align-items: center;
+      display: flex;
+      gap: 10px;
       margin: 0;
+
+      i {
+        font-size: 20px;
+      }
     }
 
     i {

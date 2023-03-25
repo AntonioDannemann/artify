@@ -2,10 +2,11 @@
   <%= link_to root_path(ht: "y"), class: "btn-home" do %>
     <i class="fa-solid fa-arrow-left"></i>
   <% end %>
+
   <div class="glass-container" data-glass-container-target="glass">
     <div class="line" data-action="click->glass-container#toggleGlass" ></div>
-    <div class="content" data-glass-container-target="content">
 
+    <div class="content" data-glass-container-target="content">
       <h1><%= @monument.name %></h1>
 
       <div class="location-with-url">
@@ -19,31 +20,22 @@
       </div>
 
       <p class="truncate" data-glass-container-target="truncate"><%= @first_para %>.</p>
+
       <%= cl_image_tag @monument.photo.key, class: "hidden-thumbnail" %>
+
       <% @second_para.each do |par| %>
         <p><%= par %>.</p>
       <% end %>
 
-      <section id="nearby">
+      <section class="side-scroller">
         <div class="subheader">
           <h2>More in <%= @monument.city %></h2>
         </div>
 
-        <div class="monuments-scroller">
-          <% @monuments.each do |mon| %>
-            <% next if mon == @monument %>
-            <%= link_to monument_path(mon),
-              class: "card-monument",
-              style: (mon.photo.attached? ? "background-image: linear-gradient(rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.7)), url(#{ cl_image_path mon.photo.key, height: 250, quality: 30 })" : "") do %>
-
-              <h3><%= mon.name %></h3>
-              <span><i class="fa-solid fa-location-dot"></i> <%= mon.distance_between %>km away</span>
-            <% end %>
-          <% end %>
-        </div>
+        <%= render "shared/monuments_scroller", monuments: @monuments, lat: nil, lng: nil%>
       </section>
-
     </div>
-    <button data-action="click->glass-container#toggleGlass">Show More</button>
+
+    <button class="btn-main" data-action="click->glass-container#toggleGlass">Show More</button>
   </div>
 </div>

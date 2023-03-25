@@ -1,17 +1,31 @@
 #user-banner {
-  padding: 48px 20px 8px;
   background-color: $green;
-  background-size: cover;
   border-radius: 0 0 16px 16px;
+  padding: 50px 20px 20px;
+  position: relative;
 
-  .user-info {
+  .profile-bottom {
+    align-items: center;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin: 16px 0;
+
+    .badges-collection {
+      object-fit: cover;
+      width: 80px;
+    }
+
+    .btn-main {
+      background-color: $darkgrey;
+      color: $lightgrey;
+      margin: 0;
+    }
+  }
+
+  .user-info {
+    margin: 20px 0;
+    width: calc(100% - 140px);
 
     .welcome-message {
-      flex-grow: 1;
       color: $darkgrey;
 
       * {
@@ -24,30 +38,16 @@
     }
 
     .dashboard-avatar {
+      background-color: $background;
+      border: 1px solid $lightgrey;
       border-radius: 50%;
       display: block;
-      height: 96px;
-      width: 96px;
+      height: 120px;
       object-fit: cover;
-      border: 1px solid $lightgrey;
-    }
-  }
-
-  .profile-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .btn-main {
-      background-color: $darkgrey;
-      color: $lightgrey;
-    }
-
-    .badges-collection {
-      width: 80px;
-      margin: 0 auto;
-      object-fit: cover;
-      margin: 8px;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      width: 120px;
     }
   }
 }
