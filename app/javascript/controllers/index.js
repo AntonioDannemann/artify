@@ -28,6 +28,9 @@ application.register("nearby", NearbyController)
 import SearchFormController from "./search_form_controller"
 application.register("search-form", SearchFormController)
 
+import SearchHistoriesController from "./search_histories_controller"
+application.register("search-histories", SearchHistoriesController)
+
 import SwitchAccountFormController from "./switch_account_form_controller"
 application.register("switch-account-form", SwitchAccountFormController)
 

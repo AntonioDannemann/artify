@@ -56,3 +56,47 @@
     }
   }
 }
+
+.card-history {
+  display: flex;
+  margin: 16px 0;
+  border-radius: 10px;
+  height: 160px;
+  background-color: $darkgrey;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  position: relative;
+
+  .history-info {
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+
+
+    h3 {
+      font-size: calc(1rem + 0.6vw);
+    }
+
+    i {
+      color: $green;
+    }
+
+    p {
+      color: $lightgrey50;
+    }
+
+    span {
+      flex-grow: 1;
+    }
+
+    .history-date {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      * {
+        margin: 0;
+      }
+    }
+  }
+}
