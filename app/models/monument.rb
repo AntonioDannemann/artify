@@ -26,6 +26,12 @@ class Monument < ApplicationRecord
     Monument.all.reject { |monument| monument.photo.attached? }
   end
 
+  def add_achievements
+    Achievement.where(keyword: ["all", city, country]).find_each do |achievement|
+      MonumentAchievement.create(achievement:, monument: self)
+    end
+  end
+
   def distance_between(user_lat, user_lng)
     distance = Geocoder::Calculations.distance_between([user_lat, user_lng], [lat, lng])
     distance = distance > 5 ? distance.round : distance.round(1)

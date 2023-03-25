@@ -95,7 +95,10 @@ class HistoriesController < ApplicationController
       )
     end
 
-    return monument if monument.save
+    return unless monument.save
+
+    monument.add_achievements
+    monument
   end
 
   # Image Editing
