@@ -6,24 +6,15 @@ class HistoriesController < ApplicationController
 
   def index
     @histories = policy_scope(History)
-
     @user = current_user
     @histories = History.where(user: @user).order(created_at: :desc)
 
     if params[:query].present?
-      sql_subquery = <<~SQL
-      monuments.name ILIKE :query
-      OR monuments.location ILIKE :query
-    SQL
-    @histories = @histories.joins(:monument).where(sql_subquery, query: "%#{params[:query]}%")
+      sql_subquery = "monuments.name ILIKE :query OR monuments.location ILIKE :query"
+      @histories = @histories.joins(:monument).where(sql_subquery, query: "%#{params[:query]}%")
     end
 
-    respond_to do |format|
-      format.html # Follow regular flow of Rails
-      format.text { render partial: "histories/components/histories_list",
-                            locals: {histories: @histories},
-                            formats: [:html] }
-    end
+    search_formats
   end
 
   def show
@@ -132,5 +123,13 @@ class HistoriesController < ApplicationController
 
   def compress_image(image, quality)
     image.quality quality
+  end
+end
+
+# search form
+def search_formats
+  respond_to do |format|
+    format.html # Follow regular flow of Rails
+    format.text { render partial: "histories/components/list", locals: { histories: @histories }, formats: [:html] }
   end
 end
