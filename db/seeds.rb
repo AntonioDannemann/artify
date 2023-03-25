@@ -201,6 +201,9 @@ monument_images.each do |image_url|
   if history.save
     puts "#{Time.current - method_start}s to save history"
 
+    Achievement.all.each do |ach|
+      MonumentAchievement.create!(achievement: ach, monument: history.monument)
+    end
     puts "#{history.monument.name} created in #{Time.current - monument_start}s\n\n" if history
   else
     puts "Process failed after #{Time.current - monument_start}s\n\n"
