@@ -6,6 +6,24 @@ class HistoriesController < ApplicationController
 
   def index
     @histories = policy_scope(History)
+
+    @user = current_user
+    @histories = History.where(user: @user).order(created_at: :desc)
+
+    if params[:query].present?
+      sql_subquery = <<~SQL
+      monuments.name ILIKE :query
+      OR monuments.location ILIKE :query
+    SQL
+    @histories = @histories.joins(:monument).where(sql_subquery, query: "%#{params[:query]}%")
+    end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "histories/components/histories_list",
+                            locals: {histories: @histories},
+                            formats: [:html] }
+    end
   end
 
   def show

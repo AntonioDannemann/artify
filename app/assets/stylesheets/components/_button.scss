@@ -36,3 +36,21 @@
     color: $green;
   }
 }
+
+.btn-right {
+  align-items: center;
+  background-color: $background;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+  color: $green;
+  display: flex;
+  font-size: 20px;
+  height: 30px;
+  justify-content: center;
+  width: 30px;
+
+  &:hover {
+    animation: press-button 0.3s linear;
+    color: $green;
+  }
+}
