@@ -9,8 +9,14 @@ puts "Creating user"
 
 puts "Done creating users\n\n"
 
+<<<<<<< HEAD
 Achievement.create!(title: "Let's begin", description: "Scan your first landmark", goal: 1)
 Achievement.create!(title: "Get Going", description: "Scan 10 landmarks", goal: 10)
+=======
+Achievement.create!(title: "Let's begin", description: "Scan your first landmark", goal: 1, keyword: "all")
+Achievement.create!(title: "Get Going", description: "Scan 10 landmarks", goal: 10, keyword: "all")
+Achievement.create!(title: "Paris Explorer", description: "Scan 5 landmarks from Paris", goal: 5, keyword: "Paris")
+>>>>>>> achievements
 
 arc_de_triomphe = "https://cdn.britannica.com/66/80466-050-2E125F5C/Arc-de-Triomphe-Paris-France.jpg"
 atomium = "https://upload.wikimedia.org/wikipedia/commons/c/cf/Brussels_-_Atomium_2022.jpg"
@@ -107,6 +113,7 @@ def create_monument
   method_start = Time.current
   if monument.save
     puts "#{Time.current - method_start}s to save monument"
+    monument.add_achievements
     return monument
   end
 
