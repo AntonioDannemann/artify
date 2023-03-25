@@ -12,8 +12,7 @@ class HistoriesController < ApplicationController
     @history = History.find(params[:id])
     @monument = @history.monument
     @monuments = Monument.where(city: @monument.city).where.not(id: @monument.id)
-    paragraphs = @monument.description.split(". ")
-    @first_para = paragraphs.shift(2).join(". ")
+    @first_para = @monument.description.split(". ").first(2).join(". ")
     @second_para = @monument.description.split(". ")[2..].each_slice(3).map { |subarr| subarr.join(". ") }
     authorize @history
   end

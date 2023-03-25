@@ -18,8 +18,7 @@
         <% end %>
       </div>
 
-      <p class="truncate" data-glass-container-target="truncate">
-      <%= @first_para %>.</p>
+      <p class="truncate" data-glass-container-target="truncate"><%= @first_para %>.</p>
       <%= cl_image_tag @monument.photo.key, class: "hidden-thumbnail" %>
       <% @second_para.each do |par| %>
         <p><%= par %>.</p>
