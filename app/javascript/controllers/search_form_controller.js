@@ -10,7 +10,7 @@ export default class extends Controller {
       fetch(url, { headers: { "Accept": "text/plain" } })
         .then(res => res.text())
         .then(html => {
-          this.listTarget.outerHTML = html
+          this.wrapperTarget.innerHTML = html
 
           if (this.listTarget.childNodes.length > 1) {
             this.wrapperTarget.style.maxHeight = "550px"
