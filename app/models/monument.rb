@@ -1,5 +1,7 @@
 class Monument < ApplicationRecord
   has_many :histories, dependent: :destroy
+  has_many :monument_achievements, dependent: :destroy
+  has_many :achievements, through: :monument_achievements
   has_one_attached :photo
 
   reverse_geocoded_by :lat, :lng, address: :location
