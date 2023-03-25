@@ -21,19 +21,21 @@
 
       <p class="truncate" data-glass-container-target="truncate"><%= @first_para %>.</p>
 
-      <%= cl_image_tag @monument.photo.key, class: "hidden-thumbnail" %>
+      <%= cl_image_tag @monument.photo.key, width: 500, crop: "scale", quality: 50, class: "hidden-thumbnail" %>
 
       <% @second_para.each do |par| %>
         <p><%= par %>.</p>
       <% end %>
 
-      <section class="side-scroller">
-        <div class="subheader">
-          <h2>More in <%= @monument.city %></h2>
-        </div>
+      <% if @monuments.any? %>
+        <section class="side-scroller">
+          <div class="subheader">
+            <h2>More in <%= @monument.city %></h2>
+          </div>
 
-        <%= render "shared/monuments_scroller", monuments: @monuments, lat: nil, lng: nil%>
-      </section>
+          <%= render "shared/monuments_scroller", monuments: @monuments, lat: nil, lng: nil%>
+        </section>
+      <% end %>
     </div>
 
     <button class="btn-main" data-action="click->glass-container#toggleGlass">Show More</button>
