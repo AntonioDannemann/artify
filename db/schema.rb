@@ -88,7 +88,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_25_195533) do
     t.bigint "user_id", null: false
     t.bigint "achievement_id", null: false
     t.string "status", default: "in progress"
-    t.integer "progress", default: 0
+    t.integer "progress", default: 1
     t.date "completion_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
