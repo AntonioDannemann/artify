@@ -26,7 +26,10 @@ class HistoriesController < ApplicationController
 
     authorize @history
 
-    return redirect_to history_path(@history) if @history.save
+    if @history.save
+      update_achievements if current_user
+      return redirect_to history_path(@history)
+    end
 
     @history = History.new
     render "pages/error"
@@ -120,5 +123,16 @@ class HistoriesController < ApplicationController
 
   def compress_image(image, quality)
     image.quality quality
+  end
+
+  # Achievements
+  def update_achievements
+    @history.monument.achievements.each_with_object([]) do |achievement, new_completions|
+      user_achievement = UserAchievement.find_or_initialize_by(user: current_user, achievement:)
+      next if user_achievement.completed? && !user_achievement.new_record?
+
+      user_achievement.progress!
+      new_completions << user_achievement if user_achievement.completed?
+    end
   end
 end

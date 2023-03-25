@@ -4,7 +4,7 @@ class CreateUserAchievements < ActiveRecord::Migration[7.0]
       t.references :user, null: false, foreign_key: true
       t.references :achievement, null: false, foreign_key: true
       t.string :status, default: "in progress"
-      t.integer :progress, default: 1
+      t.integer :progress, default: 0
       t.date :completion_date
 
       t.timestamps

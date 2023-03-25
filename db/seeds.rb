@@ -9,6 +9,9 @@ puts "Creating user"
 
 puts "Done creating users\n\n"
 
+Achievement.create!(title: "Let's begin", description: "Scan your first landmark", goal: 1)
+Achievement.create!(title: "Get Going", description: "Scan 10 landmarks", goal: 10)
+
 arc_de_triomphe = "https://cdn.britannica.com/66/80466-050-2E125F5C/Arc-de-Triomphe-Paris-France.jpg"
 atomium = "https://upload.wikimedia.org/wikipedia/commons/c/cf/Brussels_-_Atomium_2022.jpg"
 big_ben = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Clock_Tower_-_Palace_of_Westminster%2C_London_-_May_2007.jpg/640px-Clock_Tower_-_Palace_of_Westminster%2C_London_-_May_2007.jpg"
@@ -196,6 +199,9 @@ monument_images.each do |image_url|
   if history.save
     puts "#{Time.current - method_start}s to save history"
 
+    Achievement.all.each do |ach|
+      MonumentAchievement.create!(achievement: ach, monument: history.monument)
+    end
     puts "#{history.monument.name} created in #{Time.current - monument_start}s\n\n" if history
   else
     puts "Process failed after #{Time.current - monument_start}s\n\n"

@@ -9,7 +9,10 @@ class UserAchievement < ApplicationRecord
   end
 
   def progress!
+    return if completed?
+
     self.progress += 1
+    save
   end
 
   private
