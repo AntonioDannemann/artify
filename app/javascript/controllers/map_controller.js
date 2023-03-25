@@ -8,14 +8,32 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("hello");
     mapboxgl.accessToken = this.apiKeyValue
     const blinder = document.getElementById('blinder')
     const featureListing = document.getElementById('feature-listing')
     const geojson = JSON.stringify(this.markersValue[0]);
-    // const features = this.markersValue[0].features
 
     navigator.geolocation.getCurrentPosition(this.#flyMapToUser);
+    navigator.geolocation.getCurrentPosition(location => {
+      const lat = location.coords.latitude
+      const lng = location.coords.longitude
+
+      this.map.on('click', 'monument', (e) => {
+        blinder.classList.add('blinder-expanded')
+        featureListing.classList.add('listing-expanded')
+        featureListing.innerHTML = ""
+        const mon = e.features[0].properties;
+        const url = `/monuments?lat=${lat}&lng=${lng}&id=${mon.id}`
+
+        fetch(url, { headers: { "Accept": "text/plain" } })
+          .then(res => res.text())
+          .then(html => {
+            featureListing.innerHTML = html
+          })
+      });
+
+    });
+
 
     this.map = new mapboxgl.Map({
       container: this.element,
@@ -25,7 +43,7 @@ export default class extends Controller {
 
     this.map.on('load', () => {
       this.map.loadImage(
-        'http://localhost:3000/assets/location-pin-e73d7712a5f10bd28cc1d9f7034dcf844a38218c8f4ccb773be7a47e4886facb.png',
+        "/assets/location_pin_2-42c6339c66a7f47c8fea8af6d8d2c620ef88adb9e82eece12c4c6dcc563907c5.png",
         // <%# <%= image_path "location-pin.png" %>
         (error, image) => {
         if (error) throw error;
@@ -42,6 +60,7 @@ export default class extends Controller {
           'type': 'symbol',
           'layout': {
             "icon-allow-overlap" : true,
+            "icon-padding" : 10,
             'icon-image': 'pin',
             "icon-size": ['interpolate', ['linear', 2], ['zoom'], 2, 0.04, 10, 0.025, 12, 0.04]
             }
@@ -49,51 +68,16 @@ export default class extends Controller {
       });
     });
 
-    this.map.on('click', 'monument', (e) => {
-      // e.preventDefault()
-      blinder.style.bottom = '270px';
-      blinder.style.backgroundColor =   'rgba(154, 180, 149, 1)';
 
-      featureListing.style.height = '285px';
-      featureListing.style.bottom = '0%';
-      featureListing.innerHTML = ""
-
-      const mon = e.features[0].properties;
-
-      // const indexCard = document.createElement('div')
-      // indexCard.innerHTML =`
-      // <div class="card-index">
-      //   <div class="image-index" style="background-image: linear-gradient(rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.7)), url('${mon.photo}')">
-      //   </div>
-      //   <div class="description-index">
-      //     <div>
-      //       <h3>${mon.name}</h3>
-      //       <p><i class="fa-solid fa-location-dot"></i>  ${mon.city} </p>
-      //     </div>
-      //     <p class="desc-short">${mon.desc}...</p>
-      //     <a href="/monuments/${mon.id}"> Learn more <i class="fa-solid  fa-arrow-right"></i></a>
-      //   </div>
-      // </div>
-      // `;
-      // featureListing.appendChild(indexCard);
-    });
 
     blinder.addEventListener('click', (e) => {
-      blinder.style.bottom = '-.5%';
-      blinder.style.backgroundColor =   'rgba(154, 180, 149, 0)';
-
-      featureListing.style.position = 'fixed';
-      featureListing.style.height = '0%';
-      featureListing.style.bottom = '-5%'
+      blinder.classList.remove('blinder-expanded')
+      featureListing.classList.remove('listing-expanded')
     })
 
     this.map.on('movestart', () => {
-      blinder.style.bottom = '-.5%';
-      blinder.style.backgroundColor =   'rgba(154, 180, 149, 0)';
-
-      featureListing.style.position = 'fixed';
-      featureListing.style.height = '0%';
-      featureListing.style.bottom = '-5%'
+      blinder.classList.remove('blinder-expanded')
+      featureListing.classList.remove('listing-expanded')
     });
 
 

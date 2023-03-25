@@ -33,7 +33,10 @@
   transition: all .3s ease;
 }
 
-// map features
+.blinder-expanded {
+  bottom: 270px !important;
+  background-color: rgba(154, 180, 149, 1);
+}
 
 .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
   display: none !important;
@@ -56,4 +59,9 @@
   &::-webkit-scrollbar {
     height: 0;
   }
+}
+
+.listing-expanded {
+  height: 285px !important;
+  bottom: 0% !important;
 }

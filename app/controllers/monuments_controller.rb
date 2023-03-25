@@ -4,16 +4,34 @@ class MonumentsController < ApplicationController
   def index
     @user = current_user
     @monuments = policy_scope(Monument)
-    @lat = 48.858461
-    @lng = 2.294351
-    @nearby_monuments = @monuments.select { |mon| mon.distance_between(@lat, @lng) < 5 }
-                                  .sort_by { |mon| mon.distance_between(@lat, @lng) }
-
+    @monument = Monument.find_by(id: params[:id])
     @markers = [{
       type: "FeatureCollection",
       features: []
     }]
 
+    respond
+    monument_markers
+  end
+
+  def show
+    @monument = Monument.find(params[:id])
+    authorize @monument
+  end
+
+  private
+
+  def respond
+    respond_to do |format|
+      format.html
+
+      partial = "monuments/card_index"
+      locals = { mon: @monument }
+      format.text { render partial:, locals:, formats: [:html] }
+    end
+  end
+
+  def monument_markers
     @monuments.each do |m|
       @markers.first[:features].push(
         {
@@ -23,20 +41,10 @@ class MonumentsController < ApplicationController
             coordinates: [m.lng, m.lat]
           },
           properties: {
-            name: m.name,
-            photo: "https://res.cloudinary.com/dr1wktgbk/image/upload/q_10/development/#{m.photo.key}",
-            key: m.photo.key,
-            id: m.id,
-            city: m.city,
-            desc: m.description.split.first(20).join(" ")
+            id: m.id
           }
         }
       )
     end
-  end
-
-  def show
-    @monument = Monument.find(params[:id])
-    authorize @monument
   end
 end
