@@ -13,6 +13,9 @@ application.register("camera-form", CameraFormController)
 import FlashesController from "./flashes_controller"
 application.register("flashes", FlashesController)
 
+import GlassContainerController from "./glass_container_controller"
+application.register("glass-container", GlassContainerController)
+
 import HomeLogoController from "./home_logo_controller"
 application.register("home-logo", HomeLogoController)
 
