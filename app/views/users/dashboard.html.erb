@@ -1,0 +1,32 @@
+<div id="dashboard">
+  <div id="user-banner">
+    <%= link_to root_path(ht: "y"), class: "btn-home" do %>
+      <i class="fa-solid fa-arrow-left"></i>
+    <% end %>
+
+    <div class="user-info">
+      <div class="welcome-message">
+        <h3>Hello</h3>
+        <h2><%= @user.first_name.upcase %>!</h2>
+        <p>Welcome to your dashboard</p>
+      </div>
+
+      <div class="picture">
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class: "dashboard-avatar" %>
+        <% else %>
+          <%= image_tag "avatar.svg", class: "dashboard-avatar" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="profile-bottom">
+      <%= link_to "EDIT PROFILE", edit_user_registration_path, class: "btn-main" %>
+      <%= image_tag "badges_collection.png", class: "badges-collection" %>
+    </div>
+  </div>
+
+  <div class="container">
+    <%= render "users/components/histories" %>
+  </div>
+</div>

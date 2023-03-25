@@ -24,24 +24,11 @@ class Monument < ApplicationRecord
     Monument.all.reject { |monument| monument.photo.attached? }
   end
 
-  def distance_between
-    distance = Geocoder::Calculations.distance_between([48.858461, 2.294351], [lat, lng])
+  def distance_between(user_lat, user_lng)
+    distance = Geocoder::Calculations.distance_between([user_lat, user_lng], [lat, lng])
     distance = distance > 5 ? distance.round : distance.round(1)
 
     distance == distance.to_i ? distance.to_i : distance
-  end
-
-  def attach_photo(photo_url)
-    photo = URI.parse(photo_url).open
-    if photo.size > 50_000_000
-      photo = compress_photo(photo, 10)
-    elsif photo.size > 26_214_400
-      photo = compress_photo(photo, 40)
-    elsif photo.size > 5_242_880
-      photo = compress_photo(photo, 80)
-    end
-
-    self.photo.attach(io: photo, filename: "#{name}.jpeg", content_type: "image/jpeg")
   end
 
   def fetch_geocoder
@@ -49,13 +36,5 @@ class Monument < ApplicationRecord
     self.city = geocoder.city || geocoder.suburb || geocoder.county
     self.country = geocoder.country
     self.country_code = geocoder.country_code.upcase
-  end
-
-  private
-
-  def compress_photo(photo, quality)
-    image = MiniMagick::Image.new(photo.path)
-    image.combine_options { |option| option.quality quality }
-    StringIO.open(image.to_blob)
   end
 end

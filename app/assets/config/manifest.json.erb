@@ -1,0 +1,18 @@
+{
+  "background_color": "#181a1b",
+  "description": "Artify is an ai powered app that recognises landmarks from a picture. The app includes a few features such as landmark recognition, display of infos reagarding those landmarks and the collection of badges based on user's actions.",
+  "display": "fullscreen",
+  "name": "Artify",
+  "icons": [
+    <% files = Dir.entries(Rails.root.join("app/assets/images/icons/")).select { |file| !File.directory? file } %>
+    <% files.each_with_index do |file, index| %>
+      <% match = file.match(/.+-(?<size>\d{2,3}x\d{2,3}).png/) %>
+      {
+        "src": "<%= image_path "icons/#{file}" %>",
+        "sizes": "<%= match[:size] if match %>",
+        "type": "image/png"
+      }<%= "," unless (files.length - 1) == index %>
+    <% end %>
+  ],
+  "start_url": "/"
+}
