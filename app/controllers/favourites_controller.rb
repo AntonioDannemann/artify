@@ -9,7 +9,7 @@ class FavouritesController < ApplicationController
     @favourites = current_user.favorites.new(monument_id: params[:monument_id])
     authorize @favorite
 
-    if @favorite.save
+    if @favourite.save
       redirect_to @favorite.monument
     else
       redirect_to @monument
