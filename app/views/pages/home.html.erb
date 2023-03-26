@@ -1,15 +1,15 @@
-<div id="pages-home">
-  <section id="logo" data-controller="home-logo">
-    <%= image_tag "eiffel-logo.png", data: { aos: "zoom-out-up", aos_delay: "300", aos_duration: "1000" } %>
-  </section>
+<section id="logo" data-controller="home-logo">
+  <%= image_tag "eiffel-logo.png", data: { aos: "zoom-out-up", aos_delay: "300", aos_duration: "1000" } %>
+</section>
 
-  <section id="loading" class="hidden">
-    <div>
-      <%= image_tag "eiffel-logo.png" %>
-      <div class="lds-ring" ><div></div><div></div><div></div><div></div></div>
-    </div>
-  </section>
+<section id="loading" class="hidden">
+  <div>
+    <%= image_tag "eiffel-logo.png" %>
+    <div class="lds-ring" ><div></div><div></div><div></div><div></div></div>
+  </div>
+</section>
 
+<div id="pages-home" data-controller="hide-home">
   <% unless current_user || @ht %>
     <%= render "pages/components/tutorial" %>
   <% end %>
@@ -29,4 +29,6 @@
       <%= render "pages/components/form" %>
     <% end %>
   </div>
+
+  <%= render "pages/components/footer" %>
 </div>
