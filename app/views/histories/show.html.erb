@@ -1,9 +1,5 @@
 <% if @new_achievements.any? %>
-  <div class="notification">
-    <% @new_achievements.each do |achievement| %>
-      <h1><%= achievement.title %></h1>
-    <% end %>
-  </div>
+  <%= render "components/achievement_alert" %>
 <% end %>
 
 <%= render "shared/show", photo_key: @history.photo.key %>

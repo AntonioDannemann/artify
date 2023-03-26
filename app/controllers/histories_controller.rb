@@ -36,8 +36,10 @@ class HistoriesController < ApplicationController
 
     authorize @history
 
-    if @history.save
-      current_user&.update_achievements(@history.monument.achievements) if @history.new_record?
+    if @history.new_record? && @history.save
+      current_user&.update_achievements(@history.monument.achievements)
+      return redirect_to history_path(@history)
+    elsif @history.save
       return redirect_to history_path(@history)
     end
 
