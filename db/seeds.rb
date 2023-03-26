@@ -26,7 +26,7 @@ Achievement.create!(title: "Year bucket list", description: "Scan 30 landmarks i
 Achievement.create!(title: "All week long", description: "Scan 1 landmark per day during a week", goal: 7, keyword: "all")
 
 Achievement.create!(title: "Athens Explorer", description: "Scan 5 landmarks from Athens", goal: 5, keyword: "Athens")
-Achievement.create!(title: "Berlin Explorer", description: "Scan 5 landmarks from Berlin", goal: 5, keyword: "Bangkok")
+Achievement.create!(title: "Bangkok Explorer", description: "Scan 5 landmarks from Bangkok", goal: 5, keyword: "Bangkok")
 Achievement.create!(title: "Barcelona Explorer", description: "Scan 5 landmarks from Barcelona", goal: 5, keyword: "Barcelona")
 Achievement.create!(title: "Beijing Explorer", description: "Scan 5 landmarks from Beijing", goal: 5, keyword: "Beijing")
 Achievement.create!(title: "Berlin Explorer", description: "Scan 5 landmarks from Berlin", goal: 5, keyword: "Berlin")
