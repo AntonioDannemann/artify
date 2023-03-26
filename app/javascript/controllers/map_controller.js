@@ -20,7 +20,7 @@ export default class extends Controller {
 
       this.map.on('click', 'monument', (e) => {
         blinder.classList.add('blinder-expanded')
-        featureListing.classList.add('listing-expanded')
+        featureListing.classList.remove('listing-hidden')
         featureListing.innerHTML = ""
         const mon = e.features[0].properties;
         const url = `/monuments?lat=${lat}&lng=${lng}&id=${mon.id}`
@@ -72,26 +72,21 @@ export default class extends Controller {
 
     blinder.addEventListener('click', (e) => {
       blinder.classList.remove('blinder-expanded')
-      featureListing.classList.remove('listing-expanded')
+      featureListing.classList.add('listing-hidden')
     })
 
     this.map.on('movestart', () => {
       blinder.classList.remove('blinder-expanded')
-      featureListing.classList.remove('listing-expanded')
+      featureListing.classList.add('listing-hidden')
     });
 
-
-    this.map.addControl(
-      new mapboxgl.GeolocateControl({
+    const geolocate = new mapboxgl.GeolocateControl({
       positionOptions: {
       enableHighAccuracy: true
       },
-
-      trackUserLocation: true,
-
-      showUserHeading: true
+      trackUserLocation: true
       })
-      );
+    this.map.addControl(geolocate);
   }
 
   #flyMapToUser = position =>  {

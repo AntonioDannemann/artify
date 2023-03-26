@@ -59,11 +59,7 @@
 .card-index {
   display: flex;
   gap: 10px;
-  height: 252px;
-  justify-content: flex-end;
-  text-shadow: 0 0 5px black;
-  max-width: 370px;
-  flex-shrink: 1;
+  height: 250px;
 
   .image-index {
     background-position: center 20%;
@@ -71,19 +67,13 @@
     border-radius: 10px;
     height: 100%;
     width: 187px;
+    flex-shrink: 0;
   }
 
   .description-index {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: calc(100% - 187px);
-    height: 100%;
-    color: $lightgrey;
     font-size: 0.8rem;
-    margin: 0;
-    padding: 5px 0;
-
 
     h3 {
       color: $green;
@@ -91,7 +81,12 @@
     }
 
     .desc-short {
-      width: 100%;
+      flex-grow: 1;
+      margin: 0;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 8;
     }
 
     i {

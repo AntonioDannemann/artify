@@ -5,7 +5,7 @@
     <h3><%= mon.name %></h3>
     <p><i class="fa-solid fa-location-dot"></i>  <%= mon.city %> </p>
     </div>
-    <p class="desc-short"> <%= mon.description.split.first(20).join(" ") %>...</p>
+    <p class="desc-short"> <%= mon.description%></p>
     <%= link_to monument_path(mon) do %>
     Learn more <i class="fa-solid  fa-arrow-right"></i>
     <% end %>
