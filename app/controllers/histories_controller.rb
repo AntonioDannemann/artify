@@ -1,4 +1,3 @@
-require "mini_magick"
 require 'open-uri'
 
 class HistoriesController < ApplicationController
@@ -7,7 +6,7 @@ class HistoriesController < ApplicationController
   def index
     @histories = policy_scope(History)
     @user = current_user
-    @histories = @histories.where(user: @user).order(created_at: :desc)
+    @histories = @histories.where(user: @user).order(updated_at: :desc)
 
     if params[:query].present?
       sql_subquery = "monuments.name ILIKE :query OR monuments.location ILIKE :query"
@@ -29,7 +28,7 @@ class HistoriesController < ApplicationController
   end
 
   def create
-    @photo = compressed_photo(params[:history][:photo])
+    @photo = PhotoCompressor.new(params[:history][:photo]).compressed_photo
     @user = current_user || guest_user
     @history = build_history_from_photo(@photo)
 
@@ -58,18 +57,33 @@ class HistoriesController < ApplicationController
       return History.new
     end
 
+    initialize_landmark_instance_variable(google_landmark)
+
+    find_history_by_landmark || new_history
+  end
+
+  def initialize_landmark_instance_variable(google_landmark)
     @landmark_lat = google_landmark.lat
     @landmark_lng = google_landmark.lng
-    @landmark_name = google_landmark.name
-    @landmark_names = [@landmark_name, @landmark_name.downcase, @landmark_name.split.map(&:capitalize).join(" ")]
+    @raw_landmark_name = google_landmark.name
+    @landmark_name = @raw_landmark_name.split.map(&:capitalize).join(" ")
+    @landmark_names = [@raw_landmark_name, @raw_landmark_name.downcase, @landmark_name]
+  end
 
-    new_history
+  def find_history_by_landmark
+    history = History.joins(:monument).find_by(user: @user, monument: { name: @landmark_name })
+    return nil unless history
+
+    history.photo.purge_later
+    history.photo.attach(io: @photo, filename: "#{@landmark_name}#{@user.id}.jpeg", content_type: "image/jpeg")
+
+    history
   end
 
   def new_history
     history = History.new
     history.user = @user
-    history.photo.attach(io: @photo, filename: "#{@landmark_names[2]}#{@user.id}.jpeg", content_type: "image/jpeg")
+    history.photo.attach(io: @photo, filename: "#{@landmark_name}#{@user.id}.jpeg", content_type: "image/jpeg")
 
     # We first check in the database if there is a monument that corresponds to our current landmark
     # If not we create one
@@ -79,7 +93,7 @@ class HistoriesController < ApplicationController
   end
 
   def find_monument_by_landmark
-    Monument.find_by(name: @landmark_name.split.map(&:capitalize).join(" "))
+    Monument.find_by(name: @landmark_name)
   end
 
   def create_monument
@@ -101,7 +115,7 @@ class HistoriesController < ApplicationController
     monument.fetch_geocoder
     if data.photo_url
       monument.photo.attach(
-        io: compressed_photo(URI.parse(data.photo_url).open),
+        io: PhotoCompressor.new(URI.parse(data.photo_url).open).compressed_photo,
         filename: "#{monument.name}.jpeg",
         content_type: "image/jpeg"
       )
@@ -111,30 +125,6 @@ class HistoriesController < ApplicationController
 
     monument.add_achievements
     monument
-  end
-
-  # Image Editing
-  def compressed_photo(photo)
-    image = resized_photo(photo)
-
-    if image.size > 5_242_880
-      image = compress_image(image, 30)
-    elsif image.size > 2_621_440
-      image = compress_image(image, 50)
-    elsif image.size > 1_048_576
-      image = compress_image(image, 80)
-    end
-
-    StringIO.open(image.to_blob)
-  end
-
-  def resized_photo(photo)
-    image = MiniMagick::Image.new(photo.path)
-    image.resize "1920x1920"
-  end
-
-  def compress_image(image, quality)
-    image.quality quality
   end
 
   def search_formats

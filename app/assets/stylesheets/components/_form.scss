@@ -29,7 +29,7 @@
   }
 
   .devise-cancel-account {
-    padding: 48px 0px;
+    padding: 16px 0;
 
     a {
       color: $green;
@@ -149,5 +149,19 @@
       color: $lightgrey50;
       font-size: 16px;
     }
+  }
+}
+
+.log-out  {
+  display: flex;
+  align-items: center;
+
+  p {
+    padding: 0 8px;
+    margin: 0;
+  }
+
+  i {
+    color: $green;
   }
 }
