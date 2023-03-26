@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_25_195533) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_26_165437) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -88,10 +88,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_25_195533) do
     t.bigint "user_id", null: false
     t.bigint "achievement_id", null: false
     t.string "status", default: "in progress"
-    t.integer "progress", default: 1
+    t.integer "progress", default: 0
     t.date "completion_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "notified", default: false
     t.index ["achievement_id"], name: "index_user_achievements_on_achievement_id"
     t.index ["user_id"], name: "index_user_achievements_on_user_id"
   end
