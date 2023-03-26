@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :histories, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_monuments, through: :favorites, source: :monument
   has_one_attached :photo
 
   validates :first_name, :last_name, presence: true
