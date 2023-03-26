@@ -6,13 +6,13 @@ class FavouritesController < ApplicationController
   end
 
   def create
-    @monument = Monument.find(params[:monument_id])
-    @favourite = current_user.favourites.build(monument: @monument)
+    @favourites = current_user.favorites.new(monument_id: params[:monument_id])
+    authorize @favorite
 
-    if @favourite.save
-      redirect_to @monument, notice: "Added to favourites!"
+    if @favorite.save
+      redirect_to @favorite.monument
     else
-      redirect_to @monument, alert: "Unable to add to favourites."
+      redirect_to @monument
     end
   end
 
@@ -20,6 +20,6 @@ class FavouritesController < ApplicationController
     @favourite = current_user.favourites.find_by(monument_id: params[:monument_id])
     @favourite.destroy
 
-    redirect_to @favourite.monument, notice: "Removed from favourites."
+    redirect_to @favourite.monument
   end
 end
