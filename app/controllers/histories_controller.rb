@@ -39,8 +39,7 @@ class HistoriesController < ApplicationController
     if @history.new_record? && @history.save
       current_user&.update_achievements(@history.monument.achievements)
       return redirect_to history_path(@history)
-    elsif @history.save
-      return redirect_to history_path(@history)
+    elsif @history.save then return redirect_to history_path(@history)
     end
 
     render "pages/error"
