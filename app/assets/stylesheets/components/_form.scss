@@ -152,6 +152,16 @@
   }
 }
 
-.logout i {
-  color: $green;
+.log-out  {
+  display: flex;
+  align-items: center;
+
+  p {
+    padding: 0 8px;
+    margin: 0;
+  }
+
+  i {
+    color: $green;
+  }
 }
