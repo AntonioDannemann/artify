@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get "error", to: "pages#error", as: :error
 
   resources :histories, only: %i[index show create]
-  resources :monuments, only: %i[index show]
+  resources :monuments, only: %i[index show] do
+    resources :favorites, only: %i[create destroy]
+  end
   get "dashboard", to: "users#dashboard", as: :dashboard
 end
