@@ -17,7 +17,7 @@ class Monument < ApplicationRecord
     current_unix_day = Time.current.to_time.to_i.fdiv(86_400).floor
     monuments = Monument.all
     monument = monuments.select { |mon| mon.photo.attached? }[current_unix_day % monuments.length]
-    monument.featured_date = Date.current
+    monument.update(featured_date: Date.current)
 
     monument
   end
