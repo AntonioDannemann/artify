@@ -1,0 +1,11 @@
+<h1>Your Favourites</h1>
+
+<% if @favourites.any? %>
+  <ul>
+    <% @favourites.each do |favourite| %>
+      <li><%= link_to favourite.monument.name, favourite.monument %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>You have no favourites yet.</p>
+<% end %>
