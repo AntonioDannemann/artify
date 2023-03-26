@@ -37,11 +37,10 @@ class HistoriesController < ApplicationController
     authorize @history
 
     if @history.save
-      current_user&.update_achievements(@history.monument.achievements)
+      current_user&.update_achievements(@history.monument.achievements) if @history.new_record?
       return redirect_to history_path(@history)
     end
 
-    @history = History.new
     render "pages/error"
   end
 
