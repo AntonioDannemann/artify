@@ -6,5 +6,6 @@ Rails.application.routes.draw do
 
   resources :histories, only: %i[index show create]
   resources :monuments, only: %i[index show]
+  resources :achievements, only: %i[index]
   get "dashboard", to: "users#dashboard", as: :dashboard
 end
