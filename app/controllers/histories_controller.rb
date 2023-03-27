@@ -25,6 +25,8 @@ class HistoriesController < ApplicationController
     @monuments = Monument.where(city: @monument.city).where.not(id: @monument.id)
     @first_para = @monument.description.split(". ").first(2).join(". ")
     @second_para = @monument.description.split(". ")[2..].each_slice(3).map { |subarr| subarr.join(". ") }
+
+    @new_achievements = current_user&.new_achievements
   end
 
   def create
@@ -34,12 +36,12 @@ class HistoriesController < ApplicationController
 
     authorize @history
 
-    if @history.save
+    if @history.new_record? && @history.save
       current_user&.update_achievements(@history.monument.achievements)
       return redirect_to history_path(@history)
+    elsif @history.save then return redirect_to history_path(@history)
     end
 
-    @history = History.new
     render "pages/error"
   end
 
