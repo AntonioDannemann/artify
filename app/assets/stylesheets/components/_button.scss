@@ -25,7 +25,7 @@
   height: 40px;
   justify-content: center;
   left: 15px;
-  position: fixed;
+  position: sticky;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   top: 15px;
   width: 40px;
@@ -34,6 +34,24 @@
   &:hover {
     animation: press-button 0.3s linear;
     color: $green;
+  }
+}
+
+.mapboxgl-ctrl button.mapboxgl-ctrl-geolocate {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  height: 40px;
+  width: 40px;
+  background-color: $darkgrey !important;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+
+  .mapboxgl-ctrl-icon{
+    background-image: url('user-arrow') !important;
+    background-size: 20px;
+    background-position: center;
   }
 }
 

@@ -2,25 +2,8 @@
 
 .monuments-map {
   height: 100vh;
+  height: 100svh;
   width: 100%;
-}
-
-.monument-cards {
-  height: 248px;
-  width: 100%;
-  padding-left: 10px;
-  border-radius: 20px;
-  display: flex;
-  flex-grow: 1;
-  gap: 10px;
-  overflow: hidden;
-  overflow-x: scroll;
-  position: sticky;
-  bottom: 10px;
-
-  &::-webkit-scrollbar {
-    height: 0px;
-  }
 }
 
 .index-container {
@@ -33,16 +16,47 @@
 
   height: 100%;
   width: 100%;
+}
 
-  .monuments-scroller {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    padding-left: 20px;
-    margin-left: -20px;
-  }
+#blinder {
+  display: flex;
+  justify-content: center;
+  height: 7px;
+  width: 100px;
+  position: fixed;
+  bottom: -.5%;
+  z-index: 10;
+  border-radius: 5px;
+  transition: all .3s ease;
+}
+
+.blinder-expanded {
+  bottom: 270px !important;
+  background-color: rgba(154, 180, 149, 1);
 }
 
 .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
   display: none !important;
+}
+
+.listing {
+  position: fixed;
+  bottom: 0;
+  height: max-content;
+  padding: 23px 10px 10px;
+  background-color: #181a1b80;
+  backdrop-filter: blur(10px);
+  border-radius: 15px 15px 0px 0px;
+  max-height: 285px;
+  overflow: hidden;
+  transition: all .3s ease;
+  &::-webkit-scrollbar {
+    height: 0;
+  }
+}
+
+.listing-hidden {
+  max-height: 0;
+  padding: 0 10px;
+  opacity: 0;
 }
