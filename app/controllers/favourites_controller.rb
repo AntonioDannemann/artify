@@ -1,28 +1,24 @@
 class FavouritesController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_favourite, only: [:destroy]
 
   def index
-    @favourites = current_user.favourites
-    @user = current_user
-    @favourites = @favourites.where(user: @user).order(updated_at: :desc)
+    @favourite_monuments = current_user.favourites.includes(:monument).order(updated_at: :desc)
 
     if params[:query].present?
-      sql_subquery = "monuments.name ILIKE :query OR monuments.location ILIKE :query"
-      @favourites = @favourites.joins(:monument).where(sql_subquery, query: "%#{params[:query]}%")
+      sql_subquery = "monuments.name ILIKE :query OR monuments.city ILIKE :query OR monuments.country_code ILIKE :query"
+      @favourite_monuments = @favourite_monuments.joins(:monument).where(sql_subquery, query: "%#{params[:query]}%")
     end
-
     search_formats
   end
 
   def create
     @monument = Monument.find(params[:monument_id])
-    @favourite = current_user.favourites.build(monument: @monument)
+    @favourite = current_user.favourites.new(monument: @monument)
 
     if @favourite.save
       redirect_to @favourite.monument
     else
-      redirect_to @monument
+      redirect_to root_path
     end
   end
 
@@ -34,7 +30,7 @@ class FavouritesController < ApplicationController
   private
 
   def set_favourite
-    @favourite = current_user.favourites.find_by(monument_id: params[:monument_id])
+    @favourite = current_user.favourites.find(params[:id])
   end
 
   def search_formats
