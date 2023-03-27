@@ -1,13 +1,14 @@
 class FavouritesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_favourite, only: [:destroy]
 
   def index
-    @favourites = current_user.favourites.where(user_id: current_user.id)
+    @favourites = current_user.favourites
   end
 
   def create
     @monument = Monument.find(params[:monument_id])
-    @favourite = Favourite.new(user: current_user, monument: @monument)
+    @favourite = current_user.favourites.build(monument: @monument)
     authorize @favourite
 
     if @favourite.save
@@ -18,9 +19,14 @@ class FavouritesController < ApplicationController
   end
 
   def destroy
-    @favourite = current_user.favourites.find_by(monument_id: params[:monument_id])
+    authorize @favourite
     @favourite.destroy
-
     redirect_to @favourite.monument
+  end
+
+  private
+
+  def set_favourite
+    @favourite = current_user.favourites.find_by(monument_id: params[:monument_id])
   end
 end
