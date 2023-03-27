@@ -1,53 +1,57 @@
-#user-banner {
-  background-color: $green;
-  border-radius: 0 0 16px 16px;
-  padding: 50px 20px 20px;
-  position: relative;
+#dashboard {
+  background-color: $background;
 
-  .profile-bottom {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
+  #user-banner {
+    background-color: $green;
+    border-radius: 0 0 16px 16px;
+    padding: 50px 20px 20px;
+    position: relative;
 
-    .badges-collection {
-      object-fit: cover;
-      width: 80px;
-    }
+    .profile-bottom {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
 
-    .btn-main {
-      background-color: $darkgrey;
-      color: $lightgrey;
-      margin: 0;
-    }
-  }
-
-  .user-info {
-    margin: 20px 0;
-    width: calc(100% - 140px);
-
-    .welcome-message {
-      color: $darkgrey;
-
-      * {
-        margin: 0px;
+      .badges-collection {
+        object-fit: cover;
+        width: 80px;
       }
 
-      h2 {
-        font-size: 2.2rem;
+      .btn-main {
+        background-color: $darkgrey;
+        color: $lightgrey;
+        margin: 0;
       }
     }
 
-    .dashboard-avatar {
-      background-color: $background;
-      border: 1px solid $lightgrey;
-      border-radius: 50%;
-      display: block;
-      height: 120px;
-      object-fit: cover;
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      width: 120px;
+    .user-info {
+      margin: 20px 0;
+      width: calc(100% - 140px);
+
+      .dashboard-avatar {
+        background-color: $background;
+        border: 1px solid $lightgrey;
+        border-radius: 50%;
+        display: block;
+        height: 120px;
+        object-fit: cover;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        width: 120px;
+      }
+
+      .welcome-message {
+        color: $darkgrey;
+
+        * {
+          margin: 0px;
+        }
+
+        h2 {
+          font-size: 2.2rem;
+        }
+      }
     }
   }
 }

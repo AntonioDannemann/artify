@@ -5,12 +5,12 @@ class PagesController < ApplicationController
     @history = History.new
     @monuments = Monument.order(:name)
     @featured_monument = Monument.featured
+
     @user_lat = params[:lat]
     @user_lng = params[:lng]
     nearby_results
 
     @ht = true if params[:ht]
-    @show_footer = true
 
     search_form_results
   end

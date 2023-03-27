@@ -9,20 +9,20 @@ export default class extends Controller {
     this.html.classList.add("noscroll")
     this.body.classList.add("noscroll")
 
+    document.querySelector("#pages-home").style.display = "block"
+
     setTimeout(() => {
       this.#hideLogo()
     }, 2000);
   }
 
-  disconnect() {
+  #hideLogo() {
+    this.element.style.opacity = "0"
     if (!document.querySelector(".tutorial")) {
       this.html.classList.remove("noscroll")
       this.body.classList.remove("noscroll")
     }
-  }
 
-  #hideLogo() {
-    this.element.style.opacity = "0"
     setTimeout(() => {
       this.element.remove()
     }, 1000);
