@@ -5,12 +5,12 @@ class PagesController < ApplicationController
     @history = History.new
     @monuments = Monument.order(:name)
     @featured_monument = Monument.featured
+
     @user_lat = params[:lat]
     @user_lng = params[:lng]
     nearby_results
 
     @ht = true if params[:ht]
-    @show_footer = true
 
     search_form_results
   end
@@ -29,7 +29,7 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.html
 
-      partial = "shared/monuments_scroller"
+      partial = @nearby_monuments.any? ? "shared/monuments_scroller" : "shared/no_results"
       locals = { monuments: @nearby_monuments, lat: @user_lat, lng: @user_lng }
       format.text { render partial:, locals:, formats: [:html] }
     end
@@ -45,7 +45,7 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.html
 
-      partial = "pages/components/search_list"
+      partial = @searched_monuments.any? ? "pages/components/search_list" : "shared/no_results"
       format.text { render partial:, locals: { monuments: @searched_monuments }, formats: [:html] }
     end
   end

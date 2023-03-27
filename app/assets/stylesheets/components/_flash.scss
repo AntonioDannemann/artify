@@ -1,11 +1,20 @@
 #flashes {
+  color: $background;
+  position: relative;
+
+  .close {
+    font-size: 20px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
   .hidden {
     transform: translateY(-100%);
   }
 
   .transition {
     background-color: $green;
-    color: $background;
     margin: 0px;
     padding: 24px;
     transition: transform 1s;

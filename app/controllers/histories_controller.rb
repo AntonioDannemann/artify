@@ -1,28 +1,38 @@
-require "mini_magick"
 require 'open-uri'
 
 class HistoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show create]
 
   def index
-    @histories = policy_scope(History)
+    @user = current_user
+    @histories = @user.histories.order(updated_at: :desc)
+
+    if params[:query].present?
+      sql_subquery = "monuments.name ILIKE :query OR monuments.location ILIKE :query"
+      @histories = @histories.joins(:monument).where(sql_subquery, query: "%#{params[:query]}%")
+    end
+
+    search_formats
   end
 
   def show
     @history = History.find(params[:id])
-    authorize @history
+    return redirect_to root_path unless @history.user == (current_user || guest_user)
+
+    @monument = @history.monument
+    @monuments = Monument.where(city: @monument.city).where.not(id: @monument.id)
+
+    @first_para = @monument.description.split(". ").first(2).join(". ")
+    @second_para = @monument.description.split(". ")[2..].each_slice(3).map { |subarr| subarr.join(". ") }
   end
 
   def create
-    @photo = compressed_photo(params[:history][:photo])
+    @photo = PhotoCompressor.new(params[:history][:photo]).compressed_photo
     @user = current_user || guest_user
     @history = build_history_from_photo(@photo)
 
-    authorize @history
+    return redirect_to history_path(@history) if @history&.save
 
-    return redirect_to history_path(@history) if @history.save
-
-    @history = History.new
     render "pages/error"
   end
 
@@ -37,21 +47,36 @@ class HistoriesController < ApplicationController
     # So we pass an empty History, it passes the authorization but not the validation and the #save fails
     unless google_landmark.landmark
       @error = "no landmark found on google"
-      return History.new
+      return nil
     end
 
+    initialize_landmark_instance_variable(google_landmark)
+
+    find_history_by_landmark || new_history
+  end
+
+  def initialize_landmark_instance_variable(google_landmark)
     @landmark_lat = google_landmark.lat
     @landmark_lng = google_landmark.lng
-    @landmark_name = google_landmark.name
-    @landmark_names = [@landmark_name, @landmark_name.downcase, @landmark_name.split.map(&:capitalize).join(" ")]
+    @raw_landmark_name = google_landmark.name
+    @landmark_name = @raw_landmark_name.split.map(&:capitalize).join(" ")
+    @landmark_names = [@raw_landmark_name, @raw_landmark_name.downcase, @landmark_name]
+  end
 
-    new_history
+  def find_history_by_landmark
+    history = History.joins(:monument).find_by(user: @user, monument: { name: @landmark_name })
+    return nil unless history
+
+    history.photo.purge_later
+    history.photo.attach(io: @photo, filename: "#{@landmark_name}#{@user.id}.jpeg", content_type: "image/jpeg")
+
+    history
   end
 
   def new_history
     history = History.new
     history.user = @user
-    history.photo.attach(io: @photo, filename: "#{@landmark_names[2]}#{@user.id}.jpeg", content_type: "image/jpeg")
+    history.photo.attach(io: @photo, filename: "#{@landmark_name}#{@user.id}.jpeg", content_type: "image/jpeg")
 
     # We first check in the database if there is a monument that corresponds to our current landmark
     # If not we create one
@@ -61,7 +86,7 @@ class HistoriesController < ApplicationController
   end
 
   def find_monument_by_landmark
-    Monument.find_by(name: @landmark_name.split.map(&:capitalize).join(" "))
+    Monument.find_by(name: @landmark_name)
   end
 
   def create_monument
@@ -83,7 +108,7 @@ class HistoriesController < ApplicationController
     monument.fetch_geocoder
     if data.photo_url
       monument.photo.attach(
-        io: compressed_photo(URI.parse(data.photo_url).open),
+        io: PhotoCompressor.new(URI.parse(data.photo_url).open).compressed_photo,
         filename: "#{monument.name}.jpeg",
         content_type: "image/jpeg"
       )
@@ -92,27 +117,10 @@ class HistoriesController < ApplicationController
     return monument if monument.save
   end
 
-  # Image Editing
-  def compressed_photo(photo)
-    image = resized_photo(photo)
-
-    if image.size > 5_242_880
-      image = compress_image(image, 30)
-    elsif image.size > 2_621_440
-      image = compress_image(image, 50)
-    elsif image.size > 1_048_576
-      image = compress_image(image, 80)
+  def search_formats
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "histories/components/list", locals: { histories: @histories }, formats: [:html] }
     end
-
-    StringIO.open(image.to_blob)
-  end
-
-  def resized_photo(photo)
-    image = MiniMagick::Image.new(photo.path)
-    image.resize "1920x1920"
-  end
-
-  def compress_image(image, quality)
-    image.quality quality
   end
 end

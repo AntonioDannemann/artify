@@ -25,6 +25,7 @@ a {
 
 body {
   background-color: $background;
+  background-image: asset-url("bg_pattern.webp");
   color: $lightgrey;
   display: flex;
   flex-direction: column;
@@ -59,6 +60,7 @@ ul {
 }
 
 .container {
+  background-color: $background;
   padding: 0 20px;
 }
 

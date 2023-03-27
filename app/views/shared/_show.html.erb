@@ -1,0 +1,43 @@
+<div class="background-image" style="background-image: url('<%= cl_image_path photo_key %>');" data-controller="glass-container" data-action="click->glass-container#shrinkGlass">
+  <%= link_to root_path(ht: "y"), class: "btn-home" do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
+
+  <div class="glass-container" data-glass-container-target="glass">
+    <div class="line" data-action="click->glass-container#toggleGlass" ></div>
+
+    <div class="content" data-glass-container-target="content">
+      <h1><%= @monument.name %></h1>
+
+      <div class="location-with-url">
+        <p class="location"><i class="fa-solid fa-location-dot"></i> <%= "#{@monument.city}, #{@monument.country_code}" %></p>
+
+        <% if @monument.website_url.present? %>
+          <%= link_to @monument.website_url, target: "_blank" do %>
+            <i class="fa-solid fa-globe globe-official-link"></i>
+          <% end %>
+        <% end %>
+      </div>
+
+      <p class="truncate" data-glass-container-target="truncate"><%= @first_para %>.</p>
+
+      <%= cl_image_tag @monument.photo.key, width: 500, crop: "scale", quality: 50, class: "hidden-thumbnail" %>
+
+      <% @second_para.each do |par| %>
+        <p><%= par %>.</p>
+      <% end %>
+
+      <% if @monuments.any? %>
+        <section class="side-scroller">
+          <div class="subheader">
+            <h2>More in <%= @monument.city %></h2>
+          </div>
+
+          <%= render "shared/monuments_scroller", monuments: @monuments, lat: nil, lng: nil%>
+        </section>
+      <% end %>
+    </div>
+
+    <button class="btn-main" data-action="click->glass-container#toggleGlass">Show More</button>
+  </div>
+</div>

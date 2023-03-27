@@ -13,6 +13,12 @@ application.register("camera-form", CameraFormController)
 import FlashesController from "./flashes_controller"
 application.register("flashes", FlashesController)
 
+import GlassContainerController from "./glass_container_controller"
+application.register("glass-container", GlassContainerController)
+
+import HideHomeController from "./hide_home_controller"
+application.register("hide-home", HideHomeController)
+
 import HomeLogoController from "./home_logo_controller"
 application.register("home-logo", HomeLogoController)
 
@@ -24,6 +30,9 @@ application.register("nearby", NearbyController)
 
 import SearchFormController from "./search_form_controller"
 application.register("search-form", SearchFormController)
+
+import SearchHistoriesController from "./search_histories_controller"
+application.register("search-histories", SearchHistoriesController)
 
 import SwitchAccountFormController from "./switch_account_form_controller"
 application.register("switch-account-form", SwitchAccountFormController)
