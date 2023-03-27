@@ -1,13 +1,11 @@
-<div class="index-container">
-  <div class="monuments-map"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
+<div class="index-container" data-controller="map"   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div class="monuments-map"
+  data-map-target="map">
     <%= link_to root_path(ht: "y"), class: "btn-home" do %>
       <i class="fa-solid fa-arrow-left"></i>
     <% end %>
   </div>
-  <div id="feature-listing" class="listing listing-hidden"></div>
-  <div id="blinder"></div>
-
+  <div id="feature-listing" class="listing listing-hidden" data-map-target="listing"></div>
+  <div id="blinder" data-map-target="blinder" data-action="click->map#lower"></div>
 </div>

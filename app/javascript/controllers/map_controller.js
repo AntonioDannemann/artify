@@ -7,39 +7,42 @@ export default class extends Controller {
     markers: Array
   }
 
+  static targets = ["map", "listing", "blinder"]
+
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
-    const blinder = document.getElementById('blinder')
-    const featureListing = document.getElementById('feature-listing')
     const geojson = JSON.stringify(this.markersValue[0]);
 
-    navigator.geolocation.getCurrentPosition(this.#flyMapToUser);
+    // navigator.geolocation.getCurrentPosition(this.#flyMapToUser);
+    this.map = new mapboxgl.Map({
+      container: this.mapTarget,
+      style: "mapbox://styles/mapbox/navigation-night-v1",
+      zoom: -5,
+    })
+
     navigator.geolocation.getCurrentPosition(location => {
+      this.map.flyTo({
+        center: [location.coords.longitude, location.coords.latitude, ],
+        essential: true,
+        zoom: 12
+      })
       const lat = location.coords.latitude
       const lng = location.coords.longitude
 
-      this.map.on('click', 'monument', (e) => {
-        blinder.classList.add('blinder-expanded')
-        featureListing.classList.remove('listing-hidden')
-        featureListing.innerHTML = ""
-        const mon = e.features[0].properties;
+      this.map.on('click', 'monument', event => {
+        this.blinderTarget.classList.add('blinder-expanded')
+        const mon = event.features[0].properties;
         const url = `/monuments?lat=${lat}&lng=${lng}&id=${mon.id}`
 
         fetch(url, { headers: { "Accept": "text/plain" } })
           .then(res => res.text())
           .then(html => {
-            featureListing.innerHTML = html
+            this.listingTarget.innerHTML = html
+            this.listingTarget.classList.remove('listing-hidden')
           })
       });
 
     });
-
-
-    this.map = new mapboxgl.Map({
-      container: this.element,
-      style: "mapbox://styles/mapbox/navigation-night-v1",
-      zoom: -5,
-    })
 
     this.map.on('load', () => {
       this.map.loadImage(
@@ -68,16 +71,9 @@ export default class extends Controller {
       });
     });
 
-
-
-    blinder.addEventListener('click', (e) => {
-      blinder.classList.remove('blinder-expanded')
-      featureListing.classList.add('listing-hidden')
-    })
-
     this.map.on('movestart', () => {
-      blinder.classList.remove('blinder-expanded')
-      featureListing.classList.add('listing-hidden')
+      this.blinderTarget.classList.remove('blinder-expanded')
+      this.listingTarget.classList.add('listing-hidden')
     });
 
     const geolocate = new mapboxgl.GeolocateControl({
@@ -89,11 +85,8 @@ export default class extends Controller {
     this.map.addControl(geolocate);
   }
 
-  #flyMapToUser = position =>  {
-    this.map.flyTo({
-      center: [position.coords.longitude, position.coords.latitude, ],
-      essential: true,
-      zoom: 12
-    })
+  lower() {
+    this.blinderTarget.classList.remove('blinder-expanded')
+    this.listingTarget.classList.add('listing-hidden')
   }
 }
