@@ -17,6 +17,8 @@ class HistoriesController < ApplicationController
 
   def show
     @history = History.find(params[:id])
+    return redirect_to root_path unless @history.user == (current_user || guest_user)
+
     @monument = @history.monument
     @monuments = Monument.where(city: @monument.city).where.not(id: @monument.id)
 
