@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AchievementController from "./achievement_controller"
+application.register("achievement", AchievementController)
+
 import AosController from "./aos_controller"
 application.register("aos", AosController)
 
@@ -15,6 +18,9 @@ application.register("flashes", FlashesController)
 
 import GlassContainerController from "./glass_container_controller"
 application.register("glass-container", GlassContainerController)
+
+import HideHomeController from "./hide_home_controller"
+application.register("hide-home", HideHomeController)
 
 import HomeLogoController from "./home_logo_controller"
 application.register("home-logo", HomeLogoController)

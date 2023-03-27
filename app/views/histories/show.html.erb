@@ -1,1 +1,5 @@
+<% if @new_achievements.any? %>
+  <%= render "components/achievement_alert" %>
+<% end %>
+
 <%= render "shared/show", photo_key: @history.photo.key %>

@@ -4,6 +4,7 @@ require "open-uri"
 
 puts "Creating user"
 
+User.create(first_name: "Louis", last_name: "Ramos", email: "louisramosdev@gmail.com", password: "password")
 @user = User.new(first_name: "guest", email: "#{Time.current.to_i}#{rand(999)}@guest.artify")
 @user.save(validate: false)
 
@@ -17,6 +18,7 @@ Achievement.create!(title: "King of the world", description: "Scan 100 landmarks
 Achievement.create!(title: "Sprinter", description: "Scan 5 landmarks in less than 24 hours", goal: 5, keyword: "all")
 Achievement.create!(title: "Traveller", description: "Scan landmarks in 5 different countries", goal: 5, keyword: "all")
 
+Achievement.create!(title: "Amesterdam Explorer", description: "Scan 5 landmarks from Amesterdam", goal: 5, keyword: "Amesterdam")
 Achievement.create!(title: "Brussels Explorer", description: "Scan 5 landmarks from Brussels", goal: 5, keyword: "Brussels")
 Achievement.create!(title: "Lisbon Explorer", description: "Scan 5 landmarks from Lisbon", goal: 5, keyword: "Lisbon")
 Achievement.create!(title: "Paris Explorer", description: "Scan 5 landmarks from Paris", goal: 5, keyword: "Paris")
@@ -216,9 +218,6 @@ monument_images.each do |image_url|
   if history.save
     puts "#{Time.current - method_start}s to save history"
 
-    Achievement.all.each do |ach|
-      MonumentAchievement.create!(achievement: ach, monument: history.monument)
-    end
     puts "#{history.monument.name} created in #{Time.current - monument_start}s\n\n" if history
   else
     puts "Process failed after #{Time.current - monument_start}s\n\n"
