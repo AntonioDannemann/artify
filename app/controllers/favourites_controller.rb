@@ -3,7 +3,7 @@ class FavouritesController < ApplicationController
   before_action :set_favourite, only: [:destroy]
 
   def index
-    @favourites = policy_scope(current_user.favourites)
+    @favourites = current_user.favourites
     @user = current_user
     @favourites = @favourites.where(user: @user).order(updated_at: :desc)
 
@@ -18,7 +18,6 @@ class FavouritesController < ApplicationController
   def create
     @monument = Monument.find(params[:monument_id])
     @favourite = current_user.favourites.build(monument: @monument)
-    authorize @favourite
 
     if @favourite.save
       redirect_to @favourite.monument
@@ -28,7 +27,6 @@ class FavouritesController < ApplicationController
   end
 
   def destroy
-    authorize @favourite
     @favourite.destroy
     redirect_to @favourite.monument
   end
