@@ -1,8 +1,6 @@
 class FavouritesController < ApplicationController
-  before_action :set_favourite, only: [:destroy]
-
   def index
-    @favourite_monuments = current_user.favourite_monuments.includes(:monument).order(updated_at: :desc)
+    @favourite_monuments = current_user.favourite_monuments
 
     if params[:query].present?
       sql_subquery = "monuments.name ILIKE :query OR monuments.city ILIKE :query OR monuments.country ILIKE :query"
@@ -24,22 +22,18 @@ class FavouritesController < ApplicationController
   end
 
   def destroy
+    @favourite = Favourite.find(params[:id])
     @favourite.destroy
     redirect_to @favourite.monument
   end
 
   private
 
-  def set_favourite
-    @favourite = Favourite.find(params[:id])
-  end
-
   def search_formats
     respond_to do |format|
       format.html # Follow regular flow of Rails
       format.text do
-        render partial: "favourites/components/list",
-               locals: { histories: @histories },
+        render partial: "favourites/components/list", locals: { favourite_monuments: @favourite_monuments },
                formats: [:html]
       end
     end
