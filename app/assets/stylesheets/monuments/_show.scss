@@ -61,6 +61,7 @@
 
     .content {
       overflow: hidden;
+      padding: 0 4px;
       width: 100%;
 
       h1 {
@@ -78,6 +79,7 @@
         display: flex;
         gap: 10px;
         margin: 0;
+        min-height: 30px;
 
         i {
           color: $green;
@@ -112,6 +114,11 @@
       border-radius: 2px;
       margin: 0 auto;
       width: 80px;
+    }
+
+    .side-scroller {
+      border: none;
+      padding-bottom: 0;
     }
   }
 }
