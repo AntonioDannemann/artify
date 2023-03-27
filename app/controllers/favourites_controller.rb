@@ -2,23 +2,24 @@ class FavouritesController < ApplicationController
   before_action :set_favourite, only: [:destroy]
 
   def index
-    @favourite_monuments = current_user.favourites.includes(:monument).order(updated_at: :desc)
+    @favourite_monuments = current_user.favourite_monuments.includes(:monument).order(updated_at: :desc)
 
     if params[:query].present?
-      sql_subquery = "monuments.name ILIKE :query OR monuments.city ILIKE :query OR monuments.country_code ILIKE :query"
-      @favourite_monuments = @favourite_monuments.joins(:monument).where(sql_subquery, query: "%#{params[:query]}%")
+      sql_subquery = "monuments.name ILIKE :query OR monuments.city ILIKE :query OR monuments.country ILIKE :query"
+      @favourite_monuments = @favourite_monuments.where(sql_subquery, query: "%#{params[:query]}%")
     end
     search_formats
   end
 
   def create
-    @monument = Monument.find(params[:monument_id])
-    @favourite = current_user.favourites.new(monument: @monument)
+    @favourite = Favourite.new
+    @favourite.user = current_user
+    @favourite.monument = @monument
 
     if @favourite.save
-      redirect_to @favourite.monument
+      redirect_to monument_path(@monument)
     else
-      redirect_to root_path
+      render "monuments/show"
     end
   end
 
@@ -30,13 +31,17 @@ class FavouritesController < ApplicationController
   private
 
   def set_favourite
-    @favourite = current_user.favourites.find(params[:id])
+    @favourite = Favourite.find(params[:id])
   end
 
   def search_formats
     respond_to do |format|
       format.html # Follow regular flow of Rails
-      format.text { render partial: "favourites/components/list", locals: { histories: @histories }, formats: [:html] }
+      format.text do
+        render partial: "favourites/components/list",
+               locals: { histories: @histories },
+               formats: [:html]
+      end
     end
   end
 end
