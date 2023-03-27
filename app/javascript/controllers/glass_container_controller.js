@@ -13,7 +13,7 @@ export default class extends Controller {
 
   toggleGlass() {
     this.glassTarget.classList.toggle("expanded")
-    this.contentTarget.scrollTo({ top: 0, behavior: 'smooth' })
+    this.contentTarget.scrollTo({ top: 0 })
 
     if (this.glassTarget.classList.contains("expanded")) {
       this.truncateTarget.classList.remove("truncate")
@@ -26,7 +26,7 @@ export default class extends Controller {
 
   shrinkGlass(event) {
     if (event.target === this.element) {
-      this.contentTarget.scrollTo({ top: 0, behavior: 'smooth' })
+      this.contentTarget.scrollTo({ top: 0 })
       this.glassTarget.classList.remove("expanded")
 
       setTimeout(() => {
