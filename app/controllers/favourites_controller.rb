@@ -4,6 +4,15 @@ class FavouritesController < ApplicationController
 
   def index
     @favourites = policy_scope(current_user.favourites)
+    @user = current_user
+    @favourites = @favourites.where(user: @user).order(updated_at: :desc)
+
+    if params[:query].present?
+      sql_subquery = "monuments.name ILIKE :query OR monuments.location ILIKE :query"
+      @favourites = @favourites.joins(:monument).where(sql_subquery, query: "%#{params[:query]}%")
+    end
+
+    search_formats
   end
 
   def create
@@ -28,5 +37,12 @@ class FavouritesController < ApplicationController
 
   def set_favourite
     @favourite = current_user.favourites.find_by(monument_id: params[:monument_id])
+  end
+
+  def search_formats
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "favourites/components/list", locals: { histories: @histories }, formats: [:html] }
+    end
   end
 end

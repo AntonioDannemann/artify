@@ -1,0 +1,19 @@
+<div class="histories-list" data-search-histories-target="list">
+  <% @favourites.each do |favourite| %>
+    <div class="card-history">
+            <%= cl_image_tag favourite.monument.photo.key, class: "monument-photo" %>
+
+      <div class="history-info">
+        <h3><%= favourite.monument.name %></h3>
+
+        <span><i class="fa-solid fa-location-dot"></i> <%= "#{favourite.monument.city}, #{favourite.monument.country_code}" %></span>
+
+        <p><%= favourite.created_at.strftime('%e %b, %Y') %></p>
+
+        <%= link_to favourite.monument, class: "btn-right" do %>
+          <i class="fa-solid fa-arrow-right"></i>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
