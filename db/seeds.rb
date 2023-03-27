@@ -4,6 +4,7 @@ require "open-uri"
 
 puts "Creating user"
 
+User.create(first_name: "Louis", last_name: "Ramos", email: "louisramosdev@gmail.com", password: "password")
 @user = User.new(first_name: "guest", email: "#{Time.current.to_i}#{rand(999)}@guest.artify")
 @user.save(validate: false)
 
@@ -12,6 +13,8 @@ puts "Done creating users\n\n"
 Achievement.create!(title: "Let's begin", description: "Scan your first landmark", goal: 1, keyword: "all")
 Achievement.create!(title: "Get Going", description: "Scan 10 landmarks", goal: 10, keyword: "all")
 Achievement.create!(title: "Paris Explorer", description: "Scan 5 landmarks from Paris", goal: 5, keyword: "Paris")
+Achievement.create!(title: "Sprinter", description: "Scan 5 landmarks in less than 24 hours", goal: 5, keyword: "all")
+Achievement.create!(title: "Tourist", description: "Scan landmarks in 5 different countries", goal: 5, keyword: "all")
 
 arc_de_triomphe = "https://cdn.britannica.com/66/80466-050-2E125F5C/Arc-de-Triomphe-Paris-France.jpg"
 atomium = "https://upload.wikimedia.org/wikipedia/commons/c/cf/Brussels_-_Atomium_2022.jpg"
@@ -201,9 +204,6 @@ monument_images.each do |image_url|
   if history.save
     puts "#{Time.current - method_start}s to save history"
 
-    Achievement.all.each do |ach|
-      MonumentAchievement.create!(achievement: ach, monument: history.monument)
-    end
     puts "#{history.monument.name} created in #{Time.current - monument_start}s\n\n" if history
   else
     puts "Process failed after #{Time.current - monument_start}s\n\n"
