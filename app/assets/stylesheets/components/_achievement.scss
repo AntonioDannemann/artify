@@ -1,0 +1,47 @@
+.notification {
+  background-color: $background;
+  background-image: asset-url("bg_pattern.webp");
+  height: 100vh;
+  height: 100svh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+
+  .achievement {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    height: 100%;
+    justify-content: center;
+
+    div {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      font-size: 1.5rem;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+
+      h1 {
+        color: $green;
+        font-size: 2.7rem;
+      }
+    }
+
+    h2 {
+      font-size: 1.8rem;
+    }
+
+    img {
+      width: 250px;
+    }
+  }
+
+  .close {
+    font-size: 35px;
+    position: fixed;
+    right: 15px;
+    top: 15px;
+  }
+}

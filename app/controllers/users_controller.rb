@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
-    @histories = History.where(user: @user).order(created_at: :desc)
+    @histories = History.where(user: @user).order(updated_at: :desc)
+    @achievements = @user.user_achievements.order("status DESC, updated_at DESC").first(5)
   end
 end
