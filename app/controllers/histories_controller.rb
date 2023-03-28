@@ -8,7 +8,7 @@ class HistoriesController < ApplicationController
     @histories = @user.histories.order(updated_at: :desc)
 
     if params[:query].present?
-      sql_subquery = "monuments.name ILIKE :query OR monuments.location ILIKE :query"
+      sql_subquery = "monuments.name ILIKE :query OR monuments.city ILIKE :query OR monuments.country ILIKE :query"
       @histories = @histories.joins(:monument).where(sql_subquery, query: "%#{params[:query]}%")
     end
 
@@ -129,6 +129,7 @@ class HistoriesController < ApplicationController
   def search_formats
     respond_to do |format|
       format.html # Follow regular flow of Rails
+
       format.text { render partial: "histories/components/list", locals: { histories: @histories }, formats: [:html] }
     end
   end
