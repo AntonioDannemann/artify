@@ -13,7 +13,7 @@ class UserAchievement < ApplicationRecord
 
     case achievement.title
     when "Sprinter" then sprinter_progress
-    when "Tourist" then tourist_progress
+    when "Traveller" then traveller_progress
     else self.progress += 1
     end
 
@@ -26,7 +26,7 @@ class UserAchievement < ApplicationRecord
     self.progress = user.histories.count { |his| his.updated_at.today? }
   end
 
-  def tourist_progress
+  def traveller_progress
     self.progress = user.histories.map(&:monument).group_by(&:country).count
   end
 
