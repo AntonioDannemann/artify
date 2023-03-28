@@ -14,7 +14,7 @@
       <% @histories.each do |his| %>
         <%= link_to history_path(his),
           class: "card-monument",
-          style: (his.photo.attached? ? "background-image: linear-gradient(rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.7)), url(#{ cl_image_path his.photo.key, height: 250, quality: 30 })" : "") do %>
+          style: (his.photo.attached? ? "background-image: linear-gradient(rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.7)), url(#{ cl_image_path his.photo.key, height: 500, crop: "scale", quality: 80 })" : "") do %>
 
           <h3><%= his.monument.name %></h3>
           <span><i class="fa-solid fa-location-dot"></i> <%= "#{his.monument.city}, #{his.monument.country_code}" %></span>
