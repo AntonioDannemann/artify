@@ -12,9 +12,23 @@ puts "Done creating users\n\n"
 
 Achievement.create!(title: "Let's begin", description: "Scan your first landmark", goal: 1, keyword: "all")
 Achievement.create!(title: "Get Going", description: "Scan 10 landmarks", goal: 10, keyword: "all")
-Achievement.create!(title: "Paris Explorer", description: "Scan 5 landmarks from Paris", goal: 5, keyword: "Paris")
+Achievement.create!(title: "You are a curious one", description: "Scan 25 landmarks", goal: 25, keyword: "all")
+Achievement.create!(title: "What an Adventurer you are!", description: "Scan 50 landmarks", goal: 50, keyword: "all")
+Achievement.create!(title: "King of the world", description: "Scan 100 landmarks", goal: 100, keyword: "all")
 Achievement.create!(title: "Sprinter", description: "Scan 5 landmarks in less than 24 hours", goal: 5, keyword: "all")
-Achievement.create!(title: "Tourist", description: "Scan landmarks in 5 different countries", goal: 5, keyword: "all")
+Achievement.create!(title: "Traveller", description: "Scan landmarks in 5 different countries", goal: 5, keyword: "all")
+
+Achievement.create!(title: "Amesterdam Explorer", description: "Scan 5 landmarks from Amesterdam", goal: 5, keyword: "Amesterdam")
+Achievement.create!(title: "Brussels Explorer", description: "Scan 5 landmarks from Brussels", goal: 5, keyword: "Brussels")
+Achievement.create!(title: "Lisbon Explorer", description: "Scan 5 landmarks from Lisbon", goal: 5, keyword: "Lisbon")
+Achievement.create!(title: "Paris Explorer", description: "Scan 5 landmarks from Paris", goal: 5, keyword: "Paris")
+Achievement.create!(title: "Rio de Janeiro Explorer", description: "Scan 5 landmarks from Rio de Janeiro", goal: 5, keyword: "Rio de Janeiro")
+
+Achievement.create!(title: "Conquering Belgium", description: "Scan 10 landmarks from Belgium", goal: 10, keyword: "Belgium")
+Achievement.create!(title: "Conquering Brazil", description: "Scan 10 landmarks from Brazil", goal: 10, keyword: "Brazil")
+Achievement.create!(title: "Conquering France", description: "Scan 10 landmarks from France", goal: 10, keyword: "France")
+Achievement.create!(title: "Conquering Holland", description: "Scan 10 landmarks from Holland", goal: 10, keyword: "Holland")
+Achievement.create!(title: "Conquering Portugal", description: "Scan 10 landmarks from Portugal", goal: 10, keyword: "Portugal")
 
 arc_de_triomphe = "https://cdn.britannica.com/66/80466-050-2E125F5C/Arc-de-Triomphe-Paris-France.jpg"
 atomium = "https://upload.wikimedia.org/wikipedia/commons/c/cf/Brussels_-_Atomium_2022.jpg"
