@@ -1,62 +1,44 @@
 @import "monuments/show";
 
-.monuments-map {
-  height: 100vh;
-  height: 100svh;
-  width: 100%;
-}
-
 .index-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  .map-overlay {
+    align-items: center;
+    backdrop-filter: blur(10px);
+    background-color: #181a1b80;
+    border-radius: 15px 15px 0 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: max-content;
+    max-height: 290px;
+    padding: 10px;
+    position: fixed;
+    transition: all 0.5s ease;
+    width: 100%;
 
-  background-color: $background;
+    &.hidden {
+      max-height: 0;
+      padding: 0 10px;
+      opacity: 0;
+    }
 
-  height: 100%;
-  width: 100%;
-}
+    #blinder {
+      background-color: $green;
+      border-radius: 2px;
+      flex-shrink: 0;
+      height: 4px;
+      width: 80px;
+    }
+  }
 
-#blinder {
-  display: flex;
-  justify-content: center;
-  height: 7px;
-  width: 100px;
-  position: fixed;
-  bottom: -.5%;
-  z-index: 10;
-  border-radius: 5px;
-  transition: all .3s ease;
-}
-
-.blinder-expanded {
-  bottom: 270px !important;
-  background-color: rgba(154, 180, 149, 1);
+  .monuments-map {
+    height: 100vh;
+    height: 100svh;
+    width: 100%;
+  }
 }
 
 .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
   display: none !important;
-}
-
-.listing {
-  position: fixed;
-  bottom: 0;
-  height: max-content;
-  padding: 23px 10px 10px;
-  background-color: #181a1b80;
-  backdrop-filter: blur(10px);
-  border-radius: 15px 15px 0px 0px;
-  max-height: 285px;
-  overflow: hidden;
-  transition: all .3s ease;
-  &::-webkit-scrollbar {
-    height: 0;
-  }
-}
-
-.listing-hidden {
-  max-height: 0;
-  padding: 0 10px;
-  opacity: 0;
 }
