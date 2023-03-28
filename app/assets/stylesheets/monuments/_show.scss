@@ -27,7 +27,7 @@
       border-bottom-right-radius: 0;
       height: 80%;
       margin: 0;
-      padding: 20px 40px 25px 40px;
+      padding: 20px 30px 20px 30px;
 
       button {
         max-height: 0;
@@ -37,6 +37,7 @@
 
       .content {
         overflow-y: scroll;
+        padding: 0 10px;
 
         &::-webkit-scrollbar {
           width: 0;
@@ -61,7 +62,7 @@
 
     .content {
       overflow: hidden;
-      padding: 0 4px;
+      transition: padding 0.3s ease;
       width: 100%;
 
       h1 {

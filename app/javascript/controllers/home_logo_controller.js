@@ -3,7 +3,9 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="home-logo"
 export default class extends Controller {
   connect() {
-    document.querySelector("#pages-home").style.display = "block"
+    if (!document.querySelector(".tutorial")) {
+      document.querySelector("#pages-home").style.display = "block"
+    }
 
     setTimeout(() => {
       this.#hideLogo()

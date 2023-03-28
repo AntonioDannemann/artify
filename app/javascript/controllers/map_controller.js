@@ -50,7 +50,6 @@ export default class extends Controller {
   }
 
   #addMarkersToMap() {
-    // <%# <%= image_path "location-pin.png" %>
     const path = "/assets/location_pin-426cf5b931d1f7c30012d7662bfd0ad73b4b72e1667f9846706332a375a04000.png"
     this.map.loadImage(path, (error, image) => {
       if (error) throw error
