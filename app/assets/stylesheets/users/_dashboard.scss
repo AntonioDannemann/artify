@@ -62,3 +62,57 @@
     }
   }
 }
+
+
+.next-achievement {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 8px;
+  align-items: center;
+  padding: 8px;
+  max-width: fit-content;
+
+  .next-achievement-info {
+    background-color: $darkgrey;
+    text-align: center;
+    border-radius: 10px;
+    height: 300px;
+
+    h3 {
+      display: -webkit-box;
+      font-size: 1.1rem;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      margin: 0;
+      padding: 8px 8px 0;
+    }
+
+    p {
+      margin: 0;
+      padding: 0 8px;
+      text-align: left;
+    }
+
+    .progress-bar {
+      background-color: $background;
+      height: 16px;
+      border-radius: 8px;
+      margin: 4px;
+
+      .percentage {
+        background-color: $green;
+        height: 16px;
+        border-radius: 8px;
+        width: 76%;
+      }
+    }
+  }
+
+  .next-badge {
+    flex-shrink: 0;
+    object-fit: cover;
+    object-position: center;
+    width: 80%;
+  }
+}

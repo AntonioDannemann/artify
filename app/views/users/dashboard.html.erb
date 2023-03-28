@@ -27,11 +27,16 @@
 
     <div class="profile-bottom">
       <%= link_to "EDIT PROFILE", edit_user_registration_path, class: "btn-main" %>
-      <%= image_tag "badges_collection.png", class: "badges-collection" %>
+
+      <%= link_to achievements_path do %>
+        <%= cl_image_tag @user_achievements.first.achievement.photo.key, class: "badges-collection" %>
+      <% end %>
     </div>
   </div>
 
   <div class="container">
     <%= render "users/components/histories" %>
+
+    <%= render "users/components/achievements" %>
   </div>
 </div>

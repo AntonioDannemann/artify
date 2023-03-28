@@ -1,0 +1,38 @@
+<section class="side-scroller">
+  <div class="subheader">
+    <h2><i class="fas fa-medal"></i>  My achievements</h2>
+  </div>
+
+  <div class="next-achievement">
+    <% if @user_achievements.any? %>
+      <% @user_achievements.each do |ach| %>
+        <div class="next-achievement-info">
+          <div class="next-achievement-name">
+            <h3><%= ach.achievement.title %></h3>
+            <%= cl_image_tag ach.achievement.photo.key, class: "next-badge" %>
+            <p> <% if ach.progress > ach.achievement.goal %>
+                  <%= ach.achievement.goal %>
+                <% else %>
+                  <%= ach.progress %>
+                <% end %>
+                (of <%= ach.achievement.goal %>)</p>
+          </div>
+
+          <div class="progress-bar">
+            <div class="percentage"></div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <%= render "shared/no_results" %>
+    <% end %>
+  </div>
+
+  <div class="subheader" style="align-text: right;">
+    <% if @user_achievements.any? %>
+      <%= link_to achievements_path do %>
+        see more <i class="fa-solid  fa-arrow-right"></i>
+      <% end %>
+    <% end %>
+  </div>
+</section>

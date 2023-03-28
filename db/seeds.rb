@@ -27,7 +27,7 @@ achievement.photo.attach(io: URI.parse("https://res.cloudinary.com/dr1wktgbk/ima
 achievement.save!
 puts "#{achievement.title} created"
 
-achievement = Achievement.new(title: "What an Adventurer you are!", description: "Scan 50 landmarks", goal: 50, keyword: "all")
+achievement = Achievement.new(title: "Adventurer!", description: "Scan 50 landmarks", goal: 50, keyword: "all")
 achievement.photo.attach(io: URI.parse("https://res.cloudinary.com/dr1wktgbk/image/upload/v1679992907/50_scan_yhozrd.svg").open, filename: achievement.title)
 achievement.save!
 puts "#{achievement.title} created"
