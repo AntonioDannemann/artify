@@ -61,11 +61,12 @@
 
     .content {
       overflow: hidden;
+      padding: 0 4px;
       width: 100%;
 
       h1 {
         color: $green;
-        font-size: 35px;
+        font-size: 30px;
         font-weight: bolder;
       }
 
@@ -103,6 +104,7 @@
 
       .truncate {
         display: -webkit-box;
+        overflow: hidden;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
       }
@@ -113,6 +115,11 @@
       border-radius: 2px;
       margin: 0 auto;
       width: 80px;
+    }
+
+    .side-scroller {
+      border: none;
+      padding-bottom: 0;
     }
   }
 }

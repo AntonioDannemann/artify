@@ -4,9 +4,8 @@ class HistoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show create]
 
   def index
-    @histories = policy_scope(History)
     @user = current_user
-    @histories = @histories.where(user: @user).order(updated_at: :desc)
+    @histories = @user.histories.order(updated_at: :desc)
 
     if params[:query].present?
       sql_subquery = "monuments.name ILIKE :query OR monuments.location ILIKE :query"
@@ -18,11 +17,11 @@ class HistoriesController < ApplicationController
 
   def show
     @history = History.find(params[:id])
-
-    authorize @history
+    return redirect_to root_path unless @history.user == (current_user || guest_user)
 
     @monument = @history.monument
     @monuments = Monument.where(city: @monument.city).where.not(id: @monument.id)
+
     @first_para = @monument.description.split(". ").first(2).join(". ")
     @second_para = @monument.description.split(". ")[2..].each_slice(3).map { |subarr| subarr.join(". ") }
 
@@ -33,8 +32,6 @@ class HistoriesController < ApplicationController
     @photo = PhotoCompressor.new(params[:history][:photo]).compressed_photo
     @user = current_user || guest_user
     @history = build_history_from_photo(@photo)
-
-    authorize @history
 
     if @history.new_record? && @history.save
       current_user&.update_achievements(@history.monument.achievements)

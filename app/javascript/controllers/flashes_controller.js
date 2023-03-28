@@ -6,6 +6,14 @@ export default class extends Controller {
     this.slideAlert()
   }
 
+  remove() {
+    this.element.classList.add("hidden")
+
+    setTimeout(() => {
+      this.element.remove()
+    }, 3500)
+  }
+
   slideAlert() {
     this.element.classList.remove("hidden")
 

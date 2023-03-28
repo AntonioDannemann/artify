@@ -1,12 +1,12 @@
-<div class="index-container">
-  <div class="monuments-map"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+<div class="index-container" data-controller="map block-body-scroll"  data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div class="monuments-map" data-map-target="map">
     <%= link_to root_path(ht: "y"), class: "btn-home" do %>
       <i class="fa-solid fa-arrow-left"></i>
     <% end %>
   </div>
 
-    <%= render "shared/monuments_scroller", monuments: @nearby_monuments, lat: @lat, lng: @lng %>
+  <div class="map-overlay hidden" data-map-target="overlay">
+    <div id="blinder" data-action="click->map#hideOverlay"></div>
+    <div id="feature-listing" data-map-target="listing"></div>
+  </div>
 </div>

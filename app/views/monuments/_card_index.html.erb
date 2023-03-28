@@ -1,0 +1,15 @@
+<div class="card-index">
+  <div class="image-index" style="background-image: linear-gradient(rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.7)), url('<%= cl_image_path mon.photo.key, height: 500, crop: "scale", quality: 80 %>')"></div>
+
+  <div class="description-index">
+    <div>
+      <h3><%= mon.name %></h3>
+      <p><i class="fa-solid fa-location-dot"></i>  <%= mon.city %> </p>
+    </div>
+
+    <p class="desc-short"> <%= mon.description%></p>
+    <%= link_to monument_path(mon) do %>
+      Learn more <i class="fa-solid  fa-arrow-right"></i>
+    <% end %>
+  </div>
+</div>
