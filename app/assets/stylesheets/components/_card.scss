@@ -1,3 +1,48 @@
+.card-history {
+  background-color: $darkgrey;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  height: 160px;
+  overflow: hidden;
+  position: relative;
+
+  .history-info {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+
+
+    h3 {
+      display: -webkit-box;
+      font-size: 1.3rem;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+
+    i {
+      color: $green;
+    }
+
+    p {
+      color: $lightgrey50;
+      margin: 0;
+    }
+
+    span {
+      flex-grow: 1;
+    }
+  }
+
+  .monument-photo {
+    flex-shrink: 0;
+    object-fit: cover;
+    object-position: center;
+    width: 120px;
+  }
+}
+
 .card-index {
   display: flex;
   gap: 10px;
@@ -109,51 +154,6 @@
 
     span {
       font-size: 0.7rem;
-    }
-  }
-}
-
-.card-history {
-  display: flex;
-  margin: 16px 0;
-  border-radius: 10px;
-  height: 160px;
-  background-color: $darkgrey;
-  overflow: hidden;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  position: relative;
-
-  .monument-photo {
-    width: 40%;
-    object-fit: cover;
-    object-position: center;
-    flex-shrink: 0;
-  }
-
-  .history-info {
-    margin: 16px;
-    display: flex;
-    flex-direction: column;
-
-
-    h3 {
-      font-size: 1.3rem;
-    }
-
-    i {
-      color: $green;
-    }
-
-    p {
-      color: $lightgrey50;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 0;
-    }
-
-    span {
-      flex-grow: 1;
     }
   }
 }

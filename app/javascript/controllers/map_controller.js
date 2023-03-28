@@ -10,11 +10,7 @@ export default class extends Controller {
   static targets = ["listing", "map", "overlay"]
 
   connect() {
-    this.#blockBodyScroll()
-
     mapboxgl.accessToken = this.apiKeyValue
-    this.geojson = JSON.stringify(this.markersValue[0])
-
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
       style: "mapbox://styles/mapbox/navigation-night-v1",
@@ -61,9 +57,10 @@ export default class extends Controller {
 
       this.map.addImage('pin', image)
 
+      const geojson = JSON.stringify(this.markersValue[0])
       this.map.addSource("monuments", {
         type: "geojson",
-        data: JSON.parse(this.geojson)
+        data: JSON.parse(geojson)
       })
 
       this.map.addLayer({
@@ -78,14 +75,6 @@ export default class extends Controller {
         }
       })
     })
-  }
-
-  #blockBodyScroll() {
-    this.html = document.querySelector("html")
-    this.body = document.querySelector("body")
-
-    this.html.classList.add("noscroll")
-    this.body.classList.add("noscroll")
   }
 
   #fetchMonument = event => {

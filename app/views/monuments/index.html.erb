@@ -1,6 +1,5 @@
-<div class="index-container" data-controller="map"  data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  <div class="monuments-map"
-  data-map-target="map">
+<div class="index-container" data-controller="map block-body-scroll"  data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div class="monuments-map" data-map-target="map">
     <%= link_to root_path(ht: "y"), class: "btn-home" do %>
       <i class="fa-solid fa-arrow-left"></i>
     <% end %>

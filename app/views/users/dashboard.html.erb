@@ -13,7 +13,7 @@
 
       <div class="picture">
         <% if current_user.photo.attached? %>
-          <%= cl_image_tag current_user.photo.key, class: "dashboard-avatar" %>
+          <%= cl_image_tag current_user.photo.key, width: 120, crop: "scale", quality: 80, class: "dashboard-avatar" %>
         <% else %>
           <%= form_with model: @user, scope: :user, url: registration_path(@user), class: "dashboard-avatar", data: { turbo: false } do |f| %>
             <%= f.label :photo do %>
