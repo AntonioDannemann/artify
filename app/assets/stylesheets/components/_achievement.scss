@@ -131,3 +131,125 @@
     }
   }
 }
+
+#achievements {
+  background-color: $background;
+  padding: 20px;
+  width: 100%;
+
+  .achievements, .user_achievements {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .achievements img {
+    filter: grayscale(100%);
+  }
+
+  .undiscovered {
+    font-size: 25px;
+    margin-bottom: 20px;
+  }
+
+  .user_achievements {
+    margin-bottom: 200px;
+
+    .completed {
+      .completion {
+        .progress {
+          background-color: #e3d293 !important;
+        }
+
+        span::after {
+          color: $darkgrey !important;
+          mix-blend-mode: normal !important;
+        }
+      }
+
+      img {
+        filter: sepia(70%) grayscale(20%) saturate(180%) contrast(1.1);
+      }
+    }
+
+    .achievement {
+      position: relative;
+
+      &:nth-child(odd) .details{
+        left: 0;
+      }
+
+      &:nth-child(even) .details{
+        right: 0;
+      }
+
+      .details {
+        background-color: $darkgrey;
+        border-radius: 10px;
+        display: none;
+        padding: 10px;
+        position: absolute;
+        top: calc(100% + 10px);
+        width: calc(200% + 20px);
+        z-index: 10;
+
+        h3 {
+          margin: 0;
+        }
+
+        p {
+          color: $lightgrey50;
+          margin-bottom: 30px;
+        }
+
+        .completion {
+          position: relative;
+
+          div {
+            border-radius: 5px;
+            bottom: 0;
+            height: 15px;
+            position: absolute;
+            width: 100%;
+          }
+
+          .goal {
+            background-color: $darkgrey;
+          }
+
+          .progress {
+            background-color: $green;
+            display: block;
+            overflow: visible;
+
+            span {
+              color: $green;
+              display: block;
+              font-size: 10px;
+
+              &::after {
+                color: rgb(188, 216, 186);
+                content: attr(data-content);
+                display: block;
+                mix-blend-mode: difference;
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .title {
+    border-bottom: 1px solid $lightgrey50;
+    margin: 0 0 30px;
+    padding-bottom: 30px;
+    text-align: center;
+  }
+}
