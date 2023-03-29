@@ -3,11 +3,11 @@
     <h2><i class="fas fa-medal"></i>  My achievements</h2>
   </div>
 
-  <div class="next-achievement">
+  <div class="achievement-card">
     <% if @user_achievements.any? %>
       <% @user_achievements.each do |ach| %>
-        <div class="next-achievement-info">
-          <div class="next-achievement-name">
+        <div class="achievement-info">
+          <div >
             <h3><%= ach.achievement.title %></h3>
             <%= cl_image_tag ach.achievement.photo.key, class: "next-badge" %>
             <p> <% if ach.progress > ach.achievement.goal %>
@@ -28,11 +28,10 @@
     <% end %>
   </div>
 
-  <div class="subheader" style="align-text: right;">
-    <% if @user_achievements.any? %>
-      <%= link_to achievements_path do %>
-        see more <i class="fa-solid  fa-arrow-right"></i>
-      <% end %>
-    <% end %>
-  </div>
+  <%= link_to achievements_path do %>
+    <div class="see-more-achievements">
+      <p>See more</p>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  <% end %>
 </section>
