@@ -1,45 +1,41 @@
 @import "monuments/show";
 
-.monuments-map {
-  height: 100vh;
-  width: 100%;
-}
-
-.monument-cards {
-  height: 248px;
-  width: 100%;
-  padding-left: 10px;
-  border-radius: 20px;
-  display: flex;
-  flex-grow: 1;
-  gap: 10px;
-  overflow: hidden;
-  overflow-x: scroll;
-  position: sticky;
-  bottom: 10px;
-
-  &::-webkit-scrollbar {
-    height: 0px;
-  }
-}
-
 .index-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  background-color: $background;
-
-  height: 100%;
-  width: 100%;
-
-  .monuments-scroller {
-    position: absolute;
-    bottom: 10px;
+  .map-overlay {
+    align-items: center;
+    backdrop-filter: blur(10px);
+    background-color: #181a1b80;
+    border-radius: 15px 15px 0 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: max-content;
+    max-height: 290px;
+    padding: 10px 10px 20px;
+    position: fixed;
+    transition: all 0.5s ease;
     width: 100%;
-    padding-left: 20px;
-    margin-left: -20px;
+
+    &.hidden {
+      max-height: 0;
+      padding: 0 10px;
+      opacity: 0;
+    }
+
+    #blinder {
+      background-color: $green;
+      border-radius: 2px;
+      flex-shrink: 0;
+      height: 4px;
+      width: 80px;
+    }
+  }
+
+  .monuments-map {
+    height: 100vh;
+    height: 100svh;
+    width: 100%;
   }
 }
 

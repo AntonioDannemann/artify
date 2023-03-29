@@ -82,8 +82,16 @@
       align-self: center;
       color: $lightgrey50;
       margin-bottom: -30px;
-      width: max-content;
+      padding: 10px;
+      position: relative;
       transform: scaleX(1.2);
+      width: max-content;
+
+      i {
+        left: 4px;
+        position: absolute;
+        top: -10px;
+      }
     }
 
     .featured {

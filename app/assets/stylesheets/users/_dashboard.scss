@@ -1,5 +1,7 @@
 #dashboard {
   background-color: $background;
+  min-height: 100vh;
+  min-height: 100svh;
 
   #user-banner {
     background-color: $green;
@@ -39,6 +41,11 @@
         right: 20px;
         top: 20px;
         width: 120px;
+
+        * {
+          height: 100%;
+          width: 100%;
+        }
       }
 
       .welcome-message {

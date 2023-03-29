@@ -1,6 +1,8 @@
 class Monument < ApplicationRecord
   has_many :histories, dependent: :destroy
   has_many :favourites, dependent: :destroy
+  has_many :monument_achievements, dependent: :destroy
+  has_many :achievements, through: :monument_achievements
   has_one_attached :photo
 
   reverse_geocoded_by :lat, :lng, address: :location
@@ -23,6 +25,12 @@ class Monument < ApplicationRecord
 
   def self.without_photo
     Monument.all.reject { |monument| monument.photo.attached? }
+  end
+
+  def add_achievements
+    Achievement.where(keyword: ["all", city, country]).find_each do |achievement|
+      MonumentAchievement.create(achievement:, monument: self)
+    end
   end
 
   def distance_between(user_lat, user_lng)

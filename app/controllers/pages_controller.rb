@@ -10,8 +10,6 @@ class PagesController < ApplicationController
     @user_lng = params[:lng]
     nearby_results
 
-    @ht = true if params[:ht]
-
     search_form_results
   end
 

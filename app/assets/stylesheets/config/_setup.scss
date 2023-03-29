@@ -60,7 +60,12 @@ ul {
 }
 
 .container {
+  background-color: $background;
   padding: 0 20px;
+}
+
+.min-height100 {
+  min-height: 100vh;
 }
 
 .max-content {

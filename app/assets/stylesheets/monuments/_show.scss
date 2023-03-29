@@ -27,7 +27,7 @@
       border-bottom-right-radius: 0;
       height: 80%;
       margin: 0;
-      padding: 20px 40px 25px 40px;
+      padding: 20px 30px 20px 30px;
 
       button {
         max-height: 0;
@@ -37,6 +37,7 @@
 
       .content {
         overflow-y: scroll;
+        padding: 0 10px;
 
         &::-webkit-scrollbar {
           width: 0;
@@ -61,11 +62,12 @@
 
     .content {
       overflow: hidden;
+      transition: padding 0.3s ease;
       width: 100%;
 
       h1 {
         color: $green;
-        font-size: 35px;
+        font-size: 30px;
         font-weight: bolder;
       }
 
@@ -78,6 +80,7 @@
         display: flex;
         gap: 10px;
         margin: 0;
+        min-height: 30px;
 
         i {
           color: $green;
@@ -102,6 +105,7 @@
 
       .truncate {
         display: -webkit-box;
+        overflow: hidden;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
       }
@@ -112,6 +116,11 @@
       border-radius: 2px;
       margin: 0 auto;
       width: 80px;
+    }
+
+    .side-scroller {
+      border: none;
+      padding-bottom: 0;
     }
   }
 }

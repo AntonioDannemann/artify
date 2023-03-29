@@ -1,15 +1,24 @@
 #histories-container {
   background-color: $background;
-  margin: 20px;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 20px;
+
+  .histories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
 
   .histories-title {
-    padding: 0 0 24px;
     border-bottom: 1px solid $lightgrey50;
+    margin: 0;
+    padding-bottom: 30px;
     text-align: center;
   }
 
   #search-form {
-    padding: 16px 0;
+    padding: 20px 0;
     border: none;
   }
 }

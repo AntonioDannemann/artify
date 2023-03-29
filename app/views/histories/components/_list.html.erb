@@ -1,7 +1,7 @@
 <div class="histories-list" data-search-histories-target="list">
   <% @histories.each do |history| %>
     <div class="card-history">
-      <%= cl_image_tag history.photo.key, class: "monument-photo" %>
+      <%= cl_image_tag history.photo.key, height: 500, crop: "scale", quality: 80, class: "monument-photo" %>
 
       <div class="history-info">
         <h3><%= history.monument.name %></h3>

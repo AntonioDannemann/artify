@@ -4,8 +4,14 @@
 
 import { application } from "./application"
 
+import AchievementController from "./achievement_controller"
+application.register("achievement", AchievementController)
+
 import AosController from "./aos_controller"
 application.register("aos", AosController)
+
+import BlockBodyScrollController from "./block_body_scroll_controller"
+application.register("block-body-scroll", BlockBodyScrollController)
 
 import CameraFormController from "./camera_form_controller"
 application.register("camera-form", CameraFormController)

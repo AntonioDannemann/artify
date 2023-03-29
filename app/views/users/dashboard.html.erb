@@ -1,6 +1,6 @@
 <div id="dashboard">
   <div id="user-banner">
-    <%= link_to root_path(ht: "y"), class: "btn-home" do %>
+    <%= link_to root_path, class: "btn-home" do %>
       <i class="fa-solid fa-arrow-left"></i>
     <% end %>
 
@@ -13,9 +13,14 @@
 
       <div class="picture">
         <% if current_user.photo.attached? %>
-          <%= cl_image_tag current_user.photo.key, class: "dashboard-avatar" %>
+          <%= cl_image_tag current_user.photo.key, width: 120, crop: "scale", quality: 80, class: "dashboard-avatar" %>
         <% else %>
-          <%= image_tag "avatar.svg", class: "dashboard-avatar" %>
+          <%= form_with model: @user, scope: :user, url: registration_path(@user), class: "dashboard-avatar", data: { turbo: false } do |f| %>
+            <%= f.label :photo do %>
+                <%= image_tag "avatar.svg" %>
+            <% end %>
+            <%= f.file_field :photo, style: "display: none;", accept: "image/*", oninput: "form.submit()" %>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -27,6 +32,7 @@
   </div>
 
   <div class="container">
+    <%= render "users/components/achievements" %>
     <%= render "users/components/histories" %>
     <%= render "users/components/favourites" %>
   </div>

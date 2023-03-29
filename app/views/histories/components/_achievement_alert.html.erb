@@ -1,0 +1,16 @@
+<div class="notification" data-controller="achievement">
+  <i class="fa-solid fa-xmark close" data-action="click->achievement#remove"></i>
+
+  <% @new_achievements.each do |achievement| %>
+    <div class="achievement">
+      <h2>NEW ACHIEVEMENT</h2>
+
+      <%= cl_image_tag achievement.photo.key %>
+
+      <div>
+        <h1><%= achievement.title.upcase %></h1>
+        <p><%= achievement.description %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     resources :favourites, only: %i[create]
   end
   resources :favourites, only: %i[index destroy]
-
+  resources :achievements, only: %i[index]
   get "dashboard", to: "users#dashboard", as: :dashboard
 end

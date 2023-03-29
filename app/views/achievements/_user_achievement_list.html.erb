@@ -1,0 +1,20 @@
+<div class="user_achievements" data-controller="achievement">
+  <% achievements.each do |ach| %>
+    <div class="achievement<%= " completed" if ach.completed? %>">
+      <%= cl_image_tag ach.achievement.photo.key, data: { action: "click->achievement#toggleDetails" } %>
+
+      <div class="details" data-achievement-target="details">
+        <h3><%= ach.achievement.title %></h3>
+        <p><%= ach.achievement.description %></p>
+
+        <div class="completion">
+          <div class="goal"></div>
+          <div class="progress" style="width: calc(<%= "100% / #{ach.achievement.goal} * #{ach.progress}" %>)">
+            <span data-content="<%= ach.completed? ? "Completed the #{ach.completion_date.strftime('%e %b, %Y')}" : "#{ach.progress}/#{ach.achievement.goal}" %>"
+                  style="min-width: calc(<%= "100% * #{ach.achievement.goal} / #{ach.progress}" %>)"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
