@@ -22,15 +22,9 @@ export default class extends Controller {
       this.#addGeolocationToMap()
     })
 
-    navigator.geolocation.getCurrentPosition(location => {
-      this.#flyMapToUser(location)
+    navigator.geolocation.getCurrentPosition(this.#flyMapToUser)
 
-      this.lat = location.coords.latitude
-      this.lng = location.coords.longitude
-
-      this.map.on('click', 'monument', this.#fetchMonument)
-    })
-
+    this.map.on('click', 'monument', this.#fetchMonument)
     this.map.on('movestart', this.hideOverlay)
   }
 
@@ -88,7 +82,7 @@ export default class extends Controller {
       })
   }
 
-  #flyMapToUser(location) {
+  #flyMapToUser = location => {
     this.map.flyTo({
       center: [location.coords.longitude, location.coords.latitude, ],
       essential: true,

@@ -3,18 +3,12 @@ class MonumentsController < ApplicationController
 
   def index
     @user = current_user
+    @monuments = Monument.all
     @monument = Monument.find_by(id: params[:id])
     @markers = [{
       type: "FeatureCollection",
       features: []
     }]
-
-    @lat = 48.858461
-    @lng = 2.294351
-
-    @monuments = Monument.all
-    @nearby_monuments = @monuments.select { |mon| mon.distance_between(@lat, @lng) < 5 }
-                                  .sort_by { |mon| mon.distance_between(@lat, @lng) }
 
     respond
     monument_markers
