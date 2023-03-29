@@ -3,7 +3,15 @@
     <i class="fa-solid fa-arrow-left"></i>
   <% end %>
 
-  <i class="fa-regular fa-heart btn-favourite"></i>
+  <% if @favourite.new_record? %>
+    <%= form_with model: [@monument, @favourite] do |f| %>
+      <button><i class="fa-regular fa-heart btn-favourite"></i></button>
+    <% end %>
+  <% else %>
+    <%= link_to favourite_path(@favourite), data: { turbo_method: :delete } do %>
+      <i class="fa-solid fa-heart btn-favourite"></i>
+    <% end %>
+  <% end %>
 
   <div class="glass-container" data-glass-container-target="glass">
     <div class="line" data-action="click->glass-container#toggleGlass" ></div>

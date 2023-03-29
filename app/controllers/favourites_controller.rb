@@ -10,15 +10,13 @@ class FavouritesController < ApplicationController
   end
 
   def create
+    @monument = Monument.find(params[:monument_id])
     @favourite = Favourite.new
-    @favourite.user = current_user
     @favourite.monument = @monument
+    @favourite.user = current_user
 
-    if @favourite.save
-      redirect_to monument_path(@monument)
-    else
-      render "monuments/show"
-    end
+    @favourite.save
+    redirect_to monument_path(@monument)
   end
 
   def destroy
