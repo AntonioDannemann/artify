@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   has_many :histories, dependent: :destroy
   has_many :favourites, dependent: :destroy
-  has_many :favourite_monuments, through: :favourites, source: :monument
   has_one_attached :photo
 
   validates :first_name, :last_name, presence: true
