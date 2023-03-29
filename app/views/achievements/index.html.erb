@@ -1,0 +1,12 @@
+<div id="achievements">
+  <%= link_to dashboard_path, class: "btn-home" do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
+
+  <h2 class="title">ACHIEVEMENTS</h2>
+
+  <%= render "user_achievement_list", achievements: @user_achievements %>
+
+  <h3 class="undiscovered">Undiscovered</h3>
+  <%= render "achievement_list", achievements: @achievements %>
+</div>

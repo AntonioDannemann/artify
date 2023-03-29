@@ -24,6 +24,8 @@ class HistoriesController < ApplicationController
 
     @first_para = @monument.description.split(". ").first(2).join(". ")
     @second_para = @monument.description.split(". ")[2..].each_slice(3).map { |subarr| subarr.join(". ") }
+
+    @new_achievements = current_user&.new_achievements
   end
 
   def create
@@ -31,7 +33,11 @@ class HistoriesController < ApplicationController
     @user = current_user || guest_user
     @history = build_history_from_photo(@photo)
 
-    return redirect_to history_path(@history) if @history&.save
+    if @history.new_record? && @history.save
+      current_user&.update_achievements(@history.monument.achievements)
+      return redirect_to history_path(@history)
+    elsif @history.save then return redirect_to history_path(@history)
+    end
 
     render "pages/error"
   end
@@ -47,7 +53,7 @@ class HistoriesController < ApplicationController
     # So we pass an empty History, it passes the authorization but not the validation and the #save fails
     unless google_landmark.landmark
       @error = "no landmark found on google"
-      return nil
+      return History.new
     end
 
     initialize_landmark_instance_variable(google_landmark)
@@ -114,7 +120,10 @@ class HistoriesController < ApplicationController
       )
     end
 
-    return monument if monument.save
+    return unless monument.save
+
+    monument.add_achievements
+    monument
   end
 
   def search_formats

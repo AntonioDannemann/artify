@@ -1,0 +1,32 @@
+<% if @achievements.any? %>
+  <section class="side-scroller">
+    <div class="subheader">
+      <h2><i class="fas fa-medal"></i>My achievements</h2>
+    </div>
+
+    <div class="achievements">
+      <% @achievements.each do |ach| %>
+        <div class="achievement">
+          <div class="details">
+            <h3><%= ach.achievement.title %></h3>
+            <p><%= ach.achievement.description %></p>
+
+            <div class="completion">
+              <div class="goal"></div>
+              <div class="progress" style="width: calc(<%= "100% / #{ach.achievement.goal} * #{ach.progress}" %>)">
+                <span data-content="<%= "#{ach.progress}/#{ach.achievement.goal}" %>" style="min-width: calc(<%= "100% * #{ach.achievement.goal} / #{ach.progress}" %>)"></span>
+              </div>
+            </div>
+          </div>
+
+          <%= cl_image_tag ach.achievement.photo.key, class: "badge" %>
+        </div>
+      <% end %>
+
+      <%= link_to achievements_path, class: "see-more" do %>
+        <p>See more</p>
+        <i class="fas fa-chevron-down"></i>
+      <% end %>
+    </div>
+  </section>
+<% end %>

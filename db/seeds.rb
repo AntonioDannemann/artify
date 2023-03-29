@@ -4,10 +4,103 @@ require "open-uri"
 
 puts "Creating user"
 
+User.create(first_name: "Louis", last_name: "Ramos", email: "louisramosdev@gmail.com", password: "password")
 @user = User.new(first_name: "guest", email: "#{Time.current.to_i}#{rand(999)}@guest.artify")
 @user.save(validate: false)
 
 puts "Done creating users\n\n"
+
+puts "Creating achievements"
+
+achievement = Achievement.new(title: "Let's Begin", description: "Scan your first landmark", goal: 1, keyword: "all")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("1_scan_lc7apy.png")).open, filename: "1_scan_lc7apy.png")
+achievement.save!
+puts "#{achievement.title} created"
+
+achievement = Achievement.new(title: "Get Going", description: "Scan 10 landmarks", goal: 10, keyword: "all")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("10scan_y4jc3u.png")).open, filename: "10scan_y4jc3u.png")
+achievement.save!
+puts "#{achievement.title} created"
+
+achievement = Achievement.new(title: "Curious One", description: "Scan 25 landmarks", goal: 25, keyword: "all")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("25_scan_vvjosa.png")).open, filename: "25_scan_vvjosa.png")
+achievement.save!
+puts "#{achievement.title} created"
+
+achievement = Achievement.new(title: "Adventurer", description: "Scan 50 landmarks", goal: 50, keyword: "all")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("50_scan_xghigr.png")).open, filename: "50_scan_xghigr.png")
+achievement.save!
+puts "#{achievement.title} created"
+
+achievement = Achievement.new(title: "King of the world", description: "Scan 100 landmarks", goal: 100, keyword: "all")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("100_scan_crmwrc.png")).open, filename: "100_scan_crmwrc.png")
+achievement.save!
+puts "#{achievement.title} created"
+
+achievement = Achievement.new(title: "Sprinter", description: "Scan 5 landmarks in less than 24 hours", goal: 5, keyword: "all")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("5_a_day_jtjjkb.png")).open, filename: "5_a_day_jtjjkb.png")
+achievement.save!
+puts "#{achievement.title} created"
+
+achievement = Achievement.new(title: "Traveller", description: "Scan landmarks in 5 different countries", goal: 5, keyword: "all")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("10_countries_q6laa6.png")).open, filename: "10_countries_q6laa6.png")
+achievement.save!
+puts "#{achievement.title} created"
+
+
+achievement = Achievement.new(title: "Amsterdam Explorer", description: "Scan 5 landmarks from Amsterdam", goal: 5, keyword: "Amsterdam")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("amsterdam_umjm1z.png")).open, filename: "amsterdam_umjm1z.png")
+achievement.save!
+puts "#{achievement.title} created"
+
+achievement = Achievement.new(title: "Brussels Explorer", description: "Scan 5 landmarks from Brussels", goal: 5, keyword: "Brussels")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("brussels_qyn8hs.png")).open, filename: "brussels_qyn8hs.png")
+achievement.save!
+puts "#{achievement.title} created"
+
+achievement = Achievement.new(title: "Lisbon Explorer", description: "Scan 5 landmarks from Lisbon", goal: 5, keyword: "Lisbon")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("lisbon_wikyj0.png")).open, filename: "lisbon_wikyj0.png")
+achievement.save!
+puts "#{achievement.title} created"
+
+achievement = Achievement.new(title: "Paris Explorer", description: "Scan 5 landmarks from Paris", goal: 5, keyword: "Paris")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("paris_t1vziu.png")).open, filename: "paris_t1vziu.png")
+achievement.save!
+puts "#{achievement.title} created"
+
+achievement = Achievement.new(title: "Rio de Janeiro Explorer", description: "Scan 5 landmarks from Rio de Janeiro", goal: 5, keyword: "Rio de Janeiro")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("rio_de_janeiro_zcfugi.png")).open, filename: "rio_de_janeiro_zcfugi.png")
+achievement.save!
+puts "#{achievement.title} created"
+
+
+achievement = Achievement.new(title: "Conquering Belgium", description: "Scan 10 landmarks from Belgium", goal: 10, keyword: "Belgium")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("belgium_rqpzv3.png")).open, filename: "belgium_rqpzv3.png")
+achievement.save!
+puts "#{achievement.title} created"
+
+achievement = Achievement.new(title: "Conquering Brazil", description: "Scan 10 landmarks from Brazil", goal: 10, keyword: "Brazil")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("brazil_ysfx9d.png")).open, filename: "brazil_ysfx9d.png")
+achievement.save!
+puts "#{achievement.title} created"
+
+achievement = Achievement.new(title: "Conquering France", description: "Scan 10 landmarks from France", goal: 10, keyword: "France")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("france_ruzcrl.png")).open, filename: "france_ruzcrl.png")
+achievement.save!
+puts "#{achievement.title} created"
+
+achievement = Achievement.new(title: "Conquering The Netherlands", description: "Scan 10 landmarks from The Netherlands", goal: 10, keyword: "Netherlands")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("netherlands_v5rxyy.png")).open, filename: "netherlands_v5rxyy.png")
+achievement.save!
+puts "#{achievement.title} created"
+
+achievement = Achievement.new(title: "Conquering Portugal", description: "Scan 10 landmarks from Portugal", goal: 10, keyword: "Portugal")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("PORTUGAL_zoitho.png")).open, filename: "PORTUGAL_zoitho.png")
+achievement.save!
+puts "#{achievement.title} created"
+
+
+puts "Done creating achievements\n\n"
 
 arc_de_triomphe = "https://cdn.britannica.com/66/80466-050-2E125F5C/Arc-de-Triomphe-Paris-France.jpg"
 atomium = "https://upload.wikimedia.org/wikipedia/commons/c/cf/Brussels_-_Atomium_2022.jpg"
@@ -104,6 +197,7 @@ def create_monument
   method_start = Time.current
   if monument.save
     puts "#{Time.current - method_start}s to save monument"
+    monument.add_achievements
     return monument
   end
 

@@ -1,0 +1,7 @@
+<div class="achievements">
+  <% achievements.each do |ach| %>
+    <div class="achievement">
+      <%= cl_image_tag ach.photo.key %>
+    </div>
+  <% end %>
+</div>
