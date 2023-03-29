@@ -1,5 +1,7 @@
 #histories-container {
   background-color: $background;
+  min-height: 100vh;
+  min-height: 100svh;
   padding: 20px;
 
   .histories-list {

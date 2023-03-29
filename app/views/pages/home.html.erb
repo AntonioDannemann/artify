@@ -1,7 +1,8 @@
 <%= render "pages/components/logo" %>
 
-<% unless current_user || @ht %>
+<% unless session[:visited_home] || current_user %>
   <%= render "pages/components/tutorial" %>
+  <% session[:visited_home] = true %>
 <% end %>
 
 <div id="pages-home" data-controller="hide-home">

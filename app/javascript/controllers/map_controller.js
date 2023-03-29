@@ -14,11 +14,13 @@ export default class extends Controller {
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
       style: "mapbox://styles/mapbox/navigation-night-v1",
-      zoom: -5,
+      zoom: 0,
     })
 
-    this.#addMarkersToMap()
-    this.#addGeolocationToMap()
+    this.map.on("load", () => {
+      this.#addMarkersToMap()
+      this.#addGeolocationToMap()
+    })
 
     navigator.geolocation.getCurrentPosition(location => {
       this.#flyMapToUser(location)
@@ -29,12 +31,10 @@ export default class extends Controller {
       this.map.on('click', 'monument', this.#fetchMonument)
     })
 
-    this.map.on('movestart', () => {
-      this.hideOverlay()
-    })
+    this.map.on('movestart', this.hideOverlay)
   }
 
-  hideOverlay() {
+  hideOverlay = () => {
     this.overlayTarget.classList.add('hidden')
   }
 
@@ -50,7 +50,6 @@ export default class extends Controller {
   }
 
   #addMarkersToMap() {
-    // <%# <%= image_path "location-pin.png" %>
     const path = "/assets/location_pin-426cf5b931d1f7c30012d7662bfd0ad73b4b72e1667f9846706332a375a04000.png"
     this.map.loadImage(path, (error, image) => {
       if (error) throw error

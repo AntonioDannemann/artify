@@ -2,9 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="tutorial"
 export default class extends Controller {
-  disconnect() {
-    document.querySelector("html").classList.remove("noscroll")
-    document.querySelector("body").classList.remove("noscroll")
+  connect() {
+    document.querySelector("#pages-home").style.display = "block"
   }
 
   hideStep(event) {

@@ -87,6 +87,7 @@
       background-color: transparent;
       border: none;
       border-bottom: 2px solid transparent;
+      border-radius: 0 !important;
       color: $lightgrey !important;
       font: inherit;
       transition: border-bottom 0.3s ease;
