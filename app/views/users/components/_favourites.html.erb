@@ -1,0 +1,28 @@
+<section class="side-scroller">
+  <div class="subheader">
+    <h2><i class="fas fa-heart"></i>My favourites</h2>
+
+    <% if @favourite_monuments.present? %>
+      <%= link_to favourites_path do %>
+        see more <i class="fa-solid  fa-arrow-right"></i>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if @favourite_monuments.present? %>
+    <div class="monuments-scroller">
+      <% @favourite_monuments.each do |fav| %>
+        <%= link_to monument_path(fav),
+          class: "card-monument",
+          style: (fav.photo.attached? ? "background-image: linear-gradient(rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.7)), url(#{ cl_image_path fav.photo.key, height: 500, crop: "scale", quality: 80 })" : "") do %>
+
+          <h3><%= fav.name %></h3>
+          <span><i class="fa-solid fa-location-dot"></i> <%= "#{fav.city}, #{fav.country_code}" %></span>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+
+    <%= render "shared/no_results" %>
+  <% end %>
+</section>

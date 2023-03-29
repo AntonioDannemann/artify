@@ -1,5 +1,6 @@
 class Monument < ApplicationRecord
   has_many :histories, dependent: :destroy
+  has_many :favourites, dependent: :destroy
   has_many :monument_achievements, dependent: :destroy
   has_many :achievements, through: :monument_achievements
   has_one_attached :photo
