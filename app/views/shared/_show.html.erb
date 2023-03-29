@@ -3,6 +3,8 @@
     <i class="fa-solid fa-arrow-left"></i>
   <% end %>
 
+  <i class="fa-regular fa-heart btn-favourite"></i>
+
   <div class="glass-container" data-glass-container-target="glass">
     <div class="line" data-action="click->glass-container#toggleGlass" ></div>
 
@@ -11,7 +13,6 @@
 
       <div class="location-with-url">
         <p class="location"><i class="fa-solid fa-location-dot"></i> <%= "#{@monument.city}, #{@monument.country_code}" %></p>
-
         <% if @monument.website_url.present? %>
           <%= link_to @monument.website_url, target: "_blank" do %>
             <i class="fa-solid fa-globe globe-official-link"></i>
