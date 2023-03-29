@@ -3,13 +3,15 @@
     <i class="fa-solid fa-arrow-left"></i>
   <% end %>
 
-  <% if @favourite.new_record? %>
-    <%= form_with model: [@monument, @favourite] do |f| %>
-      <button><i class="fa-regular fa-heart btn-favourite"></i></button>
-    <% end %>
-  <% else %>
-    <%= link_to favourite_path(@favourite), data: { turbo_method: :delete } do %>
-      <i class="fa-solid fa-heart btn-favourite"></i>
+  <% if current_user %>
+    <% if @favourite.new_record? %>
+      <%= form_with model: [@monument, @favourite] do |f| %>
+        <button><i class="fa-regular fa-heart btn-favourite"></i></button>
+      <% end %>
+    <% else %>
+      <%= link_to favourite_path(@favourite), data: { turbo_method: :delete } do %>
+        <i class="fa-solid fa-heart btn-favourite"></i>
+      <% end %>
     <% end %>
   <% end %>
 
@@ -21,6 +23,7 @@
 
       <div class="location-with-url">
         <p class="location"><i class="fa-solid fa-location-dot"></i> <%= "#{@monument.city}, #{@monument.country_code}" %></p>
+
         <% if @monument.website_url.present? %>
           <%= link_to @monument.website_url, target: "_blank" do %>
             <i class="fa-solid fa-globe globe-official-link"></i>

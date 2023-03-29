@@ -16,13 +16,13 @@ class FavouritesController < ApplicationController
     @favourite.user = current_user
 
     @favourite.save
-    redirect_to monument_path(@monument)
+    redirect_back_or_to monument_path(@monument)
   end
 
   def destroy
     @favourite = Favourite.find(params[:id])
     @favourite.destroy
-    redirect_to @favourite.monument
+    redirect_back_or_to monument_path(@favourite.monument)
   end
 
   private
