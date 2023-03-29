@@ -9,15 +9,11 @@ export default class extends Controller {
 
     setTimeout(() => {
       this.#hideLogo()
-    }, 2000);
+    }, 3000);
   }
 
   #hideLogo() {
     this.element.style.opacity = "0"
-    if (!document.querySelector(".tutorial")) {
-      document.querySelector("html").classList.remove("noscroll")
-      document.querySelector("body").classList.remove("noscroll")
-    }
 
     setTimeout(() => {
       this.element.remove()

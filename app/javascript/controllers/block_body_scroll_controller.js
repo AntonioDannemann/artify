@@ -9,4 +9,12 @@ export default class extends Controller {
       this.body = document.querySelector("body")
       this.body.classList.add("noscroll")
   }
+
+  disconnect() {
+    console.log(!document.querySelector(".tutorial"));
+    if(!document.querySelector(".tutorial")) {
+      this.html.classList.remove("noscroll")
+      this.body.classList.remove("noscroll")
+    }
+  }
 }
