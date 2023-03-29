@@ -11,7 +11,6 @@ export default class extends Controller {
   }
 
   disconnect() {
-    console.log(!document.querySelector(".tutorial"));
     if(!document.querySelector(".tutorial")) {
       this.html.classList.remove("noscroll")
       this.body.classList.remove("noscroll")
