@@ -45,3 +45,89 @@
     top: 15px;
   }
 }
+
+.achievements {
+  .achievement {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+
+    .badge {
+      display: inline-block;
+      flex-shrink: 0;
+      height: 100px;
+      width: 100px;
+    }
+
+    .completion {
+      position: relative;
+
+      div {
+        border-radius: 5px;
+        bottom: 0;
+        height: 15px;
+        position: absolute;
+        width: 100%;
+      }
+
+      .goal {
+        background-color: $darkgrey;
+      }
+
+      .progress {
+        background-color: $green;
+        display: block;
+        overflow: visible;
+
+        span {
+          color: $green;
+          display: block;
+          font-size: 10px;
+
+          &::after {
+            color: rgb(188, 216, 186);
+            content: attr(data-content);
+            display: block;
+            mix-blend-mode: difference;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    .details {
+      flex-grow: 1;
+
+      h3 {
+        font-size: 20px;
+        margin: 0;
+      }
+
+      p {
+        color: $lightgrey50;
+        font-size: 0.8rem;
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  .see-more {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      margin: 0;
+    }
+
+    i {
+      background-color: $darkgrey;
+      color: $green;
+      border-radius: 50%;
+      padding: 8px;
+    }
+  }
+}

@@ -12,7 +12,7 @@ puts "Done creating users\n\n"
 
 puts "Creating achievements"
 
-achievement = Achievement.new(title: "Let's begin", description: "Scan your first landmark", goal: 1, keyword: "all")
+achievement = Achievement.new(title: "Let's Begin", description: "Scan your first landmark", goal: 1, keyword: "all")
 achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("1_scan_lc7apy.png")).open, filename: "1_scan_lc7apy.png")
 achievement.save!
 puts "#{achievement.title} created"
@@ -22,12 +22,12 @@ achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("10scan_
 achievement.save!
 puts "#{achievement.title} created"
 
-achievement = Achievement.new(title: "You are a curious one", description: "Scan 25 landmarks", goal: 25, keyword: "all")
+achievement = Achievement.new(title: "Curious One", description: "Scan 25 landmarks", goal: 25, keyword: "all")
 achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("25_scan_vvjosa.png")).open, filename: "25_scan_vvjosa.png")
 achievement.save!
 puts "#{achievement.title} created"
 
-achievement = Achievement.new(title: "What an Adventurer you are!", description: "Scan 50 landmarks", goal: 50, keyword: "all")
+achievement = Achievement.new(title: "Adventurer", description: "Scan 50 landmarks", goal: 50, keyword: "all")
 achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("50_scan_xghigr.png")).open, filename: "50_scan_xghigr.png")
 achievement.save!
 puts "#{achievement.title} created"
@@ -48,7 +48,7 @@ achievement.save!
 puts "#{achievement.title} created"
 
 
-achievement = Achievement.new(title: "Amesterdam Explorer", description: "Scan 5 landmarks from Amesterdam", goal: 5, keyword: "Amesterdam")
+achievement = Achievement.new(title: "Amsterdam Explorer", description: "Scan 5 landmarks from Amsterdam", goal: 5, keyword: "Amsterdam")
 achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("amsterdam_umjm1z.png")).open, filename: "amsterdam_umjm1z.png")
 achievement.save!
 puts "#{achievement.title} created"
