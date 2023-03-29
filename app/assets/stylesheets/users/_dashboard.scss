@@ -15,8 +15,34 @@
       justify-content: space-between;
 
       .badges-collection {
-        object-fit: cover;
-        width: 80px;
+        position: relative;
+        top: 0;
+        left: 0;
+
+        .badge-completed-1 {
+          height: 70px;
+          width: 70px;
+          position: relative;
+          top: 0;
+          right: 0;
+
+        }
+
+        .badge-completed-2 {
+          height: 70px;
+          width: 70px;
+          position: absolute;
+          top: 0;
+          right: 30px;
+        }
+
+        .badge-completed-3 {
+          height: 70px;
+          width: 70px;
+          position: absolute;
+          top: 0;
+          right: 60px;
+        }
       }
 
       .btn-main {

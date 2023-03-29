@@ -27,7 +27,20 @@
 
     <div class="profile-bottom">
       <%= link_to "EDIT PROFILE", edit_user_registration_path, class: "btn-main" %>
-      <%= image_tag "badges_collection.png", class: "badges-collection" %>
+
+      <% if @completed_achievements.any? %>
+        <div class="badges-collection">
+          <%= cl_image_tag @completed_achievements[0].achievement.photo.key, class:"badge-completed-1" %>
+
+          <% if @completed_achievements.count > 1  %>
+            <%= cl_image_tag @completed_achievements[1].achievement.photo.key, class:"badge-completed-2" %>
+          <% end %>
+
+          <% if @completed_achievements.count > 2  %>
+            <%= cl_image_tag @completed_achievements[2].achievement.photo.key, class:"badge-completed-3" %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 
