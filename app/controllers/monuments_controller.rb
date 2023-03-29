@@ -19,5 +19,8 @@ class MonumentsController < ApplicationController
 
     @first_para = @monument.description.split(". ").first(2).join(". ")
     @second_para = @monument.description.split(". ")[2..].each_slice(3).map { |subarr| subarr.join(". ") }
+    return unless current_user
+
+    @favourite = current_user.favourites.find_by(monument: @monument) || Favourite.new
   end
 end

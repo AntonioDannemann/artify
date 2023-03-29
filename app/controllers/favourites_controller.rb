@@ -1,6 +1,6 @@
 class FavouritesController < ApplicationController
   def index
-    @favourite_monuments = current_user.favourite_monuments
+    @favourite_monuments = current_user.favourites.order(created_at: :desc).map(&:monument)
 
     if params[:query].present?
       sql_subquery = "monuments.name ILIKE :query OR monuments.city ILIKE :query OR monuments.country ILIKE :query"
@@ -10,15 +10,13 @@ class FavouritesController < ApplicationController
   end
 
   def create
+    @monument = Monument.find(params[:monument_id])
     @favourite = Favourite.new
-    @favourite.user = current_user
     @favourite.monument = @monument
+    @favourite.user = current_user
 
-    if @favourite.save
-      redirect_to monument_path(@monument)
-    else
-      render "monuments/show"
-    end
+    @favourite.save
+    redirect_to monument_path(@monument)
   end
 
   def destroy
