@@ -1,4 +1,8 @@
-<div class="background-image" style="background-image: url('<%= cl_image_path photo_key %>');" data-controller="glass-container block-body-scroll" data-action="click->glass-container#shrinkGlass">
+<div class="background-image"
+     style="<%= "background-image: url('#{cl_image_path photo_key}');" if photo_key %>"
+     data-controller="glass-container block-body-scroll"
+     data-action="click->glass-container#shrinkGlass">
+
   <%= link_to 'javascript:history.back()', class: "btn-home" do %>
     <i class="fa-solid fa-arrow-left"></i>
   <% end %>
@@ -33,7 +37,9 @@
 
       <p class="truncate" data-glass-container-target="truncate"><%= @first_para %>.</p>
 
-      <%= cl_image_tag @monument.photo.key, width: 500, crop: "scale", quality: 80, class: "hidden-thumbnail" %>
+      <% if @monument.photo.attached? %>
+        <%= cl_image_tag @monument.photo.key, width: 500, crop: "scale", quality: 80, class: "hidden-thumbnail" %>
+      <% end %>
 
       <% @second_para.each do |par| %>
         <p><%= par %>.</p>

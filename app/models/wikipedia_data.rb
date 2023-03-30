@@ -1,3 +1,5 @@
+require "open-uri"
+
 class WikipediaData
   attr_reader :photo_url, :params
 
@@ -9,7 +11,8 @@ class WikipediaData
     @page = Wikipedia.find(@name)
     return unless valid?
 
-    @photo_url = @page.main_image_url
+    @photo = URI.parse(@page.main_image_url).open
+    @photo = nil unless @photo.content_type.match?(/image\/(avif|jpeg|png)/)
     @params = wikipedia_data_params
   end
 
