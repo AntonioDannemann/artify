@@ -1,3 +1,5 @@
+require "open-uri"
+
 class Monument < ApplicationRecord
   has_many :histories, dependent: :destroy
   has_many :favourites, dependent: :destroy
@@ -31,6 +33,12 @@ class Monument < ApplicationRecord
     Achievement.where(keyword: ["all", city, country]).find_each do |achievement|
       MonumentAchievement.create(achievement:, monument: self)
     end
+  end
+
+  def attach_url(photo_url)
+    photo = PhotoCompressor.new(URI.parse(photo_url).open)
+    self.photo.purge_later
+    self.photo.attach(io: photo.compressed_photo, filename: "#{self.name}.jpeg", content_type: "image/jpeg")
   end
 
   def distance_between(user_lat, user_lng)

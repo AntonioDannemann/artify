@@ -1,7 +1,7 @@
 require "open-uri"
 
 class WikipediaData
-  attr_reader :photo_url, :params
+  attr_reader :photo, :params
 
   def initialize(name, lat, lng)
     @name = name

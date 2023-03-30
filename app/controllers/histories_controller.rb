@@ -1,5 +1,3 @@
-require 'open-uri'
-
 class HistoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show create]
 
@@ -114,9 +112,9 @@ class HistoriesController < ApplicationController
   def new_monument(data)
     monument = Monument.new(data.params)
     monument.fetch_geocoder
-    if data.photo_url
+    if data.photo
       monument.photo.attach(
-        io: PhotoCompressor.new(URI.parse(data.photo_url).open).compressed_photo,
+        io: PhotoCompressor.new(data.photo).compressed_photo,
         filename: "#{monument.name}.jpeg",
         content_type: "image/jpeg"
       )
