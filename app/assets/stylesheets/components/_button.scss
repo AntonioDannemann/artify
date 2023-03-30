@@ -63,7 +63,6 @@
   background-color: $darkgrey;
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  color: $green;
   display: flex;
   font-size: 20px;
   height: 40px;
@@ -77,6 +76,15 @@
 
   &:hover {
     animation: press-button 0.3s linear;
+    color: $green;
+  }
+
+  button {
+    background: transparent;
+    border: none;
+  }
+
+  i {
     color: $green;
   }
 }
