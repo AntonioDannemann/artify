@@ -30,14 +30,8 @@
 
       <% if @completed_achievements.any? %>
         <div class="badges-collection">
-          <%= cl_image_tag @completed_achievements[0].achievement.photo.key, class:"badge-completed-1" %>
-
-          <% if @completed_achievements.count > 1  %>
-            <%= cl_image_tag @completed_achievements[1].achievement.photo.key, class:"badge-completed-2" %>
-          <% end %>
-
-          <% if @completed_achievements.count > 2  %>
-            <%= cl_image_tag @completed_achievements[2].achievement.photo.key, class:"badge-completed-3" %>
+          <% @completed_achivements.each do |ach| %>
+            <%= cl_image_tag ach.photo.key, class:"badge-completed" %>
           <% end %>
         </div>
       <% end %>
