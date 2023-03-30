@@ -27,7 +27,6 @@
 
     <div class="profile-bottom">
       <%= link_to "EDIT PROFILE", edit_user_registration_path, class: "btn-main" %>
-
       <% if @completed_achievements.any? %>
         <div class="badges-collection">
           <% @completed_achievements.each do |ach| %>
