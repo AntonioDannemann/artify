@@ -21,7 +21,7 @@ class PagesController < ApplicationController
     @nearby_monuments = []
     return unless @user_lat && @user_lng
 
-    @nearby_monuments = @monuments.select { |mon| mon.distance_between(@user_lat, @user_lng) < 5 }
+    @nearby_monuments = @monuments.select { |mon| mon.distance_between(@user_lat, @user_lng) < 20 }
                                   .sort_by { |mon| mon.distance_between(@user_lat, @user_lng) }
 
     respond_to do |format|
