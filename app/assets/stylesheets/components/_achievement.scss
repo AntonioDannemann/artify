@@ -144,6 +144,7 @@
     width: 100%;
 
     img {
+      aspect-ratio: 1 / 1;
       width: 100%;
     }
   }
@@ -158,45 +159,48 @@
   }
 
   .user_achievements {
-    margin-bottom: 200px;
+    margin-bottom: 100px;
 
     .completed {
-      .completion {
-        .progress {
-          background-color: #e3d293 !important;
-        }
-
-        span::after {
-          color: $darkgrey !important;
-          mix-blend-mode: normal !important;
-        }
+      .progress {
+        background-color: #e3d293 !important;
       }
 
-      img {
-        filter: sepia(70%) grayscale(20%) saturate(180%) contrast(1.1);
+      span::after {
+        color: $darkgrey !important;
+        mix-blend-mode: normal !important;
       }
     }
 
     .achievement {
-      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      height: 100%;
 
-      &:nth-child(odd) .details{
-        left: 0;
+      &:nth-child(odd) {
+        align-items: flex-start;
       }
 
-      &:nth-child(even) .details{
-        right: 0;
+      &:nth-child(even) {
+        align-items: flex-end;
       }
 
       .details {
         background-color: $darkgrey;
         border-radius: 10px;
-        display: none;
+        height: max-content;
+        max-height: 150px;
+        overflow: hidden;
         padding: 10px;
-        position: absolute;
-        top: calc(100% + 10px);
         width: calc(200% + 20px);
         z-index: 10;
+
+        &.hidden {
+          max-height: 0;
+          opacity: 0;
+          padding: 0 10px;
+        }
 
         h3 {
           margin: 0;

@@ -4,14 +4,19 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["details"]
 
+  connect() {
+    window.addEventListener("scroll", () => {
+      this.detailsTargets.forEach(details => details.classList.add("hidden"))
+    })
+  }
+
   toggleDetails(event) {
     const details = event.target.nextElementSibling
-    console.log(details.style.display);
-    if (details.style.display === "") {
-      this.detailsTargets.forEach(details => details.style.display = "")
-      details.style.display = "block"
+    if (details.classList.contains("hidden")) {
+      this.detailsTargets.forEach(details => details.classList.add("hidden"))
+      details.classList.remove("hidden")
     } else {
-      this.detailsTargets.forEach(details => details.style.display = "")
+      details.classList.add("hidden")
     }
   }
 

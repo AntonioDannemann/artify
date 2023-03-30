@@ -3,7 +3,7 @@
     <div class="achievement<%= " completed" if ach.completed? %>">
       <%= cl_image_tag ach.achievement.photo.key, data: { action: "click->achievement#toggleDetails" } %>
 
-      <div class="details" data-achievement-target="details">
+      <div class="details hidden" data-achievement-target="details">
         <h3><%= ach.achievement.title %></h3>
         <p><%= ach.achievement.description %></p>
 
