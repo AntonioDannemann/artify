@@ -3,14 +3,15 @@
 
   <% @new_achievements.each do |achievement| %>
     <div class="achievement">
-      <h2>NEW ACHIEVEMENT</h2>
+      <h2 class="outline">NEW ACHIEVEMENT</h2>
 
       <%= cl_image_tag achievement.photo.key %>
 
       <div>
-        <h1><%= achievement.title.upcase %></h1>
-        <p><%= achievement.description %></p>
+        <h1 class="outline"><%= achievement.title.upcase %></h1>
+        <p class="outline"><%= achievement.description %></p>
       </div>
     </div>
   <% end %>
+  <div class="spinner"></div>
 </div>
