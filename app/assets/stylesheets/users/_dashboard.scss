@@ -15,33 +15,22 @@
       justify-content: space-between;
 
       .badges-collection {
-        position: relative;
-        top: 0;
-        left: 0;
+        display:flex;
 
-        .badge-completed-1 {
+        .badge-completed {
           height: 70px;
           width: 70px;
-          position: relative;
-          top: 0;
-          right: 0;
+          z-index: 2;
 
-        }
+          &:nth-child(1) {
+            margin-right: -20px;
+            z-index: 3;
+          }
 
-        .badge-completed-2 {
-          height: 70px;
-          width: 70px;
-          position: absolute;
-          top: 0;
-          right: 30px;
-        }
-
-        .badge-completed-3 {
-          height: 70px;
-          width: 70px;
-          position: absolute;
-          top: 0;
-          right: 60px;
+          &:nth-child(3) {
+            margin-left: -20px;
+            z-index: 1;
+          }
         }
       }
 

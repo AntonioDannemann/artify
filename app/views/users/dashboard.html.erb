@@ -30,7 +30,7 @@
 
       <% if @completed_achievements.any? %>
         <div class="badges-collection">
-          <% @completed_achivements.each do |ach| %>
+          <% @completed_achievements.each do |ach| %>
             <%= cl_image_tag ach.photo.key, class:"badge-completed" %>
           <% end %>
         </div>
