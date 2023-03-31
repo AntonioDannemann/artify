@@ -65,6 +65,7 @@ class HistoriesController < ApplicationController
     @landmark_lat = google_landmark.lat
     @landmark_lng = google_landmark.lng
     @raw_landmark_name = google_landmark.name
+    @raw_landmark_name = "Eiffel Tower" if @raw_landmark_name.casecmp("champ de mars").zero?
     @landmark_name = @raw_landmark_name.split.map(&:capitalize).join(" ")
     @landmark_names = [@raw_landmark_name, @raw_landmark_name.downcase, @landmark_name]
   end
@@ -92,7 +93,6 @@ class HistoriesController < ApplicationController
   end
 
   def find_monument_by_landmark
-    @landmark_name = "Eiffel Tower" if @landmark_name == "Champ De Mars"
     Monument.find_by(name: @landmark_name)
   end
 
