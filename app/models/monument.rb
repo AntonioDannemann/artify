@@ -38,7 +38,7 @@ class Monument < ApplicationRecord
   def attach_url(photo_url)
     photo = PhotoCompressor.new(URI.parse(photo_url).open)
     self.photo.purge_later
-    self.photo.attach(io: photo.compressed_photo, filename: "#{self.name}.jpeg", content_type: "image/jpeg")
+    self.photo.attach(io: photo.compressed_photo, filename: "#{name}.jpeg", content_type: "image/jpeg")
   end
 
   def distance_between(user_lat, user_lng)

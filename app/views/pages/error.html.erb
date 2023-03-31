@@ -11,9 +11,9 @@
     <% when "no landmark found on google" %>
       <p>The content of your photo was not recognised<br/>You could try again with another picture</p>
     <% when "no data found on wikipedia" %>
-      <p>The landkark probably is the <%= @landmark_name %><br/>But we can't find more information about it</p>
+      <p>The landkark probably is the <br/>But we can't find more information about it</p>
     <% else %>
-      <p>An error ocurred during the process<br/>But the landkark probably is the <%= @landmark_name %></p>
+      <p>An error ocurred during the process<br/>But the landkark probably is the <span><%= @landmark_name %></span></p>
     <% end %>
   </div>
 </div>

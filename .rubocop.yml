@@ -51,7 +51,8 @@ Style/MutableConstant:
   Enabled: false
 Style/RedundantReturn:
   Enabled: true
-Style/Regexp:
+Style/RegexpLiteral:
+  AllowInnerSlashes: true
   EnforcedStyle: mixed
 Style/SignalException:
   Enabled: false
