@@ -27,7 +27,13 @@
 
     <div class="profile-bottom">
       <%= link_to "EDIT PROFILE", edit_user_registration_path, class: "btn-main" %>
-      <%= image_tag "badges_collection.png", class: "badges-collection" %>
+      <% if @completed_achievements.any? %>
+        <div class="badges-collection">
+          <% @completed_achievements.each do |ach| %>
+            <%= cl_image_tag ach.photo.key, class:"badge-completed" %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 

@@ -15,8 +15,23 @@
       justify-content: space-between;
 
       .badges-collection {
-        object-fit: cover;
-        width: 80px;
+        display:flex;
+
+        .badge-completed {
+          height: 70px;
+          width: 70px;
+          z-index: 2;
+
+          &:nth-child(1) {
+            margin-right: -20px;
+            z-index: 3;
+          }
+
+          &:nth-child(3) {
+            margin-left: -20px;
+            z-index: 1;
+          }
+        }
       }
 
       .btn-main {
