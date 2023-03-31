@@ -92,6 +92,7 @@ class HistoriesController < ApplicationController
   end
 
   def find_monument_by_landmark
+    @landmark_name = "Eiffel Tower" if @landmark_name == "Champ De Mars"
     Monument.find_by(name: @landmark_name)
   end
 
