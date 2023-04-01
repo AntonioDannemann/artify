@@ -1,0 +1,94 @@
+Hello there !
+This might sound familiar to some of you but because of my work I end up travelling a lot to many different countries and I do enjoy taking a day off or two to discover some of those places.
+I always had an issue though of coming face to stone with different kind of landmarks which I don't recognize but I can't really be bothered to ask a pedestrian about it,
+most of the time I wouldn't understand the answer anyway because of the different languages.
+Luckily while planning my last trip I noticed a family member was reccomending a new app on their Treks review called Artify and that was such a nice find.
+This time I am in paris and I figured I could tell you a bit about the app.
+
+//opens the app
+
+// Show tutorial steps here
+I guess I haven't really used it recently because I get to see the tutorial again, haha
+Well it's really short and the app's main featured are pretty straightforward so we can just browse through each steps.
+
+//Quickly scroll down to login form and login
+Oh I have to remember my account's credentials too, knowing me it was probably something simple, like a@a.com and a password of password or something like that.
+Yeah there we are
+
+//back to the homepage's banner
+So I'm in front of what I think is a monument right now, I haven't really been on Paris before so I'm not sure what it is but that's what the app's purpose is.
+
+//click on camera button
+If I click here I get a choice of opening my photo library but I have some very private things in here sooooo... Not gonna do that haha
+But I can also open my camera which is what I wanna do really
+
+//select camera
+Hey that's me ! Hi //wave to the camera
+And here's the monument, maybe you know it, I don't //eiffel tower
+
+//take picture and submit
+If I remember correctly this waiting screen can take a few seconds saddly but I have plenty of time anyway. And while we're waiting have you seen the amount of garbage in Paris recently ? I can't believe
+those people are wasting so much food and plastics, they should consider trying one of those apps like Fridgy and whatnot to reduce their food waste. I think I've heard something about it being in protest
+to some decision taken by the governement but I'm not sure I understand how polluting the streets of the poorer neigbhouroods will help solve anything.
+
+// If successful you can start walking back home
+// Loading screen should stop before the end of this paragraph and show new achievement
+Oh, It's done already ! haha
+I had forgotten the app had achievements to collect too, I guess I can show you that afterward
+
+//close achievement
+Anyway here's the monument and..., ah so that's the Eiffel Tower. I feel like I should have known that but oh well, at least I have the app haha
+
+//click on show more and scroll gently
+I wonder how long it would take to go at it's summit
+
+//last paragraph finishes with "making the entire ascent a 600 step climb."
+600 steps ?! Maybe another time, ok ? haha
+
+//show side scroller
+I guess I could go to one of those other monuments in Paris now but let me show you a bit more about the app first.
+
+//click on banner to shirnk glass container and click on like button
+I'll just like this real quick because it's a nice tower, isn't it
+
+//click on home button
+Alright back to the homepage, I didn't mention it but unless they changed this picture that we see is basically showing a different monument each day and we can quickly access it if you want to learn
+more but I'm not really interested in that right now so you cna just go ahead and try it for yourself if you wanna.
+
+//scroll down to click on account button
+No what I wanna show you is this achievement stuff
+So here's my profile page and you can see just below my profile picture there's that badge I just unlocked and a couple more that I unlocked when I last used the app.
+
+// scroll down a bit down to show more achievement button
+I'm also progressing towards some others as you can see
+And there are even more including some I haven't discovered yet
+
+//click on show more then click on the achievement we unlocked during the presentation
+Yeah I can even see when I completed some of them when I click on the badges
+
+//quickly scroll down and back up and click the back button then go to history scroller and favourite scroller
+Anyway, we can also see here the previous monuments I scanned and there's the eiffel tower I liked down there too
+And that's it for my profile, neat isn't it ? haha
+
+//back to home
+So where am I going now ?
+I can look for more monuments in Paris in their search form I suppose
+
+//search Paris in search form
+But they should have a nearby section showing monuments close to me down there
+
+//scroll to nearby and scroll right a bit
+Oh yeah there are some landmarks close to me, here's the good part though, a distance is nice but it doesn't really tell you where to go does it ?
+
+//click on see more
+Well a map does ! How great is that
+
+//click on geolocate
+So here I am and I can see that some are very close to me indeed, what's this once ?
+
+//click on a marker
+Hum, this looks promissing
+Well I'm gonna head there now so that's the end of our little journey together but don't be sad because like me you'll now be able to discover so many new landmarks with Artify
+Cheers everyone !
+
+//end
