@@ -3,11 +3,13 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="no-media-query"
 export default class extends Controller {
   connect() {
-    if (navigator.userAgentData.mobile) this.element.remove()
-    this.element.style.display = window.innerWidth < 576  || navigator.userAgentData.mobile ? "none" : "block"
+    let isMobile = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    this.element.style.display = window.innerWidth < 576  || isMobile ? "none" : "block"
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth < 576) {
+      isMobile = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      console.log(navigator.userAgent);
+      if (window.innerWidth < 576 || isMobile) {
         this.element.style.display = "none"
 
         document.querySelector("html").classList.remove("noscroll")
