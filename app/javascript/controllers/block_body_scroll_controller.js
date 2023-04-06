@@ -11,7 +11,7 @@ export default class extends Controller {
   }
 
   disconnect() {
-    if(!document.querySelector(".tutorial")) {
+    if(!document.querySelector(".tutorial") && document.querySelector(".no-media-query").style.display === "none") {
       this.html.classList.remove("noscroll")
       this.body.classList.remove("noscroll")
     }

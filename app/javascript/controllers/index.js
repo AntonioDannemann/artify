@@ -34,6 +34,9 @@ application.register("map", MapController)
 import NearbyController from "./nearby_controller"
 application.register("nearby", NearbyController)
 
+import NoMediaQueryController from "./no_media_query_controller"
+application.register("no-media-query", NoMediaQueryController)
+
 import SearchFormController from "./search_form_controller"
 application.register("search-form", SearchFormController)
 
