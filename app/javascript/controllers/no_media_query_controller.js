@@ -8,7 +8,6 @@ export default class extends Controller {
 
     window.addEventListener("resize", () => {
       isMobile = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-      console.log(navigator.userAgent);
       if (window.innerWidth < 576 || isMobile) {
         this.element.style.display = "none"
 
