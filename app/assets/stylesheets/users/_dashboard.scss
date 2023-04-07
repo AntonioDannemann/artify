@@ -12,12 +12,16 @@
     .profile-bottom {
       align-items: center;
       display: flex;
-      justify-content: space-between;
+      gap: 30px;
 
       .badges-collection {
         display:flex;
+        flex-grow: 1;
+        justify-content: center;
 
         .badge-completed {
+          border-radius: 50%;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
           height: 70px;
           width: 70px;
           z-index: 2;
