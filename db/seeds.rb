@@ -10,6 +10,7 @@ User.create(first_name: "Louis", last_name: "Ramos", email: "louisramosdev@gmail
 
 puts "Done creating users\n\n"
 
+
 puts "Creating achievements"
 
 achievement = Achievement.new(title: "Let's Begin", description: "Scan your first landmark", goal: 1, keyword: "all")
