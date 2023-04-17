@@ -14,89 +14,89 @@ puts "Done creating users\n\n"
 puts "Creating achievements"
 
 achievement = Achievement.new(title: "Let's Begin", description: "Scan your first landmark", goal: 1, keyword: "all")
-achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("1_scan_lc7apy.png")).open, filename: "1_scan_lc7apy.png")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("nbtojentoklj0ckv1ooi87l0l93c_dtmaig.png")).open, filename: "nbtojentoklj0ckv1ooi87l0l93c_dtmaig.png")
 achievement.save!
 puts "#{achievement.title} created"
 
 achievement = Achievement.new(title: "Get Going", description: "Scan 10 landmarks", goal: 10, keyword: "all")
-achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("10scan_y4jc3u.png")).open, filename: "10scan_y4jc3u.png")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("voooxllh7wjkx39j1vhsxkijphtz_d61fzr.png")).open, filename: "voooxllh7wjkx39j1vhsxkijphtz_d61fzr.png")
 achievement.save!
 puts "#{achievement.title} created"
 
 achievement = Achievement.new(title: "Curious One", description: "Scan 25 landmarks", goal: 25, keyword: "all")
-achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("25_scan_vvjosa.png")).open, filename: "25_scan_vvjosa.png")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("srtl7mc83wd0qb621n9skfm14v6p_sqydiu.png")).open, filename: "srtl7mc83wd0qb621n9skfm14v6p_sqydiu.png")
 achievement.save!
 puts "#{achievement.title} created"
 
 achievement = Achievement.new(title: "Adventurer", description: "Scan 50 landmarks", goal: 50, keyword: "all")
-achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("50_scan_xghigr.png")).open, filename: "50_scan_xghigr.png")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("6dlvcxt9opyvm1z3911uvtmoqy34_u8skup.png")).open, filename: "6dlvcxt9opyvm1z3911uvtmoqy34_u8skup.png")
 achievement.save!
 puts "#{achievement.title} created"
 
 achievement = Achievement.new(title: "King of the world", description: "Scan 100 landmarks", goal: 100, keyword: "all")
-achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("100_scan_crmwrc.png")).open, filename: "100_scan_crmwrc.png")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("4jnjagoypviav9nvw30d5i1lu3xn_jelfv1.png")).open, filename: "4jnjagoypviav9nvw30d5i1lu3xn_jelfv1.png")
 achievement.save!
 puts "#{achievement.title} created"
 
 achievement = Achievement.new(title: "Sprinter", description: "Scan 5 landmarks in less than 24 hours", goal: 5, keyword: "all")
-achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("5_a_day_jtjjkb.png")).open, filename: "5_a_day_jtjjkb.png")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("vzaysj6ypieui6s2bc9b4tzsxrqw_rynjmv.png")).open, filename: "vzaysj6ypieui6s2bc9b4tzsxrqw_rynjmv.png")
 achievement.save!
 puts "#{achievement.title} created"
 
 achievement = Achievement.new(title: "Traveller", description: "Scan landmarks in 5 different countries", goal: 5, keyword: "all")
-achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("10_countries_q6laa6.png")).open, filename: "10_countries_q6laa6.png")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("qi5pc8gtcds69vuvcn63z7wdog8l_hxzokj.png")).open, filename: "qi5pc8gtcds69vuvcn63z7wdog8l_hxzokj.png")
 achievement.save!
 puts "#{achievement.title} created"
 
 
 achievement = Achievement.new(title: "Amsterdam Explorer", description: "Scan 5 landmarks from Amsterdam", goal: 5, keyword: "Amsterdam")
-achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("amsterdam_umjm1z.png")).open, filename: "amsterdam_umjm1z.png")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("xou41tn8ldxwtiky35fecvi59052_uvnd0p.png")).open, filename: "xou41tn8ldxwtiky35fecvi59052_uvnd0p.png")
 achievement.save!
 puts "#{achievement.title} created"
 
 achievement = Achievement.new(title: "Brussels Explorer", description: "Scan 5 landmarks from Brussels", goal: 5, keyword: "Brussels")
-achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("brussels_qyn8hs.png")).open, filename: "brussels_qyn8hs.png")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("j49wohkf9x6jzpdlx6kxjynqm35q_nzo5ac.png")).open, filename: "j49wohkf9x6jzpdlx6kxjynqm35q_nzo5ac.png")
 achievement.save!
 puts "#{achievement.title} created"
 
 achievement = Achievement.new(title: "Lisbon Explorer", description: "Scan 5 landmarks from Lisbon", goal: 5, keyword: "Lisbon")
-achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("lisbon_wikyj0.png")).open, filename: "lisbon_wikyj0.png")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("oy0ftud89j4a4a310gb2rh0zykql_l6jcvs.png")).open, filename: "oy0ftud89j4a4a310gb2rh0zykql_l6jcvs.png")
 achievement.save!
 puts "#{achievement.title} created"
 
 achievement = Achievement.new(title: "Paris Explorer", description: "Scan 5 landmarks from Paris", goal: 5, keyword: "Paris")
-achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("paris_t1vziu.png")).open, filename: "paris_t1vziu.png")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("kylqcdr83h8opx1seztuwb8vakj1_newqnx.png")).open, filename: "kylqcdr83h8opx1seztuwb8vakj1_newqnx.png")
 achievement.save!
 puts "#{achievement.title} created"
 
 achievement = Achievement.new(title: "Rio de Janeiro Explorer", description: "Scan 5 landmarks from Rio de Janeiro", goal: 5, keyword: "Rio de Janeiro")
-achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("rio_de_janeiro_zcfugi.png")).open, filename: "rio_de_janeiro_zcfugi.png")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("sapoghwhiukz5mskojrh8zq73wa9_yljqsw.png")).open, filename: "sapoghwhiukz5mskojrh8zq73wa9_yljqsw.png")
 achievement.save!
 puts "#{achievement.title} created"
 
 
 achievement = Achievement.new(title: "Conquering Belgium", description: "Scan 10 landmarks from Belgium", goal: 10, keyword: "Belgium")
-achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("belgium_rqpzv3.png")).open, filename: "belgium_rqpzv3.png")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("9v5gm7js95v1zcbdfzt1gh9rs9ym_wmyler.png")).open, filename: "9v5gm7js95v1zcbdfzt1gh9rs9ym_wmyler.png")
 achievement.save!
 puts "#{achievement.title} created"
 
 achievement = Achievement.new(title: "Conquering Brazil", description: "Scan 10 landmarks from Brazil", goal: 10, keyword: "Brazil")
-achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("brazil_ysfx9d.png")).open, filename: "brazil_ysfx9d.png")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("8rz4dmick3wexa66o98824e426er_yo9ai0.png")).open, filename: "8rz4dmick3wexa66o98824e426er_yo9ai0.png")
 achievement.save!
 puts "#{achievement.title} created"
 
 achievement = Achievement.new(title: "Conquering France", description: "Scan 10 landmarks from France", goal: 10, keyword: "France")
-achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("france_ruzcrl.png")).open, filename: "france_ruzcrl.png")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("q3h6ava8a0a2xobcv4fa9mouf5jh_xhbqnv.png")).open, filename: "q3h6ava8a0a2xobcv4fa9mouf5jh_xhbqnv.png")
 achievement.save!
 puts "#{achievement.title} created"
 
 achievement = Achievement.new(title: "Conquering The Netherlands", description: "Scan 10 landmarks from The Netherlands", goal: 10, keyword: "Netherlands")
-achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("netherlands_v5rxyy.png")).open, filename: "netherlands_v5rxyy.png")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("of53nks7jnejpbf59hn8y1a4l67s_yp5jqu.png")).open, filename: "of53nks7jnejpbf59hn8y1a4l67s_yp5jqu.png")
 achievement.save!
 puts "#{achievement.title} created"
 
 achievement = Achievement.new(title: "Conquering Portugal", description: "Scan 10 landmarks from Portugal", goal: 10, keyword: "Portugal")
-achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("PORTUGAL_zoitho.png")).open, filename: "PORTUGAL_zoitho.png")
+achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("50z581yrb8wxoyohik4wsjoi8nho_wgnlku.png")).open, filename: "50z581yrb8wxoyohik4wsjoi8nho_wgnlku.png")
 achievement.save!
 puts "#{achievement.title} created"
 
