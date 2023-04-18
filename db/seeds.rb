@@ -100,7 +100,6 @@ achievement.photo.attach(io: URI.parse(Cloudinary::Utils.cloudinary_url("50z581y
 achievement.save!
 puts "#{achievement.title} created"
 
-
 puts "Done creating achievements\n\n"
 
 arc_de_triomphe = "https://cdn.britannica.com/66/80466-050-2E125F5C/Arc-de-Triomphe-Paris-France.jpg"
@@ -110,10 +109,10 @@ colosseum = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_
 eiffel_tower = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg/640px-Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg"
 invalides = "https://cdn.britannica.com/37/155337-050-E035C14E/Dome-des-Invalides-Paris-Jules-Hardouin-Mansart-1706.jpg"
 manneken_pis = "https://upload.wikimedia.org/wikipedia/commons/c/c4/Bruxelles_Manneken_Pis_cropped.jpg"
-mount_rushmore = "https://www.history.com/.image/ar_4:3%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTU3ODc5MDg2NDMyNjU5MTY3/morning-light-on-4.jpg"
+mount_rushmore = "https://i.natgeofe.com/n/91975f38-ed57-4e92-a56d-b23ae9636f59/gettyimages-1210988766_16x9.jpg"
 pantheon = "https://lp-cms-production.imgix.net/2019-06/88ea89abfafda42bb41ea785744af5af-pantheon.jpg"
 pena_palace = "https://tourscanner.com/blog/wp-content/uploads/2019/05/Pena-Palace-tickets-1.png"
-statue_of_liberty = "https://www.history.com/.image/ar_4:3%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTY1MTc1MTk3ODI0MDAxNjA5/topic-statue-of-liberty-gettyimages-960610006-promo.jpg"
+statue_of_liberty = "https://cdn.britannica.com/82/183382-050-D832EC3A/Detail-head-crown-Statue-of-Liberty-New.jpg"
 
 monument_images = [
   arc_de_triomphe,
